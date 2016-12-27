@@ -5,6 +5,13 @@ import glob
 import datetime
 import time
 import sys
+
+"""
+Achive_Folder_To_ZIP: 壓縮資料夾，排除git檔，上傳至網芳
+removeFolder:刪除特定資料夾
+removeFile:刪除特定檔案
+copyTo3800:將資料夾上傳至網芳
+"""
  
 def Achive_Folder_To_ZIP(sFilePath, dest = "", sSequenceNumber = "0"):
     """
