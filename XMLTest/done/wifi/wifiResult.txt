@@ -1,0 +1,84 @@
+.\20160716\N19892460704112787_20160716_1237_37.log
+_0716 12:38:44.398031] Result: PASS, Measured: getEquimpmentValue dValueX:2457430000.000000, dValueY:-11.665000, Upper: WifiTest, Lower: -, ErrCode: , Msg: getEquimpmentValue dValueX:2457430000.000000, dValueY:-11.665000
+
+.\20160716\N19892460704112789_20160716_1629_06.log
+_0716 16:30:13.233544] Result: PASS, Measured: getEquimpmentValue dValueX:2459330000.000000, dValueY:-12.042000, Upper: WifiTest, Lower: -, ErrCode: , Msg: getEquimpmentValue dValueX:2459330000.000000, dValueY:-12.042000
+
+.\20160716\N19892460704112790_20160716_1540_07.log
+_0716 15:41:14.276545] Result: PASS, Measured: getEquimpmentValue dValueX:2457200000.000000, dValueY:-12.888000, Upper: WifiTest, Lower: -, ErrCode: , Msg: getEquimpmentValue dValueX:2457200000.000000, dValueY:-12.888000
+
+.\20160716\N19892460704112792_20160716_1442_56.log
+_0716 14:44:07.082545] Result: PASS, Measured: getEquimpmentValue dValueX:2457780000.000000, dValueY:-13.277000, Upper: WifiTest, Lower: -, ErrCode: , Msg: getEquimpmentValue dValueX:2457780000.000000, dValueY:-13.277000
+
+.\20160716\N19892460704112793_20160716_1610_11.log
+_0716 16:11:20.241544] Result: PASS, Measured: getEquimpmentValue dValueX:2461430000.000000, dValueY:-12.349000, Upper: WifiTest, Lower: -, ErrCode: , Msg: getEquimpmentValue dValueX:2461430000.000000, dValueY:-12.349000
+
+.\20160716\N19892460704112795_20160716_1350_49.log
+_0716 13:51:57.258544] Result: PASS, Measured: getEquimpmentValue dValueX:2457900000.000000, dValueY:-13.521000, Upper: WifiTest, Lower: -, ErrCode: , Msg: getEquimpmentValue dValueX:2457900000.000000, dValueY:-13.521000
+
+.\20160716\N19892460704112796_20160716_1319_03.log
+_0716 13:20:14.311542] Result: PASS, Measured: getEquimpmentValue dValueX:2460280000.000000, dValueY:-12.587000, Upper: WifiTest, Lower: -, ErrCode: , Msg: getEquimpmentValue dValueX:2460280000.000000, dValueY:-12.587000
+
+.\20160716\N19892460704112797_20160716_1250_40.log
+_0716 12:51:48.391542] Result: PASS, Measured: getEquimpmentValue dValueX:2459600000.000000, dValueY:-11.335000, Upper: WifiTest, Lower: -, ErrCode: , Msg: getEquimpmentValue dValueX:2459600000.000000, dValueY:-11.335000
+
+.\20160716\N19892460704112799_20160716_1642_53.log
+_0716 16:44:01.701545] Result: PASS, Measured: getEquimpmentValue dValueX:2461250000.000000, dValueY:-13.025000, Upper: WifiTest, Lower: -, ErrCode: , Msg: getEquimpmentValue dValueX:2461250000.000000, dValueY:-13.025000
+
+.\20160716\N19892460704112800_20160716_1129_00.log
+_0716 11:30:12.048537] Result: PASS, Measured: getEquimpmentValue dValueX:2458200000.000000, dValueY:-37.538000, Upper: WifiTest, Lower: -, ErrCode: , Msg: getEquimpmentValue dValueX:2458200000.000000, dValueY:-37.538000
+
+.\20160716\N19892460704112801_20160716_1303_45.log
+_0716 13:04:55.003542] Result: PASS, Measured: getEquimpmentValue dValueX:2457400000.000000, dValueY:-12.081000, Upper: WifiTest, Lower: -, ErrCode: , Msg: getEquimpmentValue dValueX:2457400000.000000, dValueY:-12.081000
+
+.\20160716\N19892460704112804_20160716_0850_27.log
+_0716 08:51:38.508203] Result: PASS, Measured: getEquimpmentValue dValueX:2462280000.000000, dValueY:-13.098000, Upper: WifiTest, Lower: -, ErrCode: , Msg: getEquimpmentValue dValueX:2462280000.000000, dValueY:-13.098000
+
+.\20160718\N19892460704112788_20160718_1102_59.log
+_0718 11:04:07.729334] Result: PASS, Measured: getEquimpmentValue dValueX:2460350000.000000, dValueY:-12.319000, Upper: WifiTest, Lower: -, ErrCode: , Msg: getEquimpmentValue dValueX:2460350000.000000, dValueY:-12.319000
+
+.\20160718\N19892460704112791_20160718_1257_28.log
+_0718 12:58:36.973206] Result: PASS, Measured: getEquimpmentValue dValueX:2462800000.000000, dValueY:-12.185000, Upper: WifiTest, Lower: -, ErrCode: , Msg: getEquimpmentValue dValueX:2462800000.000000, dValueY:-12.185000
+
+.\20160718\N19892460704112794_20160718_1026_19.log
+_0718 10:27:28.583539] Result: PASS, Measured: getEquimpmentValue dValueX:2462350000.000000, dValueY:-11.949000, Upper: WifiTest, Lower: -, ErrCode: , Msg: getEquimpmentValue dValueX:2462350000.000000, dValueY:-11.949000
+
+.\20160718\N19892460704112798_20160718_1338_09.log
+_0718 13:39:21.565356] Result: PASS, Measured: getEquimpmentValue dValueX:2457230000.000000, dValueY:-12.670000, Upper: WifiTest, Lower: -, ErrCode: , Msg: getEquimpmentValue dValueX:2457230000.000000, dValueY:-12.670000
+
+.\20160718\N19892460704112805_20160718_1324_56.log
+_0718 13:26:05.745244] Result: PASS, Measured: getEquimpmentValue dValueX:2461230000.000000, dValueY:-11.665000, Upper: WifiTest, Lower: -, ErrCode: , Msg: getEquimpmentValue dValueX:2461230000.000000, dValueY:-11.665000
+
+.\20160718\N19892460704112806_20160718_1358_29.log
+_0718 13:59:40.398972] Result: PASS, Measured: getEquimpmentValue dValueX:2457450000.000000, dValueY:-13.240000, Upper: WifiTest, Lower: -, ErrCode: , Msg: getEquimpmentValue dValueX:2457450000.000000, dValueY:-13.240000
+
+.\20160718\N19892460704112808_20160718_1411_47.log
+_0718 14:12:55.095716] Result: PASS, Measured: getEquimpmentValue dValueX:2461430000.000000, dValueY:-13.315000, Upper: WifiTest, Lower: -, ErrCode: , Msg: getEquimpmentValue dValueX:2461430000.000000, dValueY:-13.315000
+
+.\20160718\N19892460704112809_20160718_1310_04.log
+_0718 13:11:13.523834] Result: PASS, Measured: getEquimpmentValue dValueX:2459830000.000000, dValueY:-12.811000, Upper: WifiTest, Lower: -, ErrCode: , Msg: getEquimpmentValue dValueX:2459830000.000000, dValueY:-12.811000
+
+.\20160718\N19892460704112810_20160718_1012_59.log
+_0718 10:14:05.432714] Result: PASS, Measured: getEquimpmentValue dValueX:2459830000.000000, dValueY:-14.191000, Upper: WifiTest, Lower: -, ErrCode: , Msg: getEquimpmentValue dValueX:2459830000.000000, dValueY:-14.191000
+
+.\20160718\N19892460704112811_20160718_1236_04.log
+_0718 12:37:12.203969] Result: PASS, Measured: getEquimpmentValue dValueX:2462250000.000000, dValueY:-11.596000, Upper: WifiTest, Lower: -, ErrCode: , Msg: getEquimpmentValue dValueX:2462250000.000000, dValueY:-11.596000
+
+.\20160718\N19892460704112812_20160718_1442_26.log
+_0718 14:43:37.573985] Result: PASS, Measured: getEquimpmentValue dValueX:2459130000.000000, dValueY:-11.879000, Upper: WifiTest, Lower: -, ErrCode: , Msg: getEquimpmentValue dValueX:2459130000.000000, dValueY:-11.879000
+
+.\20160718\N19892460704112813_20160718_1118_04.log
+_0718 11:19:12.732312] Result: PASS, Measured: getEquimpmentValue dValueX:2462380000.000000, dValueY:-12.183000, Upper: WifiTest, Lower: -, ErrCode: , Msg: getEquimpmentValue dValueX:2462380000.000000, dValueY:-12.183000
+
+.\20160718\N19892460704112814_20160718_1457_38.log
+_0718 14:58:47.455504] Result: PASS, Measured: getEquimpmentValue dValueX:2457730000.000000, dValueY:-12.976000, Upper: WifiTest, Lower: -, ErrCode: , Msg: getEquimpmentValue dValueX:2457730000.000000, dValueY:-12.976000
+
+.\20160718\N19892460704112815_20160718_0927_28.log
+_0718 09:28:38.470301] Result: PASS, Measured: getEquimpmentValue dValueX:2461430000.000000, dValueY:-12.907000, Upper: WifiTest, Lower: -, ErrCode: , Msg: getEquimpmentValue dValueX:2461430000.000000, dValueY:-12.907000
+
+.\20160719\N19892460704112786_20160719_1503_02.log
+_0719 15:04:16.098207] Result: PASS, Measured: getEquimpmentValue dValueX:2460950000.000000, dValueY:-14.382000, Upper: WifiTest, Lower: -, ErrCode: , Msg: getEquimpmentValue dValueX:2460950000.000000, dValueY:-14.382000
+
+.\20160719\N19892460704112803_20160719_1614_35.log
+_0719 16:15:45.388105] Result: PASS, Measured: getEquimpmentValue dValueX:2458630000.000000, dValueY:-12.876000, Upper: WifiTest, Lower: -, ErrCode: , Msg: getEquimpmentValue dValueX:2458630000.000000, dValueY:-12.876000
+

@@ -1,0 +1,976 @@
+06-08 16:21:36.118     1     1 I PrintK  : [    0.501743] [<c01966dc>] (warn_slowpath_common+0x4c/0x64) from [<c0196774>] (warn_slowpath_fmt+0x2c/0x3c)
+06-08 16:21:36.118     1     1 I PrintK  : [    0.501778] [<c0196774>] (warn_slowpath_fmt+0x2c/0x3c) from [<c0372000>] (kobject_add_internal+0x170/0x21c)
+06-08 16:21:36.118     1     1 I PrintK  : [    0.501813] [<c0372000>] (kobject_add_internal+0x170/0x21c) from [<c03723e4>] (kobject_add+0x68/0x8c)
+06-08 16:21:36.118     1     1 I PrintK  : [    0.501847] [<c03723e4>] (kobject_add+0x68/0x8c) from [<c045e40c>] (device_add+0x114/0x5d0)
+06-08 16:21:36.118     1     1 I PrintK  : [    0.501881] [<c045e40c>] (device_add+0x114/0x5d0) from [<c067685c>] (of_platform_device_create_pdata+0x58/0x78)
+06-08 16:21:36.118     1     1 I PrintK  : [    0.501917] [<c067685c>] (of_platform_device_create_pdata+0x58/0x78) from [<c06769b0>] (of_platform_bus_create+0x134/0x1e8)
+06-08 16:21:36.118     1     1 I PrintK  : [    0.501954] [<c06769b0>] (of_platform_bus_create+0x134/0x1e8) from [<c0676bd8>] (of_platform_populate+0x5c/0x8c)
+06-08 16:21:36.118     1     1 I PrintK  : [    0.501992] [<c0676bd8>] (of_platform_populate+0x5c/0x8c) from [<c0e0b300>] (msm8974_init+0x58/0x88)
+06-08 16:21:36.119     1     1 I PrintK  : [    0.502030] [<c0e0b300>] (msm8974_init+0x58/0x88) from [<c0e03478>] (customize_machine+0x1c/0x28)
+06-08 16:21:36.119     1     1 I PrintK  : [    0.502066] [<c0e03478>] (customize_machine+0x1c/0x28) from [<c01005fc>] (do_one_initcall+0x90/0x160)
+06-08 16:21:36.119     1     1 I PrintK  : [    0.502102] [<c01005fc>] (do_one_initcall+0x90/0x160) from [<c0e00b50>] (kernel_init+0xec/0x1a8)
+06-08 16:21:36.119     1     1 I PrintK  : [    0.502139] [<c0e00b50>] (kernel_init+0xec/0x1a8) from [<c0106be4>] (kernel_thread_exit+0x0/0x8)
+06-08 16:21:36.119     1     1 I PrintK  : [    0.502166] ---[ end trace da227214a82491b8 ]---
+06-08 16:21:36.127     1     1 E PrintK  : [    0.510876] [QID300][msm8974_add_drivers] ---  Entry ---
+06-08 16:21:36.142     1     1 V PrintK  : [    0.525434] 8841_s1: 675 <--> 1050 mV at 0 mV normal idle 
+06-08 16:21:36.143     1     1 V PrintK  : [    0.526035] 8841_s1_ao: 675 <--> 1050 mV at 0 mV normal idle 
+06-08 16:21:36.143     1     1 V PrintK  : [    0.526677] 8841_s1_so: 675 <--> 1050 mV at 675 mV normal idle 
+06-08 16:21:36.144     1     1 V PrintK  : [    0.527277] 8841_s2: 500 <--> 1050 mV at 0 mV normal idle 
+06-08 16:21:36.144     1     1 V PrintK  : [    0.527891] 8841_s2_corner: 0 <--> 0 mV at 0 mV normal idle 
+06-08 16:21:36.145     1     1 V PrintK  : [    0.528513] 8841_s2_corner_ao: 0 <--> 0 mV at 0 mV normal idle 
+06-08 16:21:36.146     1     1 V PrintK  : [    0.529091] 8841_s2_floor_corner: 0 <--> 0 mV at 0 mV normal idle 
+06-08 16:21:36.146     1     1 V PrintK  : [    0.529713] 8841_s3: 1050 mV normal idle 
+06-08 16:21:36.147     1     1 V PrintK  : [    0.530358] 8841_s4: 815 <--> 900 mV at 0 mV normal idle 
+06-08 16:21:36.147     1     1 V PrintK  : [    0.530907] 8841_s4_corner: 0 <--> 0 mV at 0 mV normal idle 
+06-08 16:21:36.148     1     1 V PrintK  : [    0.531548] 8841_s4_floor_corner: 0 <--> 0 mV at 0 mV normal idle 
+06-08 16:21:36.149     1     1 V PrintK  : [    0.532180] 8941_s1: 1300 mV normal idle 
+06-08 16:21:36.149     1     1 V PrintK  : [    0.532787] 8941_s2: 2150 mV normal idle 
+06-08 16:21:36.150     1     1 V PrintK  : [    0.533449] 8941_s3: 1800 mV normal idle 
+06-08 16:21:36.151     1     1 V PrintK  : [    0.534042] 8941_l1: 1225 mV normal idle 
+06-08 16:21:36.151     1     1 V PrintK  : [    0.534676] 8941_l2: 1200 mV normal idle 
+06-08 16:21:36.152     1     1 V PrintK  : [    0.535313] 8941_l3: 1225 mV normal idle 
+06-08 16:21:36.152     1     1 V PrintK  : [    0.535923] 8941_l4: 1225 mV normal idle 
+06-08 16:21:36.153     1     1 V PrintK  : [    0.536582] 8941_l5: 1800 mV normal idle 
+06-08 16:21:36.154     1     1 V PrintK  : [    0.537237] 8941_l6: 1800 mV normal idle 
+06-08 16:21:36.154     1     1 V PrintK  : [    0.537829] 8941_l7: 1800 mV normal idle 
+06-08 16:21:36.155     1     1 V PrintK  : [    0.538483] 8941_l8: 1800 mV normal idle 
+06-08 16:21:36.156     1     1 V PrintK  : [    0.539122] 8941_l9: 1800 <--> 2950 mV at 2950 mV normal idle 
+06-08 16:21:36.156     1     1 V PrintK  : [    0.539971] 8941_l10: 1800 mV normal idle 
+06-08 16:21:36.157     1     1 V PrintK  : [    0.540602] 8941_l11: 1225 <--> 1350 mV at 1300 mV normal idle 
+06-08 16:21:36.158     1     1 V PrintK  : [    0.541249] 8941_l12: 1800 mV normal idle 
+06-08 16:21:36.158     1     1 V PrintK  : [    0.541848] 8941_l12_ao: 1800 mV normal idle 
+06-08 16:21:36.159     1     1 V PrintK  : [    0.542534] 8941_l13: 1800 <--> 2950 mV at 2950 mV normal idle 
+06-08 16:21:36.160     1     1 V PrintK  : [    0.543168] 8941_l14: 1800 mV normal idle 
+06-08 16:21:36.160     1     1 V PrintK  : [    0.543766] 8941_l15: 2050 mV normal idle 
+06-08 16:21:36.161     1     1 V PrintK  : [    0.544426] 8941_l16: 2700 mV normal idle 
+06-08 16:21:36.162     1     1 V PrintK  : [    0.545057] 8941_l17: 2850 mV normal idle 
+06-08 16:21:36.162     1     1 V PrintK  : [    0.545678] 8941_l18: 2850 mV normal idle 
+06-08 16:21:36.163     1     1 V PrintK  : [    0.546357] 8941_l19: 2900 <--> 3350 mV at 2900 mV normal idle 
+06-08 16:21:36.163     1     1 V PrintK  : [    0.547009] 8941_l20: 2950 mV normal idle 
+06-08 16:21:36.164     1     1 V PrintK  : [    0.547628] 8941_l21: 2950 mV normal idle 
+06-08 16:21:36.165     1     1 V PrintK  : [    0.548291] 8941_l22: 3000 mV normal idle 
+06-08 16:21:36.165     1     1 V PrintK  : [    0.548895] 8941_l23: 3000 mV normal idle 
+06-08 16:21:36.166     1     1 V PrintK  : [    0.549516] 8941_l24: 3075 mV normal idle 
+06-08 16:21:36.167     1     1 V PrintK  : [    0.550141] 8941_lvs1: 
+06-08 16:21:36.167     1     1 V PrintK  : [    0.550668] 8941_lvs2: 
+06-08 16:21:36.168     1     1 V PrintK  : [    0.551254] 8941_lvs3: 
+06-08 16:21:36.170     1     1 V PrintK  : [    0.553907] PDN krait_pdn_phase_scaling_init: eFuse phase scaling factor = 4/4 (eFuse not blown)
+06-08 16:21:36.170     1     1 V PrintK  : [    0.553935] PDN krait_pdn_phase_scaling_init: initial phase scaling factor = 4/4
+06-08 16:21:36.171     1     1 V PrintK  : [    0.554409] krait0: 500 <--> 1120 mV at 900 mV fast normal idle 
+06-08 16:21:36.172     1     1 V PrintK  : [    0.555120] krait1: 500 <--> 1120 mV at 900 mV fast normal idle 
+06-08 16:21:36.172     1     1 V PrintK  : [    0.555779] krait2: 500 <--> 1120 mV at 900 mV fast normal idle 
+06-08 16:21:36.173     1     1 V PrintK  : [    0.556455] krait3: 500 <--> 1120 mV at 900 mV fast normal idle 
+06-08 16:21:36.217     1     1 V PrintK  : [    0.600045] msm-thermal qcom,msm-thermal.70: msm_thermal:Failed reading node=/soc/qcom,msm-thermal, key=qcom,hotplug-temp. err=-22. KTM continues
+06-08 16:21:36.217     1     1 V PrintK  : [    0.600090] msm-thermal qcom,msm-thermal.70: probe_freq_mitigation:Failed reading node=/soc/qcom,msm-thermal, key=qcom,freq-mitigation-temp. err=-22. KTM continues
+06-08 16:21:36.217     1     1 V PrintK  : [    0.600134] msm-thermal qcom,msm-thermal.70: probe_psm:Failed reading node=/soc/qcom,msm-thermal, key=qcom,pmic-sw-mode-temp. err=-22. KTM continues
+06-08 16:21:36.217     1     1 V PrintK  : [    0.600981] msm_thermal:vdd_restriction_reg_init Defer vdd rstr freq init.
+06-08 16:21:36.218     1     1 V PrintK  : [    0.601012] msm-thermal qcom,msm-thermal.70: probe_ocr:Failed reading node=/soc/qcom,msm-thermal, key=qti,pmic-opt-curr-temp. KTM continues
+06-08 16:21:36.218    27    27 W PrintK  : [    0.601251] msm_thermal:msm_thermal_get_freq_table error reading cpufreq table
+06-08 16:21:36.218     1     1 E PrintK  : [    0.601589] [QID300][msm8974_add_drivers] ---  Exit ---
+06-08 16:21:36.218     1     1 E PrintK  : [    0.601609] [QID300][msm8974_init] --- Exit ---
+06-08 16:21:36.218     1     1 V PrintK  : [    0.601648] hw-breakpoint: found 5 (+1 reserved) breakpoint and 4 watchpoint registers.
+06-08 16:21:36.218     1     1 V PrintK  : [    0.601673] hw-breakpoint: maximum watchpoint size is 8 bytes.
+06-08 16:21:36.219     1     1 V PrintK  : [    0.602434] msm-jtag-fuse fc4be024.jtagfuse: JTag Fuse initialized
+06-08 16:21:36.223     1     1 V PrintK  : [    0.606535] 8941_boost: 5000 mV 
+06-08 16:21:36.224     1     1 V PrintK  : [    0.607176] 8941_mvs1: 
+06-08 16:21:36.224     1     1 W PrintK  : [    0.607249] qcom,qpnp-regulator qpnp-regulator-f6247800: Failed to find supply parent
+06-08 16:21:36.224     1     1 V PrintK  : [    0.607472] spmi qpnp-regulator-f6247800: Driver qcom,qpnp-regulator requests probe deferral
+06-08 16:21:36.224     1     1 V PrintK  : [    0.607836] 8941_mvs2: 
+06-08 16:21:36.224     1     1 V PrintK  : [    0.607887] 8941_mvs2: supplied by 8941_boost
+06-08 16:21:36.227    41    41 I PrintK  : [    0.610308] kworker/u:1 used greatest stack depth: 6256 bytes left
+06-08 16:21:36.230     1     1 V PrintK  : [    0.613239] sps:BAM 0xf9984000 (va:0xc5ae0000) enabled: ver:0x6, number of pipes:20
+06-08 16:21:36.231     1     1 V PrintK  : [    0.614546] spmi qpnp-bsi-f6245e00: Driver qcom,qpnp-bsi requests probe deferral
+06-08 16:21:36.233     1     1 V PrintK  : [    0.616282] gdsc_venus: 
+06-08 16:21:36.233     1     1 V PrintK  : [    0.616758] gdsc_mdss: 
+06-08 16:21:36.234     1     1 V PrintK  : [    0.617169] gdsc_jpeg: 
+06-08 16:21:36.234     1     1 V PrintK  : [    0.617679] gdsc_vfe: 
+06-08 16:21:36.235     1     1 V PrintK  : [    0.618071] gdsc_oxili_gx: 
+06-08 16:21:36.235     1     1 V PrintK  : [    0.618146] gdsc_oxili_gx: supplied by 8841_s4_corner
+06-08 16:21:36.235     1     1 V PrintK  : [    0.618601] gdsc_oxili_cx: 
+06-08 16:21:36.236     1     1 V PrintK  : [    0.619018] gdsc_usb_hsic: 
+06-08 16:21:36.236     1     1 W PrintK  : [    0.619741] AXI: msm_bus_fabric_init_driver(): msm_bus_fabric_init_driver
+06-08 16:21:36.238     1     1 V PrintK  : [    0.621403] msm_bus_fabric fc478000.msm-mmss-noc: msmbus_coresight initialized
+06-08 16:21:36.239     1     1 V PrintK  : [    0.622901] msm_bus_fabric fc460000.msm-sys-noc: msmbus_coresight initialized
+06-08 16:21:36.241     1     1 V PrintK  : [    0.624412] msm_bus_fabric fc468000.msm-periph-noc: msmbus_coresight initialized
+06-08 16:21:36.243     1     1 I PrintK  : [    0.626288] AXI: msm_bus_fabric_probe(): Coresight support absent for bus: 5120
+06-08 16:21:36.244     1     1 V PrintK  : [    0.627233] msm_bus_fabric fc380000.msm-bimc: msmbus_coresight initialized
+06-08 16:21:36.244     1     1 I PrintK  : [    0.627551] AXI: msm_bus_fabric_probe(): Coresight support absent for bus: 6144
+06-08 16:21:36.245     1     1 V PrintK  : [    0.628473] msm_bus_fabric fc470000.msm-ocmem-noc: msmbus_coresight initialized
+06-08 16:21:36.246     1     1 V PrintK  : [    0.629571] msm_ocmem fdd00000.qcom,ocmem: OCMEM Virtual addr c5c00000
+06-08 16:21:36.247     1     1 V PrintK  : [    0.630165] Physical OCMEM zone layout:
+06-08 16:21:36.247     1     1 V PrintK  : [    0.630187]  zone graphics	: 0xfec00000 - 0xfecfffff (1024 KB)
+06-08 16:21:36.247     1     1 V PrintK  : [    0.630213]  zone lp_audio	: 0xfed00000 - 0xfed7ffff ( 512 KB)
+06-08 16:21:36.247     1     1 V PrintK  : [    0.630239]  zone video	: 0xfed00000 - 0xfed7ffff ( 512 KB)
+06-08 16:21:36.282     1     1 V PrintK  : [    0.665261] bio: create slab <bio-0> at 0
+06-08 16:21:36.283     1     1 V PrintK  : [    0.666364] platform spi_eth_phy_vreg.80: Driver reg-fixed-voltage requests probe deferral
+06-08 16:21:36.283     1     1 V PrintK  : [    0.666580] vph_pwr: 
+06-08 16:21:36.284     1     1 V PrintK  : [    0.667671] cma: Assigned CMA region at 0 to 8.qcom,ion-heap device
+06-08 16:21:36.284     1     1 W PrintK  : [    0.667786] ION-heap mm: Cannot specify alignment for this type of heap
+06-08 16:21:36.284     1     1 V PrintK  : [    0.667928] cma: Assigned CMA region at 0 to 16.qcom,ion-heap device
+06-08 16:21:36.285     1     1 W PrintK  : [    0.668042] ION-heap adsp: Cannot specify alignment for this type of heap
+06-08 16:21:36.285     1     1 V PrintK  : [    0.668168] cma: Assigned CMA region at 0 to 1b.qcom,ion-heap device
+06-08 16:21:36.286     1     1 V PrintK  : [    0.669079] ION heap system created
+06-08 16:21:36.286     1     1 V PrintK  : [    0.669255] ION heap kmalloc created
+06-08 16:21:36.286     1     1 V PrintK  : [    0.669299] ION heap mm created at 0x6e800000 with size fc00000
+06-08 16:21:36.286     1     1 V PrintK  : [    0.669341] ION heap adsp created at 0x6a800000 with size 3f00000
+06-08 16:21:36.286     1     1 V PrintK  : [    0.669413] ION heap qsecom created at 0x69400000 with size 1100000
+06-08 16:21:36.286     1     1 V PrintK  : [    0.669477] ION heap audio created at 0x7e500000 with size 614000
+06-08 16:21:36.286     1     1 V PrintK  : [    0.669521] ION heap pil_1 created at 0x05a00000 with size 2100000
+06-08 16:21:36.286     1     1 V PrintK  : [    0.669565] ION heap pil_2 created at 0x08000000 with size 5000000
+06-08 16:21:36.287     1     1 V PrintK  : [    0.670726] platform msm_smsc_hub: Driver msm_smsc_hub requests probe deferral
+06-08 16:21:36.289     1     1 D PrintK  : [    0.672086] SCSI subsystem initialized
+06-08 16:21:36.289     1     1 V PrintK  : [    0.672283] usbcore: registered new interface driver usbfs
+06-08 16:21:36.289     1     1 V PrintK  : [    0.672418] usbcore: registered new interface driver hub
+06-08 16:21:36.289     1     1 V PrintK  : [    0.672618] usbcore: registered new device driver usb
+06-08 16:21:36.290     1     1 V PrintK  : [    0.673153] Linux media interface: v0.10
+06-08 16:21:36.290     1     1 V PrintK  : [    0.673230] Linux video capture interface: v2.00
+06-08 16:21:36.293     1     1 V PrintK  : [    0.676663] msm_iommu_v1 fda64000.qcom,iommu: device jpeg_iommu mapped at c5da0000, with 3 ctx banks
+06-08 16:21:36.295     1     1 V PrintK  : [    0.678667] msm_iommu_v1 fd928000.qcom,iommu: device mdp_iommu mapped at c5dc0000, with 3 ctx banks
+06-08 16:21:36.298     1     1 V PrintK  : [    0.681527] msm_iommu_v1 fdc84000.qcom,iommu: device venus_iommu mapped at c5de0000, with 5 ctx banks
+06-08 16:21:36.300     1     1 V PrintK  : [    0.683595] msm_iommu_v1 fdb10000.qcom,iommu: device kgsl_iommu mapped at c5e00000, with 3 ctx banks
+06-08 16:21:36.302     1     1 V PrintK  : [    0.685593] msm_iommu_v1 fda44000.qcom,iommu: device vfe_iommu mapped at c5e20000, with 3 ctx banks
+06-08 16:21:36.304     1     1 V PrintK  : [    0.687442] msm_iommu_ctx_v1 fda6c000.qcom,iommu-ctx: context jpeg_enc0 using bank 0
+06-08 16:21:36.304     1     1 V PrintK  : [    0.687658] msm_iommu_ctx_v1 fda6d000.qcom,iommu-ctx: context jpeg_enc1 using bank 1
+06-08 16:21:36.304     1     1 V PrintK  : [    0.687872] msm_iommu_ctx_v1 fda6e000.qcom,iommu-ctx: context jpeg_dec using bank 2
+06-08 16:21:36.305     1     1 V PrintK  : [    0.688100] msm_iommu_ctx_v1 fd930000.qcom,iommu-ctx: context mdp_0 using bank 0
+06-08 16:21:36.305     1     1 V PrintK  : [    0.688325] msm_iommu_ctx_v1 fd931000.qcom,iommu-ctx: context mdp_1 using bank 1
+06-08 16:21:36.305     1     1 V PrintK  : [    0.688582] msm_iommu_ctx_v1 fd932000.qcom,iommu-ctx: context mdp_2 using bank 2
+06-08 16:21:36.305     1     1 V PrintK  : [    0.688809] msm_iommu_ctx_v1 fdc8c000.qcom,iommu-ctx: context venus_ns using bank 0
+06-08 16:21:36.306     1     1 V PrintK  : [    0.689052] msm_iommu_ctx_v1 fdc8d000.qcom,iommu-ctx: context venus_sec_bitstream using bank 1
+06-08 16:21:36.306     1     1 V PrintK  : [    0.689264] msm_iommu_ctx_v1 fdc8e000.qcom,iommu-ctx: context venus_fw using bank 2
+06-08 16:21:36.306     1     1 V PrintK  : [    0.689480] msm_iommu_ctx_v1 fdc8f000.qcom,iommu-ctx: context venus_sec_pixel using bank 3
+06-08 16:21:36.306     1     1 V PrintK  : [    0.689694] msm_iommu_ctx_v1 fdc90000.qcom,iommu-ctx: context venus_sec_non_pixel using bank 4
+06-08 16:21:36.306     1     1 V PrintK  : [    0.689933] msm_iommu_ctx_v1 fdb18000.qcom,iommu-ctx: context gfx3d_user using bank 0
+06-08 16:21:36.307     1     1 V PrintK  : [    0.690145] msm_iommu_ctx_v1 fdb19000.qcom,iommu-ctx: context gfx3d_priv using bank 1
+06-08 16:21:36.307     1     1 V PrintK  : [    0.690358] msm_iommu_ctx_v1 fdb1a000.qcom,iommu-ctx: context gfx3d_spare using bank 2
+06-08 16:21:36.307     1     1 V PrintK  : [    0.690589] msm_iommu_ctx_v1 fda4c000.qcom,iommu-ctx: context vfe0 using bank 0
+06-08 16:21:36.307     1     1 V PrintK  : [    0.690800] msm_iommu_ctx_v1 fda4d000.qcom,iommu-ctx: context vfe1 using bank 1
+06-08 16:21:36.308     1     1 V PrintK  : [    0.691011] msm_iommu_ctx_v1 fda4e000.qcom,iommu-ctx: context cpp using bank 2
+06-08 16:21:36.310     1     1 V PrintK  : [    0.693623] Advanced Linux Sound Architecture Driver Version 1.0.25.
+06-08 16:21:36.311     1     1 V PrintK  : [    0.694342] Bluetooth: Core ver 2.16
+06-08 16:21:36.311     1     1 V PrintK  : [    0.694423] NET: Registered protocol family 31
+06-08 16:21:36.311     1     1 V PrintK  : [    0.694441] Bluetooth: HCI device and connection manager initialized
+06-08 16:21:36.311     1     1 V PrintK  : [    0.694466] Bluetooth: HCI socket layer initialized
+06-08 16:21:36.311     1     1 V PrintK  : [    0.694487] Bluetooth: L2CAP socket layer initialized
+06-08 16:21:36.311     1     1 V PrintK  : [    0.694814] Bluetooth: SCO socket layer initialized
+06-08 16:21:36.312    28    28 V PrintK  : [    0.695298] cfg80211: Calling CRDA to update world regulatory domain
+06-08 16:21:36.312    28    28 V PrintK  : [    0.695354] cfg80211: World regulatory domain updated:
+06-08 16:21:36.312    28    28 V PrintK  : [    0.695374] cfg80211:   (start_freq - end_freq @ bandwidth), (max_antenna_gain, max_eirp)
+06-08 16:21:36.312    28    28 V PrintK  : [    0.695400] cfg80211:   (2402000 KHz - 2472000 KHz @ 40000 KHz), (300 mBi, 2000 mBm)
+06-08 16:21:36.312    28    28 V PrintK  : [    0.695426] cfg80211:   (2457000 KHz - 2482000 KHz @ 40000 KHz), (300 mBi, 2000 mBm)
+06-08 16:21:36.312    28    28 V PrintK  : [    0.695450] cfg80211:   (2474000 KHz - 2494000 KHz @ 20000 KHz), (300 mBi, 2000 mBm)
+06-08 16:21:36.312    28    28 V PrintK  : [    0.695475] cfg80211:   (5170000 KHz - 5250000 KHz @ 80000 KHz), (300 mBi, 2000 mBm)
+06-08 16:21:36.312    28    28 V PrintK  : [    0.695500] cfg80211:   (5735000 KHz - 5835000 KHz @ 80000 KHz), (300 mBi, 2000 mBm)
+06-08 16:21:36.312    28    28 V PrintK  : [    0.695525] cfg80211:   (57240000 KHz - 63720000 KHz @ 2160000 KHz), (N/A, 0 mBm)
+06-08 16:21:36.313     1     1 V PrintK  : [    0.696243] Switching to clocksource arch_sys_counter
+06-08 16:21:36.362     1     1 V PrintK  : [    0.745496] NET: Registered protocol family 2
+06-08 16:21:36.363     1     1 V PrintK  : [    0.746169] IP route cache hash table entries: 32768 (order: 5, 131072 bytes)
+06-08 16:21:36.367     1     1 V PrintK  : [    0.750200] TCP established hash table entries: 131072 (order: 8, 1048576 bytes)
+06-08 16:21:36.375     1     1 V PrintK  : [    0.758485] TCP bind hash table entries: 65536 (order: 8, 1310720 bytes)
+06-08 16:21:36.376     1     1 V PrintK  : [    0.759352] TCP: Hash tables configured (established 131072 bind 65536)
+06-08 16:21:36.376     1     1 V PrintK  : [    0.759373] TCP: reno registered
+06-08 16:21:36.376     1     1 V PrintK  : [    0.759516] UDP hash table entries: 512 (order: 2, 24576 bytes)
+06-08 16:21:36.376     1     1 V PrintK  : [    0.759669] UDP-Lite hash table entries: 512 (order: 2, 24576 bytes)
+06-08 16:21:36.377     1     1 V PrintK  : [    0.760133] NET: Registered protocol family 1
+06-08 16:21:36.377     1     1 V PrintK  : [    0.760572] Trying to unpack rootfs image as initramfs...
+06-08 16:21:36.423     1     1 V PrintK  : [    0.806808] Freeing initrd memory: 656K
+06-08 16:21:36.426     1     1 V PrintK  : [    0.809915] Detected 9 counters on the L2CC PMU.
+06-08 16:21:36.429     1     1 V PrintK  : [    0.812056] gpiochip_find_base: found new base at 992
+06-08 16:21:36.429     1     1 V PrintK  : [    0.812211] gpiochip_add: registered GPIOs 992 to 1023 on device: smp2p
+06-08 16:21:36.430     1     1 V PrintK  : [    0.813028] gpiochip_find_base: found new base at 960
+06-08 16:21:36.430     1     1 V PrintK  : [    0.813161] gpiochip_add: registered GPIOs 960 to 991 on device: smp2p
+06-08 16:21:36.430     1     1 V PrintK  : [    0.813226] gpiochip_find_base: found new base at 928
+06-08 16:21:36.430     1     1 V PrintK  : [    0.813357] gpiochip_add: registered GPIOs 928 to 959 on device: smp2p
+06-08 16:21:36.431     1     1 V PrintK  : [    0.814211] gpiochip_find_base: found new base at 896
+06-08 16:21:36.431     1     1 V PrintK  : [    0.814343] gpiochip_add: registered GPIOs 896 to 927 on device: smp2p
+06-08 16:21:36.431     1     1 V PrintK  : [    0.814408] gpiochip_find_base: found new base at 864
+06-08 16:21:36.431     1     1 V PrintK  : [    0.814539] gpiochip_add: registered GPIOs 864 to 895 on device: slave-kernel
+06-08 16:21:36.432     1     1 V PrintK  : [    0.815387] gpiochip_find_base: found new base at 832
+06-08 16:21:36.432     1     1 V PrintK  : [    0.815534] gpiochip_add: registered GPIOs 832 to 863 on device: master-kernel
+06-08 16:21:36.432     1     1 V PrintK  : [    0.815638] gpiochip_find_base: found new base at 800
+06-08 16:21:36.432     1     1 V PrintK  : [    0.815803] gpiochip_add: registered GPIOs 800 to 831 on device: smp2p
+06-08 16:21:36.433     1     1 V PrintK  : [    0.816727] gpiochip_find_base: found new base at 768
+06-08 16:21:36.433     1     1 V PrintK  : [    0.816876] gpiochip_add: registered GPIOs 768 to 799 on device: smp2p
+06-08 16:21:36.433     1     1 V PrintK  : [    0.816942] gpiochip_find_base: found new base at 736
+06-08 16:21:36.434     1     1 V PrintK  : [    0.817074] gpiochip_add: registered GPIOs 736 to 767 on device: slave-kernel
+06-08 16:21:36.434     1     1 V PrintK  : [    0.817969] gpiochip_find_base: found new base at 704
+06-08 16:21:36.435     1     1 V PrintK  : [    0.818120] gpiochip_add: registered GPIOs 704 to 735 on device: master-kernel
+06-08 16:21:36.435     1     1 V PrintK  : [    0.818218] gpiochip_find_base: found new base at 672
+06-08 16:21:36.435     1     1 V PrintK  : [    0.818350] gpiochip_add: registered GPIOs 672 to 703 on device: smp2p
+06-08 16:21:36.436     1     1 V PrintK  : [    0.819239] gpiochip_find_base: found new base at 640
+06-08 16:21:36.436     1     1 V PrintK  : [    0.819390] gpiochip_add: registered GPIOs 640 to 671 on device: smp2p
+06-08 16:21:36.436     1     1 V PrintK  : [    0.819453] gpiochip_find_base: found new base at 608
+06-08 16:21:36.436     1     1 V PrintK  : [    0.819586] gpiochip_add: registered GPIOs 608 to 639 on device: slave-kernel
+06-08 16:21:36.437     1     1 V PrintK  : [    0.820513] gpiochip_find_base: found new base at 576
+06-08 16:21:36.437     1     1 V PrintK  : [    0.820647] gpiochip_add: registered GPIOs 576 to 607 on device: master-kernel
+06-08 16:21:36.437     1     1 V PrintK  : [    0.820772] gpiochip_find_base: found new base at 544
+06-08 16:21:36.437     1     1 V PrintK  : [    0.820905] gpiochip_add: registered GPIOs 544 to 575 on device: rdbg
+06-08 16:21:36.438     1     1 V PrintK  : [    0.821844] gpiochip_find_base: found new base at 512
+06-08 16:21:36.438     1     1 V PrintK  : [    0.821978] gpiochip_add: registered GPIOs 512 to 543 on device: rdbg
+06-08 16:21:36.439     1     1 V PrintK  : [    0.822046] gpiochip_find_base: found new base at 480
+06-08 16:21:36.439     1     1 V PrintK  : [    0.822195] gpiochip_add: registered GPIOs 480 to 511 on device: rdbg
+06-08 16:21:36.440     1     1 V PrintK  : [    0.823159] gpiochip_find_base: found new base at 448
+06-08 16:21:36.440     1     1 V PrintK  : [    0.823293] gpiochip_add: registered GPIOs 448 to 479 on device: rdbg
+06-08 16:21:36.442     1     1 V PrintK  : [    0.825410] pil-q6v5-lpass fe200000.qcom,lpass: using secure boot
+06-08 16:21:36.447     1     1 V PrintK  : [    0.830521] pil_pronto fb21b000.qcom,pronto: using secure boot
+06-08 16:21:36.449     1     1 V PrintK  : [    0.832840] pil_venus fdce0000.qcom,venus: using secure boot
+06-08 16:21:36.462     1     1 V PrintK  : [    0.845789] NET: Registered protocol family 27
+06-08 16:21:36.470     1     1 V PrintK  : [    0.853823] clock-krait-8974 f9016000.qcom,clock-krait: PVS config version: 1
+06-08 16:21:36.470     1     1 V PrintK  : [    0.853869] clock-krait-8974 f9016000.qcom,clock-krait: Speed bin: 1
+06-08 16:21:36.470     1     1 V PrintK  : [    0.853894] clock-krait-8974 f9016000.qcom,clock-krait: PVS bin: 10
+06-08 16:21:36.470     1     1 V PrintK  : [    0.853916] clock-krait-8974 f9016000.qcom,clock-krait: PVS version: 1
+06-08 16:21:36.473    27    27 W PrintK  : [    0.856386] msm_thermal:msm_thermal_get_freq_table error reading cpufreq table
+06-08 16:21:36.475     1     1 V PrintK  : [    0.858221] L2 @ 729600 KHz
+06-08 16:21:36.475     1     1 V PrintK  : [    0.858398] CPU0 @ 960000 KHz
+06-08 16:21:36.475     1     1 V PrintK  : [    0.858415] CPU1 @ unknown rate. Forcing new rate.
+06-08 16:21:36.475     1     1 V PrintK  : [    0.858715] CPU1 @ 300000 KHz
+06-08 16:21:36.475     1     1 V PrintK  : [    0.858758] CPU2 @ unknown rate. Forcing new rate.
+06-08 16:21:36.476     1     1 V PrintK  : [    0.859080] CPU2 @ 300000 KHz
+06-08 16:21:36.476     1     1 V PrintK  : [    0.859123] CPU3 @ unknown rate. Forcing new rate.
+06-08 16:21:36.476     1     1 V PrintK  : [    0.859444] CPU3 @ 300000 KHz
+06-08 16:21:36.491     1     1 D PrintK  : [    0.874631] msm_rpm_log_probe: OK
+06-08 16:21:36.548     1     1 V PrintK  : [    0.931197] mpm_counter: [    0.931181]:(206496)
+06-08 16:21:36.554     1     1 V PrintK  : [    0.937993] audit: initializing netlink socket (disabled)
+06-08 16:21:36.555     1     1 D PrintK  : [    0.938018] type=2000 audit(0.920:1): initialized
+06-08 16:21:36.617     1     1 I PrintK  : [    1.000192] highmem bounce pool size: 64 pages
+06-08 16:21:36.622     1     1 V PrintK  : [    1.005295] fuse init (API version 7.18)
+06-08 16:21:36.622     1     1 V PrintK  : [    1.005549] msgmni has been set to 1386
+06-08 16:21:36.624     1     1 V PrintK  : [    1.007335] Block layer SCSI generic (bsg) driver version 0.4 loaded (major 247)
+06-08 16:21:36.624     1     1 V PrintK  : [    1.007348] io scheduler noop registered
+06-08 16:21:36.624     1     1 V PrintK  : [    1.007356] io scheduler deadline registered
+06-08 16:21:36.624     1     1 V PrintK  : [    1.007372] io scheduler row registered (default)
+06-08 16:21:36.624     1     1 V PrintK  : [    1.007478] io scheduler cfq registered
+06-08 16:21:36.624     1     1 V PrintK  : [    1.007487] io scheduler test-iosched registered
+06-08 16:21:36.624     1     1 V PrintK  : [    1.007676] gpiochip_find_base: found new base at 444
+06-08 16:21:36.624     1     1 V PrintK  : [    1.007748] gpiochip_add: registered GPIOs 444 to 447 on device: pm8841-mpp
+06-08 16:21:36.624     1     1 V PrintK  : [    1.007956] qcom,qpnp-pin qpnp-pin-f6245200: qpnp_pin_probe: gpio_chip registered between 444-447
+06-08 16:21:36.625     1     1 V PrintK  : [    1.008668] gpiochip_find_base: found new base at 408
+06-08 16:21:36.625     1     1 V PrintK  : [    1.008725] gpiochip_add: registered GPIOs 408 to 443 on device: pm8941-gpio
+06-08 16:21:36.626     1     1 V PrintK  : [    1.009768] qcom,qpnp-pin qpnp-pin-f6246a00: qpnp_pin_probe: gpio_chip registered between 408-443
+06-08 16:21:36.628     1     1 V PrintK  : [    1.011953] gpiochip_find_base: found new base at 401
+06-08 16:21:36.629     1     1 V PrintK  : [    1.012010] gpiochip_add: registered GPIOs 401 to 407 on device: pm8941-mpp
+06-08 16:21:36.629     1     1 V PrintK  : [    1.012368] qcom,qpnp-pin qpnp-pin-f6246c00: qpnp_pin_probe: gpio_chip registered between 401-407
+06-08 16:21:36.629     1     1 V PrintK  : [    1.012994] mdss_mdp_probe: MDP HW Base phy_Address=0xfd900000 virt=0xc5e40000
+06-08 16:21:36.630     1     1 V PrintK  : [    1.013024] mdss_mdp_probe: MDSS VBIF HW Base phy_Address=0xfd924000 virt=0xc5df8000
+06-08 16:21:36.630     1     1 W PrintK  : [    1.013315] mdss_mdp_get_pan_cfg: mdss_mdp_get_pan_cfg: Panel name is invalid
+06-08 16:21:36.632     1     1 V PrintK  : [    1.015075] mdss_dsi_ctrl_probe: DSI Ctrl name = MDSS DSI CTRL->0
+06-08 16:21:36.632     1     1 I PrintK  : [    1.015108] mdss_dsi_ctrl_probe:1226:dsi specific cfg not present
+06-08 16:21:36.632     1     1 W PrintK  : [    1.015119] mdss_dsi_pref_prim_panel:can't find panel phandle
+06-08 16:21:36.632     1     1 W PrintK  : [    1.015127] mdss_dsi_ctrl_probe: can't find panel node 
+06-08 16:21:36.632     1     1 V PrintK  : [    1.015153] mdss_dsi_ctrl_probe: DSI Ctrl name = MDSS DSI CTRL->1
+06-08 16:21:36.632     1     1 I PrintK  : [    1.015181] mdss_dsi_ctrl_probe:1226:dsi specific cfg not present
+06-08 16:21:36.632     1     1 W PrintK  : [    1.015191] mdss_dsi_pref_prim_panel:can't find panel phandle
+06-08 16:21:36.632     1     1 W PrintK  : [    1.015199] mdss_dsi_ctrl_probe: can't find panel node 
+06-08 16:21:36.632     1     1 E PrintK  : [    1.015456] [QID300][usb_config_init] ***** Setting engine power on start *****
+06-08 16:21:36.643     1     1 E PrintK  : [    1.026522] [QID300][usb_config_init] ***** Setting engine power on end *****
+06-08 16:21:36.643     1     1 E PrintK  : [    1.026532] [QID300][usb_config_init] ***** Setting PCB version start*****
+06-08 16:21:36.703     1     1 E PrintK  : [    1.086420] [QID300][usb_config_init] ***** Setting PCB version end *****
+06-08 16:21:36.703     1     1 E PrintK  : [    1.086431] [QID300][usb_config_init] ***** Setting default USB 2 ethernet reset start *****
+06-08 16:21:36.723     1     1 E PrintK  : [    1.106442] [QID300][usb_config_init] ***** Setting default USB 2 ethernet reset end *****
+06-08 16:21:36.723     1     1 I PrintK  : [    1.106967] gpio_tlmm_config gpio = 102, dir = 0, driver strengh = 0, func = 0, pull = 0
+06-08 16:21:36.852     1     1 V PrintK  : [    1.235584] mdss_register_panel: adding framebuffer device fd923400.qcom,mdss_edp
+06-08 16:21:36.852     1     1 V PrintK  : [    1.235746] mdss_edp_probe: done
+06-08 16:21:36.853     1     1 V PrintK  : [    1.236206] hdmi_tx_init_resource: 'core_physical': start = 0xc5dfe100, len=0x370
+06-08 16:21:36.853     1     1 V PrintK  : [    1.236225] hdmi_tx_init_resource: 'phy_physical': start = 0xc5e12500, len=0x7c
+06-08 16:21:36.853     1     1 V PrintK  : [    1.236242] hdmi_tx_init_resource: 'qfprom_physical': start = 0xc5e18000, len=0x60f0
+06-08 16:21:36.853     1     1 V PrintK  : [    1.236887] mdss_register_panel: adding framebuffer device fd922100.qcom,hdmi_tx
+06-08 16:21:36.854     1     1 V PrintK  : [    1.237713] mdss_register_panel: adding framebuffer device qcom,mdss_wb_panel.5
+06-08 16:21:36.855     1     1 V PrintK  : [    1.238396] mdss_fb_parse_dt: split framebuffer left=0 right=0
+06-08 16:21:36.855     1     1 V PrintK  : [    1.238407] mdss_fb_alloc_fbmem_iommu: mdss_fb_alloc_fbmem_iommu frame buffer reserve_size=0x1000000
+06-08 16:21:36.855     1     1 V PrintK  : [    1.238738] mdss_fb_alloc_fbmem_iommu: allocating 16777216 bytes at c7000000 (7ed00000 phys) for fb 0
+06-08 16:21:36.855     1     1 V PrintK  : [    1.238842] mdss_fb_register: FrameBuffer[0] 1920x1080 size=16777216 registered successfully!
+06-08 16:21:36.855     1     1 V PrintK  : [    1.238927] Registered led device: lcd-backlight
+06-08 16:21:36.862     1     1 V PrintK  : [    1.245045] mdss_fb_parse_dt: split framebuffer left=0 right=0
+06-08 16:21:36.862     1     1 V PrintK  : [    1.245242] mdss_fb_register: FrameBuffer[1] 640x480 size=0 registered successfully!
+06-08 16:21:36.862     1     1 V PrintK  : [    1.245358] mdss_fb_parse_dt: split framebuffer left=0 right=0
+06-08 16:21:36.862     1     1 V PrintK  : [    1.245523] mdss_fb_register: FrameBuffer[2] 1920x1080 size=0 registered successfully!
+06-08 16:21:36.886     1     1 W PrintK  : [    1.269977] sps: BAM device 0xf9944000 is not registered yet.
+06-08 16:21:36.889     1     1 V PrintK  : [    1.272835] f995d000.uart: ttyHS0 at MMIO 0xf995d000 (irq = 145) is a MSM HS UART
+06-08 16:21:36.891     1     1 V PrintK  : [    1.274477] msm_serial_hsl_probe: detected port #0 (ttyHSL0)
+06-08 16:21:36.891     1     1 V PrintK  : [    1.274592] f991e000.serial: ttyHSL0 at MMIO 0xf991e000 (irq = 140) is a MSM
+06-08 16:21:36.893     1     1 V PrintK  : [    1.276882] msm_serial_hsl_probe: detected port #1 (ttyHSL1)
+06-08 16:21:36.893     1     1 V PrintK  : [    1.276978] f991f000.serial: ttyHSL1 at MMIO 0xf991f000 (irq = 141) is a MSM
+06-08 16:21:36.896     1     1 V PrintK  : [    1.279491] msm_serial_hsl_init: driver initialized
+06-08 16:21:36.900     1     1 W PrintK  : [    1.283684] kgsl: adreno_of_read_property: Unable to read 'qcom,pm-qos-latency'
+06-08 16:21:36.901     1     1 I PrintK  : [    1.284718] kgsl bus ib [0] = 2456000000
+06-08 16:21:36.901     1     1 I PrintK  : [    1.284728] kgsl bus ib [1] = 3680000000
+06-08 16:21:36.901     1     1 I PrintK  : [    1.284736] kgsl bus ib [2] = 4912000000
+06-08 16:21:36.901     1     1 I PrintK  : [    1.284744] kgsl bus ib [3] = 6400000000
+06-08 16:21:36.901     1     1 I PrintK  : [    1.284751] kgsl bus ib [4] = 7464000000
+06-08 16:21:36.901     1     1 I PrintK  : [    1.284758] kgsl bus index is 4 for pwrlevel 0
+06-08 16:21:36.901     1     1 I PrintK  : [    1.284766] kgsl bus index is 3 for pwrlevel 1
+06-08 16:21:36.901     1     1 I PrintK  : [    1.284773] kgsl bus index is 2 for pwrlevel 2
+06-08 16:21:36.901     1     1 I PrintK  : [    1.284780] kgsl bus index is 1 for pwrlevel 3
+06-08 16:21:36.901     1     1 I PrintK  : [    1.284787] kgsl bus index is 0 for pwrlevel 4
+06-08 16:21:36.902     1     1 V PrintK  : [    1.285431] kgsl kgsl-3d0: |kgsl_iommu_init| MMU type set for device is IOMMU
+06-08 16:21:36.904     1     1 I PrintK  : [    1.287533] kgsl: num bus is 5
+06-08 16:21:36.909     1     1 V PrintK  : [    1.292506] brd: module loaded
+06-08 16:21:36.911     1     1 V PrintK  : [    1.294542] loop: module loaded
+06-08 16:21:36.911     1     1 I PrintK  : [    1.294591] i2c-core: driver [isa1200] using legacy suspend method
+06-08 16:21:36.911     1     1 I PrintK  : [    1.294601] i2c-core: driver [isa1200] using legacy resume method
+06-08 16:21:36.911     1     1 I PrintK  : [    1.294999] QSEECOM: qseecom_probe: secure app region addr=0x7b00000 size=0x500000proc_aboot_log_probe: 0x7FF00000, 0x2021A
+06-08 16:21:36.913     1     1 I PrintK  : [    1.296432] aboot_log: probe of 7ff00000.aboot_log failed with error 1
+06-08 16:21:36.913     1     1 I PrintK  : [    1.296612] i2c-core: driver [tabla-i2c-core] using legacy suspend method
+06-08 16:21:36.913     1     1 I PrintK  : [    1.296622] i2c-core: driver [tabla-i2c-core] using legacy resume method
+06-08 16:21:36.913     1     1 I PrintK  : [    1.296716] i2c-core: driver [wcd9xxx-i2c-core] using legacy suspend method
+06-08 16:21:36.913     1     1 I PrintK  : [    1.296725] i2c-core: driver [wcd9xxx-i2c-core] using legacy resume method
+06-08 16:21:36.914     1     1 V PrintK  : [    1.297246] SCSI Media Changer driver v0.25 
+06-08 16:21:36.915     1     1 V PrintK  : [    1.298357] tun: Universal TUN/TAP device driver, 1.6
+06-08 16:21:36.915     1     1 V PrintK  : [    1.298368] tun: (C) 1999-2004 Max Krasnyansky <maxk@qualcomm.com>
+06-08 16:21:36.915     1     1 V PrintK  : [    1.298428] rmnet_init: BAM devices[9]
+06-08 16:21:36.919     1     1 V PrintK  : [    1.302934] SLIP: version 0.8.4-NET3.019-NEWTTY (dynamic channels, max=256) (6 bit encapsulation enabled).
+06-08 16:21:36.919     1     1 V PrintK  : [    1.302947] CSLIP: code copyright 1989 Regents of the University of California.
+06-08 16:21:36.920     1     1 V PrintK  : [    1.303164] wcnss_wlan probed in built-in mode
+06-08 16:21:36.921     1     1 V PrintK  : [    1.304393] usbcore: registered new interface driver asix
+06-08 16:21:36.921     1     1 I PrintK  : [    1.304404] asix_init this driver can not be used to flash mac addr
+06-08 16:21:36.921     1     1 V PrintK  : [    1.304457] usbcore: registered new interface driver ax88179_178a
+06-08 16:21:36.921     1     1 V PrintK  : [    1.304494] usbcore: registered new interface driver cdc_ether
+06-08 16:21:36.921     1     1 V PrintK  : [    1.304531] usbcore: registered new interface driver net1080
+06-08 16:21:36.921     1     1 V PrintK  : [    1.304567] usbcore: registered new interface driver cdc_subset
+06-08 16:21:36.921     1     1 V PrintK  : [    1.304615] usbcore: registered new interface driver zaurus
+06-08 16:21:36.921     1     1 V PrintK  : [    1.304755] usbcore: registered new interface driver cdc_ncm
+06-08 16:21:36.922     1     1 V PrintK  : [    1.305613] msm_otg msm_otg: msm_otg probe
+06-08 16:21:36.922     1     1 V PrintK  : [    1.305982] msm_otg msm_otg: OTG regs = c5e36000
+06-08 16:21:36.926     1     1 V PrintK  : [    1.309185] msm-dwc3 msm_dwc3: DWC3_CONTROLLER_RESET_EVENT received
+06-08 16:21:36.972     1     1 E PrintK  : [    1.355202] [QID300][dwc3_otg_shutdown_hub30_and_pl2775] ***** Setting USB3_HUB RESET start *****
+06-08 16:21:36.972     1     1 E PrintK  : [    1.355216] [QID300][dwc3_otg_shutdown_hub30_and_pl2775] ***** Setting SATA RESET start *****
+06-08 16:21:37.183     1     1 V PrintK  : [    1.566010] msm-dwc3 msm_dwc3: DWC3_CONTROLLER_POST_INITIALIZATION_EVENT received
+06-08 16:21:37.193     1     1 E PrintK  : [    1.576223] [QID300][dwc3_otg_turnon_hub30_and_pl2775] ***** Setting USB3_HUB RESET end *****
+06-08 16:21:37.193     1     1 E PrintK  : [    1.576353] [QID300][dwc3_otg_turnon_hub30_and_pl2775] ***** Setting SATA RESET end *****
+06-08 16:21:37.197     1     1 V PrintK  : [    1.580345] msm-dwc3 msm_dwc3: DWC3 in low power mode
+06-08 16:21:37.197     1     1 V PrintK  : [    1.580762] ehci_hcd: USB 2.0 'Enhanced' Host Controller (EHCI) Driver
+06-08 16:21:37.197     1     1 W PrintK  : [    1.580987] Unable to get vbus_otg
+06-08 16:21:37.197     1     1 W PrintK  : [    1.580996] msm_hsusb_host msm_hsusb_host: unable to register with transceiver
+06-08 16:21:37.198     1     1 V PrintK  : [    1.581022] platform msm_hsusb_host: Driver msm_hsusb_host requests probe deferral
+06-08 16:21:37.201     1     1 V PrintK  : [    1.584511] msm-dwc3 msm_dwc3: DWC3 exited from low power mode
+06-08 16:21:37.201     1     1 V PrintK  : [    1.584527] xhci-hcd xhci-hcd: xHCI Host Controller
+06-08 16:21:37.201     1     1 V PrintK  : [    1.584602] xhci-hcd xhci-hcd: new USB bus registered, assigned bus number 1
+06-08 16:21:37.202     1     1 V PrintK  : [    1.585716] xhci-hcd xhci-hcd: irq 163, io mem 0xf9200000
+06-08 16:21:37.203     1     1 V PrintK  : [    1.586523] usb usb1: New USB device found, idVendor=1d6b, idProduct=0002
+06-08 16:21:37.203     1     1 V PrintK  : [    1.586534] usb usb1: New USB device strings: Mfr=3, Product=2, SerialNumber=1
+06-08 16:21:37.203     1     1 V PrintK  : [    1.586545] usb usb1: Product: xHCI Host Controller
+06-08 16:21:37.203     1     1 V PrintK  : [    1.586554] usb usb1: Manufacturer: Linux 3.4.0 xhci-hcd
+06-08 16:21:37.203     1     1 V PrintK  : [    1.586562] usb usb1: SerialNumber: xhci-hcd
+06-08 16:21:37.203     1     1 V PrintK  : [    1.586724] xHCI xhci_add_endpoint called for root hub
+06-08 16:21:37.203     1     1 V PrintK  : [    1.586730] xHCI xhci_check_bandwidth called for root hub
+06-08 16:21:37.203     1     1 W PrintK  : [    1.586815] hub 1-0:1.0: USB hub found
+06-08 16:21:37.203     1     1 V PrintK  : [    1.586834] hub 1-0:1.0: 1 port detected
+06-08 16:21:37.204     1     1 V PrintK  : [    1.587073] xhci-hcd xhci-hcd: xHCI Host Controller
+06-08 16:21:37.204     1     1 V PrintK  : [    1.587099] xhci-hcd xhci-hcd: new USB bus registered, assigned bus number 2
+06-08 16:21:37.204     1     1 V PrintK  : [    1.587152] usb usb2: New USB device found, idVendor=1d6b, idProduct=0003
+06-08 16:21:37.204     1     1 V PrintK  : [    1.587162] usb usb2: New USB device strings: Mfr=3, Product=2, SerialNumber=1
+06-08 16:21:37.204     1     1 V PrintK  : [    1.587172] usb usb2: Product: xHCI Host Controller
+06-08 16:21:37.204     1     1 V PrintK  : [    1.587181] usb usb2: Manufacturer: Linux 3.4.0 xhci-hcd
+06-08 16:21:37.204     1     1 V PrintK  : [    1.587189] usb usb2: SerialNumber: xhci-hcd
+06-08 16:21:37.204     1     1 V PrintK  : [    1.587341] xHCI xhci_add_endpoint called for root hub
+06-08 16:21:37.204     1     1 V PrintK  : [    1.587346] xHCI xhci_check_bandwidth called for root hub
+06-08 16:21:37.204     1     1 W PrintK  : [    1.587416] hub 2-0:1.0: USB hub found
+06-08 16:21:37.204     1     1 V PrintK  : [    1.587432] hub 2-0:1.0: 1 port detected
+06-08 16:21:37.313     1     1 I PrintK  : [    1.696334] hub_power_on, 662 r=-32
+06-08 16:21:37.313     1     1 I PrintK  : [    1.696348] hub_power_on, 667 r=-32
+06-08 16:21:37.313     1     1 V PrintK  : [    1.696610] usbcore: registered new interface driver cdc_acm
+06-08 16:21:37.313     1     1 V PrintK  : [    1.696620] cdc_acm: USB Abstract Control Model driver for USB modems and ISDN adapters
+06-08 16:21:37.313     1     1 V PrintK  : [    1.696664] usbcore: registered new interface driver uas
+06-08 16:21:37.313     1     1 V PrintK  : [    1.696673] Initializing USB Mass Storage driver...
+06-08 16:21:37.313     1     1 V PrintK  : [    1.696744] usbcore: registered new interface driver usb-storage
+06-08 16:21:37.313     1     1 V PrintK  : [    1.696754] USB Mass Storage support registered.
+06-08 16:21:37.313     1     1 V PrintK  : [    1.696789] usbcore: registered new interface driver ums-alauda
+06-08 16:21:37.313     1     1 V PrintK  : [    1.696825] usbcore: registered new interface driver ums-cypress
+06-08 16:21:37.313     1     1 V PrintK  : [    1.696862] usbcore: registered new interface driver ums-datafab
+06-08 16:21:37.313     1     1 V PrintK  : [    1.696897] usbcore: registered new interface driver ums_eneub6250
+06-08 16:21:37.313     1     1 V PrintK  : [    1.696934] usbcore: registered new interface driver ums-freecom
+06-08 16:21:37.313     1     1 V PrintK  : [    1.696970] usbcore: registered new interface driver ums-isd200
+06-08 16:21:37.313     1     1 V PrintK  : [    1.697006] usbcore: registered new interface driver ums-jumpshot
+06-08 16:21:37.314     1     1 V PrintK  : [    1.697042] usbcore: registered new interface driver ums-karma
+06-08 16:21:37.314     1     1 V PrintK  : [    1.697088] usbcore: registered new interface driver ums-onetouch
+06-08 16:21:37.314     1     1 V PrintK  : [    1.697125] usbcore: registered new interface driver ums-sddr09
+06-08 16:21:37.314     1     1 V PrintK  : [    1.697163] usbcore: registered new interface driver ums-sddr55
+06-08 16:21:37.314     1     1 V PrintK  : [    1.697199] usbcore: registered new interface driver ums-usbat
+06-08 16:21:37.314     1     1 V PrintK  : [    1.697278] usbcore: registered new interface driver usbserial
+06-08 16:21:37.314     1     1 V PrintK  : [    1.697287] usbserial: USB Serial Driver core
+06-08 16:21:37.314     1     1 V PrintK  : [    1.697336] usbcore: registered new interface driver ftdi_sio
+06-08 16:21:37.314     1     1 V PrintK  : [    1.697376] USB Serial support registered for FTDI USB Serial Device
+06-08 16:21:37.314     1     1 V PrintK  : [    1.697420] ftdi_sio: v1.6.0:USB FTDI Serial Converters Driver
+06-08 16:21:37.314     1     1 V PrintK  : [    1.697462] usbcore: registered new interface driver pl2303
+06-08 16:21:37.314     1     1 V PrintK  : [    1.697492] USB Serial support registered for pl2303
+06-08 16:21:37.314     1     1 V PrintK  : [    1.697538] usbcore: registered new interface driver usb_ehset_test
+06-08 16:21:37.315     1     1 V PrintK  : [    1.698352] msm_hsusb msm_hsusb: [ci13xxx_start] hw_ep_max = 32
+06-08 16:21:37.315     1     1 V PrintK  : [    1.698749] mbim_init: initialize 1 instances
+06-08 16:21:37.315     1     1 V PrintK  : [    1.698810] mbim_init: Initialized 1 ports
+06-08 16:21:37.317     1     1 V PrintK  : [    1.700012] rndis_qc_init: initialize rndis QC instance
+06-08 16:21:37.317     1     1 V PrintK  : [    1.700400] android_usb gadget: Mass Storage Function, version: 2009/09/11
+06-08 16:21:37.317     1     1 V PrintK  : [    1.700411] android_usb gadget: Number of LUNs=1
+06-08 16:21:37.317     1     1 V PrintK  : [    1.700421]  lun0: LUN: removable file: (no medium)
+06-08 16:21:37.317     1     1 V PrintK  : [    1.700628] android_usb gadget: android_usb ready
+06-08 16:21:37.318     1     1 V PrintK  : [    1.701111] mousedev: PS/2 mouse device common for all mice
+06-08 16:21:37.318     1     1 V PrintK  : [    1.701356] usbcore: registered new interface driver xpad
+06-08 16:21:37.318     1     1 I PrintK  : [    1.701813] egalax_usb_ts_init: +++
+06-08 16:21:37.318     1     1 I PrintK  : [    1.701891] egalax_usb_ts_init: ---
+06-08 16:21:37.318     1     1 V PrintK  : [    1.701898] [egalax_usb]:  Driver init done!
+06-08 16:21:37.318     1     1 V PrintK  : [    1.701937] usbcore: registered new interface driver egalax_usb
+06-08 16:21:37.319     1     1 V PrintK  : [    1.702607] rtc-m41t80 3-0068: chip found, driver version 0.05
+06-08 16:21:37.320     1     1 V PrintK  : [    1.703907] rtc-m41t80 3-0068: rtc core: registered m41t80 as rtc0
+06-08 16:21:37.321     1     1 V PrintK  : [    1.704811] i2c /dev entries driver
+06-08 16:21:37.323     1     1 V PrintK  : [    1.706051] ocmem: Notifier registered for 1
+06-08 16:21:37.323     1     1 V PrintK  : [    1.706132] msm_vidc: 1: Failed to read qcom,load-freq-tbl from device tree
+06-08 16:21:37.323     1     1 V PrintK  : [    1.706138] msm_vidc: 1: no elements in frequency table
+06-08 16:21:37.323     1     1 V PrintK  : [    1.706143] msm_vidc: 1: Failed to read qcom,reg-presets from device tree
+06-08 16:21:37.323     1     1 V PrintK  : [    1.706199] msm_vidc: 1: Failed to read qcom,buffer-type-tz-usage-table from device tree
+06-08 16:21:37.323     1     1 V PrintK  : [    1.706208] msm_vidc: 1: Q6 hfi device probe called
+06-08 16:21:37.323     1     1 V PrintK  : [    1.706458] msm_vidc: 1: debugfs_create_file: fail
+06-08 16:21:37.324     1     1 V PrintK  : [    1.707292] lirc_dev: IR Remote Control driver registered, major 239 
+06-08 16:21:37.324     1     1 V PrintK  : [    1.707304] IR NEC protocol handler initialized
+06-08 16:21:37.324     1     1 V PrintK  : [    1.707313] IR RC5(x) protocol handler initialized
+06-08 16:21:37.324     1     1 V PrintK  : [    1.707322] IR RC6 protocol handler initialized
+06-08 16:21:37.324     1     1 V PrintK  : [    1.707331] IR JVC protocol handler initialized
+06-08 16:21:37.324     1     1 V PrintK  : [    1.707340] IR Sony protocol handler initialized
+06-08 16:21:37.324     1     1 V PrintK  : [    1.707349] IR RC5 (streamzap) protocol handler initialized
+06-08 16:21:37.324     1     1 V PrintK  : [    1.707359] IR SANYO protocol handler initialized
+06-08 16:21:37.324     1     1 V PrintK  : [    1.707368] IR MCE Keyboard/mouse protocol handler initialized
+06-08 16:21:37.324     1     1 V PrintK  : [    1.707377] IR LIRC bridge handler initialized
+06-08 16:21:37.324     1     1 V PrintK  : [    1.707447] usbcore: registered new interface driver uvcvideo
+06-08 16:21:37.324     1     1 V PrintK  : [    1.707457] USB Video Class driver (1.1.1)
+06-08 16:21:37.324     1     1 V PrintK  : [    1.707967] bq28400_init:  bq28400 driver rev 1.0.
+06-08 16:21:37.324     1     1 V PrintK  : [    1.708005] BMS: qpnp_bms_init: QPNP BMS INIT
+06-08 16:21:37.325     1     1 V PrintK  : [    1.708169] spmi qpnp-charger-f6246800: Driver qcom,qpnp-charger requests probe deferral
+06-08 16:21:37.376     1     1 V PrintK  : [    1.759902] device-mapper: ioctl: 4.22.0-ioctl (2011-10-19) initialised: dm-devel@redhat.com
+06-08 16:21:37.376     1     1 V PrintK  : [    1.760005] Bluetooth: HCI UART driver ver 2.2
+06-08 16:21:37.377     1     1 V PrintK  : [    1.760014] Bluetooth: HCIATH3K protocol initialized
+06-08 16:21:37.377     1     1 V PrintK  : [    1.760621] bt_dt_parse_vreg_info: qca,bt-vdd-io: is not provided in device tree
+06-08 16:21:37.377     1     1 V PrintK  : [    1.760633] bt_dt_parse_vreg_info: qca,bt-vdd-pa: is not provided in device tree
+06-08 16:21:37.377     1     1 V PrintK  : [    1.760644] bt_dt_parse_vreg_info: qca,bt-vdd-ldo: is not provided in device tree
+06-08 16:21:37.377     1     1 V PrintK  : [    1.760655] bt_dt_parse_vreg_info: qca,bt-chip-pwd: is not provided in device tree
+06-08 16:21:37.378     1     1 V PrintK  : [    1.761467] cpuidle: using governor ladder
+06-08 16:21:37.378     1     1 V PrintK  : [    1.761478] cpuidle: using governor menu
+06-08 16:21:37.378     1     1 V PrintK  : [    1.761509] sdhci: Secure Digital Host Controller Interface driver
+06-08 16:21:37.378     1     1 V PrintK  : [    1.761518] sdhci: Copyright(c) Pierre Ossman
+06-08 16:21:37.379     1     1 V PrintK  : [    1.762160] mmc0: SDCC Version: 0x0000003e
+06-08 16:21:37.380     1     1 V PrintK  : [    1.763620] mmc0: bam physical base=0xf9844000
+06-08 16:21:37.380     1     1 V PrintK  : [    1.763629] mmc0: bam virtual base=0xc5e68000
+06-08 16:21:37.380     1     1 V PrintK  : [    1.763973] sps:BAM 0xf9844000 (va:0xc5e68000) enabled: ver:0x6, number of pipes:6
+06-08 16:21:37.382     1     1 V PrintK  : [    1.765011] mmc0: Qualcomm MSM SDCC-BAM at [mem 0xf9844000-0xf984afff flags 0x200] [irq 255 flags 0x400]
+06-08 16:21:37.382     1     1 V PrintK  : [    1.765043] mmc0: Qualcomm MSM SDCC-DML [mem 0xf9864800-0xf98648ff flags 0x200]
+06-08 16:21:37.382     1     1 W PrintK  : [    1.765149] mmc0: No card detect facilities available
+06-08 16:21:37.384     1     1 V PrintK  : [    1.767719] mmc0: Qualcomm MSM SDCC-core [mem 0xf9864000-0xf98647ff flags 0x200] [irq 159 flags 0x400],0 dma -1 dmacrcri -1
+06-08 16:21:37.384     1     1 V PrintK  : [    1.767733] mmc0: Controller capabilities: 0x00007ffe
+06-08 16:21:37.384     1     1 V PrintK  : [    1.767741] mmc0: 8 bit data mode disabled
+06-08 16:21:37.384     1     1 V PrintK  : [    1.767749] mmc0: 4 bit data mode enabled
+06-08 16:21:37.384     1     1 V PrintK  : [    1.767756] mmc0: polling status mode disabled
+06-08 16:21:37.384     1     1 V PrintK  : [    1.767764] mmc0: MMC clock 400000 -> 100000000 Hz, PCLK 0 Hz
+06-08 16:21:37.384     1     1 V PrintK  : [    1.767772] mmc0: Slot eject status = 0
+06-08 16:21:37.384     1     1 V PrintK  : [    1.767779] mmc0: Power save feature enable = 1
+06-08 16:21:37.384     1     1 V PrintK  : [    1.767787] mmc0: SPS-BAM data transfer mode available
+06-08 16:21:37.385     1     1 V PrintK  : [    1.768123] sdhci-pltfm: SDHCI platform and OF driver helper
+06-08 16:21:37.389     1     1 V PrintK  : [    1.772203] mmc1: no vmmc regulator found
+06-08 16:21:37.390     1     1 V PrintK  : [    1.773275] Registered led device: mmc1::
+06-08 16:21:37.391     1     1 V PrintK  : [    1.774419] mmc1: SDHCI controller on msm_sdcc.1 [msm_sdcc.1] using ADMA
+06-08 16:21:37.395     1     1 V PrintK  : [    1.778635] mmc2: no vmmc regulator found
+06-08 16:21:37.396     1     1 V PrintK  : [    1.779746] Registered led device: mmc2::
+06-08 16:21:37.397     1     1 V PrintK  : [    1.780913] mmc2: SDHCI controller on msm_sdcc.2 [msm_sdcc.2] using ADMA
+06-08 16:21:37.398     1     1 V PrintK  : [    1.781350] Registered led device: led:rgb_red
+06-08 16:21:37.398     1     1 V PrintK  : [    1.781447] Registered led device: led:rgb_green
+06-08 16:21:37.398     1     1 V PrintK  : [    1.781561] Registered led device: led:rgb_blue
+06-08 16:21:37.398     1     1 W PrintK  : [    1.781766] qcom,leds-qpnp leds-qpnp-f6247e00: Flash wa regulator get failed(-517)
+06-08 16:21:37.398     1     1 W PrintK  : [    1.781796] qcom,leds-qpnp leds-qpnp-f6247e00: Regulator get failed(-517)
+06-08 16:21:37.398     1     1 W PrintK  : [    1.781807] qcom,leds-qpnp leds-qpnp-f6247e00: Unable to read flash config data
+06-08 16:21:37.398     1     1 V PrintK  : [    1.781826] spmi leds-qpnp-f6247e00: Driver qcom,leds-qpnp requests probe deferral
+06-08 16:21:37.399     1     1 V PrintK  : [    1.782416] Registered led device: wled:backlight
+06-08 16:21:37.399     1     1 I PrintK  : [    1.782489] qcom,leds-qpnp: probe of leds-qpnp-f6248200 failed with error -10
+06-08 16:21:37.399     1     1 I PrintK  : [    1.782517] qcom,leds-qpnp: probe of leds-qpnp-f6248400 failed with error -10
+06-08 16:21:37.399     1     1 I PrintK  : [    1.782544] qcom,leds-qpnp: probe of leds-qpnp-f6248600 failed with error -10
+06-08 16:21:37.399     1     1 I PrintK  : [    1.782570] qcom,leds-qpnp: probe of leds-qpnp-f6248800 failed with error -10
+06-08 16:21:37.399     1     1 I PrintK  : [    1.782596] qcom,leds-qpnp: probe of leds-qpnp-f6248a00 failed with error -10
+06-08 16:21:37.399     1     1 I PrintK  : [    1.782623] qcom,leds-qpnp: probe of leds-qpnp-f6248c00 failed with error -10
+06-08 16:21:37.399     1     1 I PrintK  : [    1.782649] qcom,leds-qpnp: probe of leds-qpnp-f6248e00 failed with error -10
+06-08 16:21:37.399     1     1 I PrintK  : [    1.782676] qcom,leds-qpnp: probe of leds-qpnp-f6249000 failed with error -10
+06-08 16:21:37.399     1     1 I PrintK  : [    1.782702] qcom,leds-qpnp: probe of leds-qpnp-f6249200 failed with error -10
+06-08 16:21:37.399     1     1 V PrintK  : [    1.782903] Registered led device: kpdbl-pwm-1
+06-08 16:21:37.400     1     1 V PrintK  : [    1.783212] Registered led device: kpdbl-lut-2
+06-08 16:21:37.400     1     1 V PrintK  : [    1.783397] Registered led device: kpdbl-pwm-3
+06-08 16:21:37.400     1     1 V PrintK  : [    1.783575] Registered led device: kpdbl-pwm-4
+06-08 16:21:37.400     1     1 I PrintK  : [    1.783913] QCE50: __qce_get_device_tree_data: ce_virt_reg_base=0xc5f40000
+06-08 16:21:37.400     1     1 I PrintK  : [    1.783933] QCE50: __qce_get_device_tree_data: CRYPTO BAM IRQ = 268.
+06-08 16:21:37.401     1     1 V PrintK  : [    1.784204] qce qcedev.0: Qualcomm Crypto 5.1.0 device found @0xfd440000
+06-08 16:21:37.401     1     1 V PrintK  : [    1.784217] qce qcedev.0: CE device = 0x0
+06-08 16:21:37.401     1     1 V PrintK  : [    1.784219] , IO base, CE = 0xc5f40000
+06-08 16:21:37.401     1     1 V PrintK  : [    1.784221] , Consumer (IN) PIPE 2,    Producer (OUT) PIPE 3
+06-08 16:21:37.401     1     1 V PrintK  : [    1.784223] IO base BAM = 0x0
+06-08 16:21:37.401     1     1 V PrintK  : [    1.784224] BAM IRQ 268
+06-08 16:21:37.401     1     1 V PrintK  : [    1.784225] Engines Availability = 0x1010853
+06-08 16:21:37.401     1     1 V PrintK  : [    1.784484] sps:BAM 0xfd444000 (va:0xc5f80000) enabled: ver:0x20, number of pipes:8
+06-08 16:21:37.401     1     1 V PrintK  : [    1.784792] QCE50: qce_sps_init:  Qualcomm MSM CE-BAM at 0x00000000fd444000 irq 268
+06-08 16:21:37.402     1     1 V PrintK  : [    1.785546] usbcore: registered new interface driver usbhid
+06-08 16:21:37.402     1     1 V PrintK  : [    1.785556] usbhid: USB HID core driver
+06-08 16:21:37.402     1     1 V PrintK  : [    1.785937] ashmem: initialized
+06-08 16:21:37.402     1     1 V PrintK  : [    1.786003] logger: created 1024K log 'log_main'
+06-08 16:21:37.403     1     1 V PrintK  : [    1.786057] logger: created 256K log 'log_events'
+06-08 16:21:37.403     1     1 V PrintK  : [    1.786110] logger: created 256K log 'log_radio'
+06-08 16:21:37.403     1     1 V PrintK  : [    1.786172] logger: created 256K log 'log_system'
+06-08 16:21:37.403     1     1 W PrintK  : [    1.786941] usb_bam_ipa_create_resources: Failed to create USB_PROD resource
+06-08 16:21:37.404     1     1 V PrintK  : [    1.787199] PMIC@SID0 Power-on reason: Triggered from USB (USB charger insertion) and 'cold' boot
+06-08 16:21:37.404     1     1 V PrintK  : [    1.787414] input: qpnp_pon as /devices/virtual/input/input0
+06-08 16:21:37.405     1     1 V PrintK  : [    1.788201] qpnp_coincell_charger_show_state: enabled=Y, voltage=3000 mV, resistance=2100 ohm
+06-08 16:21:37.405     1     1 V PrintK  : [    1.788824] PMIC@SID4: PM8841 v2.1 options: 0, 0, 2, 2
+06-08 16:21:37.405     1     1 V PrintK  : [    1.788919] PMIC@SID0: PM8941 v3.1 options: 0, 0, 0, 0
+06-08 16:21:37.406     1     1 V PrintK  : [    1.789456] coresight-fuse fc4be024.fuse: Fuse initialized
+06-08 16:21:37.407     1     1 V PrintK  : [    1.790017] coresight-cti fc308000.cti: CTI initialized
+06-08 16:21:37.407     1     1 V PrintK  : [    1.790119] coresight-cti fc309000.cti: CTI initialized
+06-08 16:21:37.407     1     1 V PrintK  : [    1.790229] coresight-cti fc30a000.cti: CTI initialized
+06-08 16:21:37.407     1     1 V PrintK  : [    1.790339] coresight-cti fc30b000.cti: CTI initialized
+06-08 16:21:37.407     1     1 V PrintK  : [    1.790443] coresight-cti fc30c000.cti: CTI initialized
+06-08 16:21:37.407     1     1 V PrintK  : [    1.790580] coresight-cti fc30d000.cti: CTI initialized
+06-08 16:21:37.407     1     1 V PrintK  : [    1.790683] coresight-cti fc30e000.cti: CTI initialized
+06-08 16:21:37.407     1     1 V PrintK  : [    1.790794] coresight-cti fc30f000.cti: CTI initialized
+06-08 16:21:37.407     1     1 V PrintK  : [    1.790896] coresight-cti fc310000.cti: CTI initialized
+06-08 16:21:37.407     1     1 V PrintK  : [    1.791008] coresight-cti fc340000.cti: CTI initialized
+06-08 16:21:37.408     1     1 V PrintK  : [    1.791111] coresight-cti fc341000.cti: CTI initialized
+06-08 16:21:37.408     1     1 V PrintK  : [    1.791269] coresight-cti fc342000.cti: CTI initialized
+06-08 16:21:37.408     1     1 V PrintK  : [    1.791372] coresight-cti fc343000.cti: CTI initialized
+06-08 16:21:37.408     1     1 V PrintK  : [    1.791492] coresight-cti fc344000.cti: CTI initialized
+06-08 16:21:37.408     1     1 V PrintK  : [    1.791594] coresight-cti fc348000.cti: CTI initialized
+06-08 16:21:37.408     1     1 V PrintK  : [    1.791706] coresight-cti fc34d000.cti: CTI initialized
+06-08 16:21:37.408     1     1 V PrintK  : [    1.791809] coresight-cti fc350000.cti: CTI initialized
+06-08 16:21:37.408     1     1 V PrintK  : [    1.791921] coresight-cti fc354000.cti: CTI initialized
+06-08 16:21:37.409     1     1 V PrintK  : [    1.792025] coresight-cti fc358000.cti: CTI initialized
+06-08 16:21:37.409     1     1 V PrintK  : [    1.792436] coresight-csr fc302000.csr: CSR initialized
+06-08 16:21:37.411     1     1 V PrintK  : [    1.794802] coresight-tmc fc322000.tmc: Byte Counter feature enabled
+06-08 16:21:37.412     1     1 V PrintK  : [    1.795012] coresight-tmc fc322000.tmc: TMC initialized
+06-08 16:21:37.412     1     1 V PrintK  : [    1.795430] coresight-tmc fc307000.tmc: TMC initialized
+06-08 16:21:37.413     1     1 W PrintK  : [    1.796165] coresight-tpiu fc318000.tpiu: seta gpios not specified
+06-08 16:21:37.413     1     1 W PrintK  : [    1.796178] coresight-tpiu fc318000.tpiu: setb gpios not specified
+06-08 16:21:37.413     1     1 V PrintK  : [    1.796249] coresight-tpiu fc318000.tpiu: TPIU initialized
+06-08 16:21:37.413     1     1 V PrintK  : [    1.796763] coresight-funnel fc31b000.funnel: FUNNEL initialized
+06-08 16:21:37.413     1     1 V PrintK  : [    1.796871] coresight-funnel fc319000.funnel: FUNNEL initialized
+06-08 16:21:37.413     1     1 V PrintK  : [    1.796969] coresight-funnel fc31a000.funnel: FUNNEL initialized
+06-08 16:21:37.414     1     1 V PrintK  : [    1.797077] coresight-funnel fc345000.funnel: FUNNEL initialized
+06-08 16:21:37.414     1     1 V PrintK  : [    1.797175] coresight-funnel fc364000.funnel: FUNNEL initialized
+06-08 16:21:37.414     1     1 V PrintK  : [    1.797592] coresight-replicator fc31c000.replicator: REPLICATOR initialized
+06-08 16:21:37.415     1     1 V PrintK  : [    1.798110] coresight-stm fc321000.stm: STM initialized
+06-08 16:21:37.415     1     1 V PrintK  : [    1.798554] coresight-hwevent fdf30018.hwevent: Hardware Event driver initialized
+06-08 16:21:37.416     1     1 V PrintK  : [    1.799104] coresight-etm fc33c000.etm: ETM initialized
+06-08 16:21:37.416     1     1 V PrintK  : [    1.799123] coresight-etm fc33c000.etm: PC save enabled
+06-08 16:21:37.416     1     1 V PrintK  : [    1.799337] coresight-etm fc33d000.etm: ETM initialized
+06-08 16:21:37.416     1     1 V PrintK  : [    1.799352] coresight-etm fc33d000.etm: PC save enabled
+06-08 16:21:37.416     1     1 V PrintK  : [    1.799587] coresight-etm fc33e000.etm: ETM initialized
+06-08 16:21:37.416     1     1 V PrintK  : [    1.799606] coresight-etm fc33e000.etm: PC save enabled
+06-08 16:21:37.416     1     1 V PrintK  : [    1.799844] coresight-etm fc33f000.etm: ETM initialized
+06-08 16:21:37.416     1     1 V PrintK  : [    1.799862] coresight-etm fc33f000.etm: PC save enabled
+06-08 16:21:37.417     1     1 V PrintK  : [    1.800281] coresight-audio-etm audio_etm0.0: Audio ETM initialized
+06-08 16:21:37.417     1     1 V PrintK  : [    1.800688] coresight-modem-etm modem_etm0.1: Modem ETM initialized
+06-08 16:21:37.418     1     1 V PrintK  : [    1.801077] coresight-wcn-etm wcn_etm0.2: Wireless ETM initialized
+06-08 16:21:37.418     1     1 V PrintK  : [    1.801480] coresight-rpm-etm rpm_etm0.3: RPM ETM initialized
+06-08 16:21:37.418     1     1 V PrintK  : [    1.801999] usbcore: registered new interface driver snd-usb-audio
+06-08 16:21:37.420     1     1 V PrintK  : [    1.803545] tpa2026_probe: tpa2026 driver probe()
+06-08 16:21:37.420     1     1 V PrintK  : [    1.803556] tpa2026_parse_dt: reg(0x58)
+06-08 16:21:37.420     1     1 V PrintK  : [    1.803575] tpa2026_parse_dt: ext_spk_amp_gpio(64)
+06-08 16:21:37.433     1     1 V PrintK  : [    1.816439] tpa2026_reg_initialize: ext_spk_amp_gpio is high
+06-08 16:21:37.440     1     1 V PrintK  : [    1.823449] tpa2026_probe: probing tpa2026 exited successfully
+06-08 16:21:37.448     1     1 V PrintK  : [    1.831351] msm-compr-dsp msm-compr-dsp: msm_compr_probe: dev name msm-compr-dsp
+06-08 16:21:37.448     1     1 V PrintK  : [    1.831923] msm-pcm-lpa msm-pcm-lpa: msm_pcm_probe: dev name msm-pcm-lpa
+06-08 16:21:37.449     1     1 V PrintK  : [    1.832666] platform qcom,msm-voip-dsp.50: Driver msm-voip-dsp requests probe deferral
+06-08 16:21:37.450     1     1 V PrintK  : [    1.833036] platform qcom,msm-pcm-voice.51: Driver msm-pcm-voice requests probe deferral
+06-08 16:21:37.452     1     1 V PrintK  : [    1.835357] ocmem: Notifier registered for 5
+06-08 16:21:37.452     1     1 V PrintK  : [    1.835964] msm8974-asoc-taiko fe02c000.sound: msm8974_asoc_machine_probe(): hdmi audio support present
+06-08 16:21:37.453     1     1 V PrintK  : [    1.836225] platform fe02c000.sound: Driver msm8974-asoc-taiko requests probe deferral
+06-08 16:21:37.454     1     1 V PrintK  : [    1.837669] oprofile: using arm/armv7-krait
+06-08 16:21:37.454     1     1 V PrintK  : [    1.837734] u32 classifier
+06-08 16:21:37.454     1     1 V PrintK  : [    1.837743]     Actions configured
+06-08 16:21:37.454     1     1 V PrintK  : [    1.837754] Netfilter messages via NETLINK v0.30.
+06-08 16:21:37.454     1     1 V PrintK  : [    1.837806] nf_conntrack version 0.5.0 (16384 buckets, 65536 max)
+06-08 16:21:37.455     1     1 V PrintK  : [    1.838252] ctnetlink v0.93: registering with nfnetlink.
+06-08 16:21:37.455     1     1 V PrintK  : [    1.838584] NF_TPROXY: Transparent proxy support initialized, version 4.1.0
+06-08 16:21:37.455     1     1 V PrintK  : [    1.838596] NF_TPROXY: Copyright (c) 2006-2007 BalaBit IT Ltd.
+06-08 16:21:37.455     1     1 V PrintK  : [    1.838761] xt_time: kernel timezone is -0000
+06-08 16:21:37.456     1     1 V PrintK  : [    1.839104] ip_tables: (C) 2000-2006 Netfilter Core Team
+06-08 16:21:37.456     1     1 V PrintK  : [    1.839319] arp_tables: (C) 2002 David S. Miller
+06-08 16:21:37.456     1     1 V PrintK  : [    1.839368] TCP: cubic registered
+06-08 16:21:37.456     1     1 V PrintK  : [    1.839376] Initializing XFRM netlink socket
+06-08 16:21:37.456     1     1 V PrintK  : [    1.839847] NET: Registered protocol family 10
+06-08 16:21:37.458     1     1 V PrintK  : [    1.841835] Mobile IPv6
+06-08 16:21:37.458     1     1 V PrintK  : [    1.841863] ip6_tables: (C) 2000-2006 Netfilter Core Team
+06-08 16:21:37.459     1     1 V PrintK  : [    1.842023] IPv6 over IPv4 tunneling driver
+06-08 16:21:37.459     1     1 V PrintK  : [    1.842402] NET: Registered protocol family 17
+06-08 16:21:37.459     1     1 D PrintK  : [    1.842474] Bridge firewalling registered
+06-08 16:21:37.459     1     1 V PrintK  : [    1.842490] Ebtables v2.0 registered
+06-08 16:21:37.460     1     1 V PrintK  : [    1.843675] Bluetooth: RFCOMM TTY layer initialized
+06-08 16:21:37.460     1     1 V PrintK  : [    1.843693] Bluetooth: RFCOMM socket layer initialized
+06-08 16:21:37.460     1     1 V PrintK  : [    1.843702] Bluetooth: RFCOMM ver 1.11
+06-08 16:21:37.460     1     1 V PrintK  : [    1.843710] Bluetooth: BNEP (Ethernet Emulation) ver 1.3
+06-08 16:21:37.460     1     1 V PrintK  : [    1.843718] Bluetooth: BNEP filters: protocol multicast
+06-08 16:21:37.460     1     1 V PrintK  : [    1.843728] Bluetooth: HIDP (Human Interface Emulation) ver 1.2
+06-08 16:21:37.460     1     1 V PrintK  : [    1.843966] VFP support v0.3: implementor 51 architecture 64 part 6f variant 2 rev 1
+06-08 16:21:37.460     1     1 D PrintK  : [    1.843999] Registering SWP/SWPB emulation handler
+06-08 16:21:37.483     1     1 V PrintK  : [    1.866542] gdsc_oxili_gx: disabling
+06-08 16:21:37.483     1     1 V PrintK  : [    1.866572] gdsc_mdss: disabling
+06-08 16:21:37.483     1     1 V PrintK  : [    1.866597] gdsc_venus: disabling
+06-08 16:21:37.484   144   144 V PrintK  : [    1.867121] msm8974-asoc-taiko fe02c000.sound: msm8974_asoc_machine_probe(): hdmi audio support present
+06-08 16:21:37.484   144   144 V PrintK  : [    1.867377] platform fe02c000.sound: Driver msm8974-asoc-taiko requests probe deferral
+06-08 16:21:37.484   144   144 W PrintK  : [    1.867988] qcom,leds-qpnp leds-qpnp-f6247e00: Flash wa regulator get failed(-517)
+06-08 16:21:37.485   144   144 W PrintK  : [    1.868018] qcom,leds-qpnp leds-qpnp-f6247e00: Regulator get failed(-517)
+06-08 16:21:37.485   144   144 W PrintK  : [    1.868029] qcom,leds-qpnp leds-qpnp-f6247e00: Unable to read flash config data
+06-08 16:21:37.485   144   144 V PrintK  : [    1.868048] spmi leds-qpnp-f6247e00: Driver qcom,leds-qpnp requests probe deferral
+06-08 16:21:37.485   144   144 V PrintK  : [    1.868481] flash_wa: 
+06-08 16:21:37.485   144   144 V PrintK  : [    1.868780] 8941_smbb_otg: 
+06-08 16:21:37.485   144   144 V PrintK  : [    1.868806] 8941_smbb_otg: supplied by 8941_boost
+06-08 16:21:37.486   144   144 V PrintK  : [    1.869094] 8941_smbb_boost: 5000 mV 
+06-08 16:21:37.487   144   144 V PrintK  : [    1.870041] qpnp_charger_probe: success chg_dis = 1, bpd = 1, usb = 1, dc = 0 b_health = 1 batt_present = 1
+06-08 16:21:37.487   144   144 W PrintK  : [    1.870158] Unable to get vbus_otg
+06-08 16:21:37.487   144   144 W PrintK  : [    1.870168] msm_hsusb_host msm_hsusb_host: unable to register with transceiver
+06-08 16:21:37.487   144   144 V PrintK  : [    1.870196] platform msm_hsusb_host: Driver msm_hsusb_host requests probe deferral
+06-08 16:21:37.490     1     1 V PrintK  : [    1.873915] gpio_set_debounce: gpio-412 status -22
+06-08 16:21:37.491     1     1 V PrintK  : [    1.874109] gpio_set_debounce: gpio-430 status -22
+06-08 16:21:37.491     1     1 V PrintK  : [    1.874348] input: gpio-keys as /devices/gpio_keys.82/input/input1
+06-08 16:21:37.493     1     1 V PrintK  : [    1.876491] rtc-m41t80 3-0068: setting system clock to 2016-06-08 16:21:37 UTC (1465402897)
+06-08 16:21:37.494     1     1 V PrintK  : [    1.877040] msm_thermal:interrupt_mode_init Interrupt mode init
+06-08 16:21:37.494     1     1 V PrintK  : [    1.877989] clock_late_init: Removing enables held for handed-off clocks
+06-08 16:21:37.496     1     1 W PrintK  : [    1.879152] edp_vco_disable: mdss GDSC is not enabled
+06-08 16:21:37.500     1     1 V PrintK  : [    1.883095] ALSA device list:
+06-08 16:21:37.500     1     1 V PrintK  : [    1.883104]   No soundcards found.
+06-08 16:21:37.500     1     1 V PrintK  : [    1.883364] Freeing init memory: 384K
+06-08 16:21:37.506     1     1 I PrintK  : [    1.889623] init (1): /proc/1/oom_adj is deprecated, please use /proc/1/oom_score_adj instead.
+06-08 16:21:37.523    49    49 V PrintK  : [    1.906354] usb 1-1: new high-speed USB device number 2 using xhci-hcd
+06-08 16:21:37.523    49    49 W PrintK  : [    1.906415] usb 1-1: hub_port_init, 1-1,udev->speed:3
+06-08 16:21:37.531    39    39 V PrintK  : [    1.914159] mmc1: BKOPS_EN bit = 0
+06-08 16:21:37.543    39    39 V PrintK  : [    1.926180] mmc1: new HS200 MMC card at address 0001
+06-08 16:21:37.543    49    49 V PrintK  : [    1.926735] usb 1-1: New USB device found, idVendor=0451, idProduct=8044
+06-08 16:21:37.543    49    49 V PrintK  : [    1.926753] usb 1-1: New USB device strings: Mfr=0, Product=0, SerialNumber=1
+06-08 16:21:37.543    49    49 V PrintK  : [    1.926771] usb 1-1: SerialNumber: 1D0D00698D4A
+06-08 16:21:37.544    39    39 V PrintK  : [    1.927093] mmcblk0: mmc1:0001 016GE2 14.6 GiB 
+06-08 16:21:37.544    39    39 V PrintK  : [    1.927607] mmcblk0rpmb: mmc1:0001 016GE2 partition 3 4.00 MiB
+06-08 16:21:37.546    39    39 V PrintK  : [    1.929326]  mmcblk0: p1 p2 p3 p4 p5 p6 p7 p8 p9 p10 p11 p12 p13 p14 p15 p16 p17 p18 p19 p20 p21 p22 p23 p24 p25 p26 p27 p28
+06-08 16:21:37.556    49    49 W PrintK  : [    1.939348] hub 1-1:1.0: USB hub found
+06-08 16:21:37.556    49    49 V PrintK  : [    1.939415] hub 1-1:1.0: 3 ports detected
+06-08 16:21:37.703    49    49 W PrintK  : [    2.086401] usb 2-1: hub_port_init, 2-1,udev->speed:5
+06-08 16:21:37.703    49    49 V PrintK  : [    2.086426] usb 2-1: new SuperSpeed USB device number 2 using xhci-hcd
+06-08 16:21:37.723    49    49 V PrintK  : [    2.106644] usb 2-1: New USB device found, idVendor=0451, idProduct=8046
+06-08 16:21:37.723    49    49 V PrintK  : [    2.106662] usb 2-1: New USB device strings: Mfr=0, Product=0, SerialNumber=0
+06-08 16:21:37.732    49    49 W PrintK  : [    2.115369] hub 2-1:1.0: USB hub found
+06-08 16:21:37.732    49    49 V PrintK  : [    2.115437] hub 2-1:1.0: 3 ports detected
+06-08 16:21:37.753     0     0 W PrintK  : [    2.136620] qup_i2c f9967000.i2c: QUP: I2C status flags :0x11163c8, irq:137
+06-08 16:21:37.769   144   144 V PrintK  : [    2.152076] msm_hsic_host msm_hsic_host: Qualcomm EHCI Host Controller using HSIC
+06-08 16:21:37.769   144   144 V PrintK  : [    2.152134] msm_hsic_host msm_hsic_host: new USB bus registered, assigned bus number 3
+06-08 16:21:37.793   144   144 V PrintK  : [    2.176366] msm_hsic_host msm_hsic_host: irq 168, io mem 0xf9a00000
+06-08 16:21:37.800     1     1 W PrintK  : [    2.183472] init: cannot open '/initlogo.rle'
+06-08 16:21:37.812   144   144 V PrintK  : [    2.196346] msm_hsic_host msm_hsic_host: USB 2.0 started, EHCI 1.00
+06-08 16:21:37.812   144   144 V PrintK  : [    2.196476] usb usb3: New USB device found, idVendor=1d6b, idProduct=0002
+06-08 16:21:37.812   144   144 V PrintK  : [    2.196494] usb usb3: New USB device strings: Mfr=3, Product=2, SerialNumber=1
+06-08 16:21:37.812   144   144 V PrintK  : [    2.196515] usb usb3: Product: Qualcomm EHCI Host Controller using HSIC
+06-08 16:21:37.812   144   144 V PrintK  : [    2.196531] usb usb3: Manufacturer: Linux 3.4.0 ehci_hcd
+06-08 16:21:37.812   144   144 V PrintK  : [    2.196547] usb usb3: SerialNumber: msm_hsic_host
+06-08 16:21:37.813   144   144 W PrintK  : [    2.196836] hub 3-0:1.0: USB hub found
+06-08 16:21:37.813   144   144 V PrintK  : [    2.196869] hub 3-0:1.0: 1 port detected
+06-08 16:21:37.813   144   144 W PrintK  : [    2.197333] msm_smsc_hub msm_smsc_hub: failed to connect to smsc_hub through I2C
+06-08 16:21:37.813   144   144 V PrintK  : [    2.197636] ethernet_phy: 
+06-08 16:21:37.832    49    49 I PrintK  : [    2.216402] hub_power_on, 662 r=0
+06-08 16:21:37.832    49    49 I PrintK  : [    2.216525] hub_power_on, 662 r=0
+06-08 16:21:37.832    49    49 I PrintK  : [    2.216580] hub_power_on, 662 r=0
+06-08 16:21:37.832    49    49 I PrintK  : [    2.216684] hub_power_on, 667 r=0
+06-08 16:21:37.832    49    49 I PrintK  : [    2.216730] hub_power_on, 667 r=0
+06-08 16:21:37.832    49    49 I PrintK  : [    2.216776] hub_power_on, 667 r=0
+06-08 16:21:37.833    49    49 I PrintK  : [    2.216824] hub_power_on, 677 r=0, port1:3
+06-08 16:21:37.841   144   144 V PrintK  : [    2.224857] bif_ctrl_register: Battery pack present = Y
+06-08 16:21:37.847   144   144 V PrintK  : [    2.231181] bif_ctrl_register: Battery pack type = low cost (Rid=58667 ohm)
+06-08 16:21:37.847   144   144 V PrintK  : [    2.231461] 8941_mvs1: 
+06-08 16:21:37.847   144   144 V PrintK  : [    2.231488] 8941_mvs1: supplied by 8941_smbb_otg
+06-08 16:21:37.848   144   144 V PrintK  : [    2.231930] msm8974-asoc-taiko fe02c000.sound: msm8974_asoc_machine_probe(): hdmi audio support present
+06-08 16:21:37.848   144   144 V PrintK  : [    2.232340] platform fe02c000.sound: Driver msm8974-asoc-taiko requests probe deferral
+06-08 16:21:37.849   144   144 V PrintK  : [    2.232961] Registered led device: led:flash_0
+06-08 16:21:37.849   144   144 V PrintK  : [    2.233407] Registered led device: led:flash_1
+06-08 16:21:37.849   144   144 V PrintK  : [    2.233623] Registered led device: led:flash_torch
+06-08 16:21:37.850   144   144 V PrintK  : [    2.234124] msm8974-asoc-taiko fe02c000.sound: msm8974_asoc_machine_probe(): hdmi audio support present
+06-08 16:21:37.850   144   144 V PrintK  : [    2.234400] platform fe02c000.sound: Driver msm8974-asoc-taiko requests probe deferral
+06-08 16:21:37.851    28    28 V PrintK  : [    2.235106] msm_otg msm_otg: phy_reset: success
+06-08 16:21:37.888   164   164 V PrintK  : [    2.272507] EXT4-fs (mmcblk0p27): mounted filesystem with ordered data mode. Opts: barrier=1,discard
+06-08 16:21:37.896   164   164 V PrintK  : [    2.280756] EXT4-fs (mmcblk0p28): mounted filesystem with ordered data mode. Opts: nomblk_io_submit,errors=remount-ro
+06-08 16:21:37.902   164   164 V PrintK  : [    2.286396] fs_mgr: Running /system/bin/e2fsck on /dev/block/platform/msm_sdcc.1/by-name/userdata
+06-08 16:21:37.935   172   172 I PrintK  : [    2.318822] e2fsck used greatest stack depth: 5392 bytes left
+06-08 16:21:37.935   164   164 V PrintK  : [    2.318885] e2fsck: e2fsck 1.41.14 (22-Dec-2010)
+06-08 16:21:37.935   164   164 V PrintK  : [    2.318932] e2fsck: /dev/block/platform/msm_sdcc.1/by-name/userdata: clean, 1059/655360 files, 82360/2621440 blocks
+06-08 16:21:37.943   164   164 V PrintK  : [    2.326900] EXT4-fs (mmcblk0p28): mounted filesystem with ordered data mode. Opts: barrier=1,noauto_da_alloc,discard
+06-08 16:21:37.951     1     1 V PrintK  : [    2.334896] EXT4-fs (mmcblk0p26): mounted filesystem with ordered data mode. Opts: barrier=1
+06-08 16:21:37.958     1     1 V PrintK  : [    2.342027] EXT4-fs (mmcblk0p24): mounted filesystem with ordered data mode. Opts: barrier=1
+06-08 16:21:37.996     1     1 W PrintK  : [    2.380518] init: Detected MSM SOC ID=209 SOC VER=65536 BOARD TYPE=Dragon
+06-08 16:21:37.997     1     1 W PrintK  : [    2.381555] init: property 'persist.sys.ssr.enable_debug' doesn't exist while expanding '${persist.sys.ssr.enable_debug}'
+06-08 16:21:37.997     1     1 W PrintK  : [    2.381595] init: cannot expand '${persist.sys.ssr.enable_debug}' while writing to '/sys/module/subsystem_restart/parameters/enable_debug'
+06-08 16:21:38.000     1     1 V PrintK  : [    2.383916] pil-q6v5-lpass fe200000.qcom,lpass: adsp: loading from 0x05a00000 to 0x06e00000
+06-08 16:21:38.012    49    49 W PrintK  : [    2.396475] usb 2-1.1: hub_port_init, 2-1.1,udev->speed:5
+06-08 16:21:38.012    49    49 V PrintK  : [    2.396500] usb 2-1.1: new SuperSpeed USB device number 3 using xhci-hcd
+06-08 16:21:38.033    49    49 V PrintK  : [    2.417569] usb 2-1.1: New USB device found, idVendor=04b4, idProduct=00f1
+06-08 16:21:38.033    49    49 V PrintK  : [    2.417594] usb 2-1.1: New USB device strings: Mfr=1, Product=2, SerialNumber=0
+06-08 16:21:38.033    49    49 V PrintK  : [    2.417615] usb 2-1.1: Product: ErrLogV023
+06-08 16:21:38.033    49    49 V PrintK  : [    2.417637] usb 2-1.1: Manufacturer: Cypress
+06-08 16:21:38.036    39    39 V PrintK  : [    2.420402] msm8974-asoc-taiko fe02c000.sound: msm8974_asoc_machine_probe(): hdmi audio support present
+06-08 16:21:38.037    39    39 V PrintK  : [    2.420817] platform fe02c000.sound: Driver msm8974-asoc-taiko requests probe deferral
+06-08 16:21:38.152    49    49 V PrintK  : [    2.536388] usb 3-1: new high-speed USB device number 2 using msm_hsic_host
+06-08 16:21:38.162    49    49 W PrintK  : [    2.546342] usb 3-1: hub_port_init, 3-1,udev->speed:3
+06-08 16:21:38.183    49    49 V PrintK  : [    2.567141] usb 3-1: New USB device found, idVendor=0424, idProduct=4604
+06-08 16:21:38.183    49    49 V PrintK  : [    2.567158] usb 3-1: New USB device strings: Mfr=0, Product=0, SerialNumber=0
+06-08 16:21:38.183    49    49 W PrintK  : [    2.567594] hub 3-1:1.0: USB hub found
+06-08 16:21:38.183    49    49 V PrintK  : [    2.567736] hub 3-1:1.0: 5 ports detected
+06-08 16:21:38.185   144   144 V PrintK  : [    2.569664] msm8974-asoc-taiko fe02c000.sound: msm8974_asoc_machine_probe(): hdmi audio support present
+06-08 16:21:38.186   144   144 V PrintK  : [    2.570312] platform fe02c000.sound: Driver msm8974-asoc-taiko requests probe deferral
+06-08 16:21:38.228     1     1 V PrintK  : [    2.611939] pil-q6v5-lpass fe200000.qcom,lpass: adsp: Brought out of reset
+06-08 16:21:38.286    76    76 V PrintK  : [    2.670704] pil-q6v5-lpass fe200000.qcom,lpass: adsp: Power/Clock ready interrupt received
+06-08 16:21:38.306     0     0 V PrintK  : [    2.690226] pil-q6v5-lpass fe200000.qcom,lpass: Subsystem error monitoring/handling services are up
+06-08 16:21:38.306     1     1 V PrintK  : [    2.690269] adsp-loader qcom,msm-adsp-loader.42: adsp_loader_do: Q6/ADSP image is loaded
+06-08 16:21:38.307   144   144 V PrintK  : [    2.691017] msm8974-asoc-taiko fe02c000.sound: msm8974_asoc_machine_probe(): hdmi audio support present
+06-08 16:21:38.307    27    27 V PrintK  : [    2.691073] apr_tal:Q6 Is Up
+06-08 16:21:38.307   144   144 V PrintK  : [    2.691316] platform fe02c000.sound: Driver msm8974-asoc-taiko requests probe deferral
+06-08 16:21:38.320   208   208 W PrintK  : [    2.704725] healthd: wakealarm_init: timerfd_create failed
+06-08 16:21:38.321   208   208 I PrintK  : [    2.705128] healthd: BatteryStatusPath not found
+06-08 16:21:38.321   208   208 I PrintK  : [    2.705166] healthd: BatteryHealthPath not found
+06-08 16:21:38.321   208   208 I PrintK  : [    2.705199] healthd: BatteryPresentPath not found
+06-08 16:21:38.321   208   208 I PrintK  : [    2.705229] healthd: BatteryCapacityPath not found
+06-08 16:21:38.321   208   208 I PrintK  : [    2.705260] healthd: BatteryVoltagePath not found
+06-08 16:21:38.321   208   208 I PrintK  : [    2.705294] healthd: BatteryTemperaturePath not found
+06-08 16:21:38.321   208   208 I PrintK  : [    2.705326] healthd: BatteryTechnologyPath not found
+06-08 16:21:38.323   207   207 I PrintK  : [    2.707421] MCU_Daemon: Open Uart used UART_NORMAL_MODE
+06-08 16:21:38.323   207   207 I PrintK  : [    2.707474] MCU_Daemon: Open Uart Success
+06-08 16:21:38.324   207   207 I PrintK  : [    2.707938] MCU_Daemon: Send Data : F1 68 01 5E F2
+06-08 16:21:38.326     1     1 W PrintK  : [    2.709943] init: cannot find '/system/etc/install-recovery.sh', disabling 'flash_recovery'
+06-08 16:21:38.330   212   212 I rfs_access: Initialized RFS server
+06-08 16:21:38.345     1     1 V PrintK  : [    2.728961] sps:BAM 0xf9944000 (va:0xc5e80000) enabled: ver:0x13, number of pipes:24
+06-08 16:21:38.350   226   226 I installd: installd firing up
+06-08 16:21:38.350   221   221 I DEBUG   : debuggerd: May 18 2016 03:25:09
+06-08 16:21:38.350   207   207 E MCU_Daemon: int main(int, char**) 98
+06-08 16:21:38.354   207   207 I PrintK  : [    2.738283] MCU_Daemon: Read Data : F1 69 01 88 F2
+06-08 16:21:38.350   236   236 I qrngd   : qrngd has started:
+06-08 16:21:38.350   236   236 I qrngd   : Reading device:'/dev/hw_random' updating entropy for device:'/dev/random'
+06-08 16:21:38.354   207   207 I PrintK  : [    2.738374] MCU_Daemon: mcud say hello
+06-08 16:21:38.359   236   236 V PrintK  : [    2.742952] warning: `qrngd' uses 32-bit capabilities (legacy support in use)
+06-08 16:21:38.360   233   233 I irsc_util: irsc tool created:0xb8e10020
+06-08 16:21:38.360   233   233 I irsc_util: Starting irsc tool
+06-08 16:21:38.360   233   233 I irsc_util: Trying to open sec config file
+06-08 16:21:38.360   256   256 I qcom-bluetooth: /system/etc/init.qcom.bt.sh: init.qcom.bt.sh config = onboot 
+06-08 16:21:38.361   212   212 V PrintK  : [    2.745014] pil-q6v5-mss fc880000.qcom,mss: mba: loading from 0x0d100000 to 0x0d149000
+06-08 16:21:38.370   233   233 I irsc_util: file_parser Number of element :0
+06-08 16:21:38.370   233   233 I irsc_util: file_parser Invalid Format or Comment - '/* IPC Security Config */
+06-08 16:21:38.370   233   233 I irsc_util: '
+06-08 16:21:38.370   233   233 I irsc_util: file_parser Number of element :0
+06-08 16:21:38.370   233   233 I irsc_util: file_parser Invalid Format or Comment - '/* <GPS QMI Service ID - 16>:<GPS QMI Instance ID - all instances>:<Client Group ID> */
+06-08 16:21:38.370   233   233 I irsc_util: '
+06-08 16:21:38.370   233   233 I irsc_util: file_parser Number of element :4
+06-08 16:21:38.370   233   233 I irsc_util: file_parser Number of element :0
+06-08 16:21:38.370   233   233 I irsc_util: file_parser Invalid Format or Comment - '/* Allow SS CTL service to be used by system and net_raw processes */
+06-08 16:21:38.370   233   233 I irsc_util: '
+06-08 16:21:38.370   233   233 I irsc_util: file_parser Number of element :4
+06-08 16:21:38.370   233   233 I irsc_util: file_parser Number of element :0
+06-08 16:21:38.370   233   233 I irsc_util: file_parser Invalid Format or Comment - '/* Allow Sensor services to be used by sensor process */
+06-08 16:21:38.370   233   233 I irsc_util: '
+06-08 16:21:38.370   233   233 I irsc_util: file_parser Number of element :3
+06-08 16:21:38.370   233   233 I irsc_util: file_parser Number of element :3
+06-08 16:21:38.370   233   233 I irsc_util: file_parser Number of element :3
+06-08 16:21:38.370   233   233 I irsc_util: file_parser Number of element :3
+06-08 16:21:38.370   233   233 I irsc_util: file_parser Number of element :3
+06-08 16:21:38.370   233   233 I irsc_util: file_parser Number of element :3
+06-08 16:21:38.370   233   233 I irsc_util: file_parser Number of element :3
+06-08 16:21:38.370   233   233 I irsc_util: file_parser Number of element :3
+06-08 16:21:38.370   233   233 I irsc_util: file_parser Number of element :3
+06-08 16:21:38.370   233   233 I irsc_util: file_parser Number of element :3
+06-08 16:21:38.370   233   233 I irsc_util: file_parser Number of element :3
+06-08 16:21:38.370   233   233 I irsc_util: file_parser Number of element :3
+06-08 16:21:38.370   233   233 I irsc_util: file_parser Number of element :3
+06-08 16:21:38.370   233   233 I irsc_util: file_parser Number of element :3
+06-08 16:21:38.370   233   233 I irsc_util: file_parser Number of element :3
+06-08 16:21:38.370   233   233 I irsc_util: file_parser Number of element :3
+06-08 16:21:38.370   233   233 I irsc_util: file_parser Number of element :3
+06-08 16:21:38.370   233   233 I irsc_util: file_parser Number of element :3
+06-08 16:21:38.370   233   233 I irsc_util: file_parser Number of element :3
+06-08 16:21:38.370   233   233 I irsc_util: file_parser Number of element :3
+06-08 16:21:38.370   233   233 I irsc_util: file_parser Number of element :3
+06-08 16:21:38.370   233   233 I irsc_util: file_parser Number of element :3
+06-08 16:21:38.370   233   233 I irsc_util: file_parser Number of element :3
+06-08 16:21:38.370   233   233 I irsc_util: file_parser Number of element :3
+06-08 16:21:38.370   233   233 I irsc_util: file_parser Number of element :3
+06-08 16:21:38.370   233   233 I irsc_util: file_parser Number of element :3
+06-08 16:21:38.370   233   233 I irsc_util: file_parser Number of element :3
+06-08 16:21:38.370   233   233 I irsc_util: file_parser Number of element :3
+06-08 16:21:38.370   233   233 I irsc_util: file_parser Number of element :3
+06-08 16:21:38.370   233   233 I irsc_util: file_parser Number of element :3
+06-08 16:21:38.370   233   233 I irsc_util: file_parser Number of element :3
+06-08 16:21:38.370   233   233 I irsc_util: file_parser Number of element :3
+06-08 16:21:38.370   233   233 I irsc_util: file_parser Number of element :3
+06-08 16:21:38.370   233   233 I irsc_util: file_parser Number of element :3
+06-08 16:21:38.370   233   233 I irsc_util: file_parser Number of element :3
+06-08 16:21:38.370   233   233 I irsc_util: file_parser Number of element :3
+06-08 16:21:38.370   233   233 I irsc_util: file_parser Number of element :3
+06-08 16:21:38.370   233   233 I irsc_util: file_parser Number of element :3
+06-08 16:21:38.370   233   233 I irsc_util: file_parser Number of element :3
+06-08 16:21:38.370   233   233 I irsc_util: file_parser Number of element :3
+06-08 16:21:38.370   233   233 I irsc_util: file_parser Number of element :3
+06-08 16:21:38.370   233   233 I irsc_util: file_parser Number of element :3
+06-08 16:21:38.370   233   233 I irsc_util: file_parser Number of element :3
+06-08 16:21:38.370   233   233 I irsc_util: file_parser Number of element :3
+06-08 16:21:38.370   233   233 I irsc_util: file_parser Number of element :3
+06-08 16:21:38.370   233   233 I irsc_util: file_parser Number of element :3
+06-08 16:21:38.370   233   233 I irsc_util: file_parser Number of element :3
+06-08 16:21:38.370   233   233 I irsc_util: file_parser Number of element :3
+06-08 16:21:38.370   233   233 I irsc_util: file_parser Number of element :3
+06-08 16:21:38.370   233   233 I irsc_util: file_parser Number of element :3
+06-08 16:21:38.370   233   233 I irsc_util: file_parser Number of element :3
+06-08 16:21:38.370   233   233 I irsc_util: file_parser Number of element :3
+06-08 16:21:38.370   233   233 I irsc_util: file_parser Number of element :3
+06-08 16:21:38.370   233   233 I irsc_util: file_parser Number of element :3
+06-08 16:21:38.370   233   233 I irsc_util: file_parser Number of element :3
+06-08 16:21:38.370   233   233 I irsc_util: file_parser Number of element :3
+06-08 16:21:38.370   233   233 I irsc_util: file_parser Number of element :3
+06-08 16:21:38.370   233   233 I irsc_util: file_parser Number of element :3
+06-08 16:21:38.370   233   233 I irsc_util: file_parser Number of element :3
+06-08 16:21:38.370   233   233 I irsc_util: file_parser Number of element :3
+06-08 16:21:38.370   233   233 I irsc_util: file_parser Number of element :3
+06-08 16:21:38.370   233   233 I irsc_util: file_parser Number of element :3
+06-08 16:21:38.370   233   233 I irsc_util: file_parser Number of element :3
+06-08 16:21:38.370   233   233 I irsc_util: file_parser Number of element :3
+06-08 16:21:38.370   233   233 I irsc_util: file_parser Number of element :3
+06-08 16:21:38.370   233   233 I irsc_util: file_parser Number of element :3
+06-08 16:21:38.370   233   233 I irsc_util: file_parser Number of element :3
+06-08 16:21:38.370   233   233 I irsc_util: file_parser Number of element :3
+06-08 16:21:38.370   233   233 I irsc_util: file_parser Number of element :3
+06-08 16:21:38.370   233   233 I irsc_util: file_parser Number of element :3
+06-08 16:21:38.370   233   233 I irsc_util: file_parser Number of element :3
+06-08 16:21:38.370   233   233 I irsc_util: file_parser Number of element :3
+06-08 16:21:38.370   233   233 I irsc_util: file_parser Number of element :3
+06-08 16:21:38.370   233   233 I irsc_util: file_parser Number of element :3
+06-08 16:21:38.370   233   233 I irsc_util: file_parser Number of element :3
+06-08 16:21:38.370   233   233 I irsc_util: file_parser Number of element :3
+06-08 16:21:38.370   233   233 I irsc_util: file_parser Number of element :3
+06-08 16:21:38.370   233   233 I irsc_util: file_parser Number of element :3
+06-08 16:21:38.370   233   233 I irsc_util: file_parser Number of element :3
+06-08 16:21:38.370   233   233 I irsc_util: file_parser Number of element :3
+06-08 16:21:38.370   233   233 I irsc_util: file_parser Number of element :3
+06-08 16:21:38.370   233   233 I irsc_util: file_parser Number of element :3
+06-08 16:21:38.370   233   233 I irsc_util: file_parser Number of element :3
+06-08 16:21:38.370   233   233 I irsc_util: file_parser Number of element :3
+06-08 16:21:38.370   233   233 I irsc_util: file_parser Number of element :3
+06-08 16:21:38.370   233   233 I irsc_util: file_parser Number of element :3
+06-08 16:21:38.370   233   233 I irsc_util: file_parser Number of element :3
+06-08 16:21:38.370   233   233 I irsc_util: file_parser Number of element :3
+06-08 16:21:38.370   233   233 I irsc_util: file_parser Number of element :3
+06-08 16:21:38.370   233   233 I irsc_util: file_parser Number of element :3
+06-08 16:21:38.370   233   233 I irsc_util: file_parser Number of element :3
+06-08 16:21:38.370   233   233 I irsc_util: file_parser Number of element :3
+06-08 16:21:38.370   233   233 I irsc_util: file_parser Number of element :3
+06-08 16:21:38.370   233   233 I irsc_util: file_parser Number of element :3
+06-08 16:21:38.370   233   233 I irsc_util: file_parser Number of element :3
+06-08 16:21:38.370   233   233 I irsc_util: file_parser Number of element :3
+06-08 16:21:38.370   233   233 I irsc_util: file_parser Number of element :3
+06-08 16:21:38.370   233   233 I irsc_util: file_parser Number of element :3
+06-08 16:21:38.370   233   233 I irsc_util: file_parser Number of element :3
+06-08 16:21:38.370   233   233 I irsc_util: file_parser Number of element :3
+06-08 16:21:38.370   233   233 I irsc_util: file_parser Number of element :3
+06-08 16:21:38.370   233   233 I irsc_util: file_parser Number of element :3
+06-08 16:21:38.370   233   233 I irsc_util: file_parser Number of element :3
+06-08 16:21:38.370   233   233 I irsc_util: file_parser Number of element :3
+06-08 16:21:38.370   233   233 I irsc_util: file_parser Number of element :3
+06-08 16:21:38.370   233   233 I irsc_util: file_parser Number of element :3
+06-08 16:21:38.370   233   233 I irsc_util: file_parser Number of element :3
+06-08 16:21:38.370   233   233 I irsc_util: file_parser Number of element :3
+06-08 16:21:38.370   233   233 I irsc_util: file_parser Number of element :3
+06-08 16:21:38.370   233   233 I irsc_util: file_parser Number of element :3
+06-08 16:21:38.370   233   233 I irsc_util: file_parser Number of element :3
+06-08 16:21:38.370   233   233 I irsc_util: file_parser Number of element :3
+06-08 16:21:38.370   233   233 I irsc_util: file_parser Number of element :3
+06-08 16:21:38.370   233   233 I irsc_util: file_parser Number of element :3
+06-08 16:21:38.370   233   233 I irsc_util: file_parser Number of element :3
+06-08 16:21:38.370   233   233 I irsc_util: file_parser Number of element :3
+06-08 16:21:38.370   233   233 I irsc_util: file_parser Number of element :3
+06-08 16:21:38.370   233   233 I irsc_util: file_parser Number of element :3
+06-08 16:21:38.370   233   233 I irsc_util: file_parser Number of element :3
+06-08 16:21:38.370   233   233 I irsc_util: file_parser Number of element :3
+06-08 16:21:38.370   233   233 I irsc_util: file_parser Number of element :3
+06-08 16:21:38.370   233   233 I irsc_util: file_parser Number of element :3
+06-08 16:21:38.370   233   233 I irsc_util: file_parser Number of element :3
+06-08 16:21:38.370   233   233 I irsc_util: file_parser Number of element :3
+06-08 16:21:38.370   233   233 I irsc_util: file_parser Number of element :3
+06-08 16:21:38.370   233   233 I irsc_util: file_parser Number of element :3
+06-08 16:21:38.370   233   233 I irsc_util: file_parser Number of element :3
+06-08 16:21:38.370   233   233 I irsc_util: file_parser Number of element :3
+06-08 16:21:38.370   233   233 I irsc_util: file_parser Number of element :3
+06-08 16:21:38.370   233   233 I irsc_util: file_parser Number of element :3
+06-08 16:21:38.370   233   233 I irsc_util: file_parser Number of element :3
+06-08 16:21:38.370   233   233 I irsc_util: file_parser Number of element :3
+06-08 16:21:38.370   233   233 I irsc_util: file_parser Number of element :3
+06-08 16:21:38.370   233   233 I irsc_util: file_parser Number of element :3
+06-08 16:21:38.370   233   233 I irsc_util: file_parser Number of element :3
+06-08 16:21:38.370   233   233 I irsc_util: file_parser Number of element :3
+06-08 16:21:38.370   233   233 I irsc_util: file_parser Number of element :3
+06-08 16:21:38.370   233   233 I irsc_util: file_parser Number of element :3
+06-08 16:21:38.370   233   233 I irsc_util: file_parser Number of element :3
+06-08 16:21:38.370   233   233 I irsc_util: file_parser Number of element :3
+06-08 16:21:38.370   233   233 I irsc_util: file_parser Number of element :3
+06-08 16:21:38.370   233   233 I irsc_util: file_parser Number of element :3
+06-08 16:21:38.370   233   233 I irsc_util: file_parser Number of element :3
+06-08 16:21:38.370   233   233 I irsc_util: file_parser Number of element :3
+06-08 16:21:38.370   233   233 I irsc_util: file_parser Number of element :3
+06-08 16:21:38.370   233   233 I irsc_util: file_parser Number of element :3
+06-08 16:21:38.370   233   233 I irsc_util: file_parser Number of element :3
+06-08 16:21:38.370   233   233 I irsc_util: file_parser Number of element :3
+06-08 16:21:38.370   233   233 I irsc_util: file_parser Number of element :3
+06-08 16:21:38.370   233   233 I irsc_util: file_parser Number of element :3
+06-08 16:21:38.370   233   233 I irsc_util: file_parser Number of element :3
+06-08 16:21:38.370   233   233 I irsc_util: file_parser Number of element :3
+06-08 16:21:38.370   233   233 I irsc_util: file_parser Number of element :3
+06-08 16:21:38.370   233   233 I irsc_util: file_parser Number of element :3
+06-08 16:21:38.370   233   233 I irsc_util: file_parser Number of element :3
+06-08 16:21:38.370   233   233 I irsc_util: file_parser Number of element :3
+06-08 16:21:38.370   233   233 I irsc_util: file_parser Number of element :3
+06-08 16:21:38.370   233   233 I irsc_util: file_parser Number of element :3
+06-08 16:21:38.370   233   233 I irsc_util: file_parser Number of element :3
+06-08 16:21:38.370   233   233 I irsc_util: file_parser Number of element :3
+06-08 16:21:38.370   233   233 I irsc_util: file_parser Number of element :3
+06-08 16:21:38.370   233   233 I irsc_util: file_parser Number of element :3
+06-08 16:21:38.370   233   233 I irsc_util: file_parser Number of element :3
+06-08 16:21:38.370   233   233 I irsc_util: file_parser Number of element :3
+06-08 16:21:38.370   233   233 I irsc_util: file_parser Number of element :3
+06-08 16:21:38.370   233   233 I irsc_util: file_parser Number of element :3
+06-08 16:21:38.370   233   233 I irsc_util: file_parser Number of element :3
+06-08 16:21:38.370   233   233 I irsc_util: file_parser Number of element :3
+06-08 16:21:38.370   233   233 I irsc_util: file_parser Number of element :3
+06-08 16:21:38.370   233   233 I irsc_util: file_parser Number of element :3
+06-08 16:21:38.370   233   233 I irsc_util: file_parser Number of element :3
+06-08 16:21:38.370   233   233 I irsc_util: file_parser Number of element :3
+06-08 16:21:38.370   233   233 I irsc_util: file_parser Number of element :3
+06-08 16:21:38.370   233   233 I irsc_util: file_parser Number of element :3
+06-08 16:21:38.370   233   233 I irsc_util: file_parser Number of element :3
+06-08 16:21:38.370   233   233 I irsc_util: file_parser Number of element :3
+06-08 16:21:38.370   233   233 I irsc_util: file_parser Number of element :3
+06-08 16:21:38.370   233   233 I irsc_util: file_parser Number of element :3
+06-08 16:21:38.370   233   233 I irsc_util: file_parser Number of element :3
+06-08 16:21:38.370   233   233 I irsc_util: file_parser Number of element :3
+06-08 16:21:38.370   233   233 I irsc_util: file_parser Number of element :3
+06-08 16:21:38.370   233   233 I irsc_util: file_parser Number of element :3
+06-08 16:21:38.370   233   233 I irsc_util: file_parser Number of element :3
+06-08 16:21:38.370   233   233 I irsc_util: file_parser Number of element :3
+06-08 16:21:38.370   233   233 I irsc_util: file_parser Number of element :3
+06-08 16:21:38.370   233   233 I irsc_util: file_parser Number of element :3
+06-08 16:21:38.370   233   233 I irsc_util: file_parser Number of element :3
+06-08 16:21:38.370   233   233 I irsc_util: file_parser Number of element :3
+06-08 16:21:38.370   233   233 I irsc_util: file_parser Number of element :3
+06-08 16:21:38.370   233   233 I irsc_util: file_parser Number of element :3
+06-08 16:21:38.370   233   233 I irsc_util: file_parser Number of element :3
+06-08 16:21:38.370   233   233 I irsc_util: file_parser Number of element :3
+06-08 16:21:38.370   233   233 I irsc_util: file_parser Number of element :3
+06-08 16:21:38.370   233   233 I irsc_util: file_parser Number of element :3
+06-08 16:21:38.370   233   233 I irsc_util: file_parser Number of element :3
+06-08 16:21:38.370   233   233 I irsc_util: file_parser Number of element :3
+06-08 16:21:38.370   233   233 I irsc_util: file_parser Number of element :3
+06-08 16:21:38.370   233   233 I irsc_util: file_parser Number of element :3
+06-08 16:21:38.370   233   233 I irsc_util: file_parser Number of element :3
+06-08 16:21:38.370   233   233 I irsc_util: file_parser Number of element :3
+06-08 16:21:38.370   233   233 I irsc_util: file_parser Number of element :3
+06-08 16:21:38.370   233   233 I irsc_util: file_parser Number of element :3
+06-08 16:21:38.370   233   233 I irsc_util: file_parser Number of element :3
+06-08 16:21:38.370   233   233 I irsc_util: file_parser Number of element :3
+06-08 16:21:38.370   233   233 I irsc_util: file_parser Number of element :3
+06-08 16:21:38.370   233   233 I irsc_util: file_parser Number of element :3
+06-08 16:21:38.370   233   233 I irsc_util: file_parser Number of element :3
+06-08 16:21:38.370   233   233 I irsc_util: file_parser Number of element :3
+06-08 16:21:38.370   233   233 I irsc_util: file_parser Number of element :3
+06-08 16:21:38.370   233   233 I irsc_util: file_parser Number of element :3
+06-08 16:21:38.370   233   233 I irsc_util: file_parser Number of element :3
+06-08 16:21:38.370   233   233 I irsc_util: file_parser Number of element :3
+06-08 16:21:38.370   233   233 I irsc_util: file_parser Number of element :3
+06-08 16:21:38.370   233   233 I irsc_util: file_parser Number of element :3
+06-08 16:21:38.370   233   233 I irsc_util: file_parser Number of element :3
+06-08 16:21:38.370   233   233 I irsc_util: file_parser Number of element :3
+06-08 16:21:38.370   233   233 I irsc_util: file_parser Number of element :3

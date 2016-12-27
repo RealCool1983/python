@@ -1,0 +1,40 @@
+file path: C:\Python34\FileTest\VPro20160623131244B
+file size is : 1726
+number of line : 13
+Number of PrintK: 13
+ratio of Prink:     1.00
+Number of line_ScanProcessController: 0
+ratio of ScanProcessController:0.00
+Number of line_ParametersController: 0
+ratio of ParametersController:0.00
+==================================                
+file path: C:\Python34\FileTest\VPro20160623114153Aansi
+file size is : 1180024
+number of line : 9015
+Number of PrintK: 1197
+ratio of Prink:     0.13
+Number of line_ScanProcessController: 9
+ratio of ScanProcessController:0.00
+Number of line_ParametersController: 49
+ratio of ParametersController:0.01
+==================================                
+file path: C:\Python34\FileTest\VPro20160623114153B
+file size is : 333498
+number of line : 2267
+Number of PrintK: 36
+ratio of Prink:     0.02
+Number of line_ScanProcessController: 0
+ratio of ScanProcessController:0.00
+Number of line_ParametersController: 0
+ratio of ParametersController:0.00
+==================================                
+file path: C:\Python34\FileTest\VPro20160623131244A
+file size is : 8221
+number of line : 63
+Number of PrintK: 62
+ratio of Prink:     0.98
+Number of line_ScanProcessController: 0
+ratio of ScanProcessController:0.00
+Number of line_ParametersController: 0
+ratio of ParametersController:0.00
+==================================                

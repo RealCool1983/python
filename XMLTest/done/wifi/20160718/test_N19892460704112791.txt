@@ -1,0 +1,29 @@
+MCU;QD300R22
+BSP;QID300-v0.10.0.1
+GaugeID;QIC3000
+Carry;PASS,I
+EMMC;PASS;14.7 GB
+SDCard;PASS;1.9 GB
+USB2.0;PASS;3.7 GB
+USB3.0;PASS;3.7 GB(3.0)
+mSATA;PASS;119.2 GB
+USBHub;PASS;
+Ethernet;PASS;Ping:10.82.78.254
+Charging;PASS;Capacity:22%,Current:-2.22A
+OTG;PASS;
+Memory;PASS;1.82GB
+WIFI;FAIL;No Test
+Bluetooth;PASS;
+Headset;PASS;
+Speaker;PASS;
+Volume;PASS;
+HDMI;PASS;
+RGB;PASS;
+BackLight;PASS;
+Camera;PASS;
+LED;PASS;
+PowerKey;PASS;
+RTC;PASS;
+Fan;PASS;EngineFan:5640 , SystemFan:6390 , SOM Fan:52
+Temp;PASS;Sys0:21°C,Sys1:40°C,thermal0:38°C,thermal1:38°C,thermal2:37°C,thermal3:41°C,thermal4:38°C,thermal5:40°C,thermal6:37°C,thermal7:38°C,thermal8:38°C,thermal9:38°C,thermal10:38°C
+Touch;PASS;

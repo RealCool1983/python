@@ -1,0 +1,93 @@
+_0719 16:06:01.968269] ------------------------------------ Begin ----------------------------------------
+_0719 16:06:01.978271] Parse phone parameters success
+_0719 16:06:01.978271] Create phone object success
+_0719 16:06:01.978271] Execute InitDate() of phone object success
+_0719 16:06:02.978281] Initial PC port success.
+_0719 16:06:02.978281] -------------------------------- Start Items Test-----------------------------------
+_0719 16:06:02.978281] Load cable loss value success
+_0719 16:06:02.978281] Parse each test item's parameters success
+_0719 16:06:02.978281] Generate all test item objects and set all parameters success
+_0719 16:06:02.978281] >>>>>>>>>> Start handling test item GetQIDLog <<<<<<<<<<
+_0719 16:06:08.178333] got file in usb ok 
+_0719 16:06:08.188333]  access fail
+_0719 16:06:08.228332] pull qid file ok 
+_0719 16:06:08.238332] pull qid file ok 
+_0719 16:06:08.238332] Result: -, Measured: , Upper: -, Lower: -, ErrCode: , Msg: pull qid file ok 
+_0719 16:06:08.238332] access QidLog ok 
+_0719 16:06:08.248332] MCU
+_0719 16:06:08.248332] Result: QD300R22, Measured: , Upper: MCU, Lower: , ErrCode: , Msg: MCU
+_0719 16:06:08.248332] BSP
+_0719 16:06:08.258332] Result: QID300-v0.10.0.1, Measured: , Upper: BSP, Lower: , ErrCode: , Msg: BSP
+_0719 16:06:08.258332] GaugeID
+_0719 16:06:08.278333] Result: QIC3000, Measured: , Upper: GaugeID, Lower: , ErrCode: , Msg: GaugeID
+_0719 16:06:08.278333] Carry
+_0719 16:06:08.298333] Result: PASS,I, Measured: , Upper: Carry, Lower: , ErrCode: , Msg: Carry
+_0719 16:06:08.298333] EMMC
+_0719 16:06:08.318333] Result: PASS, Measured: 14.7 GB, Upper: EMMC, Lower: , ErrCode: , Msg: EMMC
+_0719 16:06:08.318333] SDCard
+_0719 16:06:08.348333] Result: PASS, Measured: 1.8 GB, Upper: SDCard, Lower: , ErrCode: , Msg: SDCard
+_0719 16:06:08.348333] USB2.0
+_0719 16:06:08.378334] Result: PASS, Measured: 3.7 GB, Upper: USB2.0, Lower: , ErrCode: , Msg: USB2.0
+_0719 16:06:08.378334] USB3.0
+_0719 16:06:08.418334] Result: PASS, Measured: 3.7 GB(3.0), Upper: USB3.0, Lower: , ErrCode: , Msg: USB3.0
+_0719 16:06:08.418334] mSATA
+_0719 16:06:08.458334] Result: PASS, Measured: 119.2 GB, Upper: mSATA, Lower: , ErrCode: , Msg: mSATA
+_0719 16:06:08.458334] USBHub
+_0719 16:06:08.458334] Result: PASS, Measured: , Upper: USBHub, Lower: , ErrCode: , Msg: USBHub
+_0719 16:06:08.458334] Ethernet
+_0719 16:06:08.498335] Result: PASS, Measured: Ping:10.82.78.254, Upper: Ethernet, Lower: , ErrCode: , Msg: Ethernet
+_0719 16:06:08.498335] Charging
+_0719 16:06:08.528336] Result: PASS, Measured: Capacity:19%,Current:-2.12A, Upper: Charging, Lower: , ErrCode: , Msg: Charging
+_0719 16:06:08.528336] OTG
+_0719 16:06:08.558336] Result: PASS, Measured: , Upper: OTG, Lower: , ErrCode: , Msg: OTG
+_0719 16:06:08.558336] Memory
+_0719 16:06:08.598336] Result: PASS, Measured: 1.82GB, Upper: Memory, Lower: , ErrCode: , Msg: Memory
+_0719 16:06:08.598336] Bluetooth
+_0719 16:06:08.598336] Result: PASS, Measured: , Upper: Bluetooth, Lower: , ErrCode: , Msg: Bluetooth
+_0719 16:06:08.598336] Headset
+_0719 16:06:08.598336] Result: PASS, Measured: , Upper: Headset, Lower: , ErrCode: , Msg: Headset
+_0719 16:06:08.598336] Speaker
+_0719 16:06:08.598336] Result: PASS, Measured: , Upper: Speaker, Lower: , ErrCode: , Msg: Speaker
+_0719 16:06:08.598336] Volume
+_0719 16:06:08.598336] Result: PASS, Measured: , Upper: Volume, Lower: , ErrCode: , Msg: Volume
+_0719 16:06:08.598336] HDMI
+_0719 16:06:08.608336] Result: PASS, Measured: , Upper: HDMI, Lower: , ErrCode: , Msg: HDMI
+_0719 16:06:08.608336] RGB
+_0719 16:06:08.608336] Result: PASS, Measured: , Upper: RGB, Lower: , ErrCode: , Msg: RGB
+_0719 16:06:08.608336] BackLight
+_0719 16:06:08.608336] Result: PASS, Measured: , Upper: BackLight, Lower: , ErrCode: , Msg: BackLight
+_0719 16:06:08.608336] Camera
+_0719 16:06:08.608336] Result: PASS, Measured: , Upper: Camera, Lower: , ErrCode: , Msg: Camera
+_0719 16:06:08.608336] LED
+_0719 16:06:08.608336] Result: PASS, Measured: , Upper: LED, Lower: , ErrCode: , Msg: LED
+_0719 16:06:08.608336] PowerKey
+_0719 16:06:08.608336] Result: PASS, Measured: , Upper: PowerKey, Lower: , ErrCode: , Msg: PowerKey
+_0719 16:06:08.608336] RTC
+_0719 16:06:08.618336] Result: PASS, Measured: , Upper: RTC, Lower: , ErrCode: , Msg: RTC
+_0719 16:06:08.618336] Fan
+_0719 16:06:08.618336] Result: PASS, Measured: EngineFan:6000 , SystemFan:6210 , SOM Fan:54, Upper: Fan, Lower: , ErrCode: , Msg: Fan
+_0719 16:06:08.618336] Temp
+_0719 16:06:08.628336] Result: PASS, Measured: Sys0:22°C,Sys1:43°C,thermal0:39°C,thermal1:40°C,thermal2:39°C,thermal3:42°C,thermal4:39°C,thermal5:39°C,thermal6:39°C,thermal7:39°C,thermal8:40°C,thermal9:39°C,thermal10:39°C, Upper: Temp, Lower: , ErrCode: , Msg: Temp
+_0719 16:06:08.628336] Touch
+_0719 16:06:08.638336] Result: PASS, Measured: , Upper: Touch, Lower: , ErrCode: , Msg: Touch
+_0719 16:06:08.638336] ** 24 Item pass, 0  Items fail **
+
+_0719 16:06:08.638336] Result: PASS, Measured: , Upper: Touch, Lower: , ErrCode: , Msg: ** 24 Item pass, 0  Items fail **
+
+_0719 16:06:08.638336] >>>>>>>>>> End handling test item GetQIDLog <<<<<<<<<<
+_0719 16:06:08.638336] >>>>>>>>>> Start handling test item WifiTest <<<<<<<<<<
+_0719 16:06:29.088541] start to  WLANconnectAP .. 
+_0719 16:07:59.119441] Fail to Exeute ADB  shell WLANconnectAP DIR-615 12345678 WPA2-AES
+_0719 16:07:59.119441] Result: FAIL, Measured: , Upper: -, Lower: -, ErrCode: WFNG, Msg: WIFI測試失敗
+_0719 16:07:59.119441] shell WLANconnectAP DIR-615 12345678 WPA2-AES  fail 
+_0719 16:07:59.199442] Adb Command PASS,  pull /cache/ftd_wlan_ip.txt  C:\LOG\APOLLO\QID300IN\20160719\N19892460704112803_ftd_wlan_ip.txt
+_0719 16:07:59.199442] pull /cache/ftd_wlan_ip.txt  ok 
+_0719 16:07:59.199442] >>>>>>>>>> End handling test item WifiTest <<<<<<<<<<
+_0719 16:07:59.229442] Find adb device and connected phone success
+_0719 16:08:00.099452] Execute: /C adb  logcat -v time -d > C:\LOG\APOLLO\QID300IN\20160719\Logcat\FAIL_logcat_APOLLO_QID300IN_N19892460704112803_20160719_160759.txt
+_0719 16:08:00.099452] Delete all test item objects success
+_0719 16:08:00.139451] Kill adb.exe thread success
+_0719 16:08:00.139451] Disconnect phone, delete phone object success
+_0719 16:08:00.139451] Clear all data success
+_0719 16:08:00.139451] ------------------------------------ End ----------------------------------------
+

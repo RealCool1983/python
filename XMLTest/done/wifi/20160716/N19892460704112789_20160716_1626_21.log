@@ -1,0 +1,24 @@
+_0716 16:26:21.739544] ------------------------------------ Begin ----------------------------------------
+_0716 16:26:21.739544] Parse phone parameters success
+_0716 16:26:21.739544] Create phone object success
+_0716 16:26:21.769544] Execute InitDate() of phone object success
+_0716 16:26:22.769544] Initial PC port success.
+_0716 16:26:22.769544] -------------------------------- Start Items Test-----------------------------------
+_0716 16:26:22.769544] Load cable loss value success
+_0716 16:26:22.769544] Parse each test item's parameters success
+_0716 16:26:22.769544] Generate all test item objects and set all parameters success
+_0716 16:26:22.769544] >>>>>>>>>> Start handling test item GetQIDLog <<<<<<<<<<
+_0716 16:26:58.869544] Result: FAIL, Measured: , Upper: -, Lower: -, ErrCode: , Msg: Fail to connect phone. (adb devices)
+_0716 16:26:58.869544] >>>>>>>>>> End handling test item GetQIDLog <<<<<<<<<<
+_0716 16:26:58.909544] Fail to find adb device of phone, Maybe it is starting up. Try again...
+_0716 16:26:59.929544] Fail to find adb device of phone, Maybe it is starting up. Try again...
+_0716 16:27:00.949544] Fail to find adb device of phone, Maybe it is starting up. Try again...
+_0716 16:27:01.969544] Fail to find adb device of phone, Maybe it is starting up. Try again...
+_0716 16:27:02.989544] Fail to find adb device of phone, Maybe it is starting up. Try again...
+_0716 16:27:03.989544] Fail to find ADB device of phone.
+_0716 16:27:03.989544] Delete all test item objects success
+_0716 16:27:04.009544] Kill adb.exe thread success
+_0716 16:27:04.009544] Disconnect phone, delete phone object success
+_0716 16:27:04.009544] Clear all data success
+_0716 16:27:04.009544] ------------------------------------ End ----------------------------------------
+

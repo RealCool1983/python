@@ -1,0 +1,450 @@
+<Configuration>
+	<ToolInfo>
+		<StationID>5</StationID>
+		<Tool_Version>V2.000</Tool_Version>
+		<Project>Detroit</Project>
+		<Variant>US</Variant>
+	</ToolInfo>
+	<Memo>
+		<Model>GDETB1A</Model>
+		<Station>MMI_BB</Station>
+	</Memo>
+	<TestProcessor>
+		<Name Editable="TRUE" Type="String">CCommonProcessor</Name>
+		<Phone>
+  			<ClassName>CPhone</ClassName>
+			<COMPort>0</COMPort>
+			<FtdPort>2000</FtdPort>
+			<FtdTimeOut>15000</FtdTimeOut>
+			<AutoFTDMode>FALSE</AutoFTDMode>
+			<SetFTDMode>FALSE</SetFTDMode>
+			<WaitTimeStartingUp>50000</WaitTimeStartingUp>
+			<RebootDelayTime>10000</RebootDelayTime>
+			<IsDiagCmd>1</IsDiagCmd>
+			<IsNeedQXDMLog>FALSE</IsNeedQXDMLog>
+			<SWVersion>0</SWVersion>
+			<Variant>UMTS</Variant>
+			<LogUpload>TRUE</LogUpload>
+	        <UploadServerIP>10.85.68.13</UploadServerIP>
+		</Phone>
+	</TestProcessor>
+	<TestItemList>
+	<Item Enabled="TRUE" Name="CheckSWVersion" />
+		<Item Enabled="TRUE" Name="UsbDetectStart" />
+		<Item Enabled="TRUE" Name="BatteryDetectEmpty" />
+		
+		<Item Enabled="TRUE" Name="ReadTouchModel" />
+		<Item Enabled="TRUE" Name="ReadTouchID" />
+		
+		<Item Enabled="TRUE" Name="ReadFrontCameraID" />
+		<Item Enabled="TRUE" Name="ReadRearCameraID" />
+	
+
+		<Item Enabled="FALSE" Name="SpeakerOnTest" />
+		<Item Enabled="TRUE" Name="ReceiverOnTest" />
+		<Item Enabled="TRUE" Name="HeadsetDetectTest" />
+        <Item Enabled="TRUE" Name="HeadsetOnTest" />
+		<Item Enabled="TRUE" Name="FmTest" />
+
+        <Item Enabled="TRUE" Name="Loop_FrontMicToSpeakOn" />
+
+		<Item Enabled="TRUE" Name="Loop_HeadmicToHeadsetOn" />
+		<Item Enabled="TRUE" Name="Loop_FrontMicToHeadsetOn" />
+		<Item Enabled="TRUE" Name="Loop_BackMicToHeadsetOn" />
+
+		<Item Enabled="TRUE" Name="HeadsetKeyTest" />
+		<Item Enabled="TRUE" Name="VibratorTest" />
+
+		<Item Enabled="TRUE" Name="RedLEDTest" />
+		<Item Enabled="TRUE" Name="GreenLEDTest" />
+
+	
+		<Item Enabled="TRUE" Name="WhitePatternTest" />
+		<Item Enabled="TRUE" Name="BackLightTest" />
+
+		<Item Enabled="TRUE" Name="CameraLedTest" />
+		<Item Enabled="TRUE" Name="UsbDetectEnd" />
+		<Item Enabled="TRUE" Name="SideKeyTest" />
+
+		
+		<Item Enabled="FALSE" Name="ReadBatteryVoltage" />
+		<Item Enabled="FALSE" Name="ReadBatteryCurrent" />
+		
+	<Item Enabled="FALSE" Name="RedPatternTest" />
+		<Item Enabled="FALSE" Name="GreenPatternTest" />
+		<Item Enabled="FALSE" Name="BluePatternTest" />
+		
+        <Item Enabled="FALSE" Name="SimCardDetect" />
+		<Item Enabled="FALSE" Name="SDCardDetect" />		
+		<Item Enabled="FALSE" Name="BlueLEDTest" />
+		<Item Enabled="FALSE" Name="CapKeyLEDTest" />		
+		
+		<Item Enabled="FALSE" Name="ReadAntennaIC" />		
+		<Item Enabled="FALSE" Name="Loop_BackMicToReceiverOn" />
+
+	</TestItemList>
+	<ProcessObjectSet>
+		<CheckSWVersionObjects>
+			<ProcessObject ClassName="CCheckSWVersion" Name="CheckSWVersion">
+				<WaitTime Editable="TRUE" Type="Integer">0</WaitTime>
+                
+                <VersionType Editable="TRUE" Type="string">Factory</VersionType>
+            </ProcessObject>
+        </CheckSWVersionObjects>
+		<CFtdObjects>
+			<ProcessObject ClassName="CSapporoFtdTest" Name="UsbDetectStart">
+				<Name Editable="TRUE" Type="string">runUsbDetectStart</Name>
+			</ProcessObject>
+		</CFtdObjects>
+		<ReadTouchIDObjects>
+			<ProcessObject ClassName="CIDTestProc" Name="ReadTouchID">
+				<IDType Editable="TRUE" Type="string">Touch</IDType>
+				<ID Editable="TRUE" Type="Integer">1</ID>
+			</ProcessObject>
+		</ReadTouchIDObjects>
+
+		<ReadTouchModelObjects>
+			<ProcessObject ClassName="CCheckTouch" Name="ReadTouchModel">
+				<IDType Editable="TRUE" Type="string">TouchModelLimitLength</IDType>
+				
+				<ID Editable="TRUE" Type="Integer">T47TCAIB01,1421304;T47TCAIB02,1421304</ID>
+				
+			</ProcessObject>
+		</ReadTouchModelObjects>
+		<ReadFrontCameraIDObjects>
+			<ProcessObject ClassName="CIDTestProc" Name="ReadFrontCameraID">
+				<IDType Editable="TRUE" Type="string">FrontCamera</IDType>
+				<ID Editable="TRUE" Type="Integer">9861</ID>
+			</ProcessObject>
+		</ReadFrontCameraIDObjects>
+		<ReadFrontCameraIDObjects>
+			<ProcessObject ClassName="CIDTestProc" Name="ReadAntennaIC">
+				<IDType Editable="TRUE" Type="string">AntennaICID</IDType>
+				<ID Editable="TRUE" Type="Integer">2</ID>
+			</ProcessObject>
+		</ReadFrontCameraIDObjects>
+		<ReadRearCameraIDObjects>
+			<ProcessObject ClassName="CIDTestProc" Name="ReadRearCameraID">
+				<IDType Editable="TRUE" Type="string">BostonRearCamera</IDType>
+				<ID Editable="TRUE" Type="Integer">34917,17</ID>
+			</ProcessObject>
+		</ReadRearCameraIDObjects>
+		<CardDetectObjects>
+			<ProcessObject ClassName="CardDetectProc" Name="SimCardDetect">
+				<Name Editable="TRUE" Type="string">SIMCardDetect</Name>
+				<Value Editable="TRUE" Type="DoubleList">0</Value>
+				<CheckMatch Editable="TRUE" Type="Boolean">FALSE</CheckMatch>
+			</ProcessObject>
+		</CardDetectObjects>
+		<CardDetectObjects>
+			<ProcessObject ClassName="CardDetectProc" Name="SDCardDetect">
+				<Name Editable="TRUE" Type="string">SDCardDetect</Name>
+				<Value Editable="TRUE" Type="DoubleList">0</Value>
+				<CheckMatch Editable="TRUE" Type="Boolean">FALSE</CheckMatch>
+			</ProcessObject>
+		</CardDetectObjects>
+
+		<MMIBBLoopTestObjects>
+			<ProcessObject ClassName="CMMIBB_RGBVibratorRetryTest" Name="CameraLedTest">
+				<XMLTestItem Editable="TRUE" Type="string">CameraLedTest</XMLTestItem>
+				<XMLCMDItem Editable="TRUE" Type="string">1</XMLCMDItem>
+				<XMLOffCMDItem Editable="TRUE" Type="string">0</XMLOffCMDItem>
+				<XMLOnSleepTime Editable="TRUE" Type="Integer">500</XMLOnSleepTime>
+				<XMLOffSleepTime Editable="TRUE" Type="Integer">500</XMLOffSleepTime>
+				<XMLRetryTime Editable="TRUE" Type="Integer">1</XMLRetryTime>
+			</ProcessObject>
+		</MMIBBLoopTestObjects>
+
+		<MMIBBLoopTestObjects>
+			<ProcessObject ClassName="CMMIBB_RGBVibratorRetryTest" Name="RedLEDTest">
+				<XMLTestItem Editable="TRUE" Type="string">RedLEDTest</XMLTestItem>
+				<XMLCMDItem Editable="TRUE" Type="string">255,0,0,0</XMLCMDItem>
+				<XMLOffCMDItem Editable="TRUE" Type="string">0,0,0,0</XMLOffCMDItem>
+				<XMLOnSleepTime Editable="TRUE" Type="Integer">500</XMLOnSleepTime>
+				<XMLOffSleepTime Editable="TRUE" Type="Integer">500</XMLOffSleepTime>
+				<XMLRetryTime Editable="TRUE" Type="Integer">1</XMLRetryTime>
+			</ProcessObject>
+		</MMIBBLoopTestObjects>
+		<MMIBBLoopTestObjects>
+			<ProcessObject ClassName="CMMIBB_RGBVibratorRetryTest" Name="GreenLEDTest">
+				<XMLTestItem Editable="TRUE" Type="string">GreenLEDTest</XMLTestItem>
+				<XMLCMDItem Editable="TRUE" Type="string">0,255,0,0</XMLCMDItem>
+				<XMLOffCMDItem Editable="TRUE" Type="string">0,0,0,0</XMLOffCMDItem>
+				<XMLOnSleepTime Editable="TRUE" Type="Integer">500</XMLOnSleepTime>
+				<XMLOffSleepTime Editable="TRUE" Type="Integer">500</XMLOffSleepTime>
+				<XMLRetryTime Editable="TRUE" Type="Integer">1</XMLRetryTime>
+			</ProcessObject>
+		</MMIBBLoopTestObjects>
+		<MMIBBLoopTestObjects>
+			<ProcessObject ClassName="CMMIBB_RGBVibratorRetryTest" Name="BlueLEDTest">
+				<XMLTestItem Editable="TRUE" Type="string">BlueLEDTest</XMLTestItem>
+				<XMLCMDItem Editable="TRUE" Type="string">0,0,255,0</XMLCMDItem>
+				<XMLOffCMDItem Editable="TRUE" Type="string">0,0,0,0</XMLOffCMDItem>
+				<XMLOnSleepTime Editable="TRUE" Type="Integer">500</XMLOnSleepTime>
+				<XMLOffSleepTime Editable="TRUE" Type="Integer">500</XMLOffSleepTime>
+				<XMLRetryTime Editable="TRUE" Type="Integer">1</XMLRetryTime>
+			</ProcessObject>
+		</MMIBBLoopTestObjects>
+		<MMIBBLoopTestObjects>
+			<ProcessObject ClassName="CMMIBB_RGBVibratorRetryTest" Name="CapKeyLEDTest">
+				<XMLTestItem Editable="TRUE" Type="string">CapKeyLEDTest</XMLTestItem>
+				<XMLCMDItem Editable="TRUE" Type="string">0,0,0,20</XMLCMDItem>
+				<XMLOffCMDItem Editable="TRUE" Type="string">0,0,0,0</XMLOffCMDItem>
+				<XMLOnSleepTime Editable="TRUE" Type="Integer">500</XMLOnSleepTime>
+				<XMLOffSleepTime Editable="TRUE" Type="Integer">500</XMLOffSleepTime>
+				<XMLRetryTime Editable="TRUE" Type="Integer">1</XMLRetryTime>
+			</ProcessObject>
+		</MMIBBLoopTestObjects>
+		<MMIBBLoopTestObjects>
+			<ProcessObject ClassName="CMMIBB_RGBVibratorRetryTest" Name="RedPatternTest">
+				<XMLTestItem Editable="TRUE" Type="string">RedPatternTest</XMLTestItem>
+				<XMLCMDItem Editable="TRUE" Type="string">r</XMLCMDItem>
+				<XMLOffCMDItem Editable="TRUE" Type="string">0,0,0,0</XMLOffCMDItem>
+				<XMLOnSleepTime Editable="TRUE" Type="Integer">500</XMLOnSleepTime>
+				<XMLOffSleepTime Editable="TRUE" Type="Integer">500</XMLOffSleepTime>
+				<XMLRetryTime Editable="TRUE" Type="Integer">1</XMLRetryTime>
+			</ProcessObject>
+		</MMIBBLoopTestObjects>
+		<MMIBBLoopTestObjects>
+			<ProcessObject ClassName="CMMIBB_RGBVibratorRetryTest" Name="GreenPatternTest">
+				<XMLTestItem Editable="TRUE" Type="string">GreenPatternTest</XMLTestItem>
+				<XMLCMDItem Editable="TRUE" Type="string">g</XMLCMDItem>
+				<XMLOffCMDItem Editable="TRUE" Type="string">0,0,0,0</XMLOffCMDItem>
+				<XMLOnSleepTime Editable="TRUE" Type="Integer">500</XMLOnSleepTime>
+				<XMLOffSleepTime Editable="TRUE" Type="Integer">500</XMLOffSleepTime>
+				<XMLRetryTime Editable="TRUE" Type="Integer">1</XMLRetryTime>
+			</ProcessObject>
+		</MMIBBLoopTestObjects>
+		<MMIBBLoopTestObjects>
+			<ProcessObject ClassName="CMMIBB_RGBVibratorRetryTest" Name="BluePatternTest">
+				<XMLTestItem Editable="TRUE" Type="string">BluePatternTest</XMLTestItem>
+				<XMLCMDItem Editable="TRUE" Type="string">b</XMLCMDItem>
+				<XMLOffCMDItem Editable="TRUE" Type="string">0,0,0,0</XMLOffCMDItem>
+				<XMLOnSleepTime Editable="TRUE" Type="Integer">500</XMLOnSleepTime>
+				<XMLOffSleepTime Editable="TRUE" Type="Integer">500</XMLOffSleepTime>
+				<XMLRetryTime Editable="TRUE" Type="Integer">1</XMLRetryTime>
+			</ProcessObject>
+		</MMIBBLoopTestObjects>
+		<MMIBBLoopTestObjects>
+			<ProcessObject ClassName="CMMIBB_RGBVibratorRetryTest" Name="WhitePatternTest">
+				<XMLTestItem Editable="TRUE" Type="string">WhitePatternTest</XMLTestItem>
+				<XMLCMDItem Editable="TRUE" Type="string">w</XMLCMDItem>
+				<XMLOffCMDItem Editable="TRUE" Type="string">0,0,0,0</XMLOffCMDItem>
+				<XMLOnSleepTime Editable="TRUE" Type="Integer">500</XMLOnSleepTime>
+				<XMLOffSleepTime Editable="TRUE" Type="Integer">500</XMLOffSleepTime>
+				<XMLRetryTime Editable="TRUE" Type="Integer">1</XMLRetryTime>
+			</ProcessObject>
+		</MMIBBLoopTestObjects>
+
+		<MMIBBLoopTestObjects>
+			<ProcessObject ClassName="CMMIBB_RGBVibratorRetryTest" Name="VibratorTest">
+				<XMLTestItem Editable="TRUE" Type="string">VibratorTest</XMLTestItem>
+				<XMLCMDItem Editable="TRUE" Type="string">1</XMLCMDItem>
+				<XMLOffCMDItem Editable="TRUE" Type="string">0</XMLOffCMDItem>
+				<XMLOnSleepTime Editable="TRUE" Type="Integer">200</XMLOnSleepTime>
+				<XMLOffSleepTime Editable="TRUE" Type="Integer">200</XMLOffSleepTime>
+				<XMLRetryTime Editable="TRUE" Type="Integer">1</XMLRetryTime>
+			</ProcessObject>
+		</MMIBBLoopTestObjects>
+
+		<MMIBBLoopTestObjects>
+			<ProcessObject ClassName="CMMIBB_RGBVibratorRetryTest" Name="BackLightTest">
+				<XMLTestItem Editable="TRUE" Type="string">BackLightTest</XMLTestItem>
+				<XMLCMDItem Editable="TRUE" Type="string">255</XMLCMDItem>
+				<XMLOffCMDItem Editable="TRUE" Type="string">100</XMLOffCMDItem>
+				<XMLOnSleepTime Editable="TRUE" Type="Integer">500</XMLOnSleepTime>
+				<XMLOffSleepTime Editable="TRUE" Type="Integer">500</XMLOffSleepTime>
+				<XMLRetryTime Editable="TRUE" Type="Integer">1</XMLRetryTime>
+			</ProcessObject>
+		</MMIBBLoopTestObjects>
+
+		<MMIBBLoopTestObjects>
+			<ProcessObject ClassName="CMMIBB_KeyButtonRetryTest" Name="SideKeyTest">
+			<XMLTestItem Editable="TRUE" Type="string">SideKeyTest</XMLTestItem>
+			<XMLTimeOut Editable="TRUE" Type="Integer">10</XMLTimeOut>
+			<XMLRetryTime Editable="TRUE" Type="Integer">1</XMLRetryTime>
+			</ProcessObject>
+		</MMIBBLoopTestObjects>
+		<MMIBBLoopTestObjects>
+			<ProcessObject ClassName="CMMIBB_KeyButtonRetryTest" Name="HeadsetKeyTest">
+			<XMLTestItem Editable="TRUE" Type="string">HeadsetKeyTest</XMLTestItem>
+			<XMLTimeOut Editable="TRUE" Type="Integer">10</XMLTimeOut>
+			<XMLRetryTime Editable="TRUE" Type="Integer">1</XMLRetryTime>
+			</ProcessObject>
+		</MMIBBLoopTestObjects>
+		<MMIBBLoopTestObjects>
+			<ProcessObject ClassName="CMMIBB_AudioRetryTest" Name="HeadsetDetectTest">
+				<AudtioTestItem Editable="TRUE" Type="string">HeadsetDetectTest</AudtioTestItem>
+				<AudtioCMDItem Editable="TRUE" Type="string">3</AudtioCMDItem>
+				<AudtioOffCMDItem Editable="TRUE" Type="string">3</AudtioOffCMDItem>
+				<Path Editable="TRUE" Type="string">SPK.wav /cache/SPK.wav</Path>
+				<OnSleepTime Editable="TRUE" Type="Integer">0</OnSleepTime>
+				<OffSleepTime Editable="TRUE" Type="Integer">0</OffSleepTime>
+				<RetryTime Editable="TRUE" Type="Integer">1</RetryTime>
+			</ProcessObject>
+		</MMIBBLoopTestObjects>
+
+		<MMIBBLoopTestObjects>
+			<ProcessObject ClassName="CMMIBB_AudioRetryTest" Name="FmTest">
+				<AudtioTestItem Editable="TRUE" Type="string">FmTest</AudtioTestItem>
+				<AudtioCMDItem Editable="TRUE" Type="string">1,87900,0,68,68</AudtioCMDItem>
+				<AudtioOffCMDItem Editable="TRUE" Type="string">0,87900,0,80,80</AudtioOffCMDItem>
+				<Path Editable="TRUE" Type="string">SPK.wav /cache/SPK.wav</Path>
+				<OnSleepTime Editable="TRUE" Type="Integer">2000</OnSleepTime>
+				<OffSleepTime Editable="TRUE" Type="Integer">2000</OffSleepTime>
+				<RetryTime Editable="TRUE" Type="Integer">1</RetryTime>
+			</ProcessObject>
+		</MMIBBLoopTestObjects>
+		<SpeakerOnTestObjects>
+			<ProcessObject ClassName="CMMIBB_AudioRetryTest" Name="SpeakerOnTest">
+				<AudtioTestItem Editable="TRUE" Type="string">SpeakerOnTest</AudtioTestItem>
+				<AudtioCMDItem Editable="TRUE" Type="string">on,speaker,65,65,/cache/SPK.wav</AudtioCMDItem>
+				<AudtioOffCMDItem Editable="TRUE" Type="string">off,speaker,80,80,/cache/SPK.wav</AudtioOffCMDItem>
+				<Path Editable="TRUE" Type="string">SPK.wav /cache/SPK.wav</Path>
+				<OnSleepTime Editable="TRUE" Type="Integer">2000</OnSleepTime>
+				<OffSleepTime Editable="TRUE" Type="Integer">2000</OffSleepTime>
+				<RetryTime Editable="TRUE" Type="Integer">1</RetryTime>
+			</ProcessObject>
+		</SpeakerOnTestObjects>
+		<HeadsetOnTestObjects>
+			<ProcessObject ClassName="CMMIBB_AudioRetryTest" Name="HeadsetOnTest">
+				<AudtioTestItem Editable="TRUE" Type="string">HeadsetOnTest</AudtioTestItem>
+				<AudtioCMDItem Editable="TRUE" Type="string">on,headset_stereo,60,60,/cache/HP.wav</AudtioCMDItem>
+				<AudtioOffCMDItem Editable="TRUE" Type="string">off,headset_stereo,60,60,/cache/HP.wav</AudtioOffCMDItem>
+				<Path Editable="TRUE" Type="string">HP.wav /cache/HP.wav</Path>
+				<OnSleepTime Editable="TRUE" Type="Integer">2000</OnSleepTime>
+				<OffSleepTime Editable="TRUE" Type="Integer">2000</OffSleepTime>
+				<RetryTime Editable="TRUE" Type="Integer">1</RetryTime>
+			</ProcessObject>
+		</HeadsetOnTestObjects>
+		<ReceiverOnTestObjects>
+			<ProcessObject ClassName="CMMIBB_AudioRetryTest" Name="ReceiverOnTest">
+				<AudtioTestItem Editable="TRUE" Type="string">ReceiverOnTest</AudtioTestItem>
+				<AudtioCMDItem Editable="TRUE" Type="string">on,receiver,80,80,/cache/Receiver.wav</AudtioCMDItem>
+				<AudtioOffCMDItem Editable="TRUE" Type="string">off,receiver,80,80,/cache/Receiver.wav</AudtioOffCMDItem>
+				<Path Editable="TRUE" Type="string">Receiver.wav /cache/Receiver.wav</Path>
+				<OnSleepTime Editable="TRUE" Type="Integer">2000</OnSleepTime>
+				<OffSleepTime Editable="TRUE" Type="Integer">2000</OffSleepTime>
+				<RetryTime Editable="TRUE" Type="Integer">1</RetryTime>
+			</ProcessObject>
+		</ReceiverOnTestObjects>
+
+		<Loop_FrontMicToSpeakOnObjects>
+			<ProcessObject ClassName="CMMIBB_AudioLoopRetryTest" Name="Loop_FrontMicToSpeakOn">
+				<AudtioTestItem Editable="TRUE" Type="string">Loop_FrontMicToSpeakOn</AudtioTestItem>
+				<AudtioCMDItem Editable="TRUE" Type="string">on,front,50,68,speaker,50,68</AudtioCMDItem>
+				<AudtioOffCMDItem Editable="TRUE" Type="string">off,front,50,68,speaker,50,68</AudtioOffCMDItem>
+				<Path Editable="TRUE" Type="string">Receiver.wav /cache/Receiver.wav</Path>
+				<OnSleepTime Editable="TRUE" Type="Integer">2000</OnSleepTime>
+				<OffSleepTime Editable="TRUE" Type="Integer">2000</OffSleepTime>
+				<RetryTime Editable="TRUE" Type="Integer">1</RetryTime>
+			</ProcessObject>
+		</Loop_FrontMicToSpeakOnObjects>
+
+		<Loop_FrontMicToSpeakOnObjects>
+			<ProcessObject ClassName="CMMIBB_AudioLoopRetryTest" Name="Loop_BackMicToReceiverOn">
+				<AudtioTestItem Editable="TRUE" Type="string">Loop_BackMicToReceiverOn</AudtioTestItem>
+				<AudtioCMDItem Editable="TRUE" Type="string">on,back,90,68,receiver,0,68</AudtioCMDItem>
+				<AudtioOffCMDItem Editable="TRUE" Type="string">off,back,90,68,receiver,0,68</AudtioOffCMDItem>
+				<Path Editable="TRUE" Type="string">Receiver.wav /cache/Receiver.wav</Path>
+				<OnSleepTime Editable="TRUE" Type="Integer">2000</OnSleepTime>
+				<OffSleepTime Editable="TRUE" Type="Integer">2000</OffSleepTime>
+				<RetryTime Editable="TRUE" Type="Integer">1</RetryTime>
+			</ProcessObject>
+		</Loop_FrontMicToSpeakOnObjects>
+		<Loop_FrontMicToSpeakOnObjects>
+			<ProcessObject ClassName="CMMIBB_AudioLoopRetryTest" Name="Loop_HeadmicToHeadsetOn">
+				<AudtioTestItem Editable="TRUE" Type="string">Loop_HeadmicToHeadsetOn</AudtioTestItem>
+				<AudtioCMDItem Editable="TRUE" Type="string">on,headmic,70,68,headset_stereo,65,68</AudtioCMDItem>
+				<AudtioOffCMDItem Editable="TRUE" Type="string">off,headmic,70,68,headset_stereo,65,68</AudtioOffCMDItem>
+				<Path Editable="TRUE" Type="string">Receiver.wav /cache/Receiver.wav</Path>
+				<OnSleepTime Editable="TRUE" Type="Integer">2000</OnSleepTime>
+				<OffSleepTime Editable="TRUE" Type="Integer">2000</OffSleepTime>
+				<RetryTime Editable="TRUE" Type="Integer">1</RetryTime>
+			</ProcessObject>
+		</Loop_FrontMicToSpeakOnObjects>
+		<Loop_FrontMicToSpeakOnObjects>
+			<ProcessObject ClassName="CMMIBB_AudioLoopRetryTest" Name="Loop_FrontMicToHeadsetOn">
+				<AudtioTestItem Editable="TRUE" Type="string">Loop_FrontMicToHeadsetOn</AudtioTestItem>
+				<AudtioCMDItem Editable="TRUE" Type="string">on,front,70,68,headset_stereo,65,68</AudtioCMDItem>
+				<AudtioOffCMDItem Editable="TRUE" Type="string">off,front,50,68,headset_stereo,65,68</AudtioOffCMDItem>
+				<Path Editable="TRUE" Type="string">Receiver.wav /cache/Receiver.wav</Path>
+				<OnSleepTime Editable="TRUE" Type="Integer">2000</OnSleepTime>
+				<OffSleepTime Editable="TRUE" Type="Integer">2000</OffSleepTime>
+				<RetryTime Editable="TRUE" Type="Integer">1</RetryTime>
+			</ProcessObject>
+		</Loop_FrontMicToSpeakOnObjects>
+		<Loop_FrontMicToSpeakOnObjects>
+			<ProcessObject ClassName="CMMIBB_AudioLoopRetryTest" Name="Loop_BackMicToHeadsetOn">
+				<AudtioTestItem Editable="TRUE" Type="string">Loop_BackMicToHeadsetOn</AudtioTestItem>
+				<AudtioCMDItem Editable="TRUE" Type="string">on,back,70,68,headset_stereo,65,68</AudtioCMDItem>
+				<AudtioOffCMDItem Editable="TRUE" Type="string">off,back,90,68,headset_stereo,70,68</AudtioOffCMDItem>
+				<Path Editable="TRUE" Type="string">Receiver.wav /cache/Receiver.wav</Path>
+				<OnSleepTime Editable="TRUE" Type="Integer">2000</OnSleepTime>
+				<OffSleepTime Editable="TRUE" Type="Integer">2000</OffSleepTime>
+				<RetryTime Editable="TRUE" Type="Integer">1</RetryTime>
+			</ProcessObject>
+		</Loop_FrontMicToSpeakOnObjects>
+
+
+		<CCameraFrontTestObjects>
+			<ProcessObject ClassName="CCameraTest" Name="CCameraFrontTest">
+			<CameraType Editable="TRUE" Type="string">front</CameraType>
+			</ProcessObject>
+		</CCameraFrontTestObjects>
+		<CCameraBackTestObjects>
+			<ProcessObject ClassName="CCameraTest" Name="CCameraBackTest">
+			<CameraType Editable="TRUE" Type="string">back</CameraType>
+			</ProcessObject>
+		</CCameraBackTestObjects>
+		<CCameraEndTestObjects>
+			<ProcessObject ClassName="CCameraEnd" Name="CCameraEndTest">
+			</ProcessObject>
+		</CCameraEndTestObjects>
+		<ReadLSensorIDObjects>
+			<ProcessObject ClassName="CIDTestProc" Name="ReadLSensorID">
+				<IDType Editable="TRUE" Type="string">LSensor</IDType>
+				<ID Editable="TRUE" Type="Integer">TMD2771-41</ID>
+			</ProcessObject>
+		</ReadLSensorIDObjects>
+		<ReadPSensorIDObjects>
+			<ProcessObject ClassName="CIDTestProc" Name="ReadPSensorID">
+				<IDType Editable="TRUE" Type="string">PSensor</IDType>
+				<ID Editable="TRUE" Type="Integer">TMD2771-41</ID>
+			</ProcessObject>
+		</ReadPSensorIDObjects>
+
+		<CBatteryCapacityObjects>
+			<ProcessObject ClassName="CBatteryCapacity" Name="BatteryDetectEmpty">
+				<Name Editable="TRUE" Type="string">BatteryDetectEmpty</Name>
+				<BatteryLimit Editable="TRUE" Type="string">25</BatteryLimit>
+			</ProcessObject>
+		</CBatteryCapacityObjects>
+
+		<CFQCObjects>
+			<ProcessObject ClassName="CFQC" Name="ReadBatteryVoltage">
+				<XMLTestItem Editable="TRUE" Type="string">ReadBatteryVoltage</XMLTestItem>
+				<XMLCMDItem Editable="TRUE" Type="string">0</XMLCMDItem>
+				<XMLOffCMDItem Editable="TRUE" Type="string">0</XMLOffCMDItem>
+				<XMLSleepTime Editable="TRUE" Type="Integer">0</XMLSleepTime>	
+				<XMLRetryTime Editable="TRUE" Type="Integer">0</XMLRetryTime> 
+			</ProcessObject>
+		</CFQCObjects>		
+		<CFQCObjects>
+			<ProcessObject ClassName="CFQC" Name="ReadBatteryCurrent">
+				<XMLTestItem Editable="TRUE" Type="string">ReadBatteryCurrent</XMLTestItem>
+				<XMLCMDItem Editable="TRUE" Type="string">0</XMLCMDItem>
+				<XMLOffCMDItem Editable="TRUE" Type="string">0</XMLOffCMDItem>
+				<XMLSleepTime Editable="TRUE" Type="Integer">0</XMLSleepTime>	
+				<XMLRetryTime Editable="TRUE" Type="Integer">0</XMLRetryTime> 
+			</ProcessObject>
+		</CFQCObjects>		
+		
+		<CFtdObjects>
+			<ProcessObject ClassName="CSapporoFtdTest" Name="UsbDetectEnd">
+				<Name Editable="TRUE" Type="string">runUsbDetectEnd</Name>
+			</ProcessObject>
+		</CFtdObjects>
+	</ProcessObjectSet>
+
+</Configuration>

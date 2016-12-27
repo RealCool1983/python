@@ -1,0 +1,21 @@
+_0719 16:04:02.097069] ------------------------------------ Begin ----------------------------------------
+_0719 16:04:02.107069] Parse phone parameters success
+_0719 16:04:02.107069] Create phone object success
+_0719 16:04:02.137068] Execute InitDate() of phone object success
+_0719 16:04:03.137079] Initial PC port success.
+_0719 16:04:03.137079] -------------------------------- Start Items Test-----------------------------------
+_0719 16:04:03.137079] Load cable loss value success
+_0719 16:04:03.137079] Parse each test item's parameters success
+_0719 16:04:03.137079] Generate all test item objects and set all parameters success
+_0719 16:04:03.137079] >>>>>>>>>> Start handling test item GetQIDLog <<<<<<<<<<
+_0719 16:04:08.437131] can't find any file in usb 
+_0719 16:04:08.457132] Result: fail, Measured: , Upper: -, Lower: -, ErrCode: , Msg: can't find any file in usb 
+_0719 16:04:08.457132] >>>>>>>>>> End handling test item GetQIDLog <<<<<<<<<<
+_0719 16:04:08.487133] Find adb device and connected phone success
+_0719 16:04:09.457142] Execute: /C adb  logcat -v time -d > C:\LOG\APOLLO\QID300IN\20160719\Logcat\FAIL_logcat_APOLLO_QID300IN_ N19892460704112803_20160719_160408.txt
+_0719 16:04:09.457142] Delete all test item objects success
+_0719 16:04:09.487143] Kill adb.exe thread success
+_0719 16:04:09.487143] Disconnect phone, delete phone object success
+_0719 16:04:09.487143] Clear all data success
+_0719 16:04:09.487143] ------------------------------------ End ----------------------------------------
+

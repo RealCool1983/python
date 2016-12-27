@@ -1,0 +1,12 @@
+_0718 09:22:54.494875] ------------------------------------ Begin ----------------------------------------
+_0718 09:22:54.494875] Parse phone parameters success
+_0718 09:22:54.494875] Create phone object success
+_0718 09:22:54.504884] Execute InitDate() of phone object success
+_0718 09:22:55.505714] Initial PC port success.
+_0718 09:22:55.505714] -------------------------------- Start Items Test-----------------------------------
+_0718 09:22:55.505714] Load cable loss value success
+_0718 09:22:55.505714] Parse each test item's parameters success
+_0718 09:22:55.505714] Generate all test item objects and set all parameters success
+_0718 09:22:55.505714] >>>>>>>>>> Start handling test item GetQIDLog <<<<<<<<<<
+_0718 09:22:56.736735] can't find any file in usb 
+_0718 09:22:56.756752] Result: fail, Measured: , Upper: -, Lower: -, ErrCode: , Msg: can't find any file in usb 

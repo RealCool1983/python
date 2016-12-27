@@ -1,0 +1,16 @@
+_0718 09:15:55.528502] ------------------------------------ Begin ----------------------------------------
+_0718 09:15:55.528502] Parse phone parameters success
+_0718 09:15:55.528502] Create phone object success
+_0718 09:15:55.588640] Execute InitDate() of phone object success
+_0718 09:15:56.590950] Initial PC port success.
+_0718 09:15:56.610997] -------------------------------- Start Items Test-----------------------------------
+_0718 09:15:56.610997] Load cable loss value success
+_0718 09:15:56.610997] Parse each test item's parameters success
+_0718 09:15:56.610997] Generate all test item objects and set all parameters success
+_0718 09:15:56.651089] >>>>>>>>>> Start handling test item GetQIDLog <<<<<<<<<<
+_0718 09:16:02.093632] got file in usb ok 
+_0718 09:16:02.093632] Access QidOldLog ok 
+_0718 09:16:02.093632]  remove old Qid Log ok
+_0718 09:16:02.153771] pull qid file ok 
+_0718 09:16:02.153771] pull qid file ok 
+_0718 09:16:02.153771] Result: -, Measured: , Upper: -, Lower: -, ErrCode: , Msg: pull qid file ok 

@@ -1,0 +1,42 @@
+file path: C:\Python34\FileTest\VPro20160623131244B
+file size is : 1726
+number of line : 13
+Number of PrintK: 13
+ratio of Prink:     1.00
+Number of line_ScanProcessController: 0
+ratio of ScanProcessController:0.00
+Number of line_ParametersController: 0
+ratio of ParametersController:0.00
+==================================                
+file path: C:\Python34\FileTest\VPro20160623114153A
+file size is : 1180028
+Could not convert data to an integer.
+line =  2218
+number of line : 2218
+Number of PrintK: 1018
+ratio of Prink:     0.46
+Number of line_ScanProcessController: 0
+ratio of ScanProcessController:0.00
+Number of line_ParametersController: 41
+ratio of ParametersController:0.02
+==================================                
+file path: C:\Python34\FileTest\VPro20160623114153B
+file size is : 333498
+number of line : 2267
+Number of PrintK: 36
+ratio of Prink:     0.02
+Number of line_ScanProcessController: 0
+ratio of ScanProcessController:0.00
+Number of line_ParametersController: 0
+ratio of ParametersController:0.00
+==================================                
+file path: C:\Python34\FileTest\VPro20160623131244A
+file size is : 8221
+number of line : 63
+Number of PrintK: 62
+ratio of Prink:     0.98
+Number of line_ScanProcessController: 0
+ratio of ScanProcessController:0.00
+Number of line_ParametersController: 0
+ratio of ParametersController:0.00
+==================================                

@@ -1,0 +1,100 @@
+_0719 16:14:35.957412] ------------------------------------ Begin ----------------------------------------
+_0719 16:14:35.967411] Parse phone parameters success
+_0719 16:14:35.967411] Create phone object success
+_0719 16:14:35.997411] Execute InitDate() of phone object success
+_0719 16:14:36.997421] Initial PC port success.
+_0719 16:14:36.997421] -------------------------------- Start Items Test-----------------------------------
+_0719 16:14:36.997421] Load cable loss value success
+_0719 16:14:36.997421] Parse each test item's parameters success
+_0719 16:14:36.997421] Generate all test item objects and set all parameters success
+_0719 16:14:36.997421] >>>>>>>>>> Start handling test item GetQIDLog <<<<<<<<<<
+_0719 16:14:42.517477] got file in usb ok 
+_0719 16:14:42.517477] Access QidOldLog ok 
+_0719 16:14:42.527477]  remove old Qid Log ok
+_0719 16:14:42.567477] pull qid file ok 
+_0719 16:14:42.567477] pull qid file ok 
+_0719 16:14:42.567477] Result: -, Measured: , Upper: -, Lower: -, ErrCode: , Msg: pull qid file ok 
+_0719 16:14:42.567477] access QidLog ok 
+_0719 16:14:42.587477] MCU
+_0719 16:14:42.587477] Result: QD300R22, Measured: , Upper: MCU, Lower: , ErrCode: , Msg: MCU
+_0719 16:14:42.587477] BSP
+_0719 16:14:42.597477] Result: QID300-v0.10.0.1, Measured: , Upper: BSP, Lower: , ErrCode: , Msg: BSP
+_0719 16:14:42.597477] GaugeID
+_0719 16:14:42.617477] Result: QIC3000, Measured: , Upper: GaugeID, Lower: , ErrCode: , Msg: GaugeID
+_0719 16:14:42.617477] Carry
+_0719 16:14:42.627477] Result: PASS,I, Measured: , Upper: Carry, Lower: , ErrCode: , Msg: Carry
+_0719 16:14:42.627477] EMMC
+_0719 16:14:42.657479] Result: PASS, Measured: 14.7 GB, Upper: EMMC, Lower: , ErrCode: , Msg: EMMC
+_0719 16:14:42.657479] SDCard
+_0719 16:14:42.677479] Result: PASS, Measured: 1.8 GB, Upper: SDCard, Lower: , ErrCode: , Msg: SDCard
+_0719 16:14:42.677479] USB2.0
+_0719 16:14:42.707479] Result: PASS, Measured: 3.7 GB, Upper: USB2.0, Lower: , ErrCode: , Msg: USB2.0
+_0719 16:14:42.707479] USB3.0
+_0719 16:14:42.727478] Result: PASS, Measured: 3.7 GB(3.0), Upper: USB3.0, Lower: , ErrCode: , Msg: USB3.0
+_0719 16:14:42.727478] mSATA
+_0719 16:14:42.757479] Result: PASS, Measured: 119.2 GB, Upper: mSATA, Lower: , ErrCode: , Msg: mSATA
+_0719 16:14:42.757479] USBHub
+_0719 16:14:42.777479] Result: PASS, Measured: , Upper: USBHub, Lower: , ErrCode: , Msg: USBHub
+_0719 16:14:42.777479] Ethernet
+_0719 16:14:42.817479] Result: PASS, Measured: Ping:10.82.78.254, Upper: Ethernet, Lower: , ErrCode: , Msg: Ethernet
+_0719 16:14:42.817479] Charging
+_0719 16:14:42.857481] Result: PASS, Measured: Capacity:11%,Current:-2.15A, Upper: Charging, Lower: , ErrCode: , Msg: Charging
+_0719 16:14:42.857481] OTG
+_0719 16:14:42.877480] Result: PASS, Measured: , Upper: OTG, Lower: , ErrCode: , Msg: OTG
+_0719 16:14:42.877480] Memory
+_0719 16:14:42.917480] Result: PASS, Measured: 1.82GB, Upper: Memory, Lower: , ErrCode: , Msg: Memory
+_0719 16:14:42.917480] Bluetooth
+_0719 16:14:42.917480] Result: PASS, Measured: , Upper: Bluetooth, Lower: , ErrCode: , Msg: Bluetooth
+_0719 16:14:42.917480] Headset
+_0719 16:14:42.917480] Result: PASS, Measured: , Upper: Headset, Lower: , ErrCode: , Msg: Headset
+_0719 16:14:42.917480] Speaker
+_0719 16:14:42.917480] Result: PASS, Measured: , Upper: Speaker, Lower: , ErrCode: , Msg: Speaker
+_0719 16:14:42.917480] Volume
+_0719 16:14:42.917480] Result: PASS, Measured: , Upper: Volume, Lower: , ErrCode: , Msg: Volume
+_0719 16:14:42.917480] HDMI
+_0719 16:14:42.917480] Result: PASS, Measured: , Upper: HDMI, Lower: , ErrCode: , Msg: HDMI
+_0719 16:14:42.917480] RGB
+_0719 16:14:42.927480] Result: PASS, Measured: , Upper: RGB, Lower: , ErrCode: , Msg: RGB
+_0719 16:14:42.927480] BackLight
+_0719 16:14:42.927480] Result: PASS, Measured: , Upper: BackLight, Lower: , ErrCode: , Msg: BackLight
+_0719 16:14:42.927480] Camera
+_0719 16:14:42.927480] Result: PASS, Measured: , Upper: Camera, Lower: , ErrCode: , Msg: Camera
+_0719 16:14:42.927480] LED
+_0719 16:14:42.927480] Result: PASS, Measured: , Upper: LED, Lower: , ErrCode: , Msg: LED
+_0719 16:14:42.927480] PowerKey
+_0719 16:14:42.927480] Result: PASS, Measured: , Upper: PowerKey, Lower: , ErrCode: , Msg: PowerKey
+_0719 16:14:42.927480] RTC
+_0719 16:14:42.937480] Result: PASS, Measured: , Upper: RTC, Lower: , ErrCode: , Msg: RTC
+_0719 16:14:42.937480] Fan
+_0719 16:14:42.947480] Result: PASS, Measured: EngineFan:0 , SystemFan:0 , SOM Fan:0, Upper: Fan, Lower: , ErrCode: , Msg: Fan
+_0719 16:14:42.947480] Temp
+_0719 16:14:42.957481] Result: PASS, Measured: Sys0:22°C,Sys1:42°C,thermal0:41°C,thermal1:40°C,thermal2:39°C,thermal3:42°C,thermal4:39°C,thermal5:42°C,thermal6:40°C,thermal7:39°C,thermal8:39°C,thermal9:40°C,thermal10:39°C, Upper: Temp, Lower: , ErrCode: , Msg: Temp
+_0719 16:14:42.957481] Touch
+_0719 16:14:42.957481] Result: PASS, Measured: , Upper: Touch, Lower: , ErrCode: , Msg: Touch
+_0719 16:14:42.957481] ** 24 Item pass, 0  Items fail **
+
+_0719 16:14:42.957481] Result: PASS, Measured: , Upper: Touch, Lower: , ErrCode: , Msg: ** 24 Item pass, 0  Items fail **
+
+_0719 16:14:42.957481] >>>>>>>>>> End handling test item GetQIDLog <<<<<<<<<<
+_0719 16:14:42.957481] >>>>>>>>>> Start handling test item WifiTest <<<<<<<<<<
+_0719 16:15:03.557687] start to  WLANconnectAP .. 
+_0719 16:15:16.337815] Adb Command PASS,  shell WLANconnectAP DIR-615 12345678 WPA2-AES
+_0719 16:15:16.337815] compare ok
+_0719 16:15:16.337815] shell WLANconnectAP DIR-615 12345678 WPA2-AES  pass 
+_0719 16:15:17.337824] start to  WLANconnectAP .. 
+_0719 16:15:29.047941] Adb Command PASS,  shell WLANconnectAP DIR-615 12345678 WPA2-AES
+_0719 16:15:29.047941] compare ok
+_0719 16:15:29.047941] shell WLANconnectAP DIR-615 12345678 WPA2-AES  pass 
+_0719 16:15:30.047951] start to  WLANconnectAP .. 
+_0719 16:15:42.748078] Adb Command PASS,  shell WLANconnectAP DIR-615 12345678 WPA2-AES
+_0719 16:15:42.748078] compare ok
+_0719 16:15:42.748078] shell WLANconnectAP DIR-615 12345678 WPA2-AES  pass 
+_0719 16:15:45.388105] getEquimpmentValue dValueX:2458630000.000000, dValueY:-12.876000
+_0719 16:15:45.388105] Result: PASS, Measured: getEquimpmentValue dValueX:2458630000.000000, dValueY:-12.876000, Upper: WifiTest, Lower: -, ErrCode: , Msg: getEquimpmentValue dValueX:2458630000.000000, dValueY:-12.876000
+_0719 16:15:45.388105] >>>>>>>>>> End handling test item WifiTest <<<<<<<<<<
+_0719 16:15:45.388105] Delete all test item objects success
+_0719 16:15:45.418105] Kill adb.exe thread success
+_0719 16:15:45.418105] Disconnect phone, delete phone object success
+_0719 16:15:45.418105] Clear all data success
+_0719 16:15:45.418105] ------------------------------------ End ----------------------------------------
+

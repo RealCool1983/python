@@ -1,0 +1,41 @@
+,Err Item,total,owner,reply
+[0],(ErrorLog)ENGINE_ERROR_TYPE_Minor,57964,eric,don't care
+[1],(ErrorLog) DICOM,44,,
+[2],(ErrorLog)ENGINE_ERROR_TYPE_Other,927044,Wanlin,這個問題是在發生timeout後，後面的command會被跳掉，其中包含freeze的command，但是ResetUSB沒有被擋到，所以才會看到沒有freeze就下ResetUSB，不過這個目前不影響資料正確性，因為只要發生timeout這個過程中的所有資料都會忽略，直到下一個run重新開始才會恢復。
+[3],(ErrorLog)ENGINE_ERROR_TYPE_ReadFromEP1_IO_Error,186,eric," ProgramFPGA在write/read flash時, 雖然沒有EP1的資料傳輸, 但還有EP1 IO Error (做libusb_clear_halt後恢復正常), 似乎flash在access時, USB的傳輸也會被影響"
+[4],(ErrorLog)ultrasound error code,179,cs,"發現是開啟AP時, 在判斷XML版本是否符合時, 回傳值判斷錯誤導致(true和false相好顛倒), 所以每次都會出現, 已作修正.69403(main line), 69406(factory line)"
+[5],(ErrorLog)ENGINE_ERROR_TYPE_Reset_During_ReadFromUSB,189,Wanlin,這個是在下參數的過程中上層有重新call了一次startPreviewUS，因為還在下參數，所以系統的command還停留在freeze，所以重新進StartScan的時候被認為是在Freeze command而又下了一次ResetUSB，這個需要請樹哥幫忙確認一下這樣的行為是否正常，若是正常的表示這邊就有可能被重複call到
+[6],(ErrorLog) eglSwapBuffers fail,378,,
+[7],(ErrorLog)Qisda ultrasound failed,39,,
+[8],(ErrorLog)Frame Index Error,29962,,
+[9],(ErrorLog)USB Droped Frame,927266,,
+[10],(ErrorLog)DICOM,53,,
+[11],(ErrorLog) StopSystem time out,9,,
+[12],(ErrorLog)ENGINE_ERROR_TYPE_PCB_Format_Error,926646,eric,"這個log, 似乎FPGA 傳出來的packet出問題了, 所以一整個掛了"
+[13],(ErrorLog)start preview failed,1,,
+[14],(ErrorLog) ReceiveRawFrame time out,11,,
+[15],(ErrorLog) UpdateConfigSetting time out,7,,
+[16],(ErrorLog) RestFPGA time out,10,,
+[17],(ErrorLog)Error Header Type,3073,,
+[18],(ErrorLog)IMT no edge,1,,
+[19],(ErrorLog) read file,382,,
+[20],(ErrorLog) open COM port,120,,
+[21],(ErrorLog)ENGINE_ERROR_TYPE_Format_Error,105,,
+[22],(ErrorLog)MemoryError,2,,
+[23],(ErrorLog) save file,1,,
+[24],(ErrorLog)FPGA_Internal_Error,15,,
+,,,,
+Total file = 13 ,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
