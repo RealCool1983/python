@@ -64,7 +64,12 @@ def removeFolder(sPath):
     if (os.path.isdir(sDestinationPath)):
         print("remove folder = ", sDestinationPath)
         shutil.rmtree(sDestinationPath)    
-    
+
+    sDestinationPath = os.path.join(sPath,"src\Setting")
+    if (os.path.isdir(sDestinationPath)):
+        print("remove folder = ", sDestinationPath)
+        shutil.rmtree(sDestinationPath)    
+
     print("removeFolder done!")
 
 def removeFile(sPath):
@@ -123,7 +128,10 @@ if __name__ == "__main__":
 
     sCleanPath = "D:\\3S_PC\sourceCode\SSD\MP_UI\source_code\GIT_MP_UI\\v1.0\\v1.0.2016.918_Temp1"
     removeFolder(sCleanPath)
-    removeFile("D:\\3S_PC\\sourceCode\\SSD\\MP_UI\\source_code\\GIT_MP_UI\\v1.0\\v1.0.2016.918_Temp1")
+
+    sCleanPath = "D:\\3S_PC\\sourceCode\\SSD\\MP_UI\\source_code\\GIT_MP_UI\\v1.0\\v1.0.2016.918_Temp1"
+    removeFile(sCleanPath)
+
 
     print("compress file ?")
     sYesNo = rawInputTest()
@@ -165,9 +173,11 @@ if __name__ == "__main__":
     
     print("execute UAC !!!")
     sUACPath = r"D:\\3S_PC\sourceCode\SSD\MP_UI\source_code\GIT_MP_UI\\v1.0\\v1.0.2016.918_Temp1\src\UAC"
-    os.chdir(sPath)
+    os.chdir(sUACPath)
     os.system("uac_path.bat")
 
-    print("check D:\3S_PC\sourceCode\SSD\MP_UI\source_code\GIT_MP_UI\v1.0\v1.0.2016.918_Temp1\bin\SSDMP.exe date!!!")
+    print('{}{}{}'.format("check done!  ", sUACPath, " SSDMP.exe modify date"))
+
+    #print("check D:\3S_PC\sourceCode\SSD\MP_UI\source_code\GIT_MP_UI\v1.0\v1.0.2016.918_Temp1\bin\SSDMP.exe date!!!")
 
     sys.exit(0)
