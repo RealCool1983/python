@@ -23,7 +23,7 @@ def Achive_Folder_To_ZIP(sFilePath, dest = "", sSequenceNumber = "0"):
     """
 
     datetime.datetime.now()
-    sDate = time.strftime("%Y.%m.%d")
+    sDate = time.strftime("%Y.%m%d")
     sRemoteFileName = '{}{}{}{}{}'.format('v1.0.', sDate,'_Temp', sSequenceNumber,'.zip')
 
     if (dest == ""):
