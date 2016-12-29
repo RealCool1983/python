@@ -42,7 +42,10 @@ def Achive_Folder_To_ZIP(sFilePath, dest = "", sSequenceNumber = "0"):
 
             if ( '.git' in folders ):
                 folders.remove('.git') 
-                #print(stmp)   
+                print("Achive_Folder_To_ZIP remove ", stmp)
+            if ( 'workingTMP' in folders ):
+                folders.remove('workingTMP')                 
+                print("Achive_Folder_To_ZIP remove ", stmp)
             else:
                 aFile = os.path.join(root, sfile)
                 #print ("zipFile = ", aFile)
@@ -69,6 +72,21 @@ def removeFolder(sPath):
     if (os.path.isdir(sDestinationPath)):
         print("remove folder = ", sDestinationPath)
         shutil.rmtree(sDestinationPath)    
+
+    sDestinationPath = os.path.join(sPath,"bin\Log")
+    if (os.path.isdir(sDestinationPath)):
+        print("remove folder = ", sDestinationPath)
+        shutil.rmtree(sDestinationPath)    
+
+    sDestinationPath = os.path.join(sPath,"bin\\table")
+    if (os.path.isdir(sDestinationPath)):
+        print("remove folder = ", sDestinationPath)
+        shutil.rmtree(sDestinationPath)    
+
+    sDestinationPath = os.path.join(sPath,"bin\\UI_Log")
+    if (os.path.isdir(sDestinationPath)):
+        print("remove folder = ", sDestinationPath)
+        shutil.rmtree(sDestinationPath)            
 
     print("removeFolder done!")
 
@@ -124,13 +142,21 @@ def rawInputTest():
 
 if __name__ == "__main__":
 
-    sVersion = 16
+    sVersion = 17
 
     sCleanPath = "D:\\3S_PC\sourceCode\SSD\MP_UI\source_code\GIT_MP_UI\\v1.0\\v1.0.2016.918_Temp1"
     removeFolder(sCleanPath)
 
     sCleanPath = "D:\\3S_PC\\sourceCode\\SSD\\MP_UI\\source_code\\GIT_MP_UI\\v1.0\\v1.0.2016.918_Temp1"
     removeFile(sCleanPath)
+
+
+    print("execute UAC !!!")
+    sUACPath = r"D:\\3S_PC\sourceCode\SSD\MP_UI\source_code\GIT_MP_UI\\v1.0\\v1.0.2016.918_Temp1\src\UAC"
+    os.chdir(sUACPath)
+    os.system("uac_path.bat")
+
+    print('{}{}{}'.format("check done!  ", sUACPath, " SSDMP.exe modify date"))
 
 
     print("compress file ?")
@@ -171,12 +197,6 @@ if __name__ == "__main__":
         sys.exit(0)
 
     
-    print("execute UAC !!!")
-    sUACPath = r"D:\\3S_PC\sourceCode\SSD\MP_UI\source_code\GIT_MP_UI\\v1.0\\v1.0.2016.918_Temp1\src\UAC"
-    os.chdir(sUACPath)
-    os.system("uac_path.bat")
-
-    print('{}{}{}'.format("check done!  ", sUACPath, " SSDMP.exe modify date"))
 
     #print("check D:\3S_PC\sourceCode\SSD\MP_UI\source_code\GIT_MP_UI\v1.0\v1.0.2016.918_Temp1\bin\SSDMP.exe date!!!")
 
