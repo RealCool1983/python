@@ -142,17 +142,17 @@ def rawInputTest():
 
 if __name__ == "__main__":
 
-    sVersion = 17
+    sVersion = 19
 
-    sCleanPath = "D:\\3S_PC\sourceCode\SSD\MP_UI\source_code\GIT_MP_UI\\v1.0\\v1.0.2016.918_Temp1"
+    sCleanPath = "D:\\3S_PC\sourceCode\SSD\MP_UI\source_code\GIT_MP_UI\\default"
     removeFolder(sCleanPath)
 
-    sCleanPath = "D:\\3S_PC\\sourceCode\\SSD\\MP_UI\\source_code\\GIT_MP_UI\\v1.0\\v1.0.2016.918_Temp1"
+    sCleanPath = "D:\\3S_PC\\sourceCode\\SSD\\MP_UI\\source_code\\GIT_MP_UI\\default"
     removeFile(sCleanPath)
 
 
     print("execute UAC !!!")
-    sUACPath = r"D:\\3S_PC\sourceCode\SSD\MP_UI\source_code\GIT_MP_UI\\v1.0\\v1.0.2016.918_Temp1\src\UAC"
+    sUACPath = r"D:\\3S_PC\sourceCode\SSD\MP_UI\source_code\GIT_MP_UI\\default\src\UAC"
     os.chdir(sUACPath)
     os.system("uac_path.bat")
 
@@ -163,7 +163,7 @@ if __name__ == "__main__":
     sYesNo = rawInputTest()
     if ( sYesNo == 1):
         sFileServer = r"\\fileserver\Dep_AP\Project\SSD\MP_UI\source_code\v1.0"
-        sSourceFile = r"D:\\3S_PC\sourceCode\SSD\MP_UI\source_code\\GIT_MP_UI\v1.0\v1.0.2016.918_Temp1"
+        sSourceFile = r"D:\\3S_PC\sourceCode\SSD\MP_UI\source_code\\GIT_MP_UI\default"
         Achive_Folder_To_ZIP(sSourceFile, sFileServer, sVersion)
     elif(sYesNo == 0):
         print("skip")
@@ -175,7 +175,7 @@ if __name__ == "__main__":
     sYesNo = rawInputTest()
     if ( sYesNo == 1):
         sRemotePath = r"\\fileserver\3800\SW\SSD_MP_UI_EV\v1.0"
-        sSrcPath = r"D:\\3S_PC\sourceCode\SSD\MP_UI\source_code\GIT_MP_UI\v1.0\v1.0.2016.918_Temp1\bin"
+        sSrcPath = r"D:\\3S_PC\sourceCode\SSD\MP_UI\source_code\GIT_MP_UI\default\bin"
         copyTo3800(sSrcPath, sRemotePath, sVersion)
     elif(sYesNo == 0):
         print("skip")
@@ -188,7 +188,7 @@ if __name__ == "__main__":
     if ( sYesNo == 1):
         s3800RemotePath = r"\\fileserver\3800\SW\SSD_MP_UI_EV\SSD_MP_UI_Release_Note.xls"
         sDep_APRemotePath = r"\\fileserver\Dep_AP\Project\SSD\MP_UI\source_code\SSD_MP_UI_Release_Note.xls"
-        sSrcPath = r"D:\\3S_PC\sourceCode\SSD\MP_UI\source_code\GIT_MP_UI\v1.0\SSD_MP_UI_Release_Note.xls"
+        sSrcPath = r"D:\\3S_PC\sourceCode\SSD\MP_UI\source_code\GIT_MP_UI\SSD_MP_UI_Release_Note.xls"
         copyReleaseNote(sSrcPath, s3800RemotePath)
         copyReleaseNote(sSrcPath, sDep_APRemotePath)
     elif(sYesNo == 0):
@@ -198,6 +198,6 @@ if __name__ == "__main__":
 
     
 
-    #print("check D:\3S_PC\sourceCode\SSD\MP_UI\source_code\GIT_MP_UI\v1.0\v1.0.2016.918_Temp1\bin\SSDMP.exe date!!!")
+    #print("check D:\3S_PC\sourceCode\SSD\MP_UI\source_code\GIT_MP_UI\default\bin\SSDMP.exe date!!!")
 
     sys.exit(0)
