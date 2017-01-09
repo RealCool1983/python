@@ -143,7 +143,9 @@ def rawInputTest():
 if __name__ == "__main__":
 
     sVersion = 19
-
+	#print('{}{}'.format("1.MTable.set ", "2.MP_H16_TLC_test.ini"))
+    
+	
     sCleanPath = "D:\\3S_PC\sourceCode\SSD\MP_UI\source_code\GIT_MP_UI\\default"
     removeFolder(sCleanPath)
 
@@ -197,7 +199,8 @@ if __name__ == "__main__":
         sys.exit(0)
 
     
-
+    print('\n\n {} \n {} \n'.format("remember \n 1.MTable.set", "2.MP_H16_TLC_test.ini"))
     #print("check D:\3S_PC\sourceCode\SSD\MP_UI\source_code\GIT_MP_UI\default\bin\SSDMP.exe date!!!")
 
+	
     sys.exit(0)
