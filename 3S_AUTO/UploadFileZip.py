@@ -23,17 +23,36 @@ def Achive_Folder_To_ZIP(sFilePath, dest = "", sSequenceNumber = "0"):
     """
 
     datetime.datetime.now()
-    sDate = time.strftime("%Y.%m%d")
-    sRemoteFileName = '{}{}{}{}{}'.format('v1.0.', sDate,'_Temp', sSequenceNumber,'.zip')
 
-    if (dest == ""):
-        zf = zipfile.ZipFile(sFilePath + '.ZIP', mode='w')
-    else:
-        dest = os.path.join(dest, sRemoteFileName) 
-        zf = zipfile.ZipFile(dest, mode='w')
+    sMonth = time.strftime("%m") 
+    iMonth = int(sMonth)
+    sYear  = time.strftime("%Y")
+    sDate  = time.strftime("%d")
 
+    
+    sRemoteFileName = '{}{}.{}{}{}{}{}'.format('v1.0.', sYear, iMonth, sDate ,'_Temp', sSequenceNumber,'.zip')
+    #print(sRemoteFileName)
 
+    #sDate = time.strftime("%Y.%m%d")
+    #sRemoteFileName = '{}{}{}{}{}'.format('v1.0.', sDate,'_Temp', sSequenceNumber,'.zip')
+
+    dest = os.path.join(dest, sRemoteFileName)         
+
+    if (os.path.isfile(dest)):
+        print('{}{}'.format(dest, "   exist !! remove it ?"))
+        sYesNo = rawInputTest()
+        if (sYesNo == 1):
+            os.remove(dest)
+            print('{}{}'.format(dest, ", remove ok"))
+        elif(sYesNo == 0):
+            print("skip")
+            sys.exit(0)
+    else:        
+        print('{}{}'.format(dest, "  do not exist"))
+            
+    zf = zipfile.ZipFile(dest, mode='w')
     os.chdir(sFilePath)
+
     
     #print sFilePath
     for root, folders, files in os.walk(".\\"):
@@ -106,14 +125,33 @@ def removeFile(sPath):
 
 def copyTo3800(src_file, det_file, sSequenceNumber):
     datetime.datetime.now()
-    sDate = time.strftime("%Y.%m%d")
-    sRemoteFolderName = '{}{}{}{}'.format('v1.0.', sDate,'_Temp', sSequenceNumber)
+
+    sMonth = time.strftime("%m") 
+    iMonth = int(sMonth)
+    sYear  = time.strftime("%Y")
+    sDate  = time.strftime("%d")
+
+    sRemoteFolderName = '{}{}.{}{}{}{}'.format('v1.0.', sYear, iMonth, sDate ,'_Temp', sSequenceNumber)
+
+    #sDate = time.strftime("%Y.%m%d")
+    #sRemoteFolderName = '{}{}{}{}'.format('v1.0.', sDate,'_Temp', sSequenceNumber)
     #print("copyTo3800 path = ", sRemoteFolderName)
     
     det_file = os.path.join(det_file, sRemoteFolderName) 
     #print(det_file)
     if os.path.exists(det_file):
-        shutil.rmtree(det_file)
+        print('{}{}'.format(det_file, "   exist !! remove it ?"))
+        sYesNo = rawInputTest()
+        if (sYesNo == 1):
+            shutil.rmtree(det_file) 
+            print('{}{}'.format(det_file, ", remove ok"))
+        elif(sYesNo == 0):
+            print("skip")
+            sys.exit(0)
+
+
+    #if os.path.exists(det_file):
+     #   shutil.rmtree(det_file)
         
     shutil.copytree(src_file, det_file)
 
