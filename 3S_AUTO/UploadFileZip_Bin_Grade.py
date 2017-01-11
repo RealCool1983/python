@@ -6,6 +6,7 @@ import datetime
 import time
 import sys
 from subprocess import Popen
+from shutil import copyfile
 
 """
 Achive_Folder_To_ZIP: 壓縮資料夾，排除git檔，上傳至網芳
@@ -23,18 +24,38 @@ def Achive_Folder_To_ZIP(sFilePath, dest = "", sSequenceNumber = "0"):
     """
 
     datetime.datetime.now()
-    sDate = time.strftime("%Y.%m%d")
-    sRemoteFileName = '{}{}{}{}{}'.format('v1.0.', sDate,'_Temp', sSequenceNumber,'.zip')
+    sMonth = time.strftime("%m") 
+    iMonth = int(sMonth)
+    sYear  = time.strftime("%Y")
+    sDate  = time.strftime("%d")
 
-    if (dest == ""):
-        zf = zipfile.ZipFile(sFilePath + '.ZIP', mode='w')
-    else:
-        dest = os.path.join(dest, sRemoteFileName) 
-        zf = zipfile.ZipFile(dest, mode='w')
-
-
-    os.chdir(sFilePath)
     
+    sRemoteFileName = '{}{}.{}{}{}{}{}'.format('v1.0.', sYear, iMonth, sDate ,'_Temp', sSequenceNumber,'.zip')
+    sRemoteFolderName = '{}{}.{}{}{}{}'.format('v1.0.', sYear, iMonth, sDate ,'_Temp', sSequenceNumber)
+
+    #sDate = time.strftime("%Y.%m%d")
+    #sRemoteFileName = '{}{}{}{}{}'.format('v1.0.', sDate,'_Temp', sSequenceNumber,'.zip')
+
+    dest = os.path.join(dest, sRemoteFileName)         
+    #dest = os.path.join(dest, sRemoteFolderName)         
+    #dest = os.path.join(dest, sRemoteFileName)         
+
+    if (os.path.isfile(dest)):
+        print('{}{}'.format(dest, "   exist !! remove it ?"))
+        sYesNo = rawInputTest()
+        if (sYesNo == 1):
+            os.remove(dest)
+            print('{}{}'.format(dest, ", remove ok"))
+        elif(sYesNo == 0):
+            print("skip")
+            sys.exit(0)
+    else:        
+        print('{}{}'.format(dest, "  do not exist"))
+            
+    zf = zipfile.ZipFile(dest, mode='w')
+    os.chdir(sFilePath)
+
+   # sZipFolder = 
     #print sFilePath
     for root, folders, files in os.walk(".\\"):
         for sfile in files:
@@ -46,11 +67,18 @@ def Achive_Folder_To_ZIP(sFilePath, dest = "", sSequenceNumber = "0"):
             if ( 'workingTMP' in folders ):
                 folders.remove('workingTMP')                 
                 print("Achive_Folder_To_ZIP remove ", stmp)
+            if ('.gitignore' in files):              
+                files.remove('.gitignore')                 
+                print("Achive_Folder_To_ZIP remove ", stmp)            
+            if ('reference.txt' in files):              
+                files.remove('reference.txt')                 
+                print("Achive_Folder_To_ZIP remove ", stmp)                                                    
             else:
                 aFile = os.path.join(root, sfile)
-                #print ("zipFile = ", aFile)
+                sTmpPath = os.path.join(sRemoteFolderName, aFile)
+                
                 #zf.write(aFile, compress_type=zipfile.ZIP_DEFLATED)
-                zf.write(aFile, compress_type=zipfile.ZIP_BZIP2)
+                zf.write(aFile, sTmpPath, compress_type=zipfile.ZIP_BZIP2)
 
     zf.close()
     print('{}{}'.format("Achive_Folder_To_ZIP done!  ", dest))
@@ -88,6 +116,11 @@ def removeFolder(sPath):
         print("remove folder = ", sDestinationPath)
         shutil.rmtree(sDestinationPath)            
 
+    sDestinationPath = os.path.join(sPath,"bin\\data")
+    if (os.path.isdir(sDestinationPath)):
+        print("remove folder = ", sDestinationPath)
+        shutil.rmtree(sDestinationPath)    
+
     print("removeFolder done!")
 
 def removeFile(sPath):
@@ -105,9 +138,19 @@ def removeFile(sPath):
             os.remove(currentFile)
 
 def copyTo3800(src_file, det_file, sSequenceNumber):
+
+
     datetime.datetime.now()
-    sDate = time.strftime("%Y.%m%d")
-    sRemoteFolderName = '{}{}{}{}'.format('v1.0.', sDate,'_Temp', sSequenceNumber)
+    sMonth = time.strftime("%m") 
+    iMonth = int(sMonth)
+    sYear  = time.strftime("%Y")
+    sDate  = time.strftime("%d")
+    
+    sRemoteFileName = '{}{}.{}{}{}{}{}'.format('v1.0.', sYear, iMonth, sDate ,'_Temp', sSequenceNumber,'.zip')
+    sRemoteFolderName = '{}{}.{}{}{}{}'.format('v1.0.', sYear, iMonth, sDate ,'_Temp', sSequenceNumber)
+
+    #sDate = time.strftime("%Y.%m%d")
+    #sRemoteFolderName = '{}{}{}{}'.format('v1.0.', sDate,'_Temp', sSequenceNumber)
     #print("copyTo3800 path = ", sRemoteFolderName)
     
     det_file = os.path.join(det_file, sRemoteFolderName) 
@@ -143,28 +186,34 @@ def rawInputTest():
 if __name__ == "__main__":
 
     sVersion = 1
+    sProgramimgPath ="D:\\3S_PC\sourceCode\SSD\MP_UI\source_code\GIT_MP_UI_BIN_GRADE\BIN_GRADE_V1.0"
+    sFileServer = r"\\fileserver\Dep_AP\Project\SSD\temp\BinGrade"
+    sRemotePath = r"\\fileserver\3800\SW\SSD_BIN_GRADE"
 
-    sCleanPath = "D:\\3S_PC\sourceCode\SSD\MP_UI\source_code\GIT_MP_UI_BIN_GRADE\v1.0\v1.0.2016.918_Temp1\src"
+    # sReleaseFile = os.path.join(sProgramimgPath,"src\\Release")
+    # sBinFolder = os.path.join(sProgramimgPath,"bin")
+    # shutil.copy2(sReleaseFile,sBinFolder)
+
+    sCleanPath = os.path.join(sProgramimgPath,"src")
     removeFolder(sCleanPath)
 
-    sCleanPath = "D:\\3S_PC\sourceCode\SSD\MP_UI\source_code\GIT_MP_UI_BIN_GRADE\v1.0\v1.0.2016.918_Temp1"
+    #sCleanPath = os.path.join(sProgramimgPath, "src") 
     removeFile(sCleanPath)
 
-
+    
     print("execute UAC !!!")
-    sUACPath = r"D:\\3S_PC\sourceCode\SSD\MP_UI\source_code\GIT_MP_UI_BIN_GRADE\v1.0\v1.0.2016.918_Temp1\src\UAC"
+    sUACPath = os.path.join(sProgramimgPath,"src\\UAC")
     os.chdir(sUACPath)
     os.system("uac_path.bat")
-
     print('{}{}{}'.format("check done!  ", sUACPath, " SSDMP.exe modify date"))
 
 
     print("compress file ?")
     sYesNo = rawInputTest()
     if ( sYesNo == 1):
-        sFileServer = r"\\fileserver\Dep_AP\Project\SSD\temp\BinGrade"
-        sSourceFile = r"D:\\3S_PC\sourceCode\SSD\MP_UI\source_code\GIT_MP_UI_BIN_GRADE\v1.0\v1.0.2016.918_Temp1"
-        Achive_Folder_To_ZIP(sSourceFile, sFileServer, sVersion)
+        #sFileServer = r"\\fileserver\Dep_AP\Project\SSD\temp\BinGrade"
+        #sProgramimgPath = r"D:\\3S_PC\sourceCode\SSD\MP_UI\source_code\GIT_MP_UI_BIN_GRADE\v1.0\v1.0.2016.918_Temp1"
+        Achive_Folder_To_ZIP(sProgramimgPath, sFileServer, sVersion)
     elif(sYesNo == 0):
         print("skip")
     else:        
@@ -174,8 +223,7 @@ if __name__ == "__main__":
     print("copy binary file to 3800 ?")
     sYesNo = rawInputTest()
     if ( sYesNo == 1):
-        sRemotePath = r"\\fileserver\3800\SW\SSD_BIN_GRADE"
-        sSrcPath = r"D:\\3S_PC\sourceCode\SSD\MP_UI\source_code\GIT_MP_UI_BIN_GRADE\v1.0\v1.0.2016.918_Temp1\src\bin"
+        sSrcPath = os.path.join(sProgramimgPath,"src\\bin")
         copyTo3800(sSrcPath, sRemotePath, sVersion)
     elif(sYesNo == 0):
         print("skip")
