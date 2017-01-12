@@ -58,6 +58,9 @@ def Achive_Folder_To_ZIP(sFilePath, dest = "", sSequenceNumber = "0"):
         if ( 'Release' in folders ):
             folders.remove('Release')                 
             print("Achive_Folder_To_ZIP skip Release", folders)  
+        if ( 'Debug' in folders ):
+            folders.remove('Debug')                 
+            print("Achive_Folder_To_ZIP skip Debug", folders)              
         if ( '.git' in folders ):
             folders.remove('.git') 
             print("Achive_Folder_To_ZIP skip .git", folders)         
@@ -90,10 +93,10 @@ def Achive_Folder_To_ZIP(sFilePath, dest = "", sSequenceNumber = "0"):
     
 
 def removeFolder(sPath):
-    sDestinationPath = os.path.join(sPath,"src\debug")
-    if (os.path.isdir(sDestinationPath)):
-        print("remove folder = ", sDestinationPath)
-        shutil.rmtree(sDestinationPath)
+    # sDestinationPath = os.path.join(sPath,"src\debug")
+    # if (os.path.isdir(sDestinationPath)):
+    #     print("remove folder = ", sDestinationPath)
+    #     shutil.rmtree(sDestinationPath)
 
     # sDestinationPath = os.path.join(sPath,"src\Release")
     # if (os.path.isdir(sDestinationPath)):
@@ -197,7 +200,7 @@ def rawInputTest():
 
 if __name__ == "__main__":
 
-    sVersion = 1
+    sVersion = 3
     sProgramimgPath = "D:\\3S_PC\sourceCode\SSD\MP_UI\VC6\BIN_GRADE_V1.0"
     sServerSourceCodePath = r"\\fileserver\Dep_AP\Project\SSD\tools"
     sServerBinaryPath = r"\\fileserver\3800\SW\tools"

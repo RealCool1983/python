@@ -31,6 +31,7 @@ def Achive_Folder_To_ZIP(sFilePath, dest = "", sSequenceNumber = "0"):
 
     
     sRemoteFileName = '{}{}.{}{}{}{}{}'.format('v1.0.', sYear, iMonth, sDate ,'_Temp', sSequenceNumber,'.zip')
+    sRemoteFolderName = '{}{}.{}{}{}{}'.format('v1.0.', sYear, iMonth, sDate ,'_Temp', sSequenceNumber)
     #print(sRemoteFileName)
 
     #sDate = time.strftime("%Y.%m%d")
@@ -56,20 +57,37 @@ def Achive_Folder_To_ZIP(sFilePath, dest = "", sSequenceNumber = "0"):
     
     #print sFilePath
     for root, folders, files in os.walk(".\\"):
+        if ( 'Release' in folders ):
+            folders.remove('Release')                 
+            print("Achive_Folder_To_ZIP skip Release", folders)  
+        if ( 'Debug' in folders ):
+            folders.remove('Debug')                 
+            print("Achive_Folder_To_ZIP skip Debug", folders)              
+        if ( '.git' in folders ):
+            folders.remove('.git') 
+            print("Achive_Folder_To_ZIP skip .git", folders)         
+        if ( 'workingTMP' in folders ):
+            folders.remove('workingTMP')                 
+            print("Achive_Folder_To_ZIP skip workingTMP", folders)          
+
         for sfile in files:
             stmp = os.path.join(root, sfile) 
 
-            if ( '.git' in folders ):
-                folders.remove('.git') 
-                print("Achive_Folder_To_ZIP remove ", stmp)
-            if ( 'workingTMP' in folders ):
-                folders.remove('workingTMP')                 
-                print("Achive_Folder_To_ZIP remove ", stmp)
+            if ('.gitignore' in files):              
+                files.remove('.gitignore')                 
+                print("Achive_Folder_To_ZIP skip .gitignore", stmp)            
+            elif ('reference.txt' in files):              
+                files.remove('reference.txt')                 
+                print("Achive_Folder_To_ZIP skip ", stmp)                                                    
+            elif ('ChangeList.txt' in files):              
+                files.remove('ChangeList.txt')                 
+                print("Achive_Folder_To_ZIP skikp ChangeList.txt", stmp)                                                                    
             else:
                 aFile = os.path.join(root, sfile)
-                #print ("zipFile = ", aFile)
+                sTmpPath = os.path.join(sRemoteFolderName, aFile)
+                
                 #zf.write(aFile, compress_type=zipfile.ZIP_DEFLATED)
-                zf.write(aFile, compress_type=zipfile.ZIP_BZIP2)
+                zf.write(aFile, sTmpPath, compress_type=zipfile.ZIP_BZIP2)
 
     zf.close()
     print('{}{}'.format("Achive_Folder_To_ZIP done!  ", dest))
@@ -77,15 +95,15 @@ def Achive_Folder_To_ZIP(sFilePath, dest = "", sSequenceNumber = "0"):
     
 
 def removeFolder(sPath):
-    sDestinationPath = os.path.join(sPath,"src\debug")
-    if (os.path.isdir(sDestinationPath)):
-        print("remove folder = ", sDestinationPath)
-        shutil.rmtree(sDestinationPath)
+    # sDestinationPath = os.path.join(sPath,"src\debug")
+    # if (os.path.isdir(sDestinationPath)):
+    #     print("remove folder = ", sDestinationPath)
+    #     shutil.rmtree(sDestinationPath)
 
-    sDestinationPath = os.path.join(sPath,"src\Release")
-    if (os.path.isdir(sDestinationPath)):
-        print("remove folder = ", sDestinationPath)
-        shutil.rmtree(sDestinationPath)    
+    # sDestinationPath = os.path.join(sPath,"src\Release")
+    # if (os.path.isdir(sDestinationPath)):
+    #     print("remove folder = ", sDestinationPath)
+    #     shutil.rmtree(sDestinationPath)    
 
     sDestinationPath = os.path.join(sPath,"src\Setting")
     if (os.path.isdir(sDestinationPath)):
@@ -106,6 +124,11 @@ def removeFolder(sPath):
     if (os.path.isdir(sDestinationPath)):
         print("remove folder = ", sDestinationPath)
         shutil.rmtree(sDestinationPath)            
+
+    sDestinationPath = os.path.join(sPath,"bin\\data")
+    if (os.path.isdir(sDestinationPath)):
+        print("remove folder = ", sDestinationPath)
+        shutil.rmtree(sDestinationPath)    
 
     print("removeFolder done!")
 
@@ -182,66 +205,73 @@ if __name__ == "__main__":
 
     sVersion = 19
 	#print('{}{}'.format("1.MTable.set ", "2.MP_H16_TLC_test.ini"))
-    
+    sProgramimgPath = "D:\\3S_PC\sourceCode\SSD\MP_UI\VC6\GIT_MP_UI\V1.0"
+    sServerSourceCodePath = r"\\fileserver\Dep_AP\Project\SSD\MP_UI\source_code\v1.0"
+    sServerBinaryPath = r"\\fileserver\3800\SW\SSD_MP_UI_EV\v1.0"
+
+    sSrcReleaseFile = os.path.join(sProgramimgPath,"src\Release\SSDMP.exe")
+    sDstBinFile = os.path.join(sProgramimgPath,"bin")
+    copyReleaseNote(sSrcReleaseFile, sDstBinFile)
+
 	
-    sCleanPath = "D:\\3S_PC\sourceCode\SSD\MP_UI\source_code\GIT_MP_UI\\default"
-    removeFolder(sCleanPath)
-
-    sCleanPath = "D:\\3S_PC\\sourceCode\\SSD\\MP_UI\\source_code\\GIT_MP_UI\\default"
-    removeFile(sCleanPath)
-
-
     print("execute UAC !!!")
-    sUACPath = r"D:\\3S_PC\sourceCode\SSD\MP_UI\source_code\GIT_MP_UI\\default\src\UAC"
+    sUACPath = os.path.join(sProgramimgPath,"src\\UAC")
     os.chdir(sUACPath)
     os.system("uac_path.bat")
-
     print('{}{}{}'.format("check done!  ", sUACPath, " SSDMP.exe modify date"))
+
+
+    sCleanPath = sProgramimgPath #os.path.join(sProgramimgPath,"src")
+    removeFolder(sCleanPath)
+
+    #sCleanPath = os.path.join(sProgramimgPath, "src") 
+    removeFile(sCleanPath)
+    
 
 
     print("compress file ?")
     sYesNo = rawInputTest()
     if ( sYesNo == 1):
-        sFileServer = r"\\fileserver\Dep_AP\Project\SSD\MP_UI\source_code\v1.0"
-        sSourceFile = r"D:\\3S_PC\sourceCode\SSD\MP_UI\source_code\\GIT_MP_UI\default"
-        Achive_Folder_To_ZIP(sSourceFile, sFileServer, sVersion)
+        Achive_Folder_To_ZIP(sProgramimgPath, sServerSourceCodePath, sVersion)
     elif(sYesNo == 0):
         print("skip")
     else:        
         sys.exit(0)
+
 
     
     print("copy binary file to 3800 ?")
     sYesNo = rawInputTest()
     if ( sYesNo == 1):
-        sRemotePath = r"\\fileserver\3800\SW\SSD_MP_UI_EV\v1.0"
-        sSrcPath = r"D:\\3S_PC\sourceCode\SSD\MP_UI\source_code\GIT_MP_UI\default\bin"
-        copyTo3800(sSrcPath, sRemotePath, sVersion)
+        sSrcPath = os.path.join(sProgramimgPath,"bin")
+        copyTo3800(sSrcPath, sServerBinaryPath, sVersion)
     elif(sYesNo == 0):
         print("skip")
     else:        
         sys.exit(0)
+
 
 
     print("copyReleaseNote ?")
     sYesNo = rawInputTest()
     if ( sYesNo == 1):
-        s3800RemotePath = r"\\fileserver\3800\SW\SSD_MP_UI_EV\SSD_MP_UI_Release_Note.xls"
-        sDep_APRemotePath = r"\\fileserver\Dep_AP\Project\SSD\MP_UI\source_code\SSD_MP_UI_Release_Note.xls"
-        sSrcPath = r"D:\\3S_PC\sourceCode\SSD\MP_UI\source_code\GIT_MP_UI\SSD_MP_UI_Release_Note.xls"
-        copyReleaseNote(sSrcPath, s3800RemotePath)
-        copyReleaseNote(sSrcPath, sDep_APRemotePath)
+        #s3800RemotePath = r"\\fileserver\3800\SW\SSD_MP_UI_EV\SSD_MP_UI_Release_Note.xls"
+        #sDep_APRemotePath = r"\\fileserver\Dep_AP\Project\SSD\MP_UI\source_code\SSD_MP_UI_Release_Note.xls"
+        sSrcPath = os.path.abspath(os.path.join(sProgramimgPath, os.pardir))
+        sSrcPath =os.path.join(sSrcPath,"SSD_MP_UI_Release_Note.xls")
+
+        sDstBinaryPath = os.path.abspath(os.path.join(sServerBinaryPath, os.pardir))
+        sDstSourceCodePath = os.path.abspath(os.path.join(sServerSourceCodePath, os.pardir))
+        
+        copyReleaseNote(sSrcPath, sDstBinaryPath)
+        copyReleaseNote(sSrcPath, sDstSourceCodePath)
     elif(sYesNo == 0):
         print("skip")
     else:        
         sys.exit(0)
 
-    
     print('\n\n {} \n {} \n'.format("remember \n 1.MTable.set", "2.MP_H16_TLC_test.ini"))
+    #print("check D:\3S_PC\sourceCode\SSD\MP_UI\source_code\GIT_MP_UI\default\bin\SSDMP.exe date!!!")
 
-    print("\n\n")
-    print("*** Excellent As You Are ***")
-    print("\n")
-
-
+	
     sys.exit(0)
