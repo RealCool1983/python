@@ -15,4 +15,10 @@ git pull google master
 
 git push google master
 
+
+cd D:\3S_PC\python\3S_AUTO
+
+git push toolgit
+git pull origin master
+
 pause
