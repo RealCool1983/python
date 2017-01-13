@@ -181,9 +181,10 @@ def copyTo3800(src_file, det_file, sSequenceNumber):
     print('{}{}'.format("copyTo3800 done!  ", det_file))
     #shutil.copy2(src_file, det_file)
 
-def copyReleaseNote(src_file, det_file):        
+def copyOneFile(src_file, det_file):        
     shutil.copy2(src_file, det_file)
-    print('{}{}'.format("copyReleaseNote done!  ", det_file))
+    print('{}-[{}] to [{}]'.format("copyOneFile done! ",src_file, det_file))
+
 
 
 
@@ -203,22 +204,28 @@ def rawInputTest():
 
 if __name__ == "__main__":
 
-    sVersion = 19
+    sVersion = 11111
 	#print('{}{}'.format("1.MTable.set ", "2.MP_H16_TLC_test.ini"))
     sProgramimgPath = "D:\\3S_PC\sourceCode\SSD\MP_UI\VC6\GIT_MP_UI\V1.0"
     sServerSourceCodePath = r"\\fileserver\Dep_AP\Project\SSD\MP_UI\source_code\v1.0"
     sServerBinaryPath = r"\\fileserver\3800\SW\SSD_MP_UI_EV\v1.0"
 
-    sSrcReleaseFile = os.path.join(sProgramimgPath,"src\Release\SSDMP.exe")
-    sDstBinFile = os.path.join(sProgramimgPath,"bin")
-    copyReleaseNote(sSrcReleaseFile, sDstBinFile)
 
-	
+    sSrcReleaseFile = os.path.join(sProgramimgPath,"src\Release\SSDMP.exe")
+    sDstBinFile = os.path.join(sProgramimgPath,"src\\UAC")
+    copyOneFile(sSrcReleaseFile, sDstBinFile)
+
+
     print("execute UAC !!!")
     sUACPath = os.path.join(sProgramimgPath,"src\\UAC")
     os.chdir(sUACPath)
     os.system("uac_path.bat")
     print('{}{}{}'.format("check done!  ", sUACPath, " SSDMP.exe modify date"))
+
+
+    sSrcReleaseFile = os.path.join(sProgramimgPath,"src\\UAC\\SSDMP.exe")
+    sDstFile = os.path.join(sProgramimgPath,"bin")
+    copyOneFile(sSrcReleaseFile, sDstFile)
 
 
     sCleanPath = sProgramimgPath #os.path.join(sProgramimgPath,"src")
@@ -263,8 +270,8 @@ if __name__ == "__main__":
         sDstBinaryPath = os.path.abspath(os.path.join(sServerBinaryPath, os.pardir))
         sDstSourceCodePath = os.path.abspath(os.path.join(sServerSourceCodePath, os.pardir))
         
-        copyReleaseNote(sSrcPath, sDstBinaryPath)
-        copyReleaseNote(sSrcPath, sDstSourceCodePath)
+        copyOneFile(sSrcPath, sDstBinaryPath)
+        copyOneFile(sSrcPath, sDstSourceCodePath)
     elif(sYesNo == 0):
         print("skip")
     else:        

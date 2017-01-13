@@ -201,7 +201,7 @@ def rawInputTest():
 
 if __name__ == "__main__":
 
-    sVersion = 4
+    sVersion = 433
     sProgramimgPath = "D:\\3S_PC\sourceCode\SSD\MP_UI\VC6\BIN_GRADE_V1.0"
     sServerSourceCodePath = r"\\fileserver\Dep_AP\Project\SSD\tools"
     sServerBinaryPath = r"\\fileserver\3800\SW\tools"
@@ -236,7 +236,7 @@ if __name__ == "__main__":
     print('{}{}{}'.format("check done!  ", sUACPath, " SSDMP.exe modify date"))
 
     sSrcReleaseFile = os.path.join(sProgramimgPath,"src\\UAC\BIN_GRADE.exe")
-    sDstFile = os.path.join(sProgramimgPath,"src\\bin")
+    sDstFile = os.path.join(sProgramimgPath,"bin")
     copyOneFile(sSrcReleaseFile, sDstFile)
 
 
@@ -266,7 +266,7 @@ if __name__ == "__main__":
     print("copy binary file to 3800 ?")
     sYesNo = rawInputTest()
     if ( sYesNo == 1):
-        sSrcPath = os.path.join(sProgramimgPath,"src\\bin")
+        sSrcPath = os.path.join(sProgramimgPath,"bin")
         copyTo3800(sSrcPath, sServerBinary, sVersion)
     elif(sYesNo == 0):
         print("skip")
