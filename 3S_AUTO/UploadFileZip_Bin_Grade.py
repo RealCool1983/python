@@ -166,6 +166,7 @@ def copyTo3800(src_file, det_file, sSequenceNumber):
             shutil.rmtree(det_file)
             #os.remove(dest)
             print('{}{}'.format(det_file, ", rmtree ok"))
+            time.sleep(5)
         elif(sYesNo == 0):
             print("skip")
             sys.exit(0)
@@ -178,9 +179,9 @@ def copyTo3800(src_file, det_file, sSequenceNumber):
     print('{}{}'.format("copyTo3800 done!  ", det_file))
     #shutil.copy2(src_file, det_file)
 
-def copyReleaseNote(src_file, det_file):        
+def copyOneFile(src_file, det_file):        
     shutil.copy2(src_file, det_file)
-    print('{}{}'.format("copyReleaseNote done!  ", det_file))
+    print('{}-[{}] to [{}]'.format("copyOneFile done! ",src_file, det_file))
 
 
 
@@ -200,7 +201,7 @@ def rawInputTest():
 
 if __name__ == "__main__":
 
-    sVersion = 3
+    sVersion = 4
     sProgramimgPath = "D:\\3S_PC\sourceCode\SSD\MP_UI\VC6\BIN_GRADE_V1.0"
     sServerSourceCodePath = r"\\fileserver\Dep_AP\Project\SSD\tools"
     sServerBinaryPath = r"\\fileserver\3800\SW\tools"
@@ -224,8 +225,8 @@ if __name__ == "__main__":
 
 
     sSrcReleaseFile = os.path.join(sProgramimgPath,"src\Release\BIN_GRADE.exe")
-    sDstBinFile = os.path.join(sProgramimgPath,"src\\bin")
-    copyReleaseNote(sSrcReleaseFile, sDstBinFile)
+    sDstBinFile = os.path.join(sProgramimgPath,"src\\UAC")
+    copyOneFile(sSrcReleaseFile, sDstBinFile)
 
 
     print("execute UAC !!!")
@@ -233,6 +234,11 @@ if __name__ == "__main__":
     os.chdir(sUACPath)
     os.system("uac_path.bat")
     print('{}{}{}'.format("check done!  ", sUACPath, " SSDMP.exe modify date"))
+
+    sSrcReleaseFile = os.path.join(sProgramimgPath,"src\\UAC\BIN_GRADE.exe")
+    sDstFile = os.path.join(sProgramimgPath,"src\\bin")
+    copyOneFile(sSrcReleaseFile, sDstFile)
+
 
     
 
@@ -274,7 +280,7 @@ if __name__ == "__main__":
         s3800RemotePath = r"\\fileserver\3800\SW\SSD_MP_UI_EV\SSD_MP_UI_Release_Note.xls"
         sDep_APRemotePath = r"\\fileserver\Dep_AP\Project\SSD\MP_UI\source_code\SSD_MP_UI_Release_Note.xls"
         sSrcPath = os.path.join(sProgramimgPath,"ChangeList.txt")
-        copyReleaseNote(sSrcPath, sServerSourceCode)
+        copyOneFile(sSrcPath, sServerSourceCode)
         #copyReleaseNote(sSrcPath, sDep_APRemotePath)
     elif(sYesNo == 0):
         print("skip")
