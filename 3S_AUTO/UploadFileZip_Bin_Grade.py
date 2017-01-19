@@ -66,7 +66,11 @@ def Achive_Folder_To_ZIP(sFilePath, dest = "", sSequenceNumber = "0"):
             print("Achive_Folder_To_ZIP skip .git", folders)         
         if ( 'workingTMP' in folders ):
             folders.remove('workingTMP')                 
-            print("Achive_Folder_To_ZIP skip workingTMP", folders)          
+            print("Achive_Folder_To_ZIP skip workingTMP", folders)    
+        if ( 'releaseNote' in folders ):
+            folders.remove('releaseNote')                 
+            print("Achive_Folder_To_ZIP skip releaseNote", folders)                
+                  
 
         for sfile in files:
             stmp = os.path.join(root, sfile) 
@@ -240,13 +244,9 @@ if __name__ == "__main__":
     copyOneFile(sSrcReleaseFile, sDstFile)
 
 
-    
-
-
-    sCleanPath = sProgramimgPath #os.path.join(sProgramimgPath,"src")
+    sCleanPath = sProgramimgPath 
     removeFolder(sCleanPath)
 
-    #sCleanPath = os.path.join(sProgramimgPath, "src") 
     removeFile(sCleanPath)
     
 
@@ -254,8 +254,6 @@ if __name__ == "__main__":
     print("compress file ?")
     sYesNo = rawInputTest()
     if ( sYesNo == 1):
-        #sFileServer = r"\\fileserver\Dep_AP\Project\SSD\temp\BinGrade"
-        #sProgramimgPath = r"D:\\3S_PC\sourceCode\SSD\MP_UI\source_code\GIT_MP_UI_BIN_GRADE\v1.0\v1.0.2016.918_Temp1"
         Achive_Folder_To_ZIP(sProgramimgPath, sServerSourceCode, sVersion)
     elif(sYesNo == 0):
         print("skip")
@@ -276,12 +274,10 @@ if __name__ == "__main__":
 
     print("copy change List ?")
     sYesNo = rawInputTest()
-    if ( sYesNo == 1):
-        s3800RemotePath = r"\\fileserver\3800\SW\SSD_MP_UI_EV\SSD_MP_UI_Release_Note.xls"
-        sDep_APRemotePath = r"\\fileserver\Dep_AP\Project\SSD\MP_UI\source_code\SSD_MP_UI_Release_Note.xls"
-        sSrcPath = os.path.join(sProgramimgPath,"ChangeList.txt")
+    if ( sYesNo == 1):        
+        sSrcPath = os.path.join(sProgramimgPath,"releaseNote\\ChangeList.txt")
         copyOneFile(sSrcPath, sServerSourceCode)
-        #copyReleaseNote(sSrcPath, sDep_APRemotePath)
+        
     elif(sYesNo == 0):
         print("skip")
     else:        
@@ -290,6 +286,5 @@ if __name__ == "__main__":
     print("\n\n")
     print("*** Excellent As You Are ***")
     print("\n")
-    #print("check D:\3S_PC\sourceCode\SSD\MP_UI\source_code\GIT_MP_UI\v1.0\v1.0.2016.918_Temp1\bin\SSDMP.exe date!!!")
 
     sys.exit(0)
