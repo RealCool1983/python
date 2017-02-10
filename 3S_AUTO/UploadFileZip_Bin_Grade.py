@@ -206,7 +206,7 @@ def rawInputTest():
 if __name__ == "__main__":
 
     sVersion = 5
-    sProgramimgPath = "D:\\3S_PC\sourceCode\SSD\MP_UI\VC6\BIN_GRADE_V1.0"
+    sProgramimgPath = "D:\\3S_PC\sourceCode\SSD\VC6\BIN_GRADE_V1.0"
     sServerSourceCodePath = r"\\fileserver\Dep_AP\Project\SSD\tools"
     sServerBinaryPath = r"\\fileserver\3800\SW\tools"
 

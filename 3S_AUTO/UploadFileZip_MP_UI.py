@@ -206,7 +206,7 @@ if __name__ == "__main__":
 
     sVersion = 11111
 	#print('{}{}'.format("1.MTable.set ", "2.MP_H16_TLC_test.ini"))
-    sProgramimgPath = "D:\\3S_PC\sourceCode\SSD\MP_UI\VC6\GIT_MP_UI\V1.0"
+    sProgramimgPath = "D:\\3S_PC\sourceCode\SSD\VC6\GIT_MP_UI\V1.0"
     sServerSourceCodePath = r"\\fileserver\Dep_AP\Project\SSD\MP_UI\source_code\v1.0"
     sServerBinaryPath = r"\\fileserver\3800\SW\SSD_MP_UI_EV\v1.0"
 
