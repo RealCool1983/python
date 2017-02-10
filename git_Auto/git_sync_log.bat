@@ -1,3 +1,4 @@
+
 cd D:\3S_PC\sourceCode\SSD\VC6\BIN_GRADE_V1.0
 git pull ssd-bin-grade-log master
 git push ssd-bin-grade-log master
