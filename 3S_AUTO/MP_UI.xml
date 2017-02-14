@@ -1,0 +1,52 @@
+
+<Configuration>
+		<PATHObjects>
+			<ToolVersion>5</ToolVersion>
+			<PCSourceCodePath>D:\\3S_PC\ReleaseTool\MP_UI_V1.0\v1.2.2017.215</PCSourceCodePath>			
+			<S3800_SSD_MPPath>\\fileserver\3800\SW\SSD_MP_tool_EV\v1.5.2017.215</S3800_SSD_MPPath>	
+
+			<S3800_SSD_MPUIPath>\\fileserver\3800\SW\SSD_MP_UI_EV\v1.0</S3800_SSD_MPUIPath>			
+			<SDEPAP_SSD_MPUIPath>\\fileserver\Dep_AP\Project\SSD\MP_UI\source_code\v1.0</SDEPAP_SSD_MPUIPath>			
+
+			<PC3SAutoPath>D:\\3S_PC\python\3S_AUTO</PC3SAutoPath>
+			<pythonWorkingPath>D:\\3S_PC\ReleaseTool\MP_UI_V1.0\pythonWorking</pythonWorkingPath>
+			<Bin2HexExePath>D:\\3S_PC\ReleaseTool\MP_UI_V1.0\pythonWorking\BIN2HEX\BIN2HEX.exe</Bin2HexExePath>
+			<!-- no use -->
+
+		</PATHObjects>
+		
+		<TestItemList><!--FALSE, TRUE -->
+			<Item Name="CopySSD_MP_tool_EV" Enabled="TRUE"/>
+			<Item Name="CopySSD_MP_UI" Enabled="TRUE"/>
+			<Item Name="Bin2HexMPExe" Enabled="TRUE"/>
+
+			<Item Name="VCVersion" Enabled="TRUE"/>
+
+			<Item Name="VC6AutoBuild" Enabled="TRUE"/>
+			<Item Name="UacBat" Enabled="TRUE"/>
+
+			<Item Name="HUATOOP_H14" Enabled="TRUE"/>	
+			<Item Name="HUATOOP_H16" Enabled="TRUE"/>
+
+			<Item Name="CopyTo3800" Enabled="TRUE"/>
+			<Item Name="CompressFile" Enabled="TRUE"/>
+
+		</TestItemList>
+		
+		<ProcessObjectSet>
+			<ProcessObject  Name="HUATOOP_H14">
+				<var1 Name="3S_HNX_14TLC_BNR" IniFile="H14_TLC_test.ini" IniSection="Burner=.\Setting\">3.2.0.51</var1>
+				<var2 Name="3S_HNX_14TLC_FW" IniFile="MTable.set" IniSection="FW_4=.\Setting\" >1.1.0.11</var2>
+				<var3 Name="3S_HNX_14TLC_RDT" IniFile="MTable.set" IniSection="FW_5=.\Setting\">2.0.0.2</var3>
+				<var4 Name="TRUE" Type="Integer">NOUSE</var4>
+            </ProcessObject>	
+			<ProcessObject  Name="HUATOOP_H16">
+				<var1 Name="3S_HNX_16TLC_BNR" IniFile="H16_TLC_test.ini" IniSection="Burner=.\Setting\">3.2.0.51</var1>
+				<var2 Name="3S_HNX_16TLC_FW" IniFile="MTable.set" IniSection="FW_1=.\Setting\">1.1.0.13</var2>
+				<var3 Name="3S_HNX_16TLC_RDT" IniFile="MTable.set" IniSection="FW_2=.\Setting\">2.0.0.27</var3>
+				<var4 Name="3S_HNX_16TLC_RDT" IniFile="MTable.set" IniSection="FW_3=.\Setting\">2.1.0.27</var4>
+            </ProcessObject>	
+
+		</ProcessObjectSet>
+		
+</Configuration>		
