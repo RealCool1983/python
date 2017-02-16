@@ -1,7 +1,7 @@
 
 <Configuration>
 		<PATHObjects>
-			<ToolVersion>5</ToolVersion>
+			<ToolVersion>777</ToolVersion>
 			<PCSourceCodePath>D:\\3S_PC\ReleaseTool\MP_UI_V1.0\v1.2.2017.215</PCSourceCodePath>			
 			<S3800_SSD_MPPath>\\fileserver\3800\SW\SSD_MP_tool_EV\v1.5.2017.215</S3800_SSD_MPPath>	
 
@@ -28,8 +28,8 @@
 			<Item Name="HUATOOP_H14" Enabled="TRUE"/>	
 			<Item Name="HUATOOP_H16" Enabled="TRUE"/>
 
-			<Item Name="CopyTo3800" Enabled="TRUE"/>
-			<Item Name="CompressFile" Enabled="TRUE"/>
+			<Item Name="CopyTo3800" Enabled="FALSE"/>
+			<Item Name="CompressFile" Enabled="FALSE"/>
 
 		</TestItemList>
 		

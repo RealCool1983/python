@@ -105,9 +105,7 @@ def B2HEX_MP(sXmlPath):
     for neighbor in root.iter('PATHObjects'):
         sPath1 = neighbor.find('Bin2HexExePath').text
         sPath2 = os.path.join(sPCS3800_SSD_MPPath, "windows\\3S_SSD_MP.exe")
-        #sPath2 = neighbor.find('Bin2HexMPExePath').text
         sPath1Hex =  sPath1.replace("BIN2HEX.exe","3S_SSD_MP.hex")
-        #sPath3 = neighbor.find('Bin2HexMPHexPath').text
         
         print('{} = {}'.format("sPath1 ", sPath1 ))
         print('{} = {}'.format("sPath2 ", sPath2 ))
@@ -264,7 +262,7 @@ def runCopySSD_MP_tool_EV(sXmlPath):
     print('runCopySSD_MP_tool_EV[{}] End ..\n '.format('-'))
 
 
-def getNewMPUI_Name(sOldName):
+def getNewMPUI_Name(sOldName, sVer):
     datetime.datetime.now()
 
     sMonth = time.strftime("%m") 
@@ -273,7 +271,9 @@ def getNewMPUI_Name(sOldName):
     sDate  = time.strftime("%d")
 
     listFileName = sOldName.split('.')
-    listFileName[1] = int(listFileName[1]) + 1
+    #listFileName[1] = int(listFileName[1]) + 1
+    listFileName[1] = sVer
+    
     
     NewMPUIName = '{}.{}.{}.{}{}'.format(listFileName[0], listFileName[1], sYear, iMonth, sDate)
 
@@ -291,13 +291,14 @@ def runCopySSD_MP_UI(sXmlPath):
     print('runCopySSD_MP_UI[{}] start ..'.format('-'))
     for neighbor in root.iter('PATHObjects'):
         sPath1 = neighbor.find('PCSourceCodePath').text
-    
+        sToolVersion = neighbor.find('ToolVersion').text
+
     listFolderName = sPath1.split(os.sep)
     iCount = len(listFolderName)
     sNewFolder = listFolderName[iCount-1]
     #print(listFolderName[iCount-1])
 
-    sNewName = getNewMPUI_Name(listFolderName[iCount-1])
+    sNewName = getNewMPUI_Name(listFolderName[iCount-1], sToolVersion)
     sPath2 = sPath1.replace(listFolderName[iCount-1], sNewName)
 
     copy_tree(sPath1, sPath2)
