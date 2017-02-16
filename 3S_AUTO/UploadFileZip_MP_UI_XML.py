@@ -202,8 +202,6 @@ def runVC6AutoBuild(sXmlPath):
 
     for neighbor in root.iter('PATHObjects'):
         sPath1 = neighbor.find('pythonWorkingPath').text
-        # sPath1 = neighbor.find('VC6AutoBuildPath').text
-        # sPath2 = neighbor.find('PCSourceCodePath').text
     sPath1 = os.path.join(sPath1, "autobuild.bat") 
 
     p = subprocess.Popen(sPath1, shell=True)    
@@ -423,7 +421,7 @@ def runCompressFile(sXmlPath):
 
     zf.close()
     sRemoteDepAp_NewMPUI_Path = dest
-    
+
     print('runCompressFile[{}] End ..\n '.format(dest))
 
 
@@ -528,6 +526,27 @@ def updateIni(sPath, sIniFile, sIniSection, sFileName):
 
     print('updateIni [{}] End ..\n '.format("-"))    
 
+
+
+def runReleaseNote(sXmlPath):
+    tree = ET.parse(sXmlPath)
+    root = tree.getroot()   
+
+    global sPC_NewMPUI_Path
+    global sToolVersion
+
+    print('runReleaseNote[{}] start ..'.format('-'))
+    
+    for neighbor in root.iter('PATHObjects'):
+        sPCReleaseNotePath = neighbor.find('PCReleaseNotePath').text
+
+    sSrcPath =os.path.join(sSrcPath,"SSD_MP_UI_Release_Note.xls")
+
+    #copyOneFile(sSrcPath, S3800_SSD_MPUIPath)
+    #copyOneFile(sSrcPath, sDstSourceCodePath)
+    #sPath = os.path.join(sPC_NewMPUI_Path, 'src\SSDMP.rc')
+    #print(sPath)
+    print('runReleaseNote[{}] End ..\n'.format('-'))
 
 
 def runVCVersion(sXmlPath):
@@ -683,6 +702,9 @@ def parseXML(sXmlPath):
                 runCompressFile(xmlPath)                
             if ( testName == 'VCVersion'):
                 runVCVersion(xmlPath)                                
+            if ( testName == 'ReleaseNote'):
+                runReleaseNote(xmlPath)                                                
+
                           
             ListItem.insert(ListCount, testName)
             ListCount +=1

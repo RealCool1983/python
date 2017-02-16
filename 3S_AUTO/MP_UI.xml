@@ -8,6 +8,7 @@
 			<S3800_SSD_MPUIPath>\\fileserver\3800\SW\SSD_MP_UI_EV\v1.0</S3800_SSD_MPUIPath>			
 			<SDEPAP_SSD_MPUIPath>\\fileserver\Dep_AP\Project\SSD\MP_UI\source_code\v1.0</SDEPAP_SSD_MPUIPath>			
 
+			<PCReleaseNotePath>D:\\3S_PC\ReleaseTool\MP_UI_V1.0\Release_Note</PCReleaseNotePath>			
 			<PC3SAutoPath>D:\\3S_PC\python\3S_AUTO</PC3SAutoPath>
 			<pythonWorkingPath>D:\\3S_PC\ReleaseTool\MP_UI_V1.0\pythonWorking</pythonWorkingPath>
 			<Bin2HexExePath>D:\\3S_PC\ReleaseTool\MP_UI_V1.0\pythonWorking\BIN2HEX\BIN2HEX.exe</Bin2HexExePath>
@@ -30,6 +31,7 @@
 
 			<Item Name="CopyTo3800" Enabled="TRUE"/>
 			<Item Name="CompressFile" Enabled="TRUE"/>
+			<Item Name="ReleaseNote" Enabled="TRUE"/>
 
 		</TestItemList>
 		
