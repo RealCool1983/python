@@ -23,7 +23,8 @@ copyRelease note:
 sPCS3800_SSD_MPPath = ''
 sPC_NewMPUI_Path = ''
 sPC_NewMPUI_Name = ''
-
+sRemote3800_NewMPUI_Path = ''
+sRemoteDepAp_NewMPUI_Path = ''
 
 def rawInputTest():
     sYesNo = input(">>> Input, YES/NO: ")
@@ -318,6 +319,7 @@ def runCopyTo3800(sXmlPath):
 
     global sPC_NewMPUI_Path
     global sPC_NewMPUI_Name
+    global sRemote3800_NewMPUI_Path
 
     print('copyTo3800[{}] start ..'.format('-'))
     
@@ -342,6 +344,7 @@ def runCopyTo3800(sXmlPath):
             sys.exit(0)
         
     shutil.copytree(src_file, det_file)
+    sRemote3800_NewMPUI_Path = det_file
 
     print('copyTo3800, {} end ..'.format(det_file))
 
@@ -353,6 +356,7 @@ def runCompressFile(sXmlPath):
 
     global sPC_NewMPUI_Path
     global sPC_NewMPUI_Name
+    global sRemoteDepAp_NewMPUI_Path
 
     print('runCompressFile[{}] start ..'.format('-'))
     
@@ -364,14 +368,9 @@ def runCompressFile(sXmlPath):
 
     sRemoteFileName = sPC_NewMPUI_Name + '.zip'
     sRemoteFolderName = sPC_NewMPUI_Name
-    # sRemoteFileName = '{}{}.{}{}{}{}{}'.format('v1.0.', sYear, iMonth, sDate ,'_Temp', sSequenceNumber,'.zip')
-    # sRemoteFolderName = '{}{}.{}{}{}{}'.format('v1.0.', sYear, iMonth, sDate ,'_Temp', sSequenceNumber)
+    
 
     dest = os.path.join(sPath1, sRemoteFileName) 
-    # src_file = os.path.join(sPC_NewMPUI_Path, 'bin')
-
-#    dest = os.path.join(dest, sRemoteFileName)         
-
     if (os.path.isfile(dest)):
         print('{}{}'.format(dest, "   exist !! remove it ?"))
         sYesNo = rawInputTest()
@@ -423,7 +422,8 @@ def runCompressFile(sXmlPath):
                 zf.write(aFile, sTmpPath, compress_type=zipfile.ZIP_BZIP2)
 
     zf.close()
-    #print('{}{}'.format("Achive_Folder_To_ZIP done!  ", dest))
+    sRemoteDepAp_NewMPUI_Path = dest
+    
     print('runCompressFile[{}] End ..\n '.format(dest))
 
 
@@ -690,7 +690,16 @@ def parseXML(sXmlPath):
     print('\n----------------------------------------------------\n')
     nfinishList = 0 
     for finishList in ListItem:
-        print('finishList[{}]:{:>40}'.format(nfinishList, finishList))
+        if (finishList.find('CopySSD_MP_UI') != -1 ):
+            print('finishList[{}]:{:>25} : {}'.format(nfinishList, finishList, sPC_NewMPUI_Path))
+        elif (finishList.find('CopySSD_MP_tool_EV') != -1 ):
+            print('finishList[{}]:{:>25} : {}'.format(nfinishList, finishList, sPCS3800_SSD_MPPath))            
+        elif (finishList.find('CopyTo3800') != -1 ):
+            print('finishList[{}]:{:>25} : {}'.format(nfinishList, finishList, sRemote3800_NewMPUI_Path))               
+        elif (finishList.find('CompressFile') != -1 ):
+            print('finishList[{}]:{:>25} : {}'.format(nfinishList, finishList, sRemoteDepAp_NewMPUI_Path))               
+        else:
+            print('finishList[{}]:{:>25}'.format(nfinishList, finishList))
         nfinishList += 1
         
 

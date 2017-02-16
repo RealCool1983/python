@@ -28,8 +28,8 @@
 			<Item Name="HUATOOP_H14" Enabled="TRUE"/>	
 			<Item Name="HUATOOP_H16" Enabled="TRUE"/>
 
-			<Item Name="CopyTo3800" Enabled="FALSE"/>
-			<Item Name="CompressFile" Enabled="FALSE"/>
+			<Item Name="CopyTo3800" Enabled="TRUE"/>
+			<Item Name="CompressFile" Enabled="TRUE"/>
 
 		</TestItemList>
 		
