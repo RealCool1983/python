@@ -1,7 +1,7 @@
 
 <Configuration>
 		<PATHObjects>
-			<ToolVersion>777</ToolVersion>
+			<ToolVersion>555</ToolVersion>
 			<PCSourceCodePath>D:\\3S_PC\ReleaseTool\MP_UI_V1.0\v1.2.2017.215</PCSourceCodePath>			
 			<S3800_SSD_MPPath>\\fileserver\3800\SW\SSD_MP_tool_EV\v1.5.2017.215</S3800_SSD_MPPath>	
 
@@ -17,20 +17,24 @@
 		</PATHObjects>
 		
 		<TestItemList><!--FALSE, TRUE -->
+
 			<Item Name="CopySSD_MP_tool_EV" Enabled="TRUE"/>
 			<Item Name="CopySSD_MP_UI" Enabled="TRUE"/>
-			<Item Name="Bin2HexMPExe" Enabled="TRUE"/>
 
 			<Item Name="VCVersion" Enabled="TRUE"/>
-
+			<Item Name="Bin2HexMPExe" Enabled="TRUE"/>
+			
 			<Item Name="VC6AutoBuild" Enabled="TRUE"/>
 			<Item Name="UacBat" Enabled="TRUE"/>
 
 			<Item Name="HUATOOP_H14" Enabled="TRUE"/>	
 			<Item Name="HUATOOP_H16" Enabled="TRUE"/>
 
+			<Item Name="Pause" Enabled="TRUE"/>
 			<Item Name="CopyTo3800" Enabled="TRUE"/>
 			<Item Name="CompressFile" Enabled="TRUE"/>
+
+			<Item Name="Pause" Enabled="TRUE"/>
 			<Item Name="ReleaseNote" Enabled="TRUE"/>
 
 		</TestItemList>

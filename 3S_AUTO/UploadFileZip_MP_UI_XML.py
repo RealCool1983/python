@@ -92,7 +92,8 @@ def removeFile(sPath):
 
 def copyOneFile(src_file, det_file):        
     shutil.copy2(src_file, det_file)
-    print('{}-[{}] to [{}]'.format("copyOneFile done! ",src_file, det_file))
+    print('{}-\n{:120}-from \n{:120}-to'.format("copyOneFile done! ",src_file, det_file))
+
 
 
 def B2HEX_MP(sXmlPath):
@@ -533,19 +534,46 @@ def runReleaseNote(sXmlPath):
     root = tree.getroot()   
 
     global sPC_NewMPUI_Path
-    global sToolVersion
+    #global sToolVersion
 
     print('runReleaseNote[{}] start ..'.format('-'))
     
     for neighbor in root.iter('PATHObjects'):
-        sPCReleaseNotePath = neighbor.find('PCReleaseNotePath').text
+        sPath1 = neighbor.find('S3800_SSD_MPUIPath').text
+        sPath2 = neighbor.find('SDEPAP_SSD_MPUIPath').text
+        sPath3 = neighbor.find('PCSourceCodePath').text
+        
+    sPath1 = (os.path.abspath(os.path.join(sPath1, os.pardir)))
+    sPath2 = (os.path.abspath(os.path.join(sPath2, os.pardir)))
+    sPath3 = (os.path.abspath(os.path.join(sPath3, os.pardir)))
 
-    sSrcPath =os.path.join(sSrcPath,"SSD_MP_UI_Release_Note.xls")
+    sTmp = ('Release_Note\SSD_MP_UI_Release_Note_{}.xls'.format(sPC_NewMPUI_Name))
+    sPath4 = os.path.join(sPath3, sTmp)
+    sPath3 = os.path.join(sPath3, 'Release_Note\SSD_MP_UI_Release_Note.xls')
+    
+    print('sPath1:{:>20}'.format(sPath1))
+    print('sPath2:{:>20}'.format(sPath2))
+    print('sPath3:{:>20}'.format(sPath3))
+    print('sPath4:{:>20}'.format(sPath4))
 
-    #copyOneFile(sSrcPath, S3800_SSD_MPUIPath)
-    #copyOneFile(sSrcPath, sDstSourceCodePath)
-    #sPath = os.path.join(sPC_NewMPUI_Path, 'src\SSDMP.rc')
-    #print(sPath)
+    if os.path.exists(sPath3):
+        if os.path.exists(sPath4):
+            os.remove(sPath4)
+            print('remove {} ok'.format(sPath4))   
+        # if os.path.exists(sPath1):
+        #     os.remove(sPath1)
+        #     print('remove {} ok'.format(sPath1))
+        # if os.path.exists(sPath2):     
+        #     os.remove(sPath2)
+        #     print('remove {} ok'.format(sPath2))
+
+        #pc backup
+        #copy to 3800
+        #copy to DEPAP
+        copyOneFile(sPath3, sPath4) 
+        copyOneFile(sPath3, sPath1)        
+        copyOneFile(sPath3, sPath2)   
+
     print('runReleaseNote[{}] End ..\n'.format('-'))
 
 
@@ -638,8 +666,16 @@ def findFile(sPath, sFileName):
     #print('findFile [{}] End ..\n '.format("-"))
     return -1
 
-def compareFolder(smpuiFolder, smpFolder):
-    print(compareFolder)
+def runPause():
+    print('runPause {} {}'.format("-", "-"))
+    sYesNo = rawInputTest()
+    if (sYesNo == 1):
+        print('{}{}'.format(sYesNo, "-"))
+    elif(sYesNo == 0):
+        print("skip")
+        sys.exit(0)
+    print('EndPause {} {}'.format("-", "-"))        
+    
 
 
 
@@ -677,7 +713,7 @@ def parseXML(sXmlPath):
     for child in root.iter('Item'):
         testName = child.get('Name')
         testState = child.get('Enabled')
-        print('testName:{:>40}, testState:{:>8}'.format(testName, testState ))
+        print('testName:{:>25}, testState:{:>8}'.format(testName, testState ))
 
         if (testState == 'TRUE'):
             if ( testName == 'Bin2HexMPExe'):                
@@ -703,8 +739,10 @@ def parseXML(sXmlPath):
             if ( testName == 'VCVersion'):
                 runVCVersion(xmlPath)                                
             if ( testName == 'ReleaseNote'):
-                runReleaseNote(xmlPath)                                                
-
+                runReleaseNote(xmlPath)    
+        
+            if ( testName == 'Pause'):
+                runPause()                                                
                           
             ListItem.insert(ListCount, testName)
             ListCount +=1
