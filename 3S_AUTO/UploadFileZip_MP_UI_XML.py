@@ -38,6 +38,7 @@ def rawInputTest():
         print("wrong answer , do nothing")
         return -1
 
+
 def removeFolder(sPath):
     sDestinationPath = os.path.join(sPath,"src\debug")
     if (os.path.isdir(sDestinationPath)):
@@ -281,6 +282,31 @@ def getNewMPUI_Name(sOldName, sVer):
     return NewMPUIName
     
 
+
+def runCopyFromGit(sXmlPath):
+    tree = ET.parse(sXmlPath)
+    root = tree.getroot()   
+
+    global sPC_NewMPUI_Path
+    global sPC_NewMPUI_Name
+
+    print('runCopyFromGit[{}] start ..'.format('-'))
+    for neighbor in root.iter('PATHObjects'):
+        sPath1 = neighbor.find('PCSourceCodeGitPath').text
+        sPath2 = neighbor.find('PCSourceCodePath').text
+
+    if os.path.exists(sPath2):
+        shutil.rmtree(sPath2) 
+        print('{}{}'.format(sPath2, ", rmtree ok"))
+
+    ignore_dirs = shutil.ignore_patterns( '.gitignore', '.git')
+    print('copy_tree from [{}] to [{}] ok'.format(sPath1, sPath2))
+    shutil.copytree(sPath1, sPath2, ignore=ignore_dirs)
+
+
+
+    print('runCopyFromGit[{}] End ..\n '.format('-'))
+
 def runCopySSD_MP_UI(sXmlPath):
     tree = ET.parse(sXmlPath)
     root = tree.getroot()   
@@ -297,12 +323,10 @@ def runCopySSD_MP_UI(sXmlPath):
     iCount = len(listFolderName)
     sNewFolder = listFolderName[iCount-1]
     #print(listFolderName[iCount-1])
-
     sNewName = getNewMPUI_Name(listFolderName[iCount-1], sToolVersion)
     sPath2 = sPath1.replace(listFolderName[iCount-1], sNewName)
 
     copy_tree(sPath1, sPath2)
-
     sPC_NewMPUI_Name = sNewName
     sPC_NewMPUI_Path = sPath2
 
@@ -410,9 +434,9 @@ def runCompressFile(sXmlPath):
             elif ('reference.txt' in files):              
                 files.remove('reference.txt')                 
                 print("Achive_Folder_To_ZIP skip ", stmp)                                                    
-            elif ('ChangeList.txt' in files):              
-                files.remove('ChangeList.txt')                 
-                print("Achive_Folder_To_ZIP skikp ChangeList.txt", stmp)                                                                    
+            # elif ('ChangeList.txt' in files):              
+            #     files.remove('ChangeList.txt')                 
+            #     print("Achive_Folder_To_ZIP skikp ChangeList.txt", stmp)                                                                    
             else:
                 aFile = os.path.join(root, sfile)
                 sTmpPath = os.path.join(sRemoteFolderName, aFile)
@@ -456,7 +480,8 @@ def runHUATOOP(sXmlPath, sH14H16):
                 #------------from MP to MP_UI ------------------------------------#
                 print('compare [{}] start ..'.format(neighborChild.text))
 
-                sBinName = neighborChild.get('Name') + "_" + neighborChild.text + ".bin"
+                //sBinName = neighborChild.get('Name') + "_" + neighborChild.text + ".bin"
+                sBinName = neighborChild.get('Name') + neighborChild.text + ".bin"
                 print ('get binName = ', sBinName )
 
                 #return 0
@@ -716,6 +741,8 @@ def parseXML(sXmlPath):
         print('testName:{:>25}, testState:{:>8}'.format(testName, testState ))
 
         if (testState == 'TRUE'):
+            if ( testName == 'CopyFromGit'):
+                runCopyFromGit(xmlPath)                                                                 
             if ( testName == 'Bin2HexMPExe'):                
                 B2HEX_MP(xmlPath)
             if ( testName == 'Bin2HexKEYDLL'):

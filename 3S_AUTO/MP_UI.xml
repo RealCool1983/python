@@ -1,12 +1,13 @@
 
 <Configuration>
 		<PATHObjects>
-			<ToolVersion>555</ToolVersion>
-			<PCSourceCodePath>D:\\3S_PC\ReleaseTool\MP_UI_V1.0\v1.2.2017.215</PCSourceCodePath>			
-			<S3800_SSD_MPPath>\\fileserver\3800\SW\SSD_MP_tool_EV\v1.5.2017.215</S3800_SSD_MPPath>	
+			<ToolVersion>3</ToolVersion>
+			<PCSourceCodeGitPath>D:\\3S_PC\sourceCode\SSD\VC6\GIT_MP_UI\V1.0</PCSourceCodeGitPath>			
+			<PCSourceCodePath>D:\\3S_PC\ReleaseTool\MP_UI_V1.0\V1.0.2017.777</PCSourceCodePath>			
+			<S3800_SSD_MPPath>\\fileserver\3800\SW\SSD_MP_tool_EV\v1.7.2017.307</S3800_SSD_MPPath>	
 
-			<S3800_SSD_MPUIPath>\\fileserver\3800\SW\SSD_MP_UI_EV\v1.0</S3800_SSD_MPUIPath>			
-			<SDEPAP_SSD_MPUIPath>\\fileserver\Dep_AP\Project\SSD\MP_UI\source_code\v1.0</SDEPAP_SSD_MPUIPath>			
+			<S3800_SSD_MPUIPath>\\fileserver\3800\SW\temp\SSD_BIN_GRADE_TMP_VERSION</S3800_SSD_MPUIPath>			
+			<SDEPAP_SSD_MPUIPath>\\fileserver\Dep_AP\Project\SSD\MP_UI\source_code\TMP_VERSION</SDEPAP_SSD_MPUIPath>			
 
 			<PCReleaseNotePath>D:\\3S_PC\ReleaseTool\MP_UI_V1.0\Release_Note</PCReleaseNotePath>			
 			<PC3SAutoPath>D:\\3S_PC\python\3S_AUTO</PC3SAutoPath>
@@ -17,7 +18,7 @@
 		</PATHObjects>
 		
 		<TestItemList><!--FALSE, TRUE -->
-
+			<Item Name="CopyFromGit" Enabled="TRUE"/>
 			<Item Name="CopySSD_MP_tool_EV" Enabled="TRUE"/>
 			<Item Name="CopySSD_MP_UI" Enabled="TRUE"/>
 
@@ -30,27 +31,27 @@
 			<Item Name="HUATOOP_H14" Enabled="TRUE"/>	
 			<Item Name="HUATOOP_H16" Enabled="TRUE"/>
 
-			<Item Name="Pause" Enabled="TRUE"/>
+			<Item Name="Pause" Enabled="FALSE"/>
 			<Item Name="CopyTo3800" Enabled="TRUE"/>
 			<Item Name="CompressFile" Enabled="TRUE"/>
 
-			<Item Name="Pause" Enabled="TRUE"/>
-			<Item Name="ReleaseNote" Enabled="TRUE"/>
+			<Item Name="Pause" Enabled="FALSE"/>
+			<Item Name="ReleaseNote" Enabled="FALSE"/>
 
 		</TestItemList>
 		
 		<ProcessObjectSet>
 			<ProcessObject  Name="HUATOOP_H14">
-				<var1 Name="3S_HNX_14TLC_BNR" IniFile="H14_TLC_test.ini" IniSection="Burner=.\Setting\">3.2.0.51</var1>
-				<var2 Name="3S_HNX_14TLC_FW" IniFile="MTable.set" IniSection="FW_4=.\Setting\" >1.1.0.11</var2>
-				<var3 Name="3S_HNX_14TLC_RDT" IniFile="MTable.set" IniSection="FW_5=.\Setting\">2.0.0.2</var3>
+				<var1 Name="3S_HNX_14TLC_BNR_" IniFile="H14_TLC_test.ini" IniSection="Burner=.\Setting\">3.2.0.51</var1>
+				<var2 Name="3S_HNX_14TLC_FW_" IniFile="MTable.set" IniSection="FW_4=.\Setting\" >1.1.0.11</var2>
+				<var3 Name="3S_HNX_14TLC_RDT_" IniFile="MTable.set" IniSection="FW_5=.\Setting\">2.0.0.2</var3>
 				<var4 Name="TRUE" Type="Integer">NOUSE</var4>
             </ProcessObject>	
 			<ProcessObject  Name="HUATOOP_H16">
-				<var1 Name="3S_HNX_16TLC_BNR" IniFile="H16_TLC_test.ini" IniSection="Burner=.\Setting\">3.2.0.51</var1>
-				<var2 Name="3S_HNX_16TLC_FW" IniFile="MTable.set" IniSection="FW_1=.\Setting\">1.1.0.13</var2>
-				<var3 Name="3S_HNX_16TLC_RDT" IniFile="MTable.set" IniSection="FW_2=.\Setting\">2.0.0.27</var3>
-				<var4 Name="3S_HNX_16TLC_RDT" IniFile="MTable.set" IniSection="FW_3=.\Setting\">2.1.0.27</var4>
+				<var1 Name="3S_HNX_16TLC_BNR_" IniFile="H16_TLC_test.ini" IniSection="Burner=.\Setting\">3.2.0.51</var1>
+				<var2 Name="3S_HNX_16TLC_FW_" IniFile="MTable.set" IniSection="FW_1=.\Setting\">1.1.0.13</var2>
+				<var3 Name="3S_HNX_16TLC_RDT_2.0." IniFile="MTable.set" IniSection="FW_2=.\Setting\">0.27</var3>
+				<var4 Name="3S_HNX_16TLC_RDT_2.1." IniFile="MTable.set" IniSection="FW_3=.\Setting\">0.27</var4>
             </ProcessObject>	
 
 		</ProcessObjectSet>
