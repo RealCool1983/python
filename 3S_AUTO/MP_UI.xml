@@ -6,8 +6,8 @@
 			<PCSourceCodePath>D:\\3S_PC\ReleaseTool\MP_UI_V1.0\V1.0.2017.777</PCSourceCodePath>			
 			<S3800_SSD_MPPath>\\fileserver\3800\SW\SSD_MP_tool_EV\v1.7.2017.307</S3800_SSD_MPPath>	
 
-			<S3800_SSD_MPUIPath>\\fileserver\3800\SW\temp\SSD_BIN_GRADE_TMP_VERSION</S3800_SSD_MPUIPath>			
-			<SDEPAP_SSD_MPUIPath>\\fileserver\Dep_AP\Project\SSD\MP_UI\source_code\TMP_VERSION</SDEPAP_SSD_MPUIPath>			
+			<S3800_SSD_MPUIPath>\\fileserver\3800\SW\SSD_MP_UI_EV</S3800_SSD_MPUIPath>			
+			<SDEPAP_SSD_MPUIPath>\\fileserver\Dep_AP\Project\SSD\MP_UI\source_code</SDEPAP_SSD_MPUIPath>			
 
 			<PCReleaseNotePath>D:\\3S_PC\ReleaseTool\MP_UI_V1.0\Release_Note</PCReleaseNotePath>			
 			<PC3SAutoPath>D:\\3S_PC\python\3S_AUTO</PC3SAutoPath>
@@ -36,7 +36,7 @@
 			<Item Name="CompressFile" Enabled="TRUE"/>
 
 			<Item Name="Pause" Enabled="FALSE"/>
-			<Item Name="ReleaseNote" Enabled="FALSE"/>
+			<Item Name="ReleaseNote" Enabled="TRUE"/>
 
 		</TestItemList>
 		

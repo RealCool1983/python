@@ -480,7 +480,7 @@ def runHUATOOP(sXmlPath, sH14H16):
                 #------------from MP to MP_UI ------------------------------------#
                 print('compare [{}] start ..'.format(neighborChild.text))
 
-                //sBinName = neighborChild.get('Name') + "_" + neighborChild.text + ".bin"
+                #sBinName = neighborChild.get('Name') + "_" + neighborChild.text + ".bin"
                 sBinName = neighborChild.get('Name') + neighborChild.text + ".bin"
                 print ('get binName = ', sBinName )
 
@@ -568,8 +568,8 @@ def runReleaseNote(sXmlPath):
         sPath2 = neighbor.find('SDEPAP_SSD_MPUIPath').text
         sPath3 = neighbor.find('PCSourceCodePath').text
         
-    sPath1 = (os.path.abspath(os.path.join(sPath1, os.pardir)))
-    sPath2 = (os.path.abspath(os.path.join(sPath2, os.pardir)))
+    # sPath1 = (os.path.abspath(os.path.join(sPath1, os.pardir)))
+    # sPath2 = (os.path.abspath(os.path.join(sPath2, os.pardir)))
     sPath3 = (os.path.abspath(os.path.join(sPath3, os.pardir)))
 
     sTmp = ('Release_Note\SSD_MP_UI_Release_Note_{}.xls'.format(sPC_NewMPUI_Name))
