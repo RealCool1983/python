@@ -1,0 +1,44 @@
+
+<Configuration>
+		<PATHObjects>
+			<ToolVersion>6</ToolVersion>
+			
+			<PCSourceCodeGitPath>D:\\3S_PC\sourceCode\SSD\VC6\BIN_GRADE_V1.0</PCSourceCodeGitPath>						
+			<PCSourceCodePath>D:\3S_PC\ReleaseTool\BIN_GRADE\V1.0.2017.PYTHON</PCSourceCodePath>			
+			
+			<S3800_SSD_MPUIPath>\\fileserver\3800\SW\temp\SSD_BIN_GRADE_TMP_VERSION</S3800_SSD_MPUIPath>			
+			<SDEPAP_SSD_MPUIPath>\\fileserver\Dep_AP\Project\SSD\tools\BIN_GRADE\SOURCE_CODE\TMP_VERSION</SDEPAP_SSD_MPUIPath>			
+
+			<PCReleaseNotePath>D:\\3S_PC\ReleaseTool\MP_UI_V1.0\Release_Note</PCReleaseNotePath>		
+			<PC3SAutoPath>D:\\3S_PC\python\3S_AUTO</PC3SAutoPath>
+			<pythonWorkingPath>D:\\3S_PC\ReleaseTool\BIN_GRADE\pythonWorking</pythonWorkingPath>
+			<Bin2HexExePath>D:\\3S_PC\ReleaseTool\MP_UI_V1.0\pythonWorking\BIN2HEX\BIN2HEX.exe</Bin2HexExePath>
+			<!-- no use -->
+			<S3800_SSD_MPPath>\\fileserver\3800\SW\SSD_MP_tool_EV\v1.7.2017.307</S3800_SSD_MPPath>	
+		</PATHObjects>
+		
+		<TestItemList><!--FALSE, TRUE -->
+			<Item Name="CopyFromGit" Enabled="TRUE"/>
+			<Item Name="CopySSD_MP_UI" Enabled="TRUE"/>
+			<Item Name="VCVersion" Enabled="TRUE"/>
+			<Item Name="VC6AutoBuild" Enabled="TRUE"/>
+			<Item Name="UacBat" Enabled="TRUE"/>
+			<Item Name="CopyTo3800" Enabled="TRUE"/>
+			<Item Name="CompressFile" Enabled="TRUE"/>
+			
+			<!-- no use -->
+			<Item Name="CopySSD_MP_tool_EV" Enabled="FALSE"/>
+			<Item Name="Bin2HexMPExe" Enabled="FALSE"/>
+			<Item Name="Pause" Enabled="FALSE"/>
+
+
+			<Item Name="Pause" Enabled="FALSE"/>
+			<Item Name="ReleaseNote" Enabled="FALSE"/>
+
+		</TestItemList>
+		
+		<ProcessObjectSet>
+
+		</ProcessObjectSet>
+		
+</Configuration>		
