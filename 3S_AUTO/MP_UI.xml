@@ -1,10 +1,10 @@
 
 <Configuration>
 		<PATHObjects>
-			<ToolVersion>3</ToolVersion>
+			<ToolVersion>4</ToolVersion>
 			<PCSourceCodeGitPath>D:\\3S_PC\sourceCode\SSD\VC6\GIT_MP_UI\V1.0</PCSourceCodeGitPath>			
 			<PCSourceCodePath>D:\\3S_PC\ReleaseTool\MP_UI_V1.0\V1.0.2017.777</PCSourceCodePath>			
-			<S3800_SSD_MPPath>\\fileserver\3800\SW\SSD_MP_tool_EV\v1.7.2017.307</S3800_SSD_MPPath>	
+			<S3800_SSD_MPPath>\\fileserver\3800\SW\SSD_MP_tool_EV\v1.8.2017.315</S3800_SSD_MPPath>	
 
 			<S3800_SSD_MPUIPath>\\fileserver\3800\SW\SSD_MP_UI_EV</S3800_SSD_MPUIPath>			
 			<SDEPAP_SSD_MPUIPath>\\fileserver\Dep_AP\Project\SSD\MP_UI\source_code</SDEPAP_SSD_MPUIPath>			
@@ -24,6 +24,7 @@
 
 			<Item Name="VCVersion" Enabled="TRUE"/>
 			<Item Name="Bin2HexMPExe" Enabled="TRUE"/>
+			<Item Name="Bin2HexKEYDLL" Enabled="FALSE"/>
 			
 			<Item Name="VC6AutoBuild" Enabled="TRUE"/>
 			<Item Name="UacBat" Enabled="TRUE"/>
@@ -43,15 +44,16 @@
 		<ProcessObjectSet>
 			<ProcessObject  Name="HUATOOP_H14">
 				<var1 Name="3S_HNX_14TLC_BNR_" IniFile="H14_TLC_test.ini" IniSection="Burner=.\Setting\">3.2.0.51</var1>
-				<var2 Name="3S_HNX_14TLC_FW_" IniFile="MTable.set" IniSection="FW_4=.\Setting\" >1.1.0.11</var2>
-				<var3 Name="3S_HNX_14TLC_RDT_" IniFile="MTable.set" IniSection="FW_5=.\Setting\">2.0.0.2</var3>
+				<var2 Name="3S_HNX_14TLC_FW_" IniFile="MTable.set" IniSection="FW_3=.\Setting\" >1.1.0.12</var2>
+				<var3 Name="3S_HNX_14TLC_RDT_" IniFile="MTable.set" IniSection="FW_4=.\Setting\">2.0.0.2</var3>
 				<var4 Name="TRUE" Type="Integer">NOUSE</var4>
             </ProcessObject>	
 			<ProcessObject  Name="HUATOOP_H16">
 				<var1 Name="3S_HNX_16TLC_BNR_" IniFile="H16_TLC_test.ini" IniSection="Burner=.\Setting\">3.2.0.51</var1>
 				<var2 Name="3S_HNX_16TLC_FW_" IniFile="MTable.set" IniSection="FW_1=.\Setting\">1.1.0.13</var2>
-				<var3 Name="3S_HNX_16TLC_RDT_2.0." IniFile="MTable.set" IniSection="FW_2=.\Setting\">0.27</var3>
-				<var4 Name="3S_HNX_16TLC_RDT_2.1." IniFile="MTable.set" IniSection="FW_3=.\Setting\">0.27</var4>
+				<var3 Name="3S_HNX_16TLC_RDT_" IniFile="MTable.set" IniSection="FW_2=.\Setting\">2.0.0.27</var3>
+				
+				<!--<var4 Name="3S_HNX_16TLC_RDT_2.1." IniFile="MTable.set" IniSection="FW_3=.\Setting\">0.27</var4>-->
             </ProcessObject>	
 
 		</ProcessObjectSet>

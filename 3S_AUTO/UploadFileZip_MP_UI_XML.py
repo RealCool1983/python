@@ -326,9 +326,15 @@ def runCopySSD_MP_UI(sXmlPath):
     sNewName = getNewMPUI_Name(listFolderName[iCount-1], sToolVersion)
     sPath2 = sPath1.replace(listFolderName[iCount-1], sNewName)
 
+    if os.path.exists(sPath2):
+        shutil.rmtree(sPath2) 
+        print('{}{}'.format(sPath2, ", rmtree ok"))
+        
     copy_tree(sPath1, sPath2)
     sPC_NewMPUI_Name = sNewName
     sPC_NewMPUI_Path = sPath2
+
+    print('sPC_NewMPUI_Name = [{}] , sPC_NewMPUI_Path =  [{}]'.format(sPC_NewMPUI_Name, sPC_NewMPUI_Path))
 
     print('copy_tree from [{}] to [{}] ok'.format(sPath1, sPath2))
 
@@ -442,6 +448,7 @@ def runCompressFile(sXmlPath):
                 sTmpPath = os.path.join(sRemoteFolderName, aFile)
                 
                 #zf.write(aFile, compress_type=zipfile.ZIP_DEFLATED)
+                print('runCompressFile add [{}] ..\n '.format(aFile))
                 zf.write(aFile, sTmpPath, compress_type=zipfile.ZIP_BZIP2)
 
     zf.close()
