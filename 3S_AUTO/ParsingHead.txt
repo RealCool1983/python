@@ -1,0 +1,336 @@
+typedef struct _cfg_tbl_nand_info_t
+{
+
+    UINT16  nr_werus;
+
+
+    BYTE    width;              // actual width, # of udev, used for space management
+
+    BYTE    nr_bits_per_cell;   // Cell type
+    BYTE    nr_luns;            // = 2 ^ rl.lun_bits
+    BYTE    nr_planes_per_lun;  // = 2 ^ rl.plane_bits
+    UINT16  page_data_sz;
+    UINT16  page_spare_sz;
+
+
+    UINT16  nr_pages_per_block;
+    BYTE    support_ce;
+    BYTE    support_channel;
+    BYTE    rsv[16];
+} cfg_tbl_nand_info_t;
+
+
+typedef struct _toggle_cali_result
+{
+    phy_cali_result toggle_result[8];
+} toggle_cali_result;
+
+
+typedef struct _LOG_EXT_CONFIG_A0
+{
+    UINT32               Marvell_Flag;
+    UINT32               SSS_Flag;                 // reference this variable to check burner status flag
+    BYTE                 Percentage;               // percentage for each step (each step of burner start and call vendor safe erase will update)
+    BYTE                 Burner_Start_Run_Status;
+    BYTE                 Total_Percentage;         // percentage for all step (burner start total step)
+    BYTE                 Last_Burner_Run_Stage;
+    UINT16               Num_Factory_DF_Blk;       // factory defect number
+    UINT16               Num_Grown_DF_Blk;         // grown defect number
+    BYTE                 Flash_ID[8][8];
+    toggle_cali_result   Nand_Phy_Cali_Result;
+    BYTE                 Rsv1[148];
+    BYTE                 Status_Sig[8];            // signature: 3SSTATUS
+    UINT32               Main_Error;               // SSS_Flag fail flag
+    BYTE                 Binary_String[208];
+    cfg_tbl_nand_info_t  cfg_tbl_nand_info;       //32 byte
+} LOG_EXT_CONFIG_A0, *PLOG_EXT_CONFIG_A0;
+
+
+// MP use data 12 KBytes
+typedef struct _MP_USE_DATA_CONFIG_INFO
+{
+    char  Previous_Stage[16];  // record stage: FAT, FTB, or QC
+    char  Current_Stage[16];   // record stage: FAT, FTB, or QC
+
+    char  MP_Start_Time[64];
+    char  MP_Version[64];
+    char  FW_Version[16];
+    char  INI_File_Name[512];
+
+    RDT_INI_INFO  RDT_INI_Info;  // structure size --> 4628 bytes
+    char Burner_File_Name[256];
+
+    LOG_EXT_CONFIG_A0  A0_Info;  // structure size --> 512 bytes, 5573~6084
+    BYTE  Upgrade_FW_By_Burner;  // 0: normal MP flow  1: upgrade fw by burner
+    
+    BYTE  Rsv[12288 - 6085];
+} MP_USE_DATA_CONFIG_INFO, *PMP_USE_DATA_CONFIG_INFO;
+
+typedef struct _IMAGE_HEADER_CONFIG_INFO
+{
+    char    Signature[8];
+    UINT32  Version;
+    UINT32  Select_Bit;
+    UINT32  Auth;
+    UINT32  Encrypt;
+    UINT32  Num_Of_Section;
+    UINT32  Section_Hdr_Size;
+    UINT32  Section_Table_Offset;
+    UINT32  Flash_Addr;
+    UINT32  CRC;
+    UINT32  Image_Size;
+    BYTE    Image_Type;
+    BYTE    Rsv[7];
+    UINT16  Ver_Major;
+    UINT16  Ver_Minor;
+    UINT16  Ver_OEM;
+    UINT16  Ver_Build;
+} IMAGE_HEADER_CONFIG_INFO, *PIMAGE_HEADER_CONFIG_INFO;
+
+
+// NANA PHY calibration 184 bytes
+typedef struct _NAND_PHY_CALIBRATION_CONFIG_INFO
+{
+    BYTE  Rsv[184];
+} NAND_PHY_CALIBRATION_CONFIG_INFO, *P_NAND_PHY_CALIBRATION_CONFIG_INFO;
+
+
+// SATA PHY patch 264 bytes
+typedef struct _SATA_PHY_PATCH_CONFIG_INFO {
+    BYTE    Signature[4];
+    UINT32  Size;
+    BYTE    Start[256];
+} SATA_PHY_PATCH_CONFIG_INFO, *PSATA_PHY_PATCH_CONFIG_INFO;
+
+
+// ATA identify config 512 bytes
+typedef struct _ATA_IDENTIFY_CONFIG_INFO
+{
+    BYTE    Rsv1[14];
+    BYTE    CFA[6];
+    char    Serial_Number[SN_LEN];
+    BYTE    Rsv2[6];
+    char    Firmware_Revision[8];  // WORD[23] ~ WORD[26]
+    char    Model_Number[MODEL_NUMBER_LEN];
+    BYTE    Rsv3[4];
+    UINT16  Capabilities;
+    UINT16  Capabilities_Standby_Time;
+    BYTE    Free_Fall_Sensitivity_And_Reported[6];
+    BYTE    Cylinder_Head_Sec_Per_Track[6];
+    BYTE    Rsv4[4];
+    UINT16  Support_Conf;
+    UINT32  Total_Number_Of_LBA;  // WORD[60] ~ WORD[61]
+    BYTE    Rsv5[6];
+    UINT64  Transfer_Cycle_Time;
+    BYTE    Rsv6[12];
+    UINT16  NCQ_Depth;
+    UINT16  SATA_Capabilities;
+    UINT16  STAT_Additional_Capabilities;
+    UINT16  SATA_Features_Supported;
+    BYTE    Rsv7[6];
+    BYTE    Command_And_Feature_Sets_Supported[6];
+    BYTE    Command_And_Feature_Sets_Supported_Or_Enabled[6];
+    BYTE    Rsv8[12];
+    UINT16  Vendor_Recommended_Acoustic_Management_Value;
+    BYTE    Rsv9[10];
+    UINT64  Number_Of_User_Addressable_Logical_Sectors;  // WORD[100] ~ WORD[103]
+    BYTE    Rsv10[4];
+    UINT16  Physical_Sector_Size;
+    UINT16  Inter_Seek_Delay;
+    BYTE    WWN[8];  // world wide name. WORD[108] ~ WORD[111]
+    BYTE    Rsv11[14];
+    UINT32  Command_And_Feature_Sets_Supported_2;
+    BYTE    Rsv12[16];
+    BYTE    Vendor_Specific[62];
+    BYTE    RSV_CFA[16];
+    UINT16  Device_Nominal_From_Factor;
+    BYTE    Rsv13[2];
+    UINT64  Additional_Product_Identifier;
+    BYTE    Rsv14[4];
+    char    Current_Media_Serial_Number[60];
+    UINT16  SCT_Command_Transport;
+    BYTE    Rsv15[46];
+    UINT64  Extended_Number_Of_User_Addressable_Sectors;
+    UINT16  Min_Number_Of_512_Bytes_Data_Blocks;
+    UINT16  Max_Number_Of_512_Bytes_Data_Blocks;
+    BYTE    Rsv16[38];
+    UINT16  CheckSum;
+
+} ATA_IDENTIFY_CONFIG_INFO, *PATA_IDENTIFY_CONFIG_INFO;
+
+
+// for Marvell use 512 bytes
+typedef struct _MARVELL_AREA_CONFIG_INFO
+{
+    BYTE  Rsv[512];
+} MARVELL_AREA_CONFIG_INFO, *PMARVELL_AREA_CONFIG_INFO;
+
+
+// JEDEC 512 bytes
+typedef struct _JEDEC_DATA_CONFIG_INFO
+{
+    BYTE    Parameter_Page_Signature_JESD[4];
+    UINT16  Revision_Number;
+    UINT16  Feature_Supported;
+    BYTE    Optional_Commands_Supported[3];
+    UINT16  Secondary_Commands_Supported;
+    BYTE    Number_Of_Parameter_Pages;
+    BYTE    Rsv1[18];
+    BYTE    Device_Manufacturer[12];
+    BYTE    Device_Model[20];
+    BYTE    JEDEC_Manufacturer_ID[6];
+    BYTE    Rsv2[10];    
+    UINT32  Number_Of_Data_Bytes_Per_Page;
+    UINT16  Number_Of_Spare_Bytes_Per_Page;
+    BYTE    Rsv3[6];
+    UINT32  Number_Of_Pages_Per_Block;
+    UINT32  Number_Of_Blocks_Per_Logical_Unit;
+    BYTE    Number_Of_Logical_Units;
+    BYTE    Number_Of_Address_Cycles;
+    BYTE    Number_Of_Bit_Per_Cell;
+    BYTE    Number_Of_Programs_Per_Page;
+    BYTE    Multi_Plane_Addressing;
+    BYTE    Multi_Plane_Operation_Attributes;
+    BYTE    Rsv4[38];        
+    UINT16  Asynchronous_SDR_Speed_Grade;
+    UINT16  Toggle_DDR_Speed_Grade;
+    UINT16  Synchronous_DDR_Speed_Grade;    
+    BYTE    Asynchronous_SDR_Features;
+    BYTE    Toggle_Mode_DDR_Features;
+    BYTE    Synchronous_DDR_Features;
+    UINT16  tPROG_Max_Page_Program_Time;
+    UINT16  tBERS_Max_Block_Erase_Time;
+    UINT16  tR_Max_Page_Read_Time;
+    UINT16  tR_Max_Multi_Plane_Page_Read_Time;
+    UINT16  tCSS_Min_Change_Column_Setup_Time;
+    UINT16  IO_Pin_Capacitance;
+    UINT16  Input_Pin_Capacitance;
+    UINT16  CK_Pin_Capacitance;
+    BYTE    Driver_Strength_Support;
+    UINT16  tADL_Program_Page_Register_Clear_Enhancement_tADL_Value;
+    BYTE    Rsv5[36];
+    BYTE    Guaranteed_Valid_Blocks_Of_Target;
+    UINT16  Block_Endurance_For_Guaranteed_Valid_Blocks;    
+    UINT64  ECC_And_Endurance_Information_Block_0;
+    UINT64  ECC_And_Endurance_Information_Block_1;
+    UINT64  ECC_And_Endurance_Information_Block_2;
+    UINT64  ECC_And_Endurance_Information_Block_3;
+    BYTE    Rsv6[177];
+    UINT16  Vendor_Specific_Revision_Number;
+    BYTE    Vendor_Specific[88];
+    UINT16  CRC;
+} JEDEC_DATA_CONFIG_INFO, *PJEDEC_DATA_CONFIG_INFO;
+
+
+typedef struct _cfg_tbl_nand_info_t
+{
+    //spb_top_mgr_t
+    UINT16  nr_werus;
+
+    //spb_cfg_t
+    BYTE    width;              // actual width, # of udev, used for space management
+
+   //dev_geo_t;
+    BYTE    nr_bits_per_cell;   // Cell type
+    BYTE    nr_luns;            // = 2 ^ rl.lun_bits
+    BYTE    nr_planes_per_lun;  // = 2 ^ rl.plane_bits
+    UINT16  page_data_sz;
+    UINT16  page_spare_sz;
+
+    /*
+    * nr_blocks_per_plane is not necessarily power of 2, some NAND has extra
+    * blocks, which is good so that we can have more spare blocks.
+    * a.k.a., nr_blocks_per_plane != 2 ^ rl.block_bits
+    */
+    UINT16  nr_blocks_per_die;
+
+    /*
+    * nr_pages_per_block is not ncesessarily power of 2, so far we have seen this
+    * on TLC NAND. a.k.a., nr_pages_per_block != 2 ^ rl.page_bits
+    */
+    UINT16  nr_pages_per_block;
+    BYTE    support_ce;
+    BYTE    support_channel;
+    BYTE    rsv[16];
+} cfg_tbl_nand_info_t;
+
+
+// RDT config 2048 bytes
+typedef struct _RDT_CONFIG_INFO
+{
+    BYTE   Rsv1[256];
+
+    // full die RDT
+    UINT32  TLC_Cycle;
+    UINT32  SLC_Cycle;
+    BYTE    Rsv2[248];
+
+    // test condition
+    UINT32  Mark_Bad;
+    UINT32  MP_Test;
+    UINT32  Preload_Data;
+    UINT32  Bad_Sample_Black_Per_CE;
+    BYTE    Rsv3[240];
+
+    // TLC sample block RDT
+    UINT32  TLC_Dwell_Time;
+    UINT32  TLC_Sampling_Cycle;
+    UINT32  TLC_ECC_Log_Interval;
+    UINT32  TLC_Start_Select_Block;
+    UINT32  TLC_End_Select_Block;
+    UINT32  TLC_Random_Block;
+    UINT32  TLC_Sample_Block_Quantity;
+    UINT32  TLC_Sampling_ECC_Bit_Threshold;
+    BYTE    TLC_Sampled_WERU_Bitmap[181];
+    BYTE    Rsv4[43];
+
+    // SLC sample block RDT
+    UINT32  SLC_Special_Test_Cycle;
+    UINT32  SLC_ECC_Log_Interval;
+    UINT32  SLC_Random_Block;
+    UINT32  SLC_Block_Quantity;
+    UINT32  SLC_Start_Select_Block;
+    UINT32  SLC_End_Select_Block;
+    UINT32  SLC_Sampling_ECC_Bit_Threshold;
+    BYTE    SLC_Sampled_WERU_Bitmap[181];
+    BYTE    Rsv5[3];
+    UINT32  SLC_Dwell_Time;
+    BYTE    LED_Mode;      // 0: for KDI, 1: for ADATA.
+    BYTE    Pattern_Mode;  // 0: 0x55AA 0xAA55 ...  1: 0x84210 ...
+    BYTE    SLC_Full_Die_ECC_Log_Interval;
+    BYTE    TLC_Full_Die_ECC_Log_Interval;
+    UINT32  RDT_GD_TH;       // if set 0, fw won't check
+    BYTE    LED_Light_Time;  // (LED_Light_Time + 1) * 0.1 second
+    BYTE    LED_Dark_Time;   // (LED_Dark_Time + 1) * 0.1 second
+    BYTE    LDPC_Switch;     // 1: turn off LDPC  0: original status (LDPC on)
+    BYTE    Full_Die_Deep_Read_Retry_Option;  // 1: full die test turn on Deep Read Retry, 2: full die test turn off deep read retry
+    UINT16  Full_Die_Erase_Count_Threshold;   // if weru's erase count >= Erase_Count_Threshold, RDT will by pass this weru when TLC full die test
+    UINT16  Bypass_SLC_Weru_For_TLC_Full_Die_Test;
+    UINT32  TLC_Full_Die_ECC_Bit_Threshold;
+    UINT32  SLC_Full_Die_ECC_Bit_Threshold;
+    UINT32  Sorting_Board_Key_Count;          // assign key count for sorting board
+    UINT32  Sorting_Board_Current_Key_Count;  // for read back sorting board current key count
+    BYTE    RR_Pass_Add_To_GD;                // condition: normal read verify fail (LDPC) --> ECC is under ECC threshold --> read re-try pass
+                                              // 1: add this block to GD, 0: won't add to GD
+    BYTE    Option1;
+	BYTE    Option2;
+	BYTE    Option3;
+    BYTE    Rsv6[4];
+
+    BYTE    Sorting_Board_Flash_Count;
+    BYTE    Rsv7[255];
+    BYTE    Rsv8[256];
+    cfg_tbl_nand_info_t  cfg_tbl_nand_info;        //32 byte
+    BYTE    Rsv9[224];
+
+} RDT_CONFIG_INFO, *PRDT_CONFIG_INFO;
+
+
+typedef struct _RDT_INI_INFO
+{
+    char    Signature[16];  // signature --> "RDT_INI"
+    char    File_Name[512];
+    UINT32  Content_Size;
+    char    Content[4096];  // INI content
+} RDT_INI_INFO, *PRDT_INI_INFO;
+
