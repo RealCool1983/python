@@ -1,9 +1,9 @@
 
 <Configuration>
 		<PATHObjects>
-			<ToolVersion>4</ToolVersion>
+			<ToolVersion>6</ToolVersion>
 			<PCSourceCodeGitPath>D:\\3S_PC\sourceCode\SSD\VC6\GIT_MP_UI\V1.0</PCSourceCodeGitPath>			
-			<PCSourceCodePath>D:\\3S_PC\ReleaseTool\MP_UI_V1.0\V1.0.2017.777</PCSourceCodePath>			
+			<PCSourceCodePath>D:\\3S_PC\ReleaseTool\MP_UI_V1.0\V1.6.2017.777</PCSourceCodePath>			
 			<S3800_SSD_MPPath>\\fileserver\3800\SW\SSD_MP_tool_EV\v1.8.2017.315</S3800_SSD_MPPath>	
 
 			<S3800_SSD_MPUIPath>\\fileserver\3800\SW\SSD_MP_UI_EV</S3800_SSD_MPUIPath>			
