@@ -1,0 +1,30 @@
+
+<Configuration>
+		<PATHObjects>
+			<Folder_Path>D:\3S_PC\sourceCode\SSD\VC6</Folder_Path>			
+			<PCWorkPath>D:\\3S_PC\sourceCode\SSD\VC6\workingTmp\gitWork</PCWorkPath>			
+			<PCSEToolPath>D:\\3S_PC\sourceCode\SSD\VC6\SE_Tools\MP\MP_V1</PCSEToolPath>
+			
+		</PATHObjects>
+		
+		<TestItemList><!--FALSE, TRUE -->
+			<Item Name="FileSize"  FileName="v1.9.2017.317.zip" Enabled="TRUE"/>
+
+	<!-- 		<Item Name="CopyFromDEPAP"  FileName="v1.9.2017.317.zip" Enabled="FALSE"/>
+			<Item Name="CopyFromWorkPath"  FileName="v1.9.2017.317" Enabled="FALSE"/>
+			<Item Name="GitCommit" FileName="v1.9.2017.317" Enabled="FALSE"/>		
+
+			<Item Name="CopyFromDEPAP"  FileName="v1.11.2017.323.zip" Enabled="TRUE"/>
+			<Item Name="CopyFromWorkPath"  FileName="v1.11.2017.323" Enabled="TRUE"/>
+			<Item Name="GitCommit" FileName="v1.11.2017.323" Enabled="FALSE"/> -->		
+
+			<Item Name="Pause" Enabled="FALSE"/>
+
+
+		</TestItemList>
+		
+		<ProcessObjectSet>
+
+		</ProcessObjectSet>
+		
+</Configuration>		
