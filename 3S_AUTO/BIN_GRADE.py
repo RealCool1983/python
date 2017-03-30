@@ -329,7 +329,7 @@ def runCopySSD_MP_UI(sXmlPath):
 
     copy_tree(sPath1, sPath2)
     
-    sPC_NewMPUI_Name = sNewName
+    sPC_NewMPUI_Name = "BIN_GRADE_" + sNewName
     sPC_NewMPUI_Path = sPath2
 
     print('copy_tree from [{}] to [{}] ok'.format(sPath1, sPath2))
