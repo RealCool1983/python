@@ -10,6 +10,10 @@ git pull project-vs2010 master
 git push project-vs2010 master
 git pull project-vs2010 master
 
+cd D:\3S_PC\sourceCode\SSD\VS2008
+git pull project-vs2010 master
+git push project-vs2010 master
+git pull project-vs2010 master
 
 cd D:\3S_PC\sourceCode\SSD\VC6\SE_Tools
 git pull ssd-se-tools master
