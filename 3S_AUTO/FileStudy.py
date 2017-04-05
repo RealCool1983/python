@@ -8,7 +8,7 @@ import sys
 import xml.etree.ElementTree as ET
 from distutils.dir_util import copy_tree
 from os import remove, close
-
+from collections import Counter
 
 """
 auto git commit from rar to Repository 
@@ -19,7 +19,7 @@ auto git commit from rar to Repository
 4.git add . 
 5.git commit - m "zip file name"
 
-last update 2017.3.24 Rex at Zhupei
+last update 2017.4.6 Rex at Zhupei
 
 """
 
@@ -35,122 +35,215 @@ def rawInputTest():
         print("wrong answer , do nothing")
         return -1
 
-    
-def runGitCommit(sXmlPath, testFile):
-    tree = ET.parse(sXmlPath)
-    root = tree.getroot()   
 
-    print('runGitCommit[{}] start ..'.format('-'))
+def buildFolderInfo(sPath):
 
-    for neighbor in root.iter('PATHObjects'):
-        sPath1 = neighbor.find('PCWorkPath').text
-        sPath2 = neighbor.find('PCSEToolPath').text
-        sPath3 = (os.path.abspath(os.path.join(sPath2, os.pardir)))
+    print('{:<10s}buildFolderInfo  ..'.format('start'))
 
-    sCmd = 'git commit -m {}{}{}'.format("\"", testFile, "\"")  
-    # sMsg = 'a'
-    print("sCmd:", sCmd)
-    # print(sMsg)
-
-    print('sPath3 = {} , {}'.format(sPath3, sPath3))
-    os.chdir(sPath3)
-    os.system("git add .")
-    os.system(sCmd)
-
-
-    print('runGitCommit[{}] End ..\n '.format('-'))
-
-def runCopyFolder(sSrc, sDet):
-    # ignore_dirs = shutil.ignore_patterns( '.gitignore', '.git')
-    ignore_dirs = shutil.ignore_patterns( '.gitignore', '.git')
-    print('runCopyFolder from {} to {} ok'.format(sSrc, sDet))
-    shutil.copytree(sSrc, sDet, ignore=ignore_dirs)
-
-
-# 1.remove exist folder
-# 2.copy folder
-def runCopyFromWorkPath(sXmlPath, sTestFile):
-    tree = ET.parse(sXmlPath)
-    root = tree.getroot()   
-
-    print('runCopyFromWorkPath[{}] start ..'.format('-'))
-    for neighbor in root.iter('PATHObjects'):
-        sPath1 = neighbor.find('PCWorkPath').text
-        sPath2 = neighbor.find('PCSEToolPath').text
-
-    if os.path.exists(sPath2):
-        shutil.rmtree(sPath2) 
-        print('{}{}'.format(sPath2, ", rmtree ok"))
-        
-
-    det_file = os.path.join(sPath1, sTestFile) 
-
-    print(os.listdir(det_file))
-
-
-    for root, directories, files in os.walk(det_file):
-        for subfolder in directories:
-            if (subfolder.find("bin") != -1 ):
-                sFolderPathSrc = os.path.join(root, subfolder)
-                sFolderPathDet = os.path.join(sPath2, subfolder)
-                print('subfolder = {}, path = {}'.format(subfolder, sFolderPathSrc))
-                runCopyFolder(sFolderPathSrc, sFolderPathDet)
-
-            elif (subfolder.find("src") != -1 ):
-                sFolderPathSrc = os.path.join(root, subfolder)
-                sFolderPathDet = os.path.join(sPath2, subfolder)
-                print('subfolder = {}, path = {}'.format(subfolder, sFolderPathSrc))
-                runCopyFolder(sFolderPathSrc, sFolderPathDet)
-
-            elif (subfolder.find("package") != -1 ):
-                sFolderPathSrc = os.path.join(root, subfolder)
-                sFolderPathDet = os.path.join(sPath2, subfolder)
-                print('subfolder = {}, path = {}'.format(subfolder, sFolderPathSrc))
-                runCopyFolder(sFolderPathSrc, sFolderPathDet)
-                
-            # file_paths.append(filepath)  # Add it to the list.
-
-    # for subfolder in os.listdir(det_file):
-    #     if (subfolder.find("bin")):
-    #         print('subfolder '.format(subfolder))            
-
-
-    print('runCopyFromWorkPath[{}] End ..\n '.format('-'))
-
-
-def get_filepaths(directory):
-    """
-    This function will generate the file names in a directory 
-    tree by walking the tree either top-down or bottom-up. For each 
-    directory in the tree rooted at directory top (including top itself), 
-    it yields a 3-tuple (dirpath, dirnames, filenames).
-    """
+    # build from folder info 
     file_paths = []  # List which will store all of the full filepaths.
-
+    listFileInfo =[]
     # Walk the tree.
-    for root, directories, files in os.walk(directory):
-        for filename in files:
-            # Join the two strings in order to form the full filepath.
-            filepath = os.path.join(root, filename)
-            file_paths.append(filepath)  # Add it to the list.
+    os.chdir(sPath)
+    for root, directories, files in os.walk(sPath):
+        for directorieName in directories:            
+            folderPath = os.path.join(root, directorieName)
+            relativefolderPath = os.path.relpath(folderPath)
+            
+            # print('folderName = {}\n path1 = {},\n path2 = {} '.format(directorieName, folderPath, relativefolderPath))
 
-    return file_paths  # Self-explanatory.
+            # tupleFileInfo[0] = folder name
+            # tupleFileInfo[1] = folder path
+            tupleFileInfo = (directorieName, relativefolderPath) #save folder name , path into tuple
+            listFileInfo.append(tupleFileInfo)  # Add it to the list.            
+
+    # iIndex = 0
+    # for x, y in listFileInfo:
+    #     print('{:<5d}, listFileInfo, name = {} path = {} '.format(iIndex, x, y))
+    #     iIndex += 1
 
 
-def runFileSize(sXmlPath, sTestFile):
+    print('{:<10s}buildFolderInfo  ..'.format('End'))
+    return listFileInfo
+
+
+
+def runSyncFolder(sXmlPath, inParameter):
+    tree = ET.parse(sXmlPath)
+    root = tree.getroot()   
+
+    print('{:<10s}runSyncFolder  ..'.format('start'))
+
+    for neighbor in root.iter('PATHObjects'):
+        sPath1 = neighbor.find('SyncFolderFrom').text
+        sPath2 = neighbor.find('SyncFolderTo').text
+
+
+    listFolderFrom = buildFolderInfo(sPath1)
+    listFolderTo = buildFolderInfo(sPath2)
+
+    #print folder list 
+    # iIndex = 0
+    # for x, y in listFolderFrom:
+    #     print('{:<5d}, listFolderFromInfo, name = {} path = {} '.format(iIndex, x, y))
+    #     iIndex += 1
+
+    # iIndex = 0
+    # for x, y in listFolderTo:
+    #     print('{:<5d}, listFolderToInfo, name = {} path = {} '.format(iIndex, x, y))
+    #     iIndex += 1
+
+    
+    #remove oldr folder
+    if (inParameter == "1"):
+        iIndex = 0
+        for x, y in listFolderTo:
+            
+            bExistFolder = 0
+            for x1, y1 in listFolderFrom:
+                if (y in y1 ):
+                    bExistFolder = 1
+
+            if (bExistFolder == 0): # exist folder, need remove
+                iIndex += 1
+                # print('{:<5d},kill bExistFolder, name = {} path = {} '.format(iIndex, x, y))
+    
+                sFullPathDes = os.path.join(sPath2, y)
+                
+                if os.path.exists(sFullPathDes):  # make exist folder
+                    shutil.rmtree(sFullPathDes)
+                    print('{:<5d}, rmtree OK, {} '.format(iIndex, sFullPathDes))
+
+
+    # copy folder
+    iIndex = 0
+    for x, y in listFolderFrom:
+        iIndex += 1
+        bExistFolder = 0
+        for x1, y1 in listFolderTo:
+            if (y in y1 ):
+                bExistFolder = 1
+
+        if (bExistFolder == 0): # not exist folder, copyFolder
+            # print('{:<5d}, bExistFolder, name = {} path = {} '.format(iIndex, x, y))
+            sFullPathSrc = os.path.join(sPath1, y)
+            sFullPathDes = os.path.join(sPath2, y)
+            
+            
+            if not os.path.exists(sFullPathDes):
+                shutil.copytree(sFullPathSrc, sFullPathDes)
+                print('{:<5d}, CopyTree OK\nsFullPathSrc = {} \nsFullPathDes = {} '.format(iIndex, sFullPathSrc, sFullPathDes))
+
+
+    print('{:<10s}runSyncFolder..'.format('End'))
+    return 0
+
+def runSameFile(sXmlPath, inParameter):
     tree = ET.parse(sXmlPath)
     root = tree.getroot()   
 
 
-    print('runFileSize[{}] start ..'.format('-'))
+    print('runSameFile[{}] start ..'.format('-'))
+
     for neighbor in root.iter('PATHObjects'):
         sPath1 = neighbor.find('Folder_Path').text
         # sPath2 = neighbor.find('PCWorkPath').text    
-    # print(get_filepaths(sPath1))
 
-    print('path = {}\n '.format(get_filepaths(sPath1)))
 
-    print('runFileSize[{}] End ..\n '.format('-'))
+    file_paths = []  # List which will store all of the full filepaths.
+    listFileInfo =[]
+    # Walk the tree.
+    for root, directories, files in os.walk(sPath1):
+        for filename in files:
+            # Join the two strings in order to form the full filepath.
+            filepath = os.path.join(root, filename)
+            file_paths.append(filepath)  # Add it to the list.            
+
+            # tupleFileInfo[0] = file name
+            # tupleFileInfo[1] = file path
+            # tupleFileInfo[2] = file size 
+            tupleFileInfo = (filename, filepath, os.path.getsize(filepath))
+            listFileInfo.append(tupleFileInfo)
+            
+            # print('tupleFileInfo = {} \n '.format(tupleFileInfo))
+            # print('t0 = {}\n t1 = {} \n t2 = {} \n '.format(tupleFileInfo[0], tupleFileInfo[1], tupleFileInfo[2]))
+            
+    print("build listFileInfo done")
+    # print("======================================\n")
+    
+    countFileName = [] # count same file by file name
+    countFileSize = [] # count same file by file size 
+    for x, y, z in listFileInfo:
+        countFileName = Counter(elem[0] for elem in listFileInfo) # elem[0] = file name 
+        countFileSize = Counter(elem[2] for elem in listFileInfo) # elem[2] = file size
+
+    # for letter, count in countFileName.most_common(1):
+    #     print('countFileName, letter = {} count = {} \n '.format(letter, count))
+
+    # for letter, count in countFileSize.most_common(2):
+    #     print('countFileSize, letter = {} count = {} \n '.format(letter, count))
+        
+
+    print("count file name, size done ")
+    # print("======================================\n")
+
+    # made new list
+    # x = file name
+    # y = file path
+    # z = file size 
+    listFileInfo2 = [] # new file list for same file name
+    listFileInfo3 = [] # new file list for same file size 
+    for x, y, z in listFileInfo:
+        for letter, count in countFileName.most_common(int(inParameter)):
+            if letter == x:
+                # tupleFileInfo = (x, y, z, count)
+                y =  y.replace("\\","/")
+                tupleFileInfo = (count, z, x, y) 
+
+                listFileInfo2.append(tupleFileInfo)        
+                # print('countFileName tupleFileInfo = {} \n '.format(tupleFileInfo))
+        for letter1, count1 in countFileSize.most_common(int(inParameter)):
+            if letter1 == z:
+                # tupleFileInfo1 = (x, y, z, count1)
+                y =  y.replace("\\","/")
+                tupleFileInfo1 = (count1, z, x, y) 
+                # tupleFileInfo1 = (x, z, count1, y)
+                listFileInfo3.append(tupleFileInfo1)  
+                # print('countFileSize tupleFileInfo = {} \n '.format(tupleFileInfo1))
+
+    print("made new file list1,2  done ")
+    # print("======================================\n")
+
+    # print("\n Show listFile2 result (same file name) :")
+    # print("Index, Title, FileName, FileSize, Filecount, FilePath")
+    print('\n\n{:10s},{:10s},{:5s},{:25s},{:20s} , Show listFile2 result (same file name) :'.format("Index", "Filecount", "FileSize", 'FileName', "FilePath"))
+    nIndex = 0
+    for item in listFileInfo2:
+        print('{:<7d}, {}'.format(nIndex, item))
+        nIndex += 1
+
+
+    # print("\n Show listFile3 result (same file size) :")
+    # print("Index, Title, FileName, FileSize, Filecount, FilePath")
+    print('\n\n{:10s},{:10s},{:5s},{:25s},{:20s} , Show listFile3 result (same file size) :'.format("Index", "Filecount", "FileSize", 'FileName', "FilePath"))
+    nIndex = 0
+    for item1 in listFileInfo3:
+        print('{:<7d}, {}'.format(nIndex, item1))        
+        nIndex += 1
+
+
+    print('\n runSameFile[{}] End ..\n '.format('-'))
+
+    return 0
+    #debug code , no use
+    print('listFileInfo len = {} \n '.format(len(listFileInfo)))
+    print('L0 = {}\n L1 = {} \n L2 = {} \n\n '.format(listFileInfo[0], listFileInfo[1], listFileInfo[2]))
+    print('L00 = {}\n L10 = {} \n L20 = {} \n '.format(listFileInfo[0][0], listFileInfo[1][0], listFileInfo[6][0]))
+    
+
+    print('count[0] = {}\n \n '.format(Counter(elem[0] for elem in listFileInfo)))
+    print('count[2]= {}\n \n '.format(Counter(elem[2] for elem in listFileInfo)))
+    
 
 
 def runCopyFromDEPAP(sXmlPath, sTestFile):
@@ -216,24 +309,28 @@ def parseXML(sXmlPath):
     for child in root.iter('Item'):
         testName = child.get('Name')
         testState = child.get('Enabled')
-        testFile = child.get('FileName')
-        print('testName:{:>25}, testState:{:>8}'.format(testName, testState ))
+        inParameter = child.get('Parameter')
+        # print('testName:{:>25}, testState:{:>8}'.format(testName, testState ))
 
         if (testState == 'TRUE'):
             if ( testName == 'FileSize'):
-                runFileSize(xmlPath, testFile)                                                                 
+                # print("test")
+                runSameFile(xmlPath, inParameter)                                                                 
+            if ( testName == 'SyncFolder'):
+                # print("test")
+                runSyncFolder(xmlPath, inParameter)                                                                                 
             # if ( testName == 'CopyFromWorkPath'):
             #     runCopyFromWorkPath(xmlPath, testFile)        
-            # if ( testName == 'GitCommit'):
-            #     runGitCommit(xmlPath, testFile)                                                                                                               
-        
+
+
             if ( testName == 'Pause'):
                 runPause()                                                
                           
             ListItem.insert(ListCount, testName)
             ListCount +=1
 
-    print('\n----------------------------------------------------\n')
+    print('\n-------------------------------------------------------------------\n')
+
     nfinishList = 0 
     for finishList in ListItem:
         if (finishList.find('CopySSD_MP_UI') != -1 ):

@@ -1,22 +1,18 @@
 
 <Configuration>
 		<PATHObjects>
-			<Folder_Path>D:\3S_PC\sourceCode\SSD\VC6</Folder_Path>			
-			<PCWorkPath>D:\\3S_PC\sourceCode\SSD\VC6\workingTmp\gitWork</PCWorkPath>			
-			<PCSEToolPath>D:\\3S_PC\sourceCode\SSD\VC6\SE_Tools\MP\MP_V1</PCSEToolPath>
+			<Folder_Path>D:\\3S_PC\sourceCode\SSD\VC6\BIN_GRADE_V1.0\src\Debug\UI_Log\20170222</Folder_Path>	
+			
+			<SyncFolderFrom>D:\\3S_PC\sourceCode\SSD\VC6\workingTmp\gitWork</SyncFolderFrom>			
+			<SyncFolderTo>D:\\3S_PC\sourceCode\SSD\VC6\workingTmp\test</SyncFolderTo>
 			
 		</PATHObjects>
 		
 		<TestItemList><!--FALSE, TRUE -->
-			<Item Name="FileSize"  FileName="v1.9.2017.317.zip" Enabled="TRUE"/>
+			<Item Name="FileSize"  Parameter="1" Enabled="FALSE"/> <!--Parameter(0~99xx, show top 1 file -->
+			<Item Name="SyncFolder"  Parameter="1" Enabled="TRUE"/><!--Parameter(0/1),0 = keep old folder, 1 = kill old folder -->
+			<Item Name="SyncFile"  Parameter="1" Enabled="TRUE"/><!--Parameter(0/1),0 = keep old file, 1 = replace by new file -->
 
-	<!-- 		<Item Name="CopyFromDEPAP"  FileName="v1.9.2017.317.zip" Enabled="FALSE"/>
-			<Item Name="CopyFromWorkPath"  FileName="v1.9.2017.317" Enabled="FALSE"/>
-			<Item Name="GitCommit" FileName="v1.9.2017.317" Enabled="FALSE"/>		
-
-			<Item Name="CopyFromDEPAP"  FileName="v1.11.2017.323.zip" Enabled="TRUE"/>
-			<Item Name="CopyFromWorkPath"  FileName="v1.11.2017.323" Enabled="TRUE"/>
-			<Item Name="GitCommit" FileName="v1.11.2017.323" Enabled="FALSE"/> -->		
 
 			<Item Name="Pause" Enabled="FALSE"/>
 
