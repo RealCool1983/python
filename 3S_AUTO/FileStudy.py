@@ -13,11 +13,7 @@ from collections import Counter
 """
 auto git commit from rar to Repository 
 
-1.copy zip folder from server to pc workFolder
-2.extractall 
-3.copy src, pbackage bin to pc/SE_TOOLS/MP/MP_V1 
-4.git add . 
-5.git commit - m "zip file name"
+
 
 last update 2017.4.6 Rex at Zhupei
 
@@ -34,6 +30,119 @@ def rawInputTest():
     else:
         print("wrong answer , do nothing")
         return -1
+
+def buildFileInfo(sPath):
+
+    print('{:<10s}buildFileInfo  ..'.format('start'))
+
+    # build from file info 
+    file_paths = []  # List which will store all of the full filepaths.
+    listFileInfo =[]
+    # Walk the tree.
+    os.chdir(sPath)
+    for root, directories, files in os.walk(sPath):
+        for fileName in files:            
+            filePath = os.path.join(root, fileName)
+            relativefilePath = os.path.relpath(filePath)
+            
+            # print('fileName = {}\n path1 = {},\n path2 = {} '.format(fileName, filePath, relativefilePath))
+
+            # tupleFileInfo[0] = file name
+            # tupleFileInfo[1] = file path
+            tupleFileInfo = (fileName, relativefilePath) #save file name , path into tuple
+            listFileInfo.append(tupleFileInfo)  # Add it to the list.            
+
+    # iIndex = 0
+    # for x, y in listFileInfo:
+    #     print('{:<5d}, listFileInfo, name = {} path = {} '.format(iIndex, x, y))
+    #     iIndex += 1
+
+
+    print('{:<10s}buildFileInfo  ..'.format('End'))
+    return listFileInfo
+
+
+
+def runSyncFile(sXmlPath, inParameter):
+    tree = ET.parse(sXmlPath)
+    root = tree.getroot()   
+
+    print('{:<10s}runSyncFile  ..'.format('start'))
+
+    for neighbor in root.iter('PATHObjects'):
+        sPath1 = neighbor.find('SyncFolderFrom').text
+        sPath2 = neighbor.find('SyncFolderTo').text
+
+    
+    listFileFrom = buildFileInfo(sPath1)
+    listFileTo = buildFileInfo(sPath2)
+
+    #print File list 
+    # iIndex = 0
+    # for x, y in listFileFrom:
+    #     print('{:<5d}, listFileFromInfo, name = {} path = {} '.format(iIndex, x, y))
+    #     iIndex += 1
+
+    # # iIndex = 0
+    # for x, y in listFileTo:
+    #     print('{:<5d}, listFileToInfo, name = {} path = {} '.format(iIndex, x, y))
+    #     iIndex += 1
+
+
+    #remove older File
+    if (inParameter == "1"):
+        iIndex = 0
+        for x, y in listFileTo:
+            
+            bExistFile = 0
+            for x1, y1 in listFileFrom:
+                if (y in y1 ):
+                    bExistFile = 1
+
+            if (bExistFile == 0): # exist File, need remove
+                iIndex += 1
+                # print('{:<5d},kill bExistFile, name = {} path = {} '.format(iIndex, x, y))
+    
+                sFullPathDes = os.path.join(sPath2, y)
+                
+                if os.path.exists(sFullPathDes):  # make exist File
+                    shutil.rmtree(sFullPathDes)
+                    print('{:<5d}, rmtree OK, {} '.format(iIndex, sFullPathDes))
+
+
+    # copy File
+    iIndex = 0
+    for x, y in listFileFrom:
+        iIndex += 1
+        bExistFile = 0
+        for x1, y1 in listFileTo:
+            if (y in y1 ):
+                bExistFile = 1
+
+        if (bExistFile == 0): # not exist File, copyFile
+            sFullPathSrc = os.path.join(sPath1, y)
+            sFullPathDes = os.path.join(sPath2, y)
+            
+            # print('show path, \n{}\n{}'.format(sFullPathSrc, sFullPathDes))
+
+            if not os.path.exists(sFullPathDes):
+                # print(os.path.dirname(sFullPathDes))
+                # make new  folder
+                if not os.path.exists(os.path.dirname(sFullPathDes)):
+                    try:
+                        print('makedirs OK, {}'.format(sFullPathDes))
+                        os.makedirs(os.path.dirname(sFullPathDes))
+                    except OSError as exc: # Guard against race condition
+                        print("OSError")
+
+                # copy file start 
+                shutil.copy2(sFullPathSrc, sFullPathDes)
+                print('{:<5d}, CopyFile OK\nsFullPathSrc = {} \nsFullPathDes = {} '.format(iIndex, sFullPathSrc, sFullPathDes))
+
+
+    print('{:<10s}runSyncFile..'.format('End'))
+    return 0
+
 
 
 def buildFolderInfo(sPath):
@@ -314,11 +423,11 @@ def parseXML(sXmlPath):
 
         if (testState == 'TRUE'):
             if ( testName == 'FileSize'):
-                # print("test")
                 runSameFile(xmlPath, inParameter)                                                                 
             if ( testName == 'SyncFolder'):
-                # print("test")
                 runSyncFolder(xmlPath, inParameter)                                                                                 
+            if ( testName == 'SyncFile'):
+                runSyncFile(xmlPath, inParameter)                  
             # if ( testName == 'CopyFromWorkPath'):
             #     runCopyFromWorkPath(xmlPath, testFile)        
 

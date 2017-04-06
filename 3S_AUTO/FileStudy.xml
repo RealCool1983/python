@@ -3,15 +3,15 @@
 		<PATHObjects>
 			<Folder_Path>D:\\3S_PC\sourceCode\SSD\VC6\BIN_GRADE_V1.0\src\Debug\UI_Log\20170222</Folder_Path>	
 			
-			<SyncFolderFrom>D:\\3S_PC\sourceCode\SSD\VC6\workingTmp\gitWork</SyncFolderFrom>			
+			<SyncFolderFrom>D:\\3S_PC\sourceCode\SSD\VC6\workingTmp\gitWork\Extract\v1.4.2017.210</SyncFolderFrom>			
 			<SyncFolderTo>D:\\3S_PC\sourceCode\SSD\VC6\workingTmp\test</SyncFolderTo>
 			
 		</PATHObjects>
 		
 		<TestItemList><!--FALSE, TRUE -->
 			<Item Name="FileSize"  Parameter="1" Enabled="FALSE"/> <!--Parameter(0~99xx, show top 1 file -->
-			<Item Name="SyncFolder"  Parameter="1" Enabled="TRUE"/><!--Parameter(0/1),0 = keep old folder, 1 = kill old folder -->
-			<Item Name="SyncFile"  Parameter="1" Enabled="TRUE"/><!--Parameter(0/1),0 = keep old file, 1 = replace by new file -->
+			<Item Name="SyncFolder"  Parameter="1" Enabled="FALSE"/><!--Parameter(0/1),0 = keep old folder, 1 = kill old folder -->
+			<Item Name="SyncFile"  Parameter="0" Enabled="TRUE"/><!--Parameter(0/1),0 = keep old file, 1 = replace by new file -->
 
 
 			<Item Name="Pause" Enabled="FALSE"/>
