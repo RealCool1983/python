@@ -10,6 +10,7 @@ from distutils.dir_util import copy_tree
 from os import remove, close
 from collections import Counter
 
+
 """
 auto git commit from rar to Repository 
 
@@ -52,6 +53,8 @@ def buildFileInfo(sPath):
             tupleFileInfo = (fileName, relativefilePath) #save file name , path into tuple
             listFileInfo.append(tupleFileInfo)  # Add it to the list.            
 
+            # tupleFileInfo = (folderName, relativefilePath) #save file name , path into tuple
+            # listFileInfo.append(tupleFileInfo)  # Add it to the list.                        
     # iIndex = 0
     # for x, y in listFileInfo:
     #     print('{:<5d}, listFileInfo, name = {} path = {} '.format(iIndex, x, y))
@@ -60,6 +63,19 @@ def buildFileInfo(sPath):
 
     print('{:<10s}buildFileInfo  ..'.format('End'))
     return listFileInfo
+
+
+def removeFile(sPath):
+    try:
+
+        print('removeFile/Folder path, {} '.format(sPath))
+        if os.path.isfile(sPath):
+            os.remove(sPath)  # remove the file
+        elif os.path.isdir(path):
+             shutil.rmtree(path)  # remove dir and all contains
+    except OSError:
+        print('OSError, {} '.format(sPath))        
+    return 0
 
 
 
@@ -77,37 +93,26 @@ def runSyncFile(sXmlPath, inParameter):
     listFileFrom = buildFileInfo(sPath1)
     listFileTo = buildFileInfo(sPath2)
 
-    #print File list 
-    # iIndex = 0
-    # for x, y in listFileFrom:
-    #     print('{:<5d}, listFileFromInfo, name = {} path = {} '.format(iIndex, x, y))
-    #     iIndex += 1
-
-    # # iIndex = 0
-    # for x, y in listFileTo:
-    #     print('{:<5d}, listFileToInfo, name = {} path = {} '.format(iIndex, x, y))
-    #     iIndex += 1
-
-
+    nPara = int(inParameter)
     #remove older File
-    if (inParameter == "1"):
+    if ( nPara > 0):
         iIndex = 0
         for x, y in listFileTo:
-            
+            print('bExtraFile, path = {},{} '.format(x, y))
             bExistFile = 0
             for x1, y1 in listFileFrom:
-                if (y in y1 ):
+                if (y == y1 ):
                     bExistFile = 1
 
-            if (bExistFile == 0): # exist File, need remove
+            if (bExistFile == 0): # extra File, need remove
                 iIndex += 1
-                # print('{:<5d},kill bExistFile, name = {} path = {} '.format(iIndex, x, y))
     
                 sFullPathDes = os.path.join(sPath2, y)
+                print('{:<5d},kill bExtraFile, name = {} path = {},{} '.format(iIndex, x, y, sFullPathDes))
                 
                 if os.path.exists(sFullPathDes):  # make exist File
-                    shutil.rmtree(sFullPathDes)
-                    print('{:<5d}, rmtree OK, {} '.format(iIndex, sFullPathDes))
+                    removeFile(sFullPathDes)
+
 
 
     # copy File
@@ -353,44 +358,6 @@ def runSameFile(sXmlPath, inParameter):
     print('count[0] = {}\n \n '.format(Counter(elem[0] for elem in listFileInfo)))
     print('count[2]= {}\n \n '.format(Counter(elem[2] for elem in listFileInfo)))
     
-
-
-def runCopyFromDEPAP(sXmlPath, sTestFile):
-    tree = ET.parse(sXmlPath)
-    root = tree.getroot()   
-
-    global sPC_NewMPUI_Path
-    global sPC_NewMPUI_Name
-
-    print('CopyFromDEPAP[{}] start ..'.format('-'))
-    for neighbor in root.iter('PATHObjects'):
-        sPath1 = neighbor.find('DEPAP_SSD_Path').text
-        sPath2 = neighbor.find('PCWorkPath').text
-
-    det_file = os.path.join(sPath1, sTestFile) 
-    if os.path.exists(det_file):
-        print('{}{}'.format(det_file, ", exist"))
-
-    if not (os.path.exists(sPath2)):
-        print('{}{}'.format(sPath2, ",exist , remove now"))        
-        os.remove(sPath2)
-
-    # ignore_dirs = shutil.ignore_patterns( '.gitignore', '.git')
-    print('copy from [{}] to [{}] ok'.format(det_file, sPath2))
-
-    # shutil.copytree(sPath1, sPath2, ignore=ignore_dirs)
-
-    shutil.copy(det_file, sPath2)
-
-    sPath3 = os.path.join(sPath2, sTestFile) 
-    zf = zipfile.ZipFile(sPath3)
-
-    print('{}{}'.format(sPath3, ", ready to Extract "))        
-    zf.extractall(path=sPath2, members=None, pwd=None)
-    zf.close()
-
-    print('CopyFromDEPAP[{}] End ..\n '.format('-'))
-
 
 
 def runPause():
