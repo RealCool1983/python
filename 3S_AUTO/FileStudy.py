@@ -32,6 +32,93 @@ def rawInputTest():
         print("wrong answer , do nothing")
         return -1
 
+def buildFileDateInfo(sPath):
+
+    print('{:<10s}buildFileDateInfo  ..'.format('start'))
+
+    # build from file info 
+    file_paths = []  # List which will store all of the full filepaths.
+    listFileInfo =[]
+    # Walk the tree.
+    os.chdir(sPath)
+    for root, directories, files in os.walk(sPath):
+        for fileName in files:            
+            filePath = os.path.join(root, fileName)
+            relativefilePath = os.path.relpath(filePath)
+            
+            # print('fileName = {}\n path1 = {},\n path2 = {} '.format(fileName, filePath, relativefilePath))
+
+            # tupleFileInfo[0] = file name
+            # tupleFileInfo[1] = file path
+            fileTimeInfo = os.path.getmtime(filePath)
+            tupleFileInfo = (relativefilePath, fileTimeInfo) #save file name , path into tuple
+            listFileInfo.append(tupleFileInfo)  # Add it to the list.            
+            # print('fileName = {}\n path1 = {},\n path2 = {} '.format(fileName, relativefilePath, fileTimeInfo))
+
+    # iIndex = 0
+    # for x, y in listFileInfo:
+    #     print('{:<5d}, listFileInfo, name = {} path = {} '.format(iIndex, x, y))
+    #     iIndex += 1
+
+
+    print('{:<10s}buildFileInfo  ..'.format('End'))
+    return listFileInfo
+
+def runSyncFileByDate(sXmlPath, inParameter):
+    tree = ET.parse(sXmlPath)
+    root = tree.getroot()   
+
+    print('{:<10s}runSyncFileByDate  ..'.format('start'))
+
+    for neighbor in root.iter('PATHObjects'):
+        sPath1 = neighbor.find('SyncFolderFrom').text
+        sPath2 = neighbor.find('SyncFolderTo').text
+
+    
+    listFileFrom = buildFileDateInfo(sPath1)
+    listFileTo = buildFileDateInfo(sPath2)
+
+    nPara = int(inParameter)
+    #remove older File
+    if ( nPara > 0):
+        iIndex = 0
+        iFileInfoSize = len(listFileFrom)
+        while iFileInfoSize > 0:
+            iFileInfoSize -= 1
+
+            if (listFileFrom[iFileInfoSize][1] > listFileTo[iFileInfoSize][1]):
+                print(test)
+                sFullPathSrc = os.path.join(sPath1, listFileFrom[iFileInfoSize][0])                
+                sFullPathDes = os.path.join(sPath2, listFileTo[iFileInfoSize][0])
+
+                print('{:<5d}, CopyFile OK\nsFullPathSrc = {} \nsFullPathDes = {} '.format(iIndex, sFullPathSrc, sFullPathDes))
+                # removeFile(sFullPathDes)
+                # shutil.copy2(sFullPathSrc, sFullPathDes)
+                print('{:<5d}, CopyFile OK\nsFullPathSrc = {} \nsFullPathDes = {} '.format(iIndex, sFullPathSrc, sFullPathDes))
+
+            print("{},{},{}", iFileInfoSize, listFileFrom[iFileInfoSize][0], listFileFrom[iFileInfoSize][1]  )
+    return 0
+        # for x, y in listFileTo: # x = file path, y = file date
+        #     bNewFile = 0
+        #     for x1, y1 in listFileFrom: # x1 = file path, y1 = file date
+        #         if (y1 > y ):
+        #             bNewFile = 1
+        #             print('y1,{}  y,{}'.format(y1,y))
+
+        #     if (bNewFile == 1): # new File, need to write over, update
+        #         iIndex += 1
+        #         sFullPathSrc = os.path.join(sPath1, x1)
+        #         sFullPathDes = os.path.join(sPath2, x)
+
+        #         removeFile(sFullPathDes)
+        #         shutil.copy2(sFullPathSrc, sFullPathDes)
+        #         print('{:<5d}, CopyFile OK\nsFullPathSrc = {} \nsFullPathDes = {} '.format(iIndex, sFullPathSrc, sFullPathDes))
+
+
+
+    print('{:<10s}runSyncFileByDate..'.format('End'))
+    return 0
+
 def buildFileInfo(sPath):
 
     print('{:<10s}buildFileInfo  ..'.format('start'))
@@ -67,7 +154,6 @@ def buildFileInfo(sPath):
 
 def removeFile(sPath):
     try:
-
         print('removeFile/Folder path, {} '.format(sPath))
         if os.path.isfile(sPath):
             os.remove(sPath)  # remove the file
@@ -79,11 +165,11 @@ def removeFile(sPath):
 
 
 
-def runSyncFile(sXmlPath, inParameter):
+def runSyncFileByFileName(sXmlPath, inParameter):
     tree = ET.parse(sXmlPath)
     root = tree.getroot()   
 
-    print('{:<10s}runSyncFile  ..'.format('start'))
+    print('{:<10s}runSyncFileByFileName  ..'.format('start'))
 
     for neighbor in root.iter('PATHObjects'):
         sPath1 = neighbor.find('SyncFolderFrom').text
@@ -98,7 +184,6 @@ def runSyncFile(sXmlPath, inParameter):
     if ( nPara > 0):
         iIndex = 0
         for x, y in listFileTo:
-            print('bExtraFile, path = {},{} '.format(x, y))
             bExistFile = 0
             for x1, y1 in listFileFrom:
                 if (y == y1 ):
@@ -145,7 +230,7 @@ def runSyncFile(sXmlPath, inParameter):
                 print('{:<5d}, CopyFile OK\nsFullPathSrc = {} \nsFullPathDes = {} '.format(iIndex, sFullPathSrc, sFullPathDes))
 
 
-    print('{:<10s}runSyncFile..'.format('End'))
+    print('{:<10s}runSyncFileByFileName..'.format('End'))
     return 0
 
 
@@ -393,8 +478,10 @@ def parseXML(sXmlPath):
                 runSameFile(xmlPath, inParameter)                                                                 
             if ( testName == 'SyncFolder'):
                 runSyncFolder(xmlPath, inParameter)                                                                                 
-            if ( testName == 'SyncFile'):
-                runSyncFile(xmlPath, inParameter)                  
+            if ( testName == 'SyncFileByFileName'):
+                runSyncFileByFileName(xmlPath, inParameter) 
+            if ( testName == 'SyncFileByDate'):
+                runSyncFileByDate(xmlPath, inParameter)                 
             # if ( testName == 'CopyFromWorkPath'):
             #     runCopyFromWorkPath(xmlPath, testFile)        
 

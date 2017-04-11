@@ -10,11 +10,11 @@
 		
 		<TestItemList><!--FALSE, TRUE -->
 			<Item Name="FileSize"  Parameter="1" Enabled="FALSE"/> <!--Parameter(0~99xx, show top 1 file -->
-			<Item Name="SyncFolder"  Parameter="1" Enabled="TRUE"/><!--Parameter(0/1),0 = keep old folder, 1 = kill old folder -->
+			<Item Name="SyncFolder"  Parameter="1" Enabled="FALSE"/><!--Parameter(0/1),0 = keep old folder, 1 = kill old folder -->
 			
 			<!--Parameter(0/1),0 = keep old file, 1 = replace by new file -->
-
-			<Item Name="SyncFile"  Parameter="1" Enabled="TRUE"/>
+			<Item Name="SyncFileByFileName"  Parameter="1" Enabled="FALSE"/>
+			<Item Name="SyncFileByDate"  Parameter="1" Enabled="TRUE"/>
 
 
 			<Item Name="Pause" Enabled="FALSE"/>
