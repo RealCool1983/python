@@ -453,7 +453,7 @@ def runCompressFile(sXmlPath):
                 sTmpPath = os.path.join(sRemoteFolderName, aFile)
                 
                 #zf.write(aFile, compress_type=zipfile.ZIP_DEFLATED)
-                print('runCompressFile add [{}] ..\n '.format(aFile))
+                print('runCompressFile add [{}] '.format(aFile))
                 zf.write(aFile, sTmpPath, compress_type=zipfile.ZIP_BZIP2)
 
     zf.close()
@@ -767,6 +767,8 @@ def parseXML(sXmlPath):
                 runHUATOOP(xmlPath, 'HUATOOP_H14')                                     
             if ( testName == 'HUATOOP_H16'):
                 runHUATOOP(xmlPath, 'HUATOOP_H16')                                                     
+            if ( testName == 'HUATOOP_H16_2LUN'):
+                runHUATOOP(xmlPath, 'HUATOOP_H16_2LUN')                  
             if ( testName == 'CopySSD_MP_tool_EV'):
                 runCopySSD_MP_tool_EV(xmlPath)                                                     
             if ( testName == 'CopySSD_MP_UI'):
