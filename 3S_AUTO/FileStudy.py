@@ -1,9 +1,8 @@
-import zipfile
+
 import os
 import shutil
 import glob
 import datetime
-import time
 import sys
 import xml.etree.ElementTree as ET
 from distutils.dir_util import copy_tree
@@ -12,11 +11,11 @@ from collections import Counter
 
 
 """
-auto git commit from rar to Repository 
-
-
-
-last update 2017.4.6 Rex at Zhupei
+1.show diff file size, file name
+2.Sync Folder(copy extra folder, remove extra folder)
+3.Sync File by Name(copy extra file, remove extra)
+4.Sync File by Date(copy lastest file, remove old file  )
+last update 2017.4.12 Rex at Zhupei
 
 """
 
@@ -54,11 +53,6 @@ def buildFileDateInfo(sPath):
             tupleFileInfo = (relativefilePath, fileTimeInfo) #save file name , path into tuple
             listFileInfo.append(tupleFileInfo)  # Add it to the list.            
             # print('fileName = {}\n path1 = {},\n path2 = {} '.format(fileName, relativefilePath, fileTimeInfo))
-
-    # iIndex = 0
-    # for x, y in listFileInfo:
-    #     print('{:<5d}, listFileInfo, name = {} path = {} '.format(iIndex, x, y))
-    #     iIndex += 1
 
 
     print('{:<10s}buildFileInfo  ..'.format('End'))
@@ -463,9 +457,6 @@ def parseXML(sXmlPath):
                 runSyncFileByFileName(xmlPath, inParameter) 
             if ( testName == 'SyncFileByDate'):
                 runSyncFileByDate(xmlPath, inParameter)                 
-            # if ( testName == 'CopyFromWorkPath'):
-            #     runCopyFromWorkPath(xmlPath, testFile)        
-
 
             if ( testName == 'Pause'):
                 runPause()                                                
@@ -477,21 +468,11 @@ def parseXML(sXmlPath):
 
     nfinishList = 0 
     for finishList in ListItem:
-        if (finishList.find('CopySSD_MP_UI') != -1 ):
-            print('finishList[{}]:{:>25} : {}'.format(nfinishList, finishList, sPC_NewMPUI_Path))
-        elif (finishList.find('CopySSD_MP_tool_EV') != -1 ):
-            print('finishList[{}]:{:>25} : {}'.format(nfinishList, finishList, sPCS3800_SSD_MPPath))            
-        elif (finishList.find('CopyTo3800') != -1 ):
-            print('finishList[{}]:{:>25} : {}'.format(nfinishList, finishList, sRemote3800_NewMPUI_Path))               
-        elif (finishList.find('CompressFile') != -1 ):
-            print('finishList[{}]:{:>25} : {}'.format(nfinishList, finishList, sRemoteDepAp_NewMPUI_Path))               
-        else:
-            print('finishList[{}]:{:>25}'.format(nfinishList, finishList))
+        print('finishList[{}]:{:>25}'.format(nfinishList, finishList))
         nfinishList += 1
         
 
     print('\n-------------------excellent you are---------------------------------\n')
-
     return 0
 
 
