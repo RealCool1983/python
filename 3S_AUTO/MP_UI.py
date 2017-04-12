@@ -92,8 +92,9 @@ def removeFile(sPath):
             os.remove(currentFile)
 
 def copyOneFile(src_file, det_file):        
+    print('{}-\n{:120}-from \n{:120}-to'.format("prepare to copyOneFile ",src_file, det_file))
     shutil.copy2(src_file, det_file)
-    print('{}-\n{:120}-from \n{:120}-to'.format("copyOneFile done! ",src_file, det_file))
+    
 
 
 
@@ -107,7 +108,6 @@ def B2HEX_MP(sXmlPath):
     
     for neighbor in root.iter('PATHObjects'):
         sPath1 = neighbor.find('Bin2HexExePath').text
-        sPathGit = neighbor.find('PCSourceCodeGitPath').text
         sPath2 = os.path.join(sPCS3800_SSD_MPPath, "windows\\3S_SSD_MP.exe")
         sPath1Hex =  sPath1.replace("BIN2HEX.exe","3S_SSD_MP.hex")
         
@@ -128,8 +128,7 @@ def B2HEX_MP(sXmlPath):
     sPath3 = os.path.join(sPC_NewMPUI_Path, "src\\MP") 
     copyOneFile(sPath1Hex, sPath3)
 
-    sPath4 = os.path.join(sPathGit, "src\\MP") 
-    copyOneFile(sPath1Hex, sPath4) # backup to git repository
+
 
     print('{}\n'.format("B2HEX_MP End .."))
     
@@ -347,6 +346,44 @@ def runCopySSD_MP_UI(sXmlPath):
 
 
 
+def runCopyToGitbin(sXmlPath):
+    tree = ET.parse(sXmlPath)
+    root = tree.getroot()   
+
+    global sPC_NewMPUI_Path
+    global sPC_NewMPUI_Name
+
+    print('runCopyToGitbin[{}] start ..'.format('-'))
+    
+    for neighbor in root.iter('PATHObjects'):
+        sPathGit = neighbor.find('PCSourceCodeGitPath').text
+        det_file = os.path.join(sPathGit, "bin")  
+
+    removeFolder(sPC_NewMPUI_Path) # remove specific folder
+    removeFile(sPC_NewMPUI_Path) # remove specific folder
+
+    # det_file = os.path.join(sPath1, sPC_NewMPUI_Name) 
+    src_file = os.path.join(sPC_NewMPUI_Path, 'bin')
+    #print(det_file)
+    print('src = {}', src_file)
+    print('det = {}', det_file)
+
+    if os.path.exists(det_file):
+        print('{}{}'.format(det_file, "   exist !! remove it ?"))
+        sYesNo = rawInputTest()
+        if (sYesNo == 1):
+            shutil.rmtree(det_file) 
+            print('{}{}'.format(det_file, ", remove ok"))
+        elif(sYesNo == 0):
+            print("skip")
+            sys.exit(0)
+        
+    shutil.copytree(src_file, det_file)
+    print('runCopyToGitbin, {} end ..'.format(det_file))
+
+
+
+
 def runCopyTo3800(sXmlPath):
     tree = ET.parse(sXmlPath)
     root = tree.getroot()   
@@ -502,7 +539,7 @@ def runHUATOOP(sXmlPath, sH14H16):
                     print('Get it in [{}] '.format(sPCS3800_SSD_MP_SettingPath))
 
                     if (findFile(sPC_NewMPUI_Setting_Path ,neighborChild.text) == -1):
-                        #print ("nothing in sPC_NewMPUI_Setting_Path, copy to")
+                        print ("nothing in sPC_NewMPUI_Setting_Path, copy to")
                         
                         sFromPath = os.path.join(sPCS3800_SSD_MP_SettingPath, sBinName)
                         
@@ -695,12 +732,12 @@ def removeDiffFile(sPath, sFileType, sFileName):
 
 
 def findFile(sPath, sFileName):
-    #print('findFile [{}] Start ..'.format("-"))
+    print('findFile Start sPath = {}, name = {}'.format(sPath, sFileName))
     for file in os.listdir(sPath):
         if file.startswith(sFileName):
-            #print('GetIt = [{}]  \n '.format(file))
+            print('GetIt = [{}] '.format(file))
             return 0
-    #print('findFile [{}] End ..\n '.format("-"))
+    print('findFile [{}] End ..\n '.format("-"))
     return -1
 
 def runPause():
@@ -775,6 +812,8 @@ def parseXML(sXmlPath):
                 runCopySSD_MP_UI(xmlPath)                                                                     
             if ( testName == 'CopyTo3800'):
                 runCopyTo3800(xmlPath)
+            if ( testName == 'CopyToGitbin'):
+                runCopyToGitbin(xmlPath)                
             if ( testName == 'CompressFile'):
                 runCompressFile(xmlPath)                
             if ( testName == 'VCVersion'):
