@@ -85,35 +85,16 @@ def runSyncFileByDate(sXmlPath, inParameter):
         iFileInfoSize = len(listFileFrom)
         while iFileInfoSize > 0:
             iFileInfoSize -= 1
-
             if (listFileFrom[iFileInfoSize][1] > listFileTo[iFileInfoSize][1]):
-                print(test)
+                iIndex += 1
                 sFullPathSrc = os.path.join(sPath1, listFileFrom[iFileInfoSize][0])                
                 sFullPathDes = os.path.join(sPath2, listFileTo[iFileInfoSize][0])
-
+                
+                removeFile(sFullPathDes)
+                shutil.copy2(sFullPathSrc, sFullPathDes)
                 print('{:<5d}, CopyFile OK\nsFullPathSrc = {} \nsFullPathDes = {} '.format(iIndex, sFullPathSrc, sFullPathDes))
-                # removeFile(sFullPathDes)
-                # shutil.copy2(sFullPathSrc, sFullPathDes)
-                print('{:<5d}, CopyFile OK\nsFullPathSrc = {} \nsFullPathDes = {} '.format(iIndex, sFullPathSrc, sFullPathDes))
 
-            print("{},{},{}", iFileInfoSize, listFileFrom[iFileInfoSize][0], listFileFrom[iFileInfoSize][1]  )
-    return 0
-        # for x, y in listFileTo: # x = file path, y = file date
-        #     bNewFile = 0
-        #     for x1, y1 in listFileFrom: # x1 = file path, y1 = file date
-        #         if (y1 > y ):
-        #             bNewFile = 1
-        #             print('y1,{}  y,{}'.format(y1,y))
-
-        #     if (bNewFile == 1): # new File, need to write over, update
-        #         iIndex += 1
-        #         sFullPathSrc = os.path.join(sPath1, x1)
-        #         sFullPathDes = os.path.join(sPath2, x)
-
-        #         removeFile(sFullPathDes)
-        #         shutil.copy2(sFullPathSrc, sFullPathDes)
-        #         print('{:<5d}, CopyFile OK\nsFullPathSrc = {} \nsFullPathDes = {} '.format(iIndex, sFullPathSrc, sFullPathDes))
-
+            # print("{},{},{}", iFileInfoSize, listFileFrom[iFileInfoSize][0], listFileFrom[iFileInfoSize][1]  )
 
 
     print('{:<10s}runSyncFileByDate..'.format('End'))
