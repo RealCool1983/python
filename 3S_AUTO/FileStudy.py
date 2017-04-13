@@ -395,40 +395,59 @@ def runSameFile(sXmlPath, inParameter):
     print("made new file list1,2  done ")
     # print("======================================\n")
 
+
     sortlistFileInfo2 = sorted(listFileInfo2,  key=itemgetter(2)) # order by file name
     sortlistFileInfo3 = sorted(listFileInfo3,  key=itemgetter(1)) # order by file  size 
+    print("sort new list2,3  done ")
+
+    del listFileInfo
+    del listFileInfo2
+    del listFileInfo3
+    print("del listFileInfo, listFileInfo2, listFileInfo3  done ")
 
     
-    print("sort file list1,2  done ")
     # print("\n Show listFile2 result (same file name) :")
     # print("Index, Title, FileName, FileSize, Filecount, FilePath")
-    print('\n\n{:10s},{:10s},{:5s},{:25s},{:20s} , Show listFile2 result (same file name) :'.format("Index", "Filecount", "FileSize", 'FileName', "FilePath"))
+    print("\n\nShow listFile2 result (same file name) :")
+    print('{:10s},{:10s},{:10s},{:45s},{:20s} '.format("Index", "Filecount", "FileSize", 'FileName', "FilePath"))
     nIndex = 0
     for item in sortlistFileInfo2:
-        print('{:<7d}, {}'.format(nIndex, item))
-        nIndex += 1
-
+        try:
+            if (len(item) == 4):
+                # print('{:<10d},{}'.format(nIndex, item))
+                print('{:<10d},{:<10d},{:<10d},{:45s},{}'.format(nIndex, item[0], item[1], item[2], item[3]))
+            else:
+                print('!!!{:<10d},{}'.format(nIndex, item))
+            nIndex += 1
+        except:
+            print('{:<10d},{}, except in sortlistFileInfo2'.format(nIndex, item))        
 
     # print("\n Show listFile3 result (same file size) :")
     # print("Index, Title, FileName, FileSize, Filecount, FilePath")
-    print('\n\n{:10s},{:10s},{:5s},{:25s},{:20s} , Show listFile3 result (same file size) :'.format("Index", "Filecount", "FileSize", 'FileName', "FilePath"))
+    print('\n\nShow listFile3 result (same file size) :')
+    print('{:10s},{:10s},{:10s},{:45s},{:20s} '.format("Index", "Filecount", "FileSize", 'FileName', "FilePath"))
     nIndex = 0
-    for item1 in sortlistFileInfo3:
-        print('{:<7d}, {}'.format(nIndex, item1))        
-        nIndex += 1
-
-
-    print('\n runSameFile[{}] End ..\n '.format('-'))
-
-    return 0
-    #debug code , no use
-    print('listFileInfo len = {} \n '.format(len(listFileInfo)))
-    print('L0 = {}\n L1 = {} \n L2 = {} \n\n '.format(listFileInfo[0], listFileInfo[1], listFileInfo[2]))
-    print('L00 = {}\n L10 = {} \n L20 = {} \n '.format(listFileInfo[0][0], listFileInfo[1][0], listFileInfo[6][0]))
+    try:
+        for item in sortlistFileInfo3:        
+            if (len(item) == 4):
+                print('{:<10d},{:<10d},{:<10d},{:45s},{}'.format(nIndex, item[0], item[1], item[2], item[3]))        
+            else:
+                print('!!!{:<10d},{}'.format(nIndex, item))        
+            nIndex += 1    
+    except:
+        print('except in sortlistFileInfo3')        
     
 
-    print('count[0] = {}\n \n '.format(Counter(elem[0] for elem in listFileInfo)))
-    print('count[2]= {}\n \n '.format(Counter(elem[2] for elem in listFileInfo)))
+    print('\n runSameFileEnd ..\n ')
+    return 0
+    #debug code , no use
+    # print('listFileInfo len = {} \n '.format(len(listFileInfo)))
+    # print('L0 = {}\n L1 = {} \n L2 = {} \n\n '.format(listFileInfo[0], listFileInfo[1], listFileInfo[2]))
+    # print('L00 = {}\n L10 = {} \n L20 = {} \n '.format(listFileInfo[0][0], listFileInfo[1][0], listFileInfo[6][0]))
+    
+
+    # print('count[0] = {}\n \n '.format(Counter(elem[0] for elem in listFileInfo)))
+    # print('count[2]= {}\n \n '.format(Counter(elem[2] for elem in listFileInfo)))
     
 
 
@@ -462,13 +481,25 @@ def parseXML(sXmlPath):
 
         if (testState == 'TRUE'):
             if ( testName == 'FileSize'):
-                runSameFile(xmlPath, inParameter)                                                                 
+                try:
+                    runSameFile(xmlPath, inParameter)                                                                 
+                except:
+                    print("except in runSameFile")
             if ( testName == 'SyncFolder'):
-                runSyncFolder(xmlPath, inParameter)                                                                                 
+                try:
+                    runSyncFolder(xmlPath, inParameter)                                                                                 
+                except:
+                    print("except in runSyncFolder")                
             if ( testName == 'SyncFileByFileName'):
-                runSyncFileByFileName(xmlPath, inParameter) 
+                try:
+                    runSyncFileByFileName(xmlPath, inParameter) 
+                except:
+                    print("except in runSyncFileByFileName")                
             if ( testName == 'SyncFileByDate'):
-                runSyncFileByDate(xmlPath, inParameter)                 
+                try:
+                    runSyncFileByDate(xmlPath, inParameter)                 
+                except:
+                    print("except in runSyncFileByDate")                
 
             if ( testName == 'Pause'):
                 runPause()                                                
