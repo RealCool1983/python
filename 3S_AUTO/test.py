@@ -17,7 +17,7 @@ copyRelease note:
 
 
 def runSortList():
-    listL1 = [('abc', 121, "vv"),('bbc', 231, "v6"),('ccc', 148, "v2"), ('abc',221,"v1"),  ('ab5555555555555555555555c',221)]
+    listL1 = [('abc', 121, "vv"),('bbc', 231, "v6"),('ccc', 148, "v2"), ('abc',221,"v1"),  ('ab5555555555555555555555c',221,'abc')]
     print(listL1)
     listL2 = sorted(listL1, key=itemgetter(0))
     # listL2 = sorted(listL1)
