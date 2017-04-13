@@ -8,7 +8,7 @@ import xml.etree.ElementTree as ET
 from distutils.dir_util import copy_tree
 from os import remove, close
 from collections import Counter
-
+from operator import itemgetter
 
 """
 1.show diff file size, file name
@@ -312,6 +312,13 @@ def runSyncFolder(sXmlPath, inParameter):
     print('{:<10s}runSyncFolder..'.format('End'))
     return 0
 
+# def runSortFileList(inListFile):
+#     for f1, f2, f3, f4 in inListFile:
+#         for f_1, f_2, f_3, f_4 in inListFile:
+
+
+#     return outlistFile
+
 def runSameFile(sXmlPath, inParameter):
     tree = ET.parse(sXmlPath)
     root = tree.getroot()   
@@ -388,11 +395,16 @@ def runSameFile(sXmlPath, inParameter):
     print("made new file list1,2  done ")
     # print("======================================\n")
 
+    sortlistFileInfo2 = sorted(listFileInfo2,  key=itemgetter(2)) # order by file name
+    sortlistFileInfo3 = sorted(listFileInfo3,  key=itemgetter(1)) # order by file  size 
+
+    
+    print("sort file list1,2  done ")
     # print("\n Show listFile2 result (same file name) :")
     # print("Index, Title, FileName, FileSize, Filecount, FilePath")
     print('\n\n{:10s},{:10s},{:5s},{:25s},{:20s} , Show listFile2 result (same file name) :'.format("Index", "Filecount", "FileSize", 'FileName', "FilePath"))
     nIndex = 0
-    for item in listFileInfo2:
+    for item in sortlistFileInfo2:
         print('{:<7d}, {}'.format(nIndex, item))
         nIndex += 1
 
@@ -401,7 +413,7 @@ def runSameFile(sXmlPath, inParameter):
     # print("Index, Title, FileName, FileSize, Filecount, FilePath")
     print('\n\n{:10s},{:10s},{:5s},{:25s},{:20s} , Show listFile3 result (same file size) :'.format("Index", "Filecount", "FileSize", 'FileName', "FilePath"))
     nIndex = 0
-    for item1 in listFileInfo3:
+    for item1 in sortlistFileInfo3:
         print('{:<7d}, {}'.format(nIndex, item1))        
         nIndex += 1
 
