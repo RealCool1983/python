@@ -411,16 +411,21 @@ def runSameFile(sXmlPath, inParameter):
     print("\n\nShow listFile2 result (same file name) :")
     print('{:10s},{:10s},{:10s},{:45s},{:20s} '.format("Index", "Filecount", "FileSize", 'FileName', "FilePath"))
     nIndex = 0
-    for item in sortlistFileInfo2:
-        try:
+    try:
+        for item in sortlistFileInfo2:        
             if (len(item) == 4):
                 # print('{:<10d},{}'.format(nIndex, item))
-                print('{:<10d},{:<10d},{:<10d},{:45s},{}'.format(nIndex, item[0], item[1], item[2], item[3]))
+                print('{:<10d},{:<10d},{:<10d},{:45s},{}'.format(nIndex, 
+                    item[0], 
+                    item[1], 
+                    item[2].encode("utf8").decode("cp950", "ignore"), 
+                    item[3].encode("utf8").decode("cp950", "ignore")))
             else:
                 print('!!!{:<10d},{}'.format(nIndex, item))
             nIndex += 1
-        except:
-            print('{:<10d},{}, except in sortlistFileInfo2'.format(nIndex, item))        
+    except:
+        print ('Show listFile2, Unexpected error:{}'.format(sys.exc_info()))
+
 
     # print("\n Show listFile3 result (same file size) :")
     # print("Index, Title, FileName, FileSize, Filecount, FilePath")
@@ -430,12 +435,16 @@ def runSameFile(sXmlPath, inParameter):
     try:
         for item in sortlistFileInfo3:        
             if (len(item) == 4):
-                print('{:<10d},{:<10d},{:<10d},{:45s},{}'.format(nIndex, item[0], item[1], item[2], item[3]))        
+                print('{:<10d},{:<10d},{:<10d},{:45s},{}'.format(nIndex,
+                    item[0], 
+                    item[1], 
+                    item[2].encode("utf8").decode("cp950", "ignore"), 
+                    item[3].encode("utf8").decode("cp950", "ignore")))
             else:
                 print('!!!{:<10d},{}'.format(nIndex, item))        
             nIndex += 1    
     except:
-        print('except in sortlistFileInfo3')        
+        print ('Show listFile3, Unexpected error:{}'.format(sys.exc_info()))
     
 
     print('\n runSameFileEnd ..\n ')
@@ -480,30 +489,21 @@ def parseXML(sXmlPath):
         # print('testName:{:>25}, testState:{:>8}'.format(testName, testState ))
 
         if (testState == 'TRUE'):
-            if ( testName == 'FileSize'):
-                try:
+            try:
+                if ( testName == 'FileSize'):
                     runSameFile(xmlPath, inParameter)                                                                 
-                except:
-                    print("except in runSameFile")
-            if ( testName == 'SyncFolder'):
-                try:
+                if ( testName == 'SyncFolder'):
                     runSyncFolder(xmlPath, inParameter)                                                                                 
-                except:
-                    print("except in runSyncFolder")                
-            if ( testName == 'SyncFileByFileName'):
-                try:
+                if ( testName == 'SyncFileByFileName'):
                     runSyncFileByFileName(xmlPath, inParameter) 
-                except:
-                    print("except in runSyncFileByFileName")                
-            if ( testName == 'SyncFileByDate'):
-                try:
-                    runSyncFileByDate(xmlPath, inParameter)                 
-                except:
-                    print("except in runSyncFileByDate")                
+                if ( testName == 'SyncFileByDate'):
+                   runSyncFileByDate(xmlPath, inParameter)    
+                if ( testName == 'Pause'):
+                    runPause()                                                
+            except:             
+                print ('{}, Unexpected error:{}'.format(testName, sys.exc_info()))
 
-            if ( testName == 'Pause'):
-                runPause()                                                
-                          
+
             ListItem.insert(ListCount, testName)
             ListCount +=1
 
@@ -526,14 +526,13 @@ if __name__ == "__main__":
     sStartTime = datetime.datetime.now()
     print('StartTime:{} ..\n '.format(sStartTime))
     try:
-
         parseXML(xmlPath)
 
         sEndTime = datetime.datetime.now()        
         print('EndTime:{}, Total:{} ..'.format(sEndTime, (sEndTime-sStartTime)))        
 
     except:
-        print('!!! exception happen in', xmlPath)
+        print ('__main__ Unexpected error:{}'.format(sys.exc_info()))
 
 	
     sys.exit(0)
