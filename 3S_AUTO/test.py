@@ -31,7 +31,8 @@ def runSortList():
         # if (len(item)==3):
             print('item, {:2s} {:5d} {:10s}'.format(item[0], item[1], item[2]))
         except:
-            print("except")
+            print ('Unexpected error:{},{}'.format(sys.exc_info(), sys.exc_info()[1]))
+            # print("except")
 
     print("runSortList done")
 
