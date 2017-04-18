@@ -78,12 +78,15 @@ def runCopyFromWorkPath(sXmlPath, sTestFile):
         sPath1 = neighbor.find('PCWorkPath').text
         sPath2 = neighbor.find('PCSEToolPath').text
 
+    print('sPath1 = {}, sPath2 = {}'.format(sPath1, sPath2))
+
     if os.path.exists(sPath2):
         shutil.rmtree(sPath2) 
         print('{}{}'.format(sPath2, ", rmtree ok"))
         
 
     det_file = os.path.join(sPath1, sTestFile) 
+    print('det_file = {}'.format(det_file))
 
     print(os.listdir(det_file))
 
