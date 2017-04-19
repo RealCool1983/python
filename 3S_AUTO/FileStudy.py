@@ -460,6 +460,95 @@ def runSameFile(sXmlPath, inParameter):
     
 
 
+
+def runCheckProcessObjectSet(sXmlPath, sProcessObject, sStrLine, inParameter):
+    tree = ET.parse(sXmlPath)
+    root = tree.getroot() 
+    
+    # print('runCheckProcessObjectSet start ,{}, {}..'.format(inParameter, sProcessObject))        
+
+    dict_Var = {'var1': '0', 'var2': '0', 'var3': '0', 'var4': '0', 'var5': '0'}
+    dict_VarFindIndex = {'var1': '0', 'var2': '0', 'var3': '0', 'var4': '0', 'var5': '0'}
+    for neighbor in tree.iter('ProcessObject'):
+        if ( neighbor.get('Name')  == sProcessObject):
+            for neighborChild in neighbor:
+                if (neighborChild.text): #check if value is blank
+                    dict_Var[neighborChild.tag] = neighborChild.text
+
+                    if(dict_Var[neighborChild.tag] != "FALSE"):
+                        iFindIndex = sStrLine.find(dict_Var[neighborChild.tag])
+                        if(iFindIndex == -1 ): # can't find spec string
+                            return -1
+                        else:
+                            dict_VarFindIndex[neighborChild.tag] = iFindIndex
+                else:
+                    print('warring!! {} is blank'.format(neighborChild.tag))
+
+
+    if( int(inParameter) == 1 ):    
+        iMaxIndex = 0
+        for dict_VarFindIndexElement in dict_VarFindIndex:
+            iCurrentIndex = int(dict_VarFindIndex[dict_VarFindIndexElement])
+            if (iCurrentIndex != 0):
+                if (iCurrentIndex > iMaxIndex):
+                    iMaxIndex = iCurrentIndex
+                else:
+                    return -1 #find str, but the sequence of str is wrong 
+
+                
+    # print('runCheckProcessObjectSet End ..'.format('-'))        
+    return 0                  
+
+def runReadTxtParticular(sXmlPath, inParameter, sFileType):
+    tree = ET.parse(sXmlPath)
+    root = tree.getroot()   
+
+    print('runReadTxtParticular[{}] start ..'.format('-'))
+    
+    for neighbor in root.iter('PATHObjects'):
+        sPath1 = neighbor.find('Folder_Path').text
+
+
+    file_paths = []  # List which will store all of the full filepaths.
+    listFileInfo =[]
+    # Walk the tree.
+    for root, directories, files in os.walk(sPath1):
+        for filename in files:
+            # Join the two strings in order to form the full filepath.
+            filepath = os.path.join(root, filename)
+            file_paths.append(filepath)  # Add it to the list.            
+
+            # tupleFileInfo[0] = file name
+            # tupleFileInfo[1] = file path
+
+            tupleFileInfo = (filename, filepath)
+            listFileInfo.append(tupleFileInfo)
+            
+            # print('tupleFileInfo = {} \n '.format(tupleFileInfo))
+            # print('t0 = {}\n t1 = {} \n '.format(tupleFileInfo[0], tupleFileInfo[1]))
+            
+    print("build listFileInfo done")
+
+    for x, y in listFileInfo:
+        if(x.find(sFileType) > -1): #read txt file 
+            # print('t0 = {}\n t1 = {} \n '.format(x, y))
+            file = open(y, 'r', encoding='ISO-8859-1')
+            print('check file, {}'.format(y))
+
+            while True:
+                line = file.readline()
+                if not line: 
+                    break
+                if( runCheckProcessObjectSet(sXmlPath, "ReadTxtParticular", line, inParameter) == 0):# got it
+                    print('got it,{}'.format(line.strip()))     # remove line blank, strip()
+
+            file.close()                        
+
+
+    print('\nrunReadTxtParticular End ..\n ')
+    return 0
+
+
 def runPause():
     print('runPause {} {}'.format("-", "-"))
     sYesNo = rawInputTest()
@@ -486,10 +575,16 @@ def parseXML(sXmlPath):
         testName = child.get('Name')
         testState = child.get('Enabled')
         inParameter = child.get('Parameter')
+        testFileType = child.get('FileType')
         # print('testName:{:>25}, testState:{:>8}'.format(testName, testState ))
+        
+        
+            
 
         if (testState == 'TRUE'):
             try:
+                if ( testName == 'ReadTxtParticular'):
+                    runReadTxtParticular(xmlPath, inParameter, testFileType)                                                   
                 if ( testName == 'FileSize'):
                     runSameFile(xmlPath, inParameter)                                                                 
                 if ( testName == 'SyncFolder'):
@@ -509,10 +604,11 @@ def parseXML(sXmlPath):
 
     print('\n-------------------------------------------------------------------\n')
 
-    nfinishList = 0 
+    nfinishList = 1 
     for finishList in ListItem:
-        print('finishList[{}]:{:>25}'.format(nfinishList, finishList))
-        nfinishList += 1
+        if (finishList):
+            print('finishList[{}]:{:>25}'.format(nfinishList, finishList))
+            nfinishList += 1
         
 
     print('\n-------------------excellent you are---------------------------------\n')
