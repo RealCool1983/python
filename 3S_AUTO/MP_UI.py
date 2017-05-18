@@ -303,7 +303,7 @@ def runCopyFromGit(sXmlPath):
         shutil.rmtree(sPath2) 
         print('{}{}'.format(sPath2, ", rmtree ok"))
 
-    ignore_dirs = shutil.ignore_patterns( '.gitignore', '.git')
+    ignore_dirs = shutil.ignore_patterns( '.gitignore', '.git', 'workHistory', 'MP_UI_DOC', 'src.7z')
     print('copy_tree from [{}] to [{}] ok'.format(sPath1, sPath2))
     shutil.copytree(sPath1, sPath2, ignore=ignore_dirs)
 
