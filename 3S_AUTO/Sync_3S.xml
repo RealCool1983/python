@@ -1,0 +1,21 @@
+
+<Configuration>
+		<PATHObjects>
+			<PC_SSD_tools>D:\\3S_PC\sourceCode\SSD\SSD_tools\library</PC_SSD_tools>
+			<SDEPAP_SSD_libraryPath>\\fileserver\Dep_AP\Project\SSD\library</SDEPAP_SSD_libraryPath>
+			
+			<!-- no use -->
+
+		</PATHObjects>
+		
+		<TestItemList><!--FALSE, TRUE -->
+			<Item Name="artemisCopyToPC" Enabled="FALSE"/>
+			<Item Name="GitCommit" Enabled="TRUE"/>
+
+
+		</TestItemList>
+		
+		<ProcessObjectSet>
+		</ProcessObjectSet>
+		
+</Configuration>		
