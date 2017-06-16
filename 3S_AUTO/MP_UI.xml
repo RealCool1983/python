@@ -32,6 +32,7 @@
 			<Item Name="HUATOOP_H16" Enabled="TRUE"/>
 			<Item Name="HUATOOP_H16_2LUN" Enabled="TRUE"/>
 			
+			<Item Name="VERIFY_INI" Enabled="TRUE"/>
 			<Item Name="Pause" Enabled="FALSE"/>
 			<Item Name="CopyTo3800" Enabled="TRUE"/>
 			<Item Name="CompressFile" Enabled="TRUE"/>

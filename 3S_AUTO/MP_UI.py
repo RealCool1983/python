@@ -701,7 +701,43 @@ def runVCVersion(sXmlPath):
 
     print('runVCVersion [{}] End ..\n '.format("-"))    
 
+def runVERIFY_INI(sXmlPath):
+    print('runVERIFY_INI[{}] start ..'.format('-'))
 
+    tree = ET.parse(sXmlPath)
+    root = tree.getroot()   
+
+    global sPC_NewMPUI_Path
+    sPath = os.path.join(sPC_NewMPUI_Path, "bin\Setting")
+
+    print('sPath = {} ..'.format(sPath))
+
+    for file in os.listdir(sPath):
+        if (file.find(".ini") != -1): 
+            # print('Got Ini file:{}'.format(file))
+
+            sReadPath1 = os.path.join(sPath, file)
+            print('Start Check Ini file:{}'.format(sReadPath1))
+            
+            rF = open(sReadPath1, 'r') 
+    
+            for line in rF.readlines():                          #依次读取每行  
+                line = line.strip()                             #去掉每行头尾空白  
+                if not len(line) or line.startswith('#'):       #判断是否是空行或注释行  
+                    continue      
+
+                #need to check path start with, Burner=.\Setting\
+                if  (line.find("Burner=") != -1): 
+                    if  (line.find("Burner=.\Setting") == -1): #need to check path start with, Burner=.\Setting\
+                        print('Err!!! Ini name:{}, Burner:{}'.format(file, line))
+
+                #need to check Recv_Drv_Num_By_UI=1
+                if  (line.find("Recv_Drv_Num_By_UI=") != -1): 
+                    if  (line.find("=1") == -1): #need to check path start with, Burner=.\Setting\
+                        print('Err!!! Ini name:{}, Recv_Drv_Num_By_UI:{}'.format(file, line))            
+
+            rF.close()
+    print('runVERIFY_INI[{}] end ..'.format('-'))
 
 
 def replaceLine(file_path, pattern, subst):
@@ -806,6 +842,9 @@ def parseXML(sXmlPath):
                 runHUATOOP(xmlPath, 'HUATOOP_H16')                                                     
             if ( testName == 'HUATOOP_H16_2LUN'):
                 runHUATOOP(xmlPath, 'HUATOOP_H16_2LUN')                  
+            if ( testName == 'VERIFY_INI'):
+                runVERIFY_INI(xmlPath)                                  
+                
             if ( testName == 'CopySSD_MP_tool_EV'):
                 runCopySSD_MP_tool_EV(xmlPath)                                                     
             if ( testName == 'CopySSD_MP_UI'):
