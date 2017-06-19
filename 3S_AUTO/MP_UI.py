@@ -516,6 +516,8 @@ def runHUATOOP(sXmlPath, sH14H16):
         sPCS3800_SSD_MP_SettingPath = os.path.join(sPCS3800_SSD_MPPath, "windows\HUATOOP\H14_TLC")
     elif (sH14H16.find("16") != -1):
         sPCS3800_SSD_MP_SettingPath = os.path.join(sPCS3800_SSD_MPPath, "windows\HUATOOP\H16_TLC")
+    elif (sH14H16.find("B0KB") != -1):
+        sPCS3800_SSD_MP_SettingPath = os.path.join(sPCS3800_SSD_MPPath, "windows\HUATOOP\Micron_B0KB")        
 
     
     print(sPC_NewMPUI_Setting_Path)
@@ -552,7 +554,7 @@ def runHUATOOP(sXmlPath, sH14H16):
                     removeDiffFile(sPC_NewMPUI_Setting_Path, neighborChild.get('Name') ,sBinName)
 
                     #if (neighborChild.get('IniFile') == 'MTable.set'):
-                    updateIni(sPC_NewMPUI_Setting_Path, neighborChild.get('IniFile') , neighborChild.get('IniSection'), sBinName )
+                    updateIni(sPC_NewMPUI_Setting_Path, neighborChild.get('IniFile') , neighborChild.get('IniSection'), sBinName, sH14H16 )
                 #------------Compare MP_UI with MP, delete ------------------------------------#
 
                 # ok
@@ -569,7 +571,7 @@ def runHUATOOP(sXmlPath, sH14H16):
 
 
 
-def updateIni(sPath, sIniFile, sIniSection, sFileName):
+def updateIni(sPath, sIniFile, sIniSection, sFileName, sH14H16):
     #<var1 Name="3S_HNX_14TLC_BNR" IniFile="H14_TLC_test.ini" IniSection="Firmware_Bin_File_Path">3.2.0.51</var1>
     #1.update MTable.set
     #2.update ini
@@ -579,7 +581,7 @@ def updateIni(sPath, sIniFile, sIniSection, sFileName):
         #if file.startswith(sFileType):
             #print('GetIt startswith= [{}]'.format(file))
         if (file.find(sIniFile) != -1): 
-            print('updateIni sIniFile: {}, sIniSection: {}, file:{}'.format(sIniFile, sIniSection, file))
+            print('updateIni sIniFile: {}, sIniSection: {}, file:{}, secction:{}'.format(sIniFile, sIniSection, file, sH14H16))
             sReadPath1 = os.path.join(sPath, file)
             #print("updateIni path = ", sReadPath1)
             rF = open(sReadPath1, 'r') 
@@ -587,7 +589,15 @@ def updateIni(sPath, sIniFile, sIniSection, sFileName):
             for line in rF.readlines():                          #依次读取每行  
                 line = line.strip()                             #去掉每行头尾空白  
                 if not len(line) or line.startswith('#'):       #判断是否是空行或注释行  
-                    continue      
+                    continue 
+                if(sH14H16.find("14") != -1) or (sH14H16.find("16") != -1):#[Hynix] section
+                    if(line.find("[Micron]") != -1):#get [Micron] section, break;
+                        break
+                 
+                if(sH14H16.find("B0KB") != -1):#[Micron] section
+                    if(line.find("[Micron]") != -1): # not get [Micron] section, continue;
+                        continue
+                        
                 if  (line.find(sIniSection) != -1): #need to replace this line with new setting file 
                     sNewLine = sIniSection + sFileName
                     # print("sReadPath1 =", sReadPath1 )
@@ -841,7 +851,10 @@ def parseXML(sXmlPath):
             if ( testName == 'HUATOOP_H16'):
                 runHUATOOP(xmlPath, 'HUATOOP_H16')                                                     
             if ( testName == 'HUATOOP_H16_2LUN'):
-                runHUATOOP(xmlPath, 'HUATOOP_H16_2LUN')                  
+                runHUATOOP(xmlPath, 'HUATOOP_H16_2LUN')   
+            if ( testName == 'B0KB'):
+                runHUATOOP(xmlPath, 'B0KB')   
+
             if ( testName == 'VERIFY_INI'):
                 runVERIFY_INI(xmlPath)                                  
                 
