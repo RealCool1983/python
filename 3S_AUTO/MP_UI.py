@@ -517,7 +517,7 @@ def runHUATOOP(sXmlPath, sH14H16):
     elif (sH14H16.find("16") != -1):
         sPCS3800_SSD_MP_SettingPath = os.path.join(sPCS3800_SSD_MPPath, "windows\HUATOOP\H16_TLC")
     elif (sH14H16.find("B0KB") != -1):
-        sPCS3800_SSD_MP_SettingPath = os.path.join(sPCS3800_SSD_MPPath, "windows\HUATOOP\Micron_B0KB")        
+        sPCS3800_SSD_MP_SettingPath = os.path.join(sPCS3800_SSD_MPPath, "windows\Micron_B0KB")        
 
     
     print(sPC_NewMPUI_Setting_Path)
@@ -582,6 +582,7 @@ def updateIni(sPath, sIniFile, sIniSection, sFileName, sH14H16):
             #print('GetIt startswith= [{}]'.format(file))
         if (file.find(sIniFile) != -1): 
             print('updateIni sIniFile: {}, sIniSection: {}, file:{}, secction:{}'.format(sIniFile, sIniSection, file, sH14H16))
+            bMicronSection = False
             sReadPath1 = os.path.join(sPath, file)
             #print("updateIni path = ", sReadPath1)
             rF = open(sReadPath1, 'r') 
@@ -595,8 +596,11 @@ def updateIni(sPath, sIniFile, sIniSection, sFileName, sH14H16):
                         break
                  
                 if(sH14H16.find("B0KB") != -1):#[Micron] section
-                    if(line.find("[Micron]") != -1): # not get [Micron] section, continue;
+                    if(line.find("[Micron]") == -1) and (bMicronSection == False): # not get [Micron] section, continue
                         continue
+                    else:
+                        #print('get [Micron] section:{}'.format(line))
+                        bMicronSection = True # get [Micron] section, set true
                         
                 if  (line.find(sIniSection) != -1): #need to replace this line with new setting file 
                     sNewLine = sIniSection + sFileName
@@ -604,8 +608,9 @@ def updateIni(sPath, sIniFile, sIniSection, sFileName, sH14H16):
                     # print("oldLine = ", line)
                     # print("sNewLine = ", sNewLine)
                     rF.close()
-                    replaceLine(sReadPath1, line, sNewLine)
-                    print('replaceLine ok path:{}\n old:{}\n new:{}'.format(sReadPath1, line, sNewLine))
+                    if (line != sNewLine):
+                        replaceLine(sReadPath1, line, sNewLine)
+                        print('replaceLine ok path:{}\n old:{}\n new:{}'.format(sReadPath1, line, sNewLine))
 
             rF.close()
 
