@@ -9,33 +9,15 @@
 		
 		<TestItemList><!--FALSE, TRUE -->
 			
-			<Item Name="CopyFromDEPAP"  FileName="v1.14.2017.331.zip" Enabled="TRUE"/>
-			<Item Name="CopyFromWorkPath"  FileName="v1.14.2017.331" Enabled="TRUE"/>
-			<Item Name="GitCommit" FileName="v1.14.2017.331" Enabled="TRUE"/>		
-
-			<Item Name="CopyFromDEPAP"  FileName="v1.15.2017.401.zip" Enabled="TRUE"/>
-			<Item Name="CopyFromWorkPath"  FileName="v1.15.2017.401" Enabled="TRUE"/>
-			<Item Name="GitCommit" FileName="v1.15.2017.401" Enabled="TRUE"/>				
-
-			<Item Name="CopyFromDEPAP"  FileName="v1.16.2017.407.zip" Enabled="TRUE"/>
-			<Item Name="CopyFromWorkPath"  FileName="v1.16.2017.407" Enabled="TRUE"/>
-			<Item Name="GitCommit" FileName="v1.16.2017.407" Enabled="TRUE"/>	
-
-			<Item Name="CopyFromDEPAP"  FileName="v1.17.2017.410.zip" Enabled="TRUE"/>
-			<Item Name="CopyFromWorkPath"  FileName="v1.17.2017.410" Enabled="TRUE"/>
-			<Item Name="GitCommit" FileName="v1.17.2017.410" Enabled="TRUE"/>	
-
-			<Item Name="CopyFromDEPAP"  FileName="v1.18.2017.411.zip" Enabled="TRUE"/>
-			<Item Name="CopyFromWorkPath"  FileName="v1.18.2017.411" Enabled="TRUE"/>
-			<Item Name="GitCommit" FileName="v1.18.2017.411" Enabled="TRUE"/>	
 			
-			<Item Name="CopyFromDEPAP"  FileName="v1.19.2017.412.zip" Enabled="TRUE"/>
-			<Item Name="CopyFromWorkPath"  FileName="v1.19.2017.412" Enabled="TRUE"/>
-			<Item Name="GitCommit" FileName="v1.19.2017.412" Enabled="TRUE"/>			
-			
-			<Item Name="CopyFromDEPAP"  FileName="v1.20.2017.413.zip" Enabled="TRUE"/>
-			<Item Name="CopyFromWorkPath"  FileName="v1.20.2017.413" Enabled="TRUE"/>
-			<Item Name="GitCommit" FileName="v1.20.2017.413" Enabled="TRUE"/>			
+			<Item Name="CopyFromDEPAP"  FileName="v1.39.2017.620.zip" Enabled="TRUE"/>
+			<Item Name="CopyFromWorkPath"  FileName="v1.39.2017.620" Enabled="TRUE"/>
+			<Item Name="GitCommit" FileName="v1.39.2017.620" Enabled="TRUE"/>					
+			<!--
+			<Item Name="CopyFromDEPAP"  FileName=".zip" Enabled="TRUE"/>
+			<Item Name="CopyFromWorkPath"  FileName="" Enabled="TRUE"/>
+			<Item Name="GitCommit" FileName="" Enabled="TRUE"/>		
+			-->			
 			
 
 			<Item Name="Pause" Enabled="FALSE"/>

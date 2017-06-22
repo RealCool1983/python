@@ -9,7 +9,7 @@
 		</PATHObjects>
 		
 		<TestItemList><!--FALSE, TRUE -->
-			<Item Name="artemisCopyToPC" Enabled="FALSE"/>
+			<Item Name="artemisCopyToPC" Enabled="TRUE"/>
 			<Item Name="GitCommit" Enabled="TRUE"/>
 
 

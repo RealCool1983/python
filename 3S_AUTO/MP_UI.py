@@ -370,13 +370,15 @@ def runCopyToGitbin(sXmlPath):
 
     if os.path.exists(det_file):
         print('{}{}'.format(det_file, "   exist !! remove it ?"))
-        sYesNo = rawInputTest()
-        if (sYesNo == 1):
-            shutil.rmtree(det_file) 
-            print('{}{}'.format(det_file, ", remove ok"))
-        elif(sYesNo == 0):
-            print("skip")
-            sys.exit(0)
+        shutil.rmtree(det_file) 
+        print('{}{}'.format(det_file, ", remove ok"))        
+        # sYesNo = rawInputTest()
+        # if (sYesNo == 1):
+        #     shutil.rmtree(det_file) 
+        #     print('{}{}'.format(det_file, ", remove ok"))
+        # elif(sYesNo == 0):
+        #     print("skip")
+        #     sys.exit(0)
         
     shutil.copytree(src_file, det_file)
     print('runCopyToGitbin, {} end ..'.format(det_file))
@@ -495,6 +497,13 @@ def runCompressFile(sXmlPath):
 
     zf.close()
     sRemoteDepAp_NewMPUI_Path = dest
+
+    #backup to pc release
+
+    sPathPC = os.path.abspath(os.path.join(sPC_NewMPUI_Path, os.pardir))
+    sPathPC = os.path.join(sPathPC, "SourceCode")
+    print('backup to pc, {}'.format(sPathPC))
+    copyOneFile(sRemoteDepAp_NewMPUI_Path, sPathPC)
 
     print('runCompressFile[{}] End ..\n '.format(dest))
 
