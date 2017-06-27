@@ -10,9 +10,9 @@
 		<TestItemList><!--FALSE, TRUE -->
 			
 			
-			<Item Name="CopyFromDEPAP"  FileName="v1.40.2017.622.zip" Enabled="TRUE"/>
-			<Item Name="CopyFromWorkPath"  FileName="v1.40.2017.622" Enabled="TRUE"/>
-			<Item Name="GitCommit" FileName="v1.40.2017.622" Enabled="TRUE"/>					
+			<Item Name="CopyFromDEPAP"  FileName="v1.41.2017.626.zip" Enabled="TRUE"/>
+			<Item Name="CopyFromWorkPath"  FileName="v1.41.2017.626" Enabled="TRUE"/>
+			<Item Name="GitCommit" FileName="v1.41.2017.626" Enabled="TRUE"/>					
 			<!--
 			<Item Name="CopyFromDEPAP"  FileName=".zip" Enabled="TRUE"/>
 			<Item Name="CopyFromWorkPath"  FileName="" Enabled="TRUE"/>
