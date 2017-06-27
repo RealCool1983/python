@@ -523,11 +523,12 @@ def runHUATOOP(sXmlPath, sH14H16):
 
     if (sH14H16.find("14") != -1):
         sPCS3800_SSD_MP_SettingPath = os.path.join(sPCS3800_SSD_MPPath, "windows\HUATOOP\H14_TLC")
-    elif (sH14H16.find("16") != -1):
+    elif (sH14H16.find("16") != -1) and (sH14H16.find("B16A") == -1):
         sPCS3800_SSD_MP_SettingPath = os.path.join(sPCS3800_SSD_MPPath, "windows\HUATOOP\H16_TLC")
     elif (sH14H16.find("B0KB") != -1):
         sPCS3800_SSD_MP_SettingPath = os.path.join(sPCS3800_SSD_MPPath, "windows\Micron_B0KB")        
-
+    elif (sH14H16.find("B16A") != -1):
+        sPCS3800_SSD_MP_SettingPath = os.path.join(sPCS3800_SSD_MPPath, "windows\Micron_B16A")     
     
     print(sPC_NewMPUI_Setting_Path)
     print(sPCS3800_SSD_MP_SettingPath)
