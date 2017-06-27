@@ -1,10 +1,10 @@
 
 <Configuration>
 		<PATHObjects>
-			<ToolVersion>20</ToolVersion>
+			<ToolVersion>21</ToolVersion>
 			<PCSourceCodeGitPath>D:\\3S_PC\sourceCode\SSD\VC6\GIT_MP_UI\V1.0</PCSourceCodeGitPath>			
 			<PCSourceCodePath>D:\\3S_PC\ReleaseTool\MP_UI_V1.0\V1.6.2017.777</PCSourceCodePath>			
-			<S3800_SSD_MPPath>\\fileserver\3800\SW\SSD_MP_tool_EV\v1.39.2017.620</S3800_SSD_MPPath>	
+			<S3800_SSD_MPPath>\\fileserver\3800\SW\SSD_MP_tool_EV\v1.41.2017.626</S3800_SSD_MPPath>	
 
 			<S3800_SSD_MPUIPath>\\fileserver\3800\SW\SSD_MP_UI_EV</S3800_SSD_MPUIPath>			
 			<SDEPAP_SSD_MPUIPath>\\fileserver\Dep_AP\Project\SSD\MP_UI\source_code</SDEPAP_SSD_MPUIPath>			
@@ -32,6 +32,7 @@
 			<Item Name="HUATOOP_H16" Enabled="TRUE"/>
 			<Item Name="HUATOOP_H16_2LUN" Enabled="TRUE"/>
 			<Item Name="B0KB" Enabled="TRUE"/>
+			<Item Name="B16A" Enabled="TRUE"/>
 			
 			<Item Name="VERIFY_INI" Enabled="TRUE"/>
 			<Item Name="Pause" Enabled="FALSE"/>
@@ -40,7 +41,7 @@
 			<Item Name="CopyToGitbin" Enabled="TRUE"/>
 
 			<Item Name="Pause" Enabled="FALSE"/>
-			<Item Name="ReleaseNote" Enabled="TRUE"/>
+			<Item Name="ReleaseNote" Enabled="FALSE"/>
 
 		</TestItemList>
 		
@@ -65,6 +66,11 @@
 				<var1 Name="3s_Mircon_B0KB_BNR_" IniFile="B0KB_TLC_test.ini" IniSection="Burner=.\Setting\">1.0.0.1</var1>
 				<var2 Name="3S_MCR_3DTLC_FW_" IniFile="MTable.set" IniSection="FW_1=.\Setting\">1.1.0.3</var2>
 				<var3 Name="3S_IM_B0KB_RDT_" IniFile="MTable.set" IniSection="FW_2=.\Setting\">1.0.0.2</var3>
+            </ProcessObject>		
+			<ProcessObject  Name="B16A">
+				<var1 Name="3S_Micron_B16A_BNR_" IniFile="B16A_TLC_test.ini" IniSection="Burner=.\Setting\">1.0.0.1</var1>
+				<var2 Name="3S_MCR_3DTLC_B16B17_FW_" IniFile="MTable.set" IniSection="FW_3=.\Setting\">1.1.0.3</var2>
+				<var3 Name="3S_IM_B16A_RDT_" IniFile="MTable.set" IniSection="FW_4=.\Setting\">1.0.0.0</var3>
             </ProcessObject>				
 		</ProcessObjectSet>
 		

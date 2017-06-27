@@ -604,7 +604,7 @@ def updateIni(sPath, sIniFile, sIniSection, sFileName, sH14H16):
                     if(line.find("[Micron]") != -1):#get [Micron] section, break;
                         break
                  
-                if(sH14H16.find("B0KB") != -1):#[Micron] section
+                if(sH14H16.find("B0KB") != -1) or (sH14H16.find("B16KB") != -1) :#[Micron] section
                     if(line.find("[Micron]") == -1) and (bMicronSection == False): # not get [Micron] section, continue
                         continue
                     else:
@@ -868,7 +868,8 @@ def parseXML(sXmlPath):
                 runHUATOOP(xmlPath, 'HUATOOP_H16_2LUN')   
             if ( testName == 'B0KB'):
                 runHUATOOP(xmlPath, 'B0KB')   
-
+            if ( testName == 'B16A'):
+                runHUATOOP(xmlPath, 'B16A')   
             if ( testName == 'VERIFY_INI'):
                 runVERIFY_INI(xmlPath)                                  
                 
