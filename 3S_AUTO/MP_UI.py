@@ -535,7 +535,7 @@ def updateIniMPToMP_UI(sFile):
                 print('replaceLine ok path:{}\n old:{}\n new:{}'.format(sFile, line, sNewLine))
 
     except:
-        print('updateIniMPToMP_UI IOError')
+        print('updateIniMPToMP_UI except')
 
     print('updateIniMPToMP_UI [{}] End ..\n '.format("-"))
     return 0
@@ -619,15 +619,15 @@ def runHUATOOP(sXmlPath, sH14H16):
                 dict_Var[neighborChild.tag] = neighborChild.text
                 # print('dict_Var[neighborChild.tag] = {} ..\n '.format(dict_Var[neighborChild.tag]))
                  
-                if(neighborChild.tag == "var1"):
-                    sIniFileName = neighborChild.get('IniFile')
+                # if(neighborChild.tag == "var1"):
+                #     sIniFileName = neighborChild.get('IniFile')
 
-                if(neighborChild.tag == "var4"):
-                    print('Function = {}, dict_Var4 value =  {}\n '.format(sH14H16, dict_Var['var4']))
-                    if( dict_Var['var4'] == 'TRUE'):
-                        sInitFullPath = os.path.join(sPC_NewMPUI_Setting_Path, sIniFileName)
-                        addNewIniSection("D:\\3S_PC\\python\\3S_AUTO\\newSecton.txt" ,sPC_NewMPUI_Setting_Path, sIniFileName)
-                        print("do something")
+                # if(neighborChild.tag == "var4"):
+                #     print('Function = {}, dict_Var4 value =  {}\n '.format(sH14H16, dict_Var['var4']))
+                #     if( dict_Var['var4'] == 'TRUE'):
+                #         sInitFullPath = os.path.join(sPC_NewMPUI_Setting_Path, sIniFileName)
+                #         addNewIniSection("D:\\3S_PC\\python\\3S_AUTO\\newSecton.txt" ,sPC_NewMPUI_Setting_Path, sIniFileName)
+                #         print("do something")
 
                 #------------from MP to MP_UI ------------------------------------#
                 print('compare [{}] start ..'.format(neighborChild.text))
@@ -705,9 +705,9 @@ def updateIni(sPath, sIniFile, sIniSection, sFileName, sH14H16):
                         
                 if  (line.find(sIniSection) != -1): #need to replace this line with new setting file 
                     sNewLine = sIniSection + sFileName
-                    # print("sReadPath1 =", sReadPath1 )
-                    # print("oldLine = ", line)
-                    # print("sNewLine = ", sNewLine)
+                    print("sReadPath1 =", sReadPath1 )
+                    print("oldLine = ", line)
+                    print("sNewLine = ", sNewLine)
                     rF.close()
                     if (line != sNewLine):
                         replaceLine(sReadPath1, line, sNewLine)
