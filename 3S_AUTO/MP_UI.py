@@ -319,32 +319,34 @@ def runCopySSD_MP_UI(sXmlPath):
     global sPC_NewMPUI_Name
 
     print('runCopySSD_MP_UI[{}] start ..'.format('-'))
-    for neighbor in root.iter('PATHObjects'):
-        sPath1 = neighbor.find('PCSourceCodePath').text
-        sToolVersion = neighbor.find('ToolVersion').text
+    try:
+        for neighbor in root.iter('PATHObjects'):
+            sPath1 = neighbor.find('PCSourceCodePath').text
+            sToolVersion = neighbor.find('ToolVersion').text
 
-    listFolderName = sPath1.split(os.sep)
-    iCount = len(listFolderName)
-    sNewFolder = listFolderName[iCount-1]
-    #print(listFolderName[iCount-1])
-    sNewName = getNewMPUI_Name(listFolderName[iCount-1], sToolVersion)
-    sPath2 = sPath1.replace(listFolderName[iCount-1], sNewName)
+        listFolderName = sPath1.split(os.sep)
+        iCount = len(listFolderName)
+        sNewFolder = listFolderName[iCount-1]
+        #print(listFolderName[iCount-1])
+        sNewName = getNewMPUI_Name(listFolderName[iCount-1], sToolVersion)
+        sPath2 = sPath1.replace(listFolderName[iCount-1], sNewName)
 
-    if os.path.exists(sPath2):
-        shutil.rmtree(sPath2) 
-        print('{}{}'.format(sPath2, ", rmtree ok"))
-        
-    copy_tree(sPath1, sPath2)
-    sPC_NewMPUI_Name = sNewName
-    sPC_NewMPUI_Path = sPath2
+        if os.path.exists(sPath2):
+            shutil.rmtree(sPath2) 
+            print('{}{}'.format(sPath2, ", rmtree ok"))
+            
+        copy_tree(sPath1, sPath2)
+        sPC_NewMPUI_Name = sNewName
+        sPC_NewMPUI_Path = sPath2
 
-    print('sPC_NewMPUI_Name = [{}] , sPC_NewMPUI_Path =  [{}]'.format(sPC_NewMPUI_Name, sPC_NewMPUI_Path))
+        print('sPC_NewMPUI_Name = [{}] , sPC_NewMPUI_Path =  [{}]'.format(sPC_NewMPUI_Name, sPC_NewMPUI_Path))
+        print('copy_tree from [{}] to [{}] ok'.format(sPath1, sPath2))
 
-    print('copy_tree from [{}] to [{}] ok'.format(sPath1, sPath2))
+    except:
+        print("!!! runCopySSD_MP_UI except")
 
     print('runCopySSD_MP_UI[{}] End ..\n '.format('-'))
-
-
+    return 0
 
 def runCopyToGitbin(sXmlPath):
     tree = ET.parse(sXmlPath)
@@ -507,6 +509,55 @@ def runCompressFile(sXmlPath):
 
     print('runCompressFile[{}] End ..\n '.format(dest))
 
+def updateIniMPToMP_UI(sFile):
+    print('updateIniMPToMP_UI Start sPath = {}'.format(sFile))
+
+    try:
+        rF = open(sFile, 'r') 
+
+        for line in rF.readlines():                          #依次读取每行  
+            line = line.strip()                             #去掉每行头尾空白  
+            if not len(line) or line.startswith('#'):       #判断是否是空行或注释行  
+                continue 
+            if(line.find("Burner") != -1):#get Burner, need to update 
+                sNewLine = line.replace("./", ".\\Setting\\")
+                rF.close()
+                replaceLine(sFile, line, sNewLine)
+                print('replaceLine ok path:{}\n old:{}\n new:{}'.format(sFile, line, sNewLine))
+
+            if(line.find("Recv_Drv_Num_By_UI") != -1):#get Recv_Drv_Num_By_UI, need to update 
+                rF.close()
+                sNewLine = "Recv_Drv_Num_By_UI=1"
+                replaceLine(sFile, line, sNewLine)
+                print('replaceLine ok path:{}\n old:{}\n new:{}'.format(sFile, line, sNewLine))
+
+    except:
+        print('updateIniMPToMP_UI IOError')
+
+    print('updateIniMPToMP_UI [{}] End ..\n '.format("-"))
+    return 0
+
+def copyIniFile(sSrcPath, sDesPath):
+    print('copyIniFile Start sSrcPath = {}\nsDesPath = {}'.format(sSrcPath, sDesPath))
+    try:
+        # sDesPath = os.path.join(sDesPath, 'bin\Setting')
+        for file in os.listdir(sSrcPath):
+            if file.endswith('TLC_test.ini'):
+                sFromPath = os.path.join(sSrcPath, file)
+                print('GetIt, {}, {} '.format(file, sFromPath))
+                
+                sToPath = os.path.join(sDesPath, file)
+
+                if os.path.exists(sToPath): # remove old file 
+                    print('remove file, {}'.format(sToPath))    
+                    os.remove(sToPath) 
+                copyOneFile(sFromPath, sDesPath)                       
+                updateIniMPToMP_UI(sToPath)
+    except:
+        print('!!! except copyIniFile')                        
+
+    print('copyIniFile [{}] End ..\n '.format("-"))
+    return 0
 
 def runHUATOOP(sXmlPath, sH14H16):
     tree = ET.parse(sXmlPath)
@@ -530,8 +581,13 @@ def runHUATOOP(sXmlPath, sH14H16):
     elif (sH14H16.find("B16A") != -1):
         sPCS3800_SSD_MP_SettingPath = os.path.join(sPCS3800_SSD_MPPath, "windows\Micron_B16A")     
     
-    print(sPC_NewMPUI_Setting_Path)
-    print(sPCS3800_SSD_MP_SettingPath)
+    #copy new setting file
+    copyIniFile(sPCS3800_SSD_MP_SettingPath, sPC_NewMPUI_Setting_Path)
+    #rewrite setting file
+
+
+    print('sPC_NewMPUI_Setting_Path = {}'.format(sPC_NewMPUI_Setting_Path))
+    print('sPCS3800_SSD_MP_SettingPath = {}'.format(sPCS3800_SSD_MP_SettingPath))
 
     for neighbor in tree.iter('ProcessObject'):
         if ( neighbor.get('Name')  == sH14H16):
@@ -605,7 +661,7 @@ def updateIni(sPath, sIniFile, sIniSection, sFileName, sH14H16):
                     if(line.find("[Micron]") != -1):#get [Micron] section, break;
                         break
                  
-                if(sH14H16.find("B0KB") != -1) or (sH14H16.find("B16KB") != -1) :#[Micron] section
+                if(sH14H16.find("B0KB") != -1) or (sH14H16.find("B16A") != -1) :#[Micron] section
                     if(line.find("[Micron]") == -1) and (bMicronSection == False): # not get [Micron] section, continue
                         continue
                     else:
