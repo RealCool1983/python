@@ -258,6 +258,9 @@ def runCopySSD_MP_tool_EV(sXmlPath):
     #print(sFolderName[iCount-1])
 
     sPath1 = os.path.join(sPath1, listFolderName[iCount-1])
+    if os.path.exists(sPath1):
+        shutil.rmtree(sPath1) 
+        print('{}{}'.format(sPath1, ", rmtree ok"))    
     copy_tree(sPath2, sPath1)
 
     global sPCS3800_SSD_MPPath
@@ -559,6 +562,27 @@ def copyIniFile(sSrcPath, sDesPath):
     print('copyIniFile [{}] End ..\n '.format("-"))
     return 0
 
+def addNewIniSection(sSrcPath, sDesPath, sIniFileType):
+    print('addNewIniSection Start sSrcPath = {}\nsDesPath = {}'.format(sSrcPath, sDesPath))
+    try:
+        for file in os.listdir(sDesPath):
+            if file.endswith(sIniFileType):
+                sToPath = os.path.join(sDesPath, file)
+                print('GetIt, {}, {} '.format(file, sToPath))
+
+
+                if os.path.exists(sToPath): # remove old file 
+                    with open(sToPath, 'a') as outfile:
+                        for line in open( sSrcPath, 'r' ):
+                            outfile.write(line)
+                    print('insert ini section done, {}'.format(sToPath))
+    except:
+        print('!!! except addNewIniSection')                        
+
+    print('addNewIniSection [{}] End ..\n '.format("-"))
+    return 0
+
+
 def runHUATOOP(sXmlPath, sH14H16):
     tree = ET.parse(sXmlPath)
     root = tree.getroot()   
@@ -593,6 +617,17 @@ def runHUATOOP(sXmlPath, sH14H16):
         if ( neighbor.get('Name')  == sH14H16):
             for neighborChild in neighbor:
                 dict_Var[neighborChild.tag] = neighborChild.text
+                # print('dict_Var[neighborChild.tag] = {} ..\n '.format(dict_Var[neighborChild.tag]))
+                 
+                if(neighborChild.tag == "var1"):
+                    sIniFileName = neighborChild.get('IniFile')
+
+                if(neighborChild.tag == "var4"):
+                    print('Function = {}, dict_Var4 value =  {}\n '.format(sH14H16, dict_Var['var4']))
+                    if( dict_Var['var4'] == 'TRUE'):
+                        sInitFullPath = os.path.join(sPC_NewMPUI_Setting_Path, sIniFileName)
+                        addNewIniSection("D:\\3S_PC\\python\\3S_AUTO\\newSecton.txt" ,sPC_NewMPUI_Setting_Path, sIniFileName)
+                        print("do something")
 
                 #------------from MP to MP_UI ------------------------------------#
                 print('compare [{}] start ..'.format(neighborChild.text))
