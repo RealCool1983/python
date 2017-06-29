@@ -2,6 +2,8 @@ rmdir workHistory /S/Q
 rmdir releaseNote /S/Q
 rmdir .\src\Debug  /S/Q
 rmdir .\src\Release  /S/Q
+rmdir .\src\Setting  /S/Q
+rmdir .\src\SortSetting  /S/Q
 rmdir .\src\AES_Security\Debug  /S/Q
 rmdir \src\AES_Security\Release  /S/Q
 
