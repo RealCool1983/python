@@ -4,7 +4,7 @@
 			<ToolVersion>23</ToolVersion>
 			<PCSourceCodeGitPath>D:\\3S_PC\sourceCode\SSD\VC6\GIT_MP_UI\V1.0</PCSourceCodeGitPath>			
 			<PCSourceCodePath>D:\\3S_PC\ReleaseTool\MP_UI_V1.0\V1.6.2017.777</PCSourceCodePath>			
-			<S3800_SSD_MPPath>\\fileserver\3800\SW\SSD_MP_tool_EV\v1.43.2017.630</S3800_SSD_MPPath>	
+			<S3800_SSD_MPPath>D:\\3S_PC\sourceCode\SSD\VC6\SE_Tools\MP\MP_V1\package</S3800_SSD_MPPath>	
 
 			<S3800_SSD_MPUIPath>\\fileserver\3800\SW\SSD_MP_UI_EV</S3800_SSD_MPUIPath>			
 			<SDEPAP_SSD_MPUIPath>\\fileserver\Dep_AP\Project\SSD\MP_UI\source_code</SDEPAP_SSD_MPUIPath>			
@@ -24,10 +24,13 @@
 			<Item Name="VCVersion" Enabled="TRUE"/>
 			<Item Name="Bin2HexMPExe" Enabled="TRUE"/>
 			<Item Name="Bin2HexKEYDLL" Enabled="FALSE"/>
+			<Item Name="Pause" Enabled="TRUE"/>
 			
 			<Item Name="VC6AutoBuild" Enabled="TRUE"/>
 			<Item Name="UacBat" Enabled="TRUE"/>
 
+			
+			
 			<Item Name="HUATOOP_H14" Enabled="TRUE"/>	
 			<Item Name="HUATOOP_H16" Enabled="TRUE"/>
 			<Item Name="HUATOOP_H16_2LUN" Enabled="TRUE"/>

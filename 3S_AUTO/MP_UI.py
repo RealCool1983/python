@@ -108,7 +108,11 @@ def B2HEX_MP(sXmlPath):
     
     for neighbor in root.iter('PATHObjects'):
         sPath1 = neighbor.find('Bin2HexExePath').text
-        sPath2 = os.path.join(sPCS3800_SSD_MPPath, "windows\\3S_SSD_MP.exe")
+        # sPath2 = os.path.join(sPCS3800_SSD_MPPath, "windows\\3S_SSD_MP.exe")
+
+        sPath2 = (os.path.abspath(os.path.join(sPCS3800_SSD_MPPath, os.pardir)))
+        sPath2 = os.path.join(sPCS3800_SSD_MPPath, "bin\\3S_SSD_MP.exe")
+
         sPath1Hex =  sPath1.replace("BIN2HEX.exe","3S_SSD_MP.hex")
         
 
