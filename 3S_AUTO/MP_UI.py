@@ -592,93 +592,136 @@ def runHUATOOP(sXmlPath, sH14H16):
 
     print('runHUATOOP[{}] start ..'.format(sH14H16))
 
-    dict_Var = {'var1': '0', 'var2': '0', 'var3': '0', 'var4': '0', 'var5': '0'}
+    try:
+        dict_Var = {'var1': '0', 'var2': '0', 'var3': '0', 'var4': '0', 'var5': '0'}
 
-    sPC_NewMPUI_Setting_Path = os.path.join(sPC_NewMPUI_Path, "bin\Setting")
+        sPC_NewMPUI_Setting_Path = os.path.join(sPC_NewMPUI_Path, "bin\Setting")
 
-    if (sH14H16.find("14") != -1):
-        sPCS3800_SSD_MP_SettingPath = os.path.join(sPCS3800_SSD_MPPath, "windows\HUATOOP\H14_TLC")
-    elif (sH14H16.find("16") != -1) and (sH14H16.find("B16A") == -1):
-        sPCS3800_SSD_MP_SettingPath = os.path.join(sPCS3800_SSD_MPPath, "windows\HUATOOP\H16_TLC")
-    elif (sH14H16.find("B0KB") != -1):
-        sPCS3800_SSD_MP_SettingPath = os.path.join(sPCS3800_SSD_MPPath, "windows\Micron_B0KB")        
-    elif (sH14H16.find("B16A") != -1):
-        sPCS3800_SSD_MP_SettingPath = os.path.join(sPCS3800_SSD_MPPath, "windows\Micron_B16A")     
-    
-    #copy new setting file
-    copyIniFile(sPCS3800_SSD_MP_SettingPath, sPC_NewMPUI_Setting_Path)
-    #rewrite setting file
-
-
-    print('sPC_NewMPUI_Setting_Path = {}'.format(sPC_NewMPUI_Setting_Path))
-    print('sPCS3800_SSD_MP_SettingPath = {}'.format(sPCS3800_SSD_MP_SettingPath))
-
-    for neighbor in tree.iter('ProcessObject'):
-        if ( neighbor.get('Name')  == sH14H16):
-            for neighborChild in neighbor:
-                dict_Var[neighborChild.tag] = neighborChild.text
-                # print('dict_Var[neighborChild.tag] = {} ..\n '.format(dict_Var[neighborChild.tag]))
-                 
-                # if(neighborChild.tag == "var1"):
-                #     sIniFileName = neighborChild.get('IniFile')
-
-                # if(neighborChild.tag == "var4"):
-                #     print('Function = {}, dict_Var4 value =  {}\n '.format(sH14H16, dict_Var['var4']))
-                #     if( dict_Var['var4'] == 'TRUE'):
-                #         sInitFullPath = os.path.join(sPC_NewMPUI_Setting_Path, sIniFileName)
-                #         addNewIniSection("D:\\3S_PC\\python\\3S_AUTO\\newSecton.txt" ,sPC_NewMPUI_Setting_Path, sIniFileName)
-                #         print("do something")
-
-                #------------from MP to MP_UI ------------------------------------#
-                print('compareStart .. [{}] '.format(neighborChild.text))
-
-                #sBinName = neighborChild.get('Name') + "_" + neighborChild.text + ".bin"
-                sBinName = neighborChild.get('Name') + neighborChild.text + ".bin"
-                print ('get binName = ', sBinName )
-
-                #return 0
-
-                if (findFile(sPCS3800_SSD_MP_SettingPath, sBinName) == 0):
-                    print('Get it in [{}] '.format(sPCS3800_SSD_MP_SettingPath))
-
-                    if (findFile(sPC_NewMPUI_Setting_Path ,neighborChild.text) == -1):
-                        print ("nothing in sPC_NewMPUI_Setting_Path, copy to")
-                        
-                        sFromPath = os.path.join(sPCS3800_SSD_MP_SettingPath, sBinName)
-                        
-                        copyOneFile(sFromPath, sPC_NewMPUI_Setting_Path)
-                        #modify setting file 
-                    else:
-                        print ("already in sPC_NewMPUI_Setting_Path")
-
-                    #remove old file in MP_UI
-                    removeDiffFile(sPC_NewMPUI_Setting_Path, neighborChild.get('Name') ,sBinName)
-
-                    if (neighborChild.get('IniFile') == 'MTable.set'):
-                        updateMTable(sPC_NewMPUI_Setting_Path, neighborChild.get('IniFile') , neighborChild.get('IniSection'), sBinName, sH14H16 )
-                    else:
-                        updateIni(sPC_NewMPUI_Setting_Path, neighborChild.get('IniFile') , neighborChild.get('IniSection'), sBinName, sH14H16 )
-
-                #------------Compare MP_UI with MP, delete ------------------------------------#
-
-                # ok
-                # print ('neighborChild = ', neighborChild)
-                # print ('tag = ', neighborChild.tag)
-                # print ('text = ', neighborChild.text)
-                # print ('attrib = ', neighborChild.attrib)
-                #print ('get = ', neighborChild.get('Editable') )
-
-            print('dict_Var', dict_Var)
+        if (sH14H16.find("14") != -1):
+            sPCS3800_SSD_MP_SettingPath = os.path.join(sPCS3800_SSD_MPPath, "windows\HUATOOP\H14_TLC")
+        elif (sH14H16.find("16") != -1) and (sH14H16.find("B16A") == -1):
+            sPCS3800_SSD_MP_SettingPath = os.path.join(sPCS3800_SSD_MPPath, "windows\HUATOOP\H16_TLC")
+        elif (sH14H16.find("B0KB") != -1):
+            sPCS3800_SSD_MP_SettingPath = os.path.join(sPCS3800_SSD_MPPath, "windows\Micron_B0KB")        
+        elif (sH14H16.find("B16A") != -1):
+            sPCS3800_SSD_MP_SettingPath = os.path.join(sPCS3800_SSD_MPPath, "windows\Micron_B16A")     
         
+        #copy new setting file
+        copyIniFile(sPCS3800_SSD_MP_SettingPath, sPC_NewMPUI_Setting_Path)
+        #rewrite setting file
 
+
+        print('runHUATOOP sPC_NewMPUI_Setting_Path = {}'.format(sPC_NewMPUI_Setting_Path))
+        print('runHUATOOP sPCS3800_SSD_MP_SettingPath = {}'.format(sPCS3800_SSD_MP_SettingPath))
+
+        for neighbor in tree.iter('ProcessObject'):
+            if ( neighbor.get('Name')  == sH14H16):
+                for neighborChild in neighbor:
+                    dict_Var[neighborChild.tag] = neighborChild.text
+
+                    #------------from MP to MP_UI ------------------------------------#
+                    print('compareStart .. [{}] '.format(neighborChild.text))
+
+                    #var4 for another reserve
+                    if (neighborChild.tag != "var4"):
+                    #sBinName = neighborChild.get('Name') + "_" + neighborChild.text + ".bin"
+                        sBinName = neighborChild.get('Name') + neighborChild.text + ".bin"
+                        print ('get binName = ', sBinName )
+
+                        if (neighborChild.get('IniFile') == "MTable.set"):
+                            updateMTable(sPC_NewMPUI_Setting_Path, neighborChild.get('IniFile') , neighborChild.get('IniSection'), sBinName, sH14H16 )
+                        else:
+                            updateIni(sPC_NewMPUI_Setting_Path, neighborChild.get('IniFile') , neighborChild.get('IniSection'), sBinName, sH14H16 )                    
+
+                        if (findFile(sPCS3800_SSD_MP_SettingPath, sBinName) == 0):
+                            print('Get it in [{}] '.format(sPCS3800_SSD_MP_SettingPath))
+
+                            if (findFile(sPC_NewMPUI_Setting_Path ,neighborChild.text) == -1):
+                                print ("nothing in sPC_NewMPUI_Setting_Path, copy to")
+                                
+                                sFromPath = os.path.join(sPCS3800_SSD_MP_SettingPath, sBinName)
+                                
+                                copyOneFile(sFromPath, sPC_NewMPUI_Setting_Path)
+                                #modify setting file 
+                            else:
+                                print ("already in sPC_NewMPUI_Setting_Path")
+
+                            #remove old file in MP_UI
+                            removeDiffFile(sPC_NewMPUI_Setting_Path, neighborChild.get('Name') ,sBinName)
+  
+                    if(neighborChild.tag == "var4"):
+                        print('dict_Var[neighborChild.tag] = {} ..\n '.format(dict_Var[neighborChild.tag]))
+                        print('Function = {}, dict_Var4 value =  {}\n '.format(sH14H16, dict_Var['var4']))
+                        if( dict_Var['var4'] == 'TRUE'):
+                            sInitFullPath = os.path.join(sPC_NewMPUI_Setting_Path, sIniFileName)
+                            addNewIniSection("D:\\3S_PC\\python\\3S_AUTO\\newSecton.txt" ,sPC_NewMPUI_Setting_Path, sIniFileName)
+                            print("do something")
+
+
+                    #------------Compare MP_UI with MP, delete ------------------------------------#
+
+                    # ok
+                    # print ('neighborChild = ', neighborChild)
+                    # print ('tag = ', neighborChild.tag)
+                    # print ('text = ', neighborChild.text)
+                    # print ('attrib = ', neighborChild.attrib)
+                    #print ('get = ', neighborChild.get('Editable') )
+
+                print('dict_Var', dict_Var)
+        
+    except:
+        print("!!!except runHUATOOP ")
     print('runHUATOOPEnd ..[{}]\n '.format(sH14H16))
 
 
 def updateMTable(sPath, sIniFile, sIniSection, sFileName, sH14H16):
     #<var1 Name="3S_HNX_14TLC_BNR" IniFile="H14_TLC_test.ini" IniSection="Firmware_Bin_File_Path">3.2.0.51</var1>
     #1.update MTable.set
-    #2.update ini
     print('updateMTableStart .. [{}] '.format("-"))
+    try:
+        for file in os.listdir(sPath):
+            #if file.startswith(sFileType):
+                #print('GetIt startswith= [{}]'.format(file))
+            if (file.find(sIniFile) != -1): 
+                print('updateMTable sIniFile: {}, sIniSection: {}, file:{}, secction:{}'.format(sIniFile, sIniSection, file, sH14H16))
+                bMicronSection = False
+                sReadPath1 = os.path.join(sPath, file)
+
+                rF = open(sReadPath1, 'r') 
+        
+                for line in rF.readlines():                          #依次读取每行  
+                    line = line.strip()                             #去掉每行头尾空白  
+                    if not len(line) or line.startswith('#'):       #判断是否是空行或注释行  
+                        continue 
+                    if(sH14H16.find("H14") != -1) or (sH14H16.find("H16") != -1):#[Hynix] section
+                        if(line.find("[Micron]") != -1):#get [Micron] section, break;
+                            break
+                    elif(sH14H16.find("B0KB") != -1) or (sH14H16.find("B16A") != -1) :#[Micron] section
+                        # print('B0KB, B16A, section:{}'.format(sH14H16))
+                        if(line.find("Micron") == -1) and (bMicronSection == False): # not get [Micron] section, continue
+                            continue
+                        else:
+                            # print('get [Micron] section:{}'.format(line))
+                            bMicronSection = True # get [Micron] section, set true
+                            
+                    if  (line.find(sIniSection) != -1): #need to replace this line with new setting file 
+                        sNewLine = sIniSection + sFileName
+                        rF.close()
+                        if (line != sNewLine):
+                            replaceLine(sReadPath1, line, sNewLine)
+                            print('updateMTable replaceLine ok path:{}\n old:{}\n new:{}'.format(sReadPath1, line, sNewLine))
+
+                rF.close()
+    except:
+        print("!!!except updateMTable\n")
+
+    print('updateMTable End {}..\n '.format("-"))    
+
+
+def updateIni(sPath, sIniFile, sIniSection, sFileName, sH14H16):
+    #<var1 Name="3S_HNX_14TLC_BNR" IniFile="H14_TLC_test.ini" IniSection="Firmware_Bin_File_Path">3.2.0.51</var1>
+    #1.update ini
+    print('updateIniStart .. [{}] '.format("-"))
     try:
         for file in os.listdir(sPath):
             #if file.startswith(sFileType):
@@ -694,76 +737,18 @@ def updateMTable(sPath, sIniFile, sIniSection, sFileName, sH14H16):
                     line = line.strip()                             #去掉每行头尾空白  
                     if not len(line) or line.startswith('#'):       #判断是否是空行或注释行  
                         continue 
-                    if(sH14H16.find("14") != -1) or (sH14H16.find("16") != -1):#[Hynix] section
-                        if(line.find("[Micron]") != -1):#get [Micron] section, break;
-                            break
-                     
-                    if(sH14H16.find("B0KB") != -1) or (sH14H16.find("B16A") != -1) :#[Micron] section
-                        if(line.find("[Micron]") == -1) and (bMicronSection == False): # not get [Micron] section, continue
-                            continue
-                        else:
-                            #print('get [Micron] section:{}'.format(line))
-                            bMicronSection = True # get [Micron] section, set true
                             
                     if  (line.find(sIniSection) != -1): #need to replace this line with new setting file 
                         sNewLine = sIniSection + sFileName
-                        print("sReadPath1 =", sReadPath1 )
-                        print("oldLine = ", line)
-                        print("sNewLine = ", sNewLine)
+
                         rF.close()
                         if (line != sNewLine):
                             replaceLine(sReadPath1, line, sNewLine)
-                            print('replaceLine ok path:{}\n old:{}\n new:{}'.format(sReadPath1, line, sNewLine))
+                            print('updateIni replaceLine ok path:{}\n old:{}\n new:{}'.format(sReadPath1, line, sNewLine))
 
                 rF.close()
     except:
-        print("!!!except updateMTable\n")
-
-    print('updateMTable End {}..\n '.format("-"))    
-
-
-def updateIni(sPath, sIniFile, sIniSection, sFileName, sH14H16):
-    #<var1 Name="3S_HNX_14TLC_BNR" IniFile="H14_TLC_test.ini" IniSection="Firmware_Bin_File_Path">3.2.0.51</var1>
-    #1.update MTable.set
-    #2.update ini
-    print('updateIniStart .. [{}] '.format("-"))
-
-    for file in os.listdir(sPath):
-        #if file.startswith(sFileType):
-            #print('GetIt startswith= [{}]'.format(file))
-        if (file.find(sIniFile) != -1): 
-            print('updateIni sIniFile: {}, sIniSection: {}, file:{}, secction:{}'.format(sIniFile, sIniSection, file, sH14H16))
-            bMicronSection = False
-            sReadPath1 = os.path.join(sPath, file)
-            #print("updateIni path = ", sReadPath1)
-            rF = open(sReadPath1, 'r') 
-    
-            for line in rF.readlines():                          #依次读取每行  
-                line = line.strip()                             #去掉每行头尾空白  
-                if not len(line) or line.startswith('#'):       #判断是否是空行或注释行  
-                    continue 
-                if(sH14H16.find("14") != -1) or (sH14H16.find("16") != -1):#[Hynix] section
-                    if(line.find("[Micron]") != -1):#get [Micron] section, break;
-                        break
-                 
-                if(sH14H16.find("B0KB") != -1) or (sH14H16.find("B16A") != -1) :#[Micron] section
-                    if(line.find("[Micron]") == -1) and (bMicronSection == False): # not get [Micron] section, continue
-                        continue
-                    else:
-                        #print('get [Micron] section:{}'.format(line))
-                        bMicronSection = True # get [Micron] section, set true
-                        
-                if  (line.find(sIniSection) != -1): #need to replace this line with new setting file 
-                    sNewLine = sIniSection + sFileName
-                    print("sReadPath1 =", sReadPath1 )
-                    print("oldLine = ", line)
-                    print("sNewLine = ", sNewLine)
-                    rF.close()
-                    if (line != sNewLine):
-                        replaceLine(sReadPath1, line, sNewLine)
-                        print('replaceLine ok path:{}\n old:{}\n new:{}'.format(sReadPath1, line, sNewLine))
-
-            rF.close()
+        print('!!!except updateIni End ..\n ')        
 
     print('updateIni End ..[{}]\n '.format("-"))    
 
