@@ -267,7 +267,7 @@ def runCopySSD_MP_tool_EV(sXmlPath):
     sPCS3800_SSD_MPPath = sPath1
 
     print('copy_tree from [{}] to [{}] ok'.format(sPath2, sPath1))
-    print('runCopySSD_MP_tool_EV[{}] End ..\n '.format('-'))
+    print('runCopySSD_MP_tool_EVEnd ..[{}]\n '.format('-'))
 
 
 def getNewMPUI_Name(sOldName, sVer):
@@ -312,7 +312,7 @@ def runCopyFromGit(sXmlPath):
 
 
 
-    print('runCopyFromGit[{}] End ..\n '.format('-'))
+    print('runCopyFromGitEnd ..[{}]\n '.format('-'))
 
 def runCopySSD_MP_UI(sXmlPath):
     tree = ET.parse(sXmlPath)
@@ -348,7 +348,7 @@ def runCopySSD_MP_UI(sXmlPath):
     except:
         print("!!! runCopySSD_MP_UI except")
 
-    print('runCopySSD_MP_UI[{}] End ..\n '.format('-'))
+    print('runCopySSD_MP_UIEnd ..[{}]\n '.format('-'))
     return 0
 
 def runCopyToGitbin(sXmlPath):
@@ -510,7 +510,7 @@ def runCompressFile(sXmlPath):
     print('backup to pc, {}'.format(sPathPC))
     copyOneFile(sRemoteDepAp_NewMPUI_Path, sPathPC)
 
-    print('runCompressFile[{}] End ..\n '.format(dest))
+    print('runCompressFileEnd ..[{}]\n '.format(dest))
 
 def updateIniMPToMP_UI(sFile):
     print('updateIniMPToMP_UI Start sPath = {}'.format(sFile))
@@ -537,7 +537,7 @@ def updateIniMPToMP_UI(sFile):
     except:
         print('updateIniMPToMP_UI except')
 
-    print('updateIniMPToMP_UI [{}] End ..\n '.format("-"))
+    print('updateIniMPToMP_UI End ..[{}]\n '.format("-"))
     return 0
 
 def copyIniFile(sSrcPath, sDesPath):
@@ -559,7 +559,7 @@ def copyIniFile(sSrcPath, sDesPath):
     except:
         print('!!! except copyIniFile')                        
 
-    print('copyIniFile [{}] End ..\n '.format("-"))
+    print('copyIniFile End ..[{}]\n '.format("-"))
     return 0
 
 def addNewIniSection(sSrcPath, sDesPath, sIniFileType):
@@ -579,7 +579,7 @@ def addNewIniSection(sSrcPath, sDesPath, sIniFileType):
     except:
         print('!!! except addNewIniSection')                        
 
-    print('addNewIniSection [{}] End ..\n '.format("-"))
+    print('addNewIniSection End ..[{}]\n '.format("-"))
     return 0
 
 
@@ -630,7 +630,7 @@ def runHUATOOP(sXmlPath, sH14H16):
                 #         print("do something")
 
                 #------------from MP to MP_UI ------------------------------------#
-                print('compare [{}] start ..'.format(neighborChild.text))
+                print('compareStart .. [{}] '.format(neighborChild.text))
 
                 #sBinName = neighborChild.get('Name') + "_" + neighborChild.text + ".bin"
                 sBinName = neighborChild.get('Name') + neighborChild.text + ".bin"
@@ -654,8 +654,11 @@ def runHUATOOP(sXmlPath, sH14H16):
                     #remove old file in MP_UI
                     removeDiffFile(sPC_NewMPUI_Setting_Path, neighborChild.get('Name') ,sBinName)
 
-                    #if (neighborChild.get('IniFile') == 'MTable.set'):
-                    updateIni(sPC_NewMPUI_Setting_Path, neighborChild.get('IniFile') , neighborChild.get('IniSection'), sBinName, sH14H16 )
+                    if (neighborChild.get('IniFile') == 'MTable.set'):
+                        updateMTable(sPC_NewMPUI_Setting_Path, neighborChild.get('IniFile') , neighborChild.get('IniSection'), sBinName, sH14H16 )
+                    else:
+                        updateIni(sPC_NewMPUI_Setting_Path, neighborChild.get('IniFile') , neighborChild.get('IniSection'), sBinName, sH14H16 )
+
                 #------------Compare MP_UI with MP, delete ------------------------------------#
 
                 # ok
@@ -668,15 +671,62 @@ def runHUATOOP(sXmlPath, sH14H16):
             print('dict_Var', dict_Var)
         
 
-    print('runHUATOOP[{}] End ..\n '.format(sH14H16))
+    print('runHUATOOPEnd ..[{}]\n '.format(sH14H16))
 
+
+def updateMTable(sPath, sIniFile, sIniSection, sFileName, sH14H16):
+    #<var1 Name="3S_HNX_14TLC_BNR" IniFile="H14_TLC_test.ini" IniSection="Firmware_Bin_File_Path">3.2.0.51</var1>
+    #1.update MTable.set
+    #2.update ini
+    print('updateMTableStart .. [{}] '.format("-"))
+    try:
+        for file in os.listdir(sPath):
+            #if file.startswith(sFileType):
+                #print('GetIt startswith= [{}]'.format(file))
+            if (file.find(sIniFile) != -1): 
+                print('updateIni sIniFile: {}, sIniSection: {}, file:{}, secction:{}'.format(sIniFile, sIniSection, file, sH14H16))
+                bMicronSection = False
+                sReadPath1 = os.path.join(sPath, file)
+                #print("updateIni path = ", sReadPath1)
+                rF = open(sReadPath1, 'r') 
+        
+                for line in rF.readlines():                          #依次读取每行  
+                    line = line.strip()                             #去掉每行头尾空白  
+                    if not len(line) or line.startswith('#'):       #判断是否是空行或注释行  
+                        continue 
+                    if(sH14H16.find("14") != -1) or (sH14H16.find("16") != -1):#[Hynix] section
+                        if(line.find("[Micron]") != -1):#get [Micron] section, break;
+                            break
+                     
+                    if(sH14H16.find("B0KB") != -1) or (sH14H16.find("B16A") != -1) :#[Micron] section
+                        if(line.find("[Micron]") == -1) and (bMicronSection == False): # not get [Micron] section, continue
+                            continue
+                        else:
+                            #print('get [Micron] section:{}'.format(line))
+                            bMicronSection = True # get [Micron] section, set true
+                            
+                    if  (line.find(sIniSection) != -1): #need to replace this line with new setting file 
+                        sNewLine = sIniSection + sFileName
+                        print("sReadPath1 =", sReadPath1 )
+                        print("oldLine = ", line)
+                        print("sNewLine = ", sNewLine)
+                        rF.close()
+                        if (line != sNewLine):
+                            replaceLine(sReadPath1, line, sNewLine)
+                            print('replaceLine ok path:{}\n old:{}\n new:{}'.format(sReadPath1, line, sNewLine))
+
+                rF.close()
+    except:
+        print("!!!except updateMTable\n")
+
+    print('updateMTable End {}..\n '.format("-"))    
 
 
 def updateIni(sPath, sIniFile, sIniSection, sFileName, sH14H16):
     #<var1 Name="3S_HNX_14TLC_BNR" IniFile="H14_TLC_test.ini" IniSection="Firmware_Bin_File_Path">3.2.0.51</var1>
     #1.update MTable.set
     #2.update ini
-    print('updateIni [{}] Start ..'.format("-"))
+    print('updateIniStart .. [{}] '.format("-"))
 
     for file in os.listdir(sPath):
         #if file.startswith(sFileType):
@@ -715,7 +765,7 @@ def updateIni(sPath, sIniFile, sIniSection, sFileName, sH14H16):
 
             rF.close()
 
-    print('updateIni [{}] End ..\n '.format("-"))    
+    print('updateIni End ..[{}]\n '.format("-"))    
 
 
 
@@ -764,7 +814,7 @@ def runReleaseNote(sXmlPath):
         copyOneFile(sPath3, sPath1)        
         copyOneFile(sPath3, sPath2)   
 
-    print('runReleaseNote[{}] End ..\n'.format('-'))
+    print('runReleaseNoteEnd ..[{}]\n'.format('-'))
 
 
 def runVCVersion(sXmlPath):
@@ -815,7 +865,7 @@ def runVCVersion(sXmlPath):
              
     rF.close()
 
-    print('runVCVersion [{}] End ..\n '.format("-"))    
+    print('runVCVersion End ..[{}]\n '.format("-"))    
 
 def runVERIFY_INI(sXmlPath):
     print('runVERIFY_INI[{}] start ..'.format('-'))
@@ -853,7 +903,7 @@ def runVERIFY_INI(sXmlPath):
                         print('Err!!! Ini name:{}, Recv_Drv_Num_By_UI:{}'.format(file, line))            
 
             rF.close()
-    print('runVERIFY_INI[{}] end ..'.format('-'))
+    print('runVERIFY_INIEnd ..[{}]'.format('-'))
 
 
 def replaceLine(file_path, pattern, subst):
@@ -871,7 +921,7 @@ def replaceLine(file_path, pattern, subst):
 
 
 def removeDiffFile(sPath, sFileType, sFileName):
-    #print('removeDiffFile [{}] Start ..'.format("-"))
+    #print('removeDiffFileStart .. [{}] '.format("-"))
     for file in os.listdir(sPath):
         if file.startswith(sFileType):
             #print('GetIt startswith= [{}]'.format(file))
@@ -879,7 +929,7 @@ def removeDiffFile(sPath, sFileType, sFileName):
                 sRmPath = os.path.join(sPath, file)
                 print('ready to remove = name:[{}], path:[{}]'.format(file, sRmPath))
                 os.remove(sRmPath)
-    #print('removeDiffFile [{}] End ..\n '.format("-"))
+    #print('removeDiffFile End ..[{}]\n '.format("-"))
 
 
 
@@ -889,7 +939,7 @@ def findFile(sPath, sFileName):
         if file.startswith(sFileName):
             print('GetIt = [{}] '.format(file))
             return 0
-    print('findFile [{}] End ..\n '.format("-"))
+    print('findFile End ..[{}]\n '.format("-"))
     return -1
 
 def runPause():
