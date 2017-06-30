@@ -160,6 +160,65 @@ def runCopyFromDEPAP(sXmlPath, sTestFile):
     print('CopyFromDEPAP[{}] End ..\n '.format('-'))
 
 
+def findFile(sPath, sFileName):
+    print('findFile Start sPath = {}, name = {}'.format(sPath, sFileName))
+    for file in os.listdir(sPath):
+        if file.startswith(sFileName):
+            print('GetIt = [{}] '.format(file))
+            return file
+    print('findFile [{}] End ..\n '.format("-"))
+    return -1
+
+
+
+def runCopyMP(sXmlPath, sVersion):
+    tree = ET.parse(sXmlPath)
+    root = tree.getroot()   
+
+    print('CopyFromDEPAP[{}] start ..'.format('-'))
+    try:
+        for neighbor in root.iter('PATHObjects'):
+            sPath1 = neighbor.find('DEPAP_SSD_Path').text
+
+        sMpVersion = "v1." + sVersion
+        sReturnFileName = findFile(sPath1 ,sMpVersion)
+        if ( sReturnFileName == -1):
+            print ('nothing in {}'.format(sReturnFileName))
+        else:
+            print ('get it in {}'.format(sReturnFileName))
+
+        #update all new version 
+        bFlag = True
+        while (bFlag):
+            sMpVersion = "v1." + sVersion
+            print ('sMpVersion, {}'.format(sMpVersion))
+            sReturnFileName = findFile(sPath1 ,sMpVersion)
+            
+
+            if ( sReturnFileName == -1):
+                print ('nothing in {}'.format(sReturnFileName))
+                bFlag = False
+            else:
+                sReturnFileNameZip = sReturnFileName + ".zip"    
+                # sDesPath = os.path.join(sPath1, sReturnFileNameZip)
+                print ('sDesPath {}'.format(sReturnFileNameZip))
+                runCopyFromDEPAP(sXmlPath, sReturnFileNameZip)
+                runCopyFromWorkPath(sXmlPath, sReturnFileName)
+                runGitCommit(sXmlPath, sReturnFileName)
+                sVersion = str( int(sVersion) + 1)
+
+        #update xml 
+        for child in root.iter('Item'):
+            testName = child.get('Name')
+            testFile = child.get('FileName')
+            if (testName == "CopyMP") and (testFile != sVersion):
+                child.set('FileName', sVersion)
+                tree.write(sXmlPath)
+                print ('wirte xml  {}'.format(sXmlPath))
+
+    except:
+        print("!!! except in runCopyMP")
+    return 0
 
 def runPause():
     print('runPause {} {}'.format("-", "-"))
@@ -196,7 +255,8 @@ def parseXML(sXmlPath):
                 runCopyFromWorkPath(xmlPath, testFile)        
             if ( testName == 'GitCommit'):
                 runGitCommit(xmlPath, testFile)                                                                                                               
-        
+            if ( testName == 'CopyMP'):
+                runCopyMP(xmlPath, testFile)                                                                         
             if ( testName == 'Pause'):
                 runPause()                                                
                           

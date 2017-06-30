@@ -1,4 +1,3 @@
-
 <Configuration>
 		<PATHObjects>
 			<DEPAP_SSD_Path>\\fileserver\Dep_AP\Project\SSD\MP\source_code</DEPAP_SSD_Path>			
@@ -7,20 +6,18 @@
 			
 		</PATHObjects>
 		
-		<TestItemList><!--FALSE, TRUE -->
+		<TestItemList>
+			
+			<Item Enabled="TRUE" FileName="43" Name="CopyMP" />
 			
 			
-			<Item Name="CopyFromDEPAP"  FileName="v1.42.2017.628.zip" Enabled="TRUE"/>
-			<Item Name="CopyFromWorkPath"  FileName="v1.42.2017.628" Enabled="TRUE"/>
-			<Item Name="GitCommit" FileName="v1.42.2017.628" Enabled="TRUE"/>					
-			<!--
-			<Item Name="CopyFromDEPAP"  FileName=".zip" Enabled="TRUE"/>
-			<Item Name="CopyFromWorkPath"  FileName="" Enabled="TRUE"/>
-			<Item Name="GitCommit" FileName="" Enabled="TRUE"/>		
-			-->			
+			<Item Enabled="FALSE" FileName="v1.42.2017.628.zip" Name="CopyFromDEPAP" />
+			<Item Enabled="FALSE" FileName="v1.42.2017.628" Name="CopyFromWorkPath" />
+			<Item Enabled="FALSE" FileName="v1.42.2017.628" Name="GitCommit" />					
+						
 			
 
-			<Item Name="Pause" Enabled="FALSE"/>
+			<Item Enabled="FALSE" Name="Pause" />
 
 
 		</TestItemList>
@@ -29,4 +26,4 @@
 
 		</ProcessObjectSet>
 		
-</Configuration>		
+</Configuration>
