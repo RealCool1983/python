@@ -3,13 +3,18 @@
 			<DEPAP_SSD_Path>\\fileserver\Dep_AP\Project\SSD\MP\source_code</DEPAP_SSD_Path>			
 			<PCWorkPath>D:\\3S_PC\sourceCode\SSD\VC6\workingTmp\gitWork</PCWorkPath>			
 			<PCSEToolPath>D:\\3S_PC\sourceCode\SSD\VC6\SE_Tools\MP\MP_V1</PCSEToolPath>
+
+			<PC_SSD_tools>D:\\3S_PC\sourceCode\SSD\SSD_tools\library</PC_SSD_tools>
+			<SDEPAP_SSD_libraryPath>\\fileserver\Dep_AP\Project\SSD\library</SDEPAP_SSD_libraryPath>
 			
 		</PATHObjects>
 		
 		<TestItemList>
 			
-			<Item Enabled="TRUE" FileName="43" Name="CopyMP" />
+			<Item Enabled="TRUE" FileName="44" Name="CopyMP" />
+			<Item Enabled="TRUE" Name="artemisCopyToPC" />
 			
+			<Item Enabled="FAlSE" Name="GitCommit" />			
 			
 			<Item Enabled="FALSE" FileName="v1.42.2017.628.zip" Name="CopyFromDEPAP" />
 			<Item Enabled="FALSE" FileName="v1.42.2017.628" Name="CopyFromWorkPath" />
@@ -23,7 +28,10 @@
 		</TestItemList>
 		
 		<ProcessObjectSet>
-
+			<ProcessObject Name="artemisCopyToPC">
+				<var1 Name="3S">D:\\3S_PC\sourceCode\SSD\SSD_tools\library</var1>
+				<var2 Name="3S">\\fileserver\Dep_AP\Project\SSD\library</var2>
+            </ProcessObject>	
 		</ProcessObjectSet>
 		
 </Configuration>

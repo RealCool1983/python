@@ -36,29 +36,31 @@ def rawInputTest():
         return -1
 
     
-def runGitCommit(sXmlPath, testFile):
-    tree = ET.parse(sXmlPath)
-    root = tree.getroot()   
-
+def runGitCommit(sGitPath, testFile):
+    # tree = ET.parse(sXmlPath)
+    # root = tree.getroot()   
     print('runGitCommit[{}] start ..'.format('-'))
 
-    for neighbor in root.iter('PATHObjects'):
-        sPath1 = neighbor.find('PCWorkPath').text
-        sPath2 = neighbor.find('PCSEToolPath').text
-        sPath3 = (os.path.abspath(os.path.join(sPath2, os.pardir)))
+    try:
+        # for neighbor in root.iter('PATHObjects'):
+        #     # sPath1 = neighbor.find('PCWorkPath').text
+        #     sPath2 = neighbor.find('PCSEToolPath').text
+        #     sPath3 = (os.path.abspath(os.path.join(sPath2, os.pardir)))
 
-    sCmd = 'git commit -m {}{}{}'.format("\"", testFile, "\"")  
-    # sMsg = 'a'
-    print("sCmd:", sCmd)
-    # print(sMsg)
+        sCmd = 'git commit -m {}{}{}'.format("\"", testFile, "\"")  
+        # sMsg = 'a'
+        print("sCmd:", sCmd)
+        # print(sMsg)
 
-    print('sPath3 = {} , {}'.format(sPath3, sPath3))
-    os.chdir(sPath3)
-    os.system("git add .")
-    os.system(sCmd)
-
+        print('sGitPath = {}'.format(sGitPath))
+        os.chdir(sGitPath)
+        os.system("git add .")
+        os.system(sCmd)
+    except:
+        print('!!except runGitCommit End ..\n ')        
 
     print('runGitCommit[{}] End ..\n '.format('-'))
+    return 0
 
 def runCopyFolder(sSrc, sDet):
     # ignore_dirs = shutil.ignore_patterns( '.gitignore', '.git')
@@ -177,9 +179,12 @@ def runCopyMP(sXmlPath, sVersion):
 
     print('CopyFromDEPAP[{}] start ..'.format('-'))
     try:
+            
+
         for neighbor in root.iter('PATHObjects'):
             sPath1 = neighbor.find('DEPAP_SSD_Path').text
-
+            sPath3 = neighbor.find('PCSEToolPath').text
+            
         sMpVersion = "v1." + sVersion
         sReturnFileName = findFile(sPath1 ,sMpVersion)
         if ( sReturnFileName == -1):
@@ -204,7 +209,7 @@ def runCopyMP(sXmlPath, sVersion):
                 print ('sDesPath {}'.format(sReturnFileNameZip))
                 runCopyFromDEPAP(sXmlPath, sReturnFileNameZip)
                 runCopyFromWorkPath(sXmlPath, sReturnFileName)
-                runGitCommit(sXmlPath, sReturnFileName)
+                runGitCommit(sPath3, sReturnFileName)
                 sVersion = str( int(sVersion) + 1)
 
         #update xml 
@@ -220,6 +225,49 @@ def runCopyMP(sXmlPath, sVersion):
         print("!!! except in runCopyMP")
     return 0
 
+def runArtemisCopyTo3SPC(sXmlPath, sTestName):
+
+    tree = ET.parse(sXmlPath)
+    root = tree.getroot()   
+    try:
+        print('runArtemisCopyTo3SPC start \nsPath = {}\nsTestName = {}'.format(sXmlPath, sTestName))
+    
+   
+        for neighbor in root.iter('PATHObjects'):
+            sPath2 = neighbor.find('SDEPAP_SSD_libraryPath').text
+
+        for neighbor1 in tree.iter('ProcessObject'):
+            if ( neighbor1.get('Name')  == sTestName):
+                for neighbor1Child in neighbor1:
+                    if(neighbor1Child.tag == 'var1'):
+                        sGitPath = neighbor1Child.text
+                        print('neighbor1Child.tag(sGitPath) = {}'.format(sGitPath))
+                    elif(neighbor1Child.tag == 'var2'):
+                        sSrcPath =  neighbor1Child.text
+                        print('neighbor2Child.tag(sSrcPath) = {}'.format(sSrcPath))
+
+        print('src = {}'.format(sSrcPath))
+        print('det = {}'.format(sGitPath))
+
+        if os.path.exists(sGitPath):
+            print('{}", rmtree ok"'.format(sGitPath))
+            shutil.rmtree(sGitPath) 
+            
+        # ignore_dirs = shutil.ignore_patterns('.txt')
+        shutil.copytree(sSrcPath, sGitPath)
+
+        sStartTime = datetime.datetime.now()
+        # sCmd = 'git commit -m {}{}{}'.format("\"", sStartTime, "\"")          
+        runGitCommit(sGitPath, sStartTime)      
+    except OSError as why:
+        print('!!!except runArtemisCopyTo3SPC, {}'.format( str(why)))    
+    except Error as err:
+        print('!!!except runArtemisCopyTo3SPC, {}'.format(errors.extend(err.args[0])) )
+    except:    
+        print("!!!except")
+    print('runArtemisCopyTo3SPC end ..')
+    return 0
+
 def runPause():
     print('runPause {} {}'.format("-", "-"))
     sYesNo = rawInputTest()
@@ -230,6 +278,7 @@ def runPause():
         sys.exit(0)
     print('EndPause {} {}'.format("-", "-"))        
     
+
 
 
 def parseXML(sXmlPath):
@@ -253,13 +302,19 @@ def parseXML(sXmlPath):
                 runCopyFromDEPAP(xmlPath, testFile)                                                                 
             if ( testName == 'CopyFromWorkPath'):
                 runCopyFromWorkPath(xmlPath, testFile)        
-            if ( testName == 'GitCommit'):
-                runGitCommit(xmlPath, testFile)                                                                                                               
             if ( testName == 'CopyMP'):
                 runCopyMP(xmlPath, testFile)                                                                         
+            if ( testName == 'artemisCopyToPC'):
+                runArtemisCopyTo3SPC(xmlPath, testName)                    
             if ( testName == 'Pause'):
                 runPause()                                                
-                          
+            # if ( testName == 'GitCommit'):
+            #     runGitCommit(xmlPath, testFile)                                                                                                               
+                                                             
+            # if ( testName == 'GitCommit'):
+            #     runGitCommit(xmlPath)             
+
+
             ListItem.insert(ListCount, testName)
             ListCount +=1
 
