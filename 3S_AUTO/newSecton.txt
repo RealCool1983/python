@@ -1,2 +1,3 @@
-newSecton.txt
-newSecton.txt
+
+[MP_UI_Option]
+Clear_Smart=0

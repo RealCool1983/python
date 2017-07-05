@@ -108,9 +108,6 @@ def B2HEX_MP(sXmlPath):
     
     for neighbor in root.iter('PATHObjects'):
         sPath1 = neighbor.find('Bin2HexExePath').text
-        # sPath2 = os.path.join(sPCS3800_SSD_MPPath, "windows\\3S_SSD_MP.exe")
-
-        sPath2 = (os.path.abspath(os.path.join(sPCS3800_SSD_MPPath, os.pardir)))
         sPath2 = os.path.join(sPCS3800_SSD_MPPath, "bin\\3S_SSD_MP.exe")
 
         sPath1Hex =  sPath1.replace("BIN2HEX.exe","3S_SSD_MP.hex")
@@ -602,13 +599,13 @@ def runHUATOOP(sXmlPath, sH14H16):
         sPC_NewMPUI_Setting_Path = os.path.join(sPC_NewMPUI_Path, "bin\Setting")
 
         if (sH14H16.find("14") != -1):
-            sPCS3800_SSD_MP_SettingPath = os.path.join(sPCS3800_SSD_MPPath, "windows\HUATOOP\H14_TLC")
+            sPCS3800_SSD_MP_SettingPath = os.path.join(sPCS3800_SSD_MPPath, "package\windows\HUATOOP\H14_TLC")
         elif (sH14H16.find("16") != -1) and (sH14H16.find("B16A") == -1):
-            sPCS3800_SSD_MP_SettingPath = os.path.join(sPCS3800_SSD_MPPath, "windows\HUATOOP\H16_TLC")
+            sPCS3800_SSD_MP_SettingPath = os.path.join(sPCS3800_SSD_MPPath, "package\windows\HUATOOP\H16_TLC")
         elif (sH14H16.find("B0KB") != -1):
-            sPCS3800_SSD_MP_SettingPath = os.path.join(sPCS3800_SSD_MPPath, "windows\Micron_B0KB")        
+            sPCS3800_SSD_MP_SettingPath = os.path.join(sPCS3800_SSD_MPPath, "package\windows\Micron_B0KB")        
         elif (sH14H16.find("B16A") != -1):
-            sPCS3800_SSD_MP_SettingPath = os.path.join(sPCS3800_SSD_MPPath, "windows\Micron_B16A")     
+            sPCS3800_SSD_MP_SettingPath = os.path.join(sPCS3800_SSD_MPPath, "package\windows\Micron_B16A")     
         
         #copy new setting file
         copyIniFile(sPCS3800_SSD_MP_SettingPath, sPC_NewMPUI_Setting_Path)
@@ -617,6 +614,7 @@ def runHUATOOP(sXmlPath, sH14H16):
 
         print('runHUATOOP sPC_NewMPUI_Setting_Path = {}'.format(sPC_NewMPUI_Setting_Path))
         print('runHUATOOP sPCS3800_SSD_MP_SettingPath = {}'.format(sPCS3800_SSD_MP_SettingPath))
+        sIniFileName = "NULL"
 
         for neighbor in tree.iter('ProcessObject'):
             if ( neighbor.get('Name')  == sH14H16):
@@ -628,6 +626,8 @@ def runHUATOOP(sXmlPath, sH14H16):
 
                     #var4 for another reserve
                     if (neighborChild.tag != "var4"):
+                        if (neighborChild.tag == "var1"): #get ini file name 
+                            sIniFileName =  "MP_" + neighborChild.get('IniFile')
                     #sBinName = neighborChild.get('Name') + "_" + neighborChild.text + ".bin"
                         sBinName = neighborChild.get('Name') + neighborChild.text + ".bin"
                         print ('get binName = ', sBinName )
@@ -658,8 +658,9 @@ def runHUATOOP(sXmlPath, sH14H16):
                         print('Function = {}, dict_Var4 value =  {}\n '.format(sH14H16, dict_Var['var4']))
                         if( dict_Var['var4'] == 'TRUE'):
                             sInitFullPath = os.path.join(sPC_NewMPUI_Setting_Path, sIniFileName)
+                            print('prepare Insert,{},{},{}\n '.format(sInitFullPath, sPC_NewMPUI_Setting_Path, sIniFileName))
                             addNewIniSection("D:\\3S_PC\\python\\3S_AUTO\\newSecton.txt" ,sPC_NewMPUI_Setting_Path, sIniFileName)
-                            print("do something")
+                            print('Insert, {}\n '.format(sInitFullPath))
 
 
                     #------------Compare MP_UI with MP, delete ------------------------------------#
