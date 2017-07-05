@@ -1,7 +1,7 @@
 
 <Configuration>
 		<PATHObjects>
-			<ToolVersion>23</ToolVersion>
+			<ToolVersion>24</ToolVersion>
 			<PCSourceCodeGitPath>D:\\3S_PC\sourceCode\SSD\VC6\GIT_MP_UI\V1.0</PCSourceCodeGitPath>			
 			<PCSourceCodePath>D:\\3S_PC\ReleaseTool\MP_UI_V1.0\V1.6.2017.777</PCSourceCodePath>			
 			<S3800_SSD_MPPath>D:\\3S_PC\sourceCode\SSD\VC6\SE_Tools\MP\MP_V1</S3800_SSD_MPPath>	
@@ -28,11 +28,7 @@
 			<Item Name="VC6AutoBuild" Enabled="TRUE"/>
 			<Item Name="UacBat" Enabled="TRUE"/>
 
-			
-			
 			<Item Name="HUATOOP_H14" Enabled="TRUE"/>
-			<Item Name="Pause" Enabled="TRUE"/>			
-			
 			<Item Name="HUATOOP_H16" Enabled="TRUE"/>
 			<Item Name="HUATOOP_H16_2LUN" Enabled="TRUE"/>
 			<Item Name="B0KB" Enabled="TRUE"/>
@@ -58,7 +54,7 @@
             </ProcessObject>	
 			<ProcessObject  Name="HUATOOP_H16">
 				<var1 Name="3S_HNX_16TLC_BNR_" IniFile="H16_TLC_test.ini" IniSection="Burner=.\Setting\">3.2.0.55</var1>
-				<var2 Name="3S_HNX_16TLC_FW_" IniFile="MTable.set" IniSection="FW_1=.\Setting\">1.1.0.16</var2>
+				<var2 Name="3S_HNX_16TLC_FW_" IniFile="MTable.set" IniSection="FW_1=.\Setting\">1.1.0.20</var2>
 				<var3 Name="3S_HNX_16TLC_RDT_" IniFile="MTable.set" IniSection="FW_2=.\Setting\">2.0.0.29</var3>
 				<var4 Name="InsertNewSection" Type="Integer">FALSE</var4>
 			</ProcessObject>					
@@ -71,7 +67,7 @@
 			<ProcessObject  Name="B0KB">
 				<var1 Name="3s_Mircon_B0KB_BNR_" IniFile="B0KB_TLC_test.ini" IniSection="Burner=.\Setting\">1.0.0.2</var1>
 				<var2 Name="3S_MCR_3DTLC_B0KB_FW_" IniFile="MTable.set" IniSection="FW_1=.\Setting\">1.1.0.6</var2>
-				<var3 Name="3S_IM_B0KB_RDT_" IniFile="MTable.set" IniSection="FW_2=.\Setting\">1.0.0.2</var3>
+				<var3 Name="3S_IM_B0KB_RDT_" IniFile="MTable.set" IniSection="FW_2=.\Setting\">1.0.0.3</var3>
             </ProcessObject>		
 			<ProcessObject  Name="B16A">
 				<var1 Name="3S_Micron_B16A_BNR_" IniFile="B16A_TLC_test.ini" IniSection="Burner=.\Setting\">1.0.0.2</var1>
