@@ -11,7 +11,7 @@
 		
 		<TestItemList>
 			
-			<Item Enabled="TRUE" FileName="45" Name="CopyMP" />
+			<Item Enabled="TRUE" FileName="47" Name="CopyMP" />
 			<Item Enabled="TRUE" Name="artemisCopyToPC" />
 			
 			<Item Enabled="FAlSE" Name="GitCommit" />			
