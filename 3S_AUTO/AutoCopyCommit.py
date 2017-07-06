@@ -37,8 +37,6 @@ def rawInputTest():
 
     
 def runGitCommit(sGitPath, testFile):
-    # tree = ET.parse(sXmlPath)
-    # root = tree.getroot()   
     print('runGitCommit[{}] start ..'.format('-'))
 
     try:
@@ -57,7 +55,7 @@ def runGitCommit(sGitPath, testFile):
         os.system("git add .")
         os.system(sCmd)
     except:
-        print('!!except runGitCommit End ..\n ')        
+        print('!!!except runGitCommit End ..\n ')        
 
     print('runGitCommit[{}] End ..\n '.format('-'))
     return 0
@@ -66,62 +64,67 @@ def runCopyFolder(sSrc, sDet):
     # ignore_dirs = shutil.ignore_patterns( '.gitignore', '.git')
     ignore_dirs = shutil.ignore_patterns( '.gitignore', '.git')
     print('runCopyFolder from {} to {} ok'.format(sSrc, sDet))
+    if not (os.path.exists(sSrc)):
+        print('[Err] runCopyFolder not exist {}'.format(sSrc))
+    if os.path.exists(sDet):
+        print('[Err] runCopyFolder exit {}'.format(sDet))
+        return -1
+
     shutil.copytree(sSrc, sDet, ignore=ignore_dirs)
 
+    return 0
 
 # 1.remove exist folder
 # 2.copy folder
 def runCopyFromWorkPath(sXmlPath, sTestFile):
     tree = ET.parse(sXmlPath)
     root = tree.getroot()   
+    try:
+        print('runCopyFromWorkPath[{}] start ..'.format('-'))
+        for neighbor in root.iter('PATHObjects'):
+            sPath1 = neighbor.find('PCWorkPath').text
+            sPath2 = neighbor.find('PCSEToolPath').text
 
-    print('runCopyFromWorkPath[{}] start ..'.format('-'))
-    for neighbor in root.iter('PATHObjects'):
-        sPath1 = neighbor.find('PCWorkPath').text
-        sPath2 = neighbor.find('PCSEToolPath').text
+        print('sPath1 = {}, sPath2 = {}'.format(sPath1, sPath2))
 
-    print('sPath1 = {}, sPath2 = {}'.format(sPath1, sPath2))
+        if os.path.exists(sPath2):
+            shutil.rmtree(sPath2) 
+            print('{}{}'.format(sPath2, ", rmtree ok"))
+            
 
-    if os.path.exists(sPath2):
-        shutil.rmtree(sPath2) 
-        print('{}{}'.format(sPath2, ", rmtree ok"))
-        
+        det_file = os.path.join(sPath1, sTestFile) 
+        # print('det_file = {}'.format(det_file))
+        if not (os.path.exists(det_file)):
+            print('[Err] not exist, det_file = {}'.format(det_file))
+            retur -1
+        else:
+            print(os.listdir(det_file))
 
-    det_file = os.path.join(sPath1, sTestFile) 
-    print('det_file = {}'.format(det_file))
+        for root, directories, files in os.walk(det_file):
+            for subfolder in directories:
+                if (subfolder.find("bin") != -1 ):
+                    sFolderPathSrc = os.path.join(root, subfolder)
+                    sFolderPathDet = os.path.join(sPath2, subfolder)
+                    print('subfolder = {}, path = {}'.format(subfolder, sFolderPathSrc))
+                    runCopyFolder(sFolderPathSrc, sFolderPathDet)
 
-    print(os.listdir(det_file))
+                elif (subfolder.find("src") != -1 ):
+                    sFolderPathSrc = os.path.join(root, subfolder)
+                    sFolderPathDet = os.path.join(sPath2, subfolder)
+                    print('subfolder = {}, path = {}'.format(subfolder, sFolderPathSrc))
+                    runCopyFolder(sFolderPathSrc, sFolderPathDet)
 
-
-    for root, directories, files in os.walk(det_file):
-        for subfolder in directories:
-            if (subfolder.find("bin") != -1 ):
-                sFolderPathSrc = os.path.join(root, subfolder)
-                sFolderPathDet = os.path.join(sPath2, subfolder)
-                print('subfolder = {}, path = {}'.format(subfolder, sFolderPathSrc))
-                runCopyFolder(sFolderPathSrc, sFolderPathDet)
-
-            elif (subfolder.find("src") != -1 ):
-                sFolderPathSrc = os.path.join(root, subfolder)
-                sFolderPathDet = os.path.join(sPath2, subfolder)
-                print('subfolder = {}, path = {}'.format(subfolder, sFolderPathSrc))
-                runCopyFolder(sFolderPathSrc, sFolderPathDet)
-
-            elif (subfolder.find("package") != -1 ):
-                sFolderPathSrc = os.path.join(root, subfolder)
-                sFolderPathDet = os.path.join(sPath2, subfolder)
-                print('subfolder = {}, path = {}'.format(subfolder, sFolderPathSrc))
-                runCopyFolder(sFolderPathSrc, sFolderPathDet)
-                
-            # file_paths.append(filepath)  # Add it to the list.
-
-    # for subfolder in os.listdir(det_file):
-    #     if (subfolder.find("bin")):
-    #         print('subfolder '.format(subfolder))            
-
+                elif (subfolder.find("package") != -1 ):
+                    sFolderPathSrc = os.path.join(root, subfolder)
+                    sFolderPathDet = os.path.join(sPath2, subfolder)
+                    print('subfolder = {}, path = {}'.format(subfolder, sFolderPathSrc))
+                    runCopyFolder(sFolderPathSrc, sFolderPathDet)
+    except:
+        print('!!!excpet in runCopyFromWorkPath\n')            
+        return -1
 
     print('runCopyFromWorkPath[{}] End ..\n '.format('-'))
-
+    return 0
 
 
 
@@ -133,34 +136,41 @@ def runCopyFromDEPAP(sXmlPath, sTestFile):
     global sPC_NewMPUI_Name
 
     print('CopyFromDEPAP[{}] start ..'.format('-'))
-    for neighbor in root.iter('PATHObjects'):
-        sPath1 = neighbor.find('DEPAP_SSD_Path').text
-        sPath2 = neighbor.find('PCWorkPath').text
 
-    det_file = os.path.join(sPath1, sTestFile) 
-    if os.path.exists(det_file):
-        print('{}{}'.format(det_file, ", exist"))
+    try:
+        for neighbor in root.iter('PATHObjects'):
+            sPath1 = neighbor.find('DEPAP_SSD_Path').text
+            sPath2 = neighbor.find('PCWorkPath').text
 
-    if not (os.path.exists(sPath2)):
-        print('{}{}'.format(sPath2, ",exist , remove now"))        
-        os.remove(sPath2)
+        det_file = os.path.join(sPath1, sTestFile) 
+        if os.path.exists(det_file):
+            print('{}{}'.format(det_file, ", exist"))
 
-    # ignore_dirs = shutil.ignore_patterns( '.gitignore', '.git')
-    print('copy from [{}] to [{}] ok'.format(det_file, sPath2))
+        sPath3 = os.path.join(sPath2, sTestFile) 
+        if os.path.exists(sPath3):
+            print('{}{}'.format(sPath3, ",exist , remove now"))        
+            os.remove(sPath3)
 
-    # shutil.copytree(sPath1, sPath2, ignore=ignore_dirs)
+        
+        print('copy from [{}] to [{}] ok'.format(det_file, sPath2))
 
-    shutil.copy(det_file, sPath2)
+        # shutil.copytree(sPath1, sPath2, ignore=ignore_dirs)
 
-    sPath3 = os.path.join(sPath2, sTestFile) 
-    zf = zipfile.ZipFile(sPath3)
+        shutil.copy(det_file, sPath2)
 
-    print('{}{}'.format(sPath3, ", ready to Extract "))        
-    zf.extractall(path=sPath2, members=None, pwd=None)
-    zf.close()
+        if os.path.exists(sPath3):
+            zf = zipfile.ZipFile(sPath3)
+
+            print('{}{}'.format(sPath3, ", ready to Extract "))        
+            zf.extractall(path=sPath2, members=None, pwd=None)
+            zf.close()
+        else:
+            print('{}{}'.format(sPath3, "not exist , do nothing"))        
+    except:
+        print('!!!except in runCopyFromDEPAP\n')        
 
     print('CopyFromDEPAP[{}] End ..\n '.format('-'))
-
+    return 0
 
 def findFile(sPath, sFileName):
     print('findFile Start sPath = {}, name = {}'.format(sPath, sFileName))
@@ -179,8 +189,6 @@ def runCopyMP(sXmlPath, sVersion):
 
     print('CopyFromDEPAP[{}] start ..'.format('-'))
     try:
-            
-
         for neighbor in root.iter('PATHObjects'):
             sPath1 = neighbor.find('DEPAP_SSD_Path').text
             sPath3 = neighbor.find('PCSEToolPath').text
@@ -194,12 +202,12 @@ def runCopyMP(sXmlPath, sVersion):
 
         #update all new version 
         bFlag = True
+        bRes = False
         while (bFlag):
             sMpVersion = "v1." + sVersion
             print ('sMpVersion, {}'.format(sMpVersion))
             sReturnFileName = findFile(sPath1 ,sMpVersion)
             
-
             if ( sReturnFileName == -1):
                 print ('nothing in {}'.format(sReturnFileName))
                 bFlag = False
@@ -207,19 +215,23 @@ def runCopyMP(sXmlPath, sVersion):
                 sReturnFileNameZip = sReturnFileName + ".zip"    
                 # sDesPath = os.path.join(sPath1, sReturnFileNameZip)
                 print ('sDesPath {}'.format(sReturnFileNameZip))
-                runCopyFromDEPAP(sXmlPath, sReturnFileNameZip)
-                runCopyFromWorkPath(sXmlPath, sReturnFileName)
-                runGitCommit(sPath3, sReturnFileName)
+                if (runCopyFromDEPAP(sXmlPath, sReturnFileNameZip) != 0):
+                    return -1
+                if (runCopyFromWorkPath(sXmlPath, sReturnFileName) != 0):
+                    return -1
+                if (runGitCommit(sPath3, sReturnFileName) != 0):
+                    return -1
                 sVersion = str( int(sVersion) + 1)
-
-        #update xml 
-        for child in root.iter('Item'):
-            testName = child.get('Name')
-            testFile = child.get('FileName')
-            if (testName == "CopyMP") and (testFile != sVersion):
-                child.set('FileName', sVersion)
-                tree.write(sXmlPath)
-                print ('wirte xml  {}'.format(sXmlPath))
+                bRes = True
+        if (bRes):
+            #update xml 
+            for child in root.iter('Item'):
+                testName = child.get('Name')
+                testFile = child.get('FileName')
+                if (testName == "CopyMP") and (testFile != sVersion):
+                    child.set('FileName', sVersion)
+                    tree.write(sXmlPath)
+                    print ('wirte xml  {}'.format(sXmlPath))
 
     except:
         print("!!! except in runCopyMP")
@@ -287,7 +299,6 @@ def parseXML(sXmlPath):
     ListItem = ['']
     ListState = ['','','','','']
 
-
     tree = ET.parse(xmlPath)
     root = tree.getroot()     
 
@@ -297,22 +308,13 @@ def parseXML(sXmlPath):
         testFile = child.get('FileName')
         print('testName:{:>25}, testState:{:>8}'.format(testName, testState ))
 
-        if (testState == 'TRUE'):
-            if ( testName == 'CopyFromDEPAP'):
-                runCopyFromDEPAP(xmlPath, testFile)                                                                 
-            if ( testName == 'CopyFromWorkPath'):
-                runCopyFromWorkPath(xmlPath, testFile)        
+        if (testState == 'TRUE'):    
             if ( testName == 'CopyMP'):
                 runCopyMP(xmlPath, testFile)                                                                         
             if ( testName == 'artemisCopyToPC'):
                 runArtemisCopyTo3SPC(xmlPath, testName)                    
             if ( testName == 'Pause'):
-                runPause()                                                
-            # if ( testName == 'GitCommit'):
-            #     runGitCommit(xmlPath, testFile)                                                                                                               
-                                                             
-            # if ( testName == 'GitCommit'):
-            #     runGitCommit(xmlPath)             
+                runPause()                                                                                                       
 
 
             ListItem.insert(ListCount, testName)

@@ -14,13 +14,6 @@
 			<Item Enabled="TRUE" FileName="47" Name="CopyMP" />
 			<Item Enabled="TRUE" Name="artemisCopyToPC" />
 			
-			<Item Enabled="FAlSE" Name="GitCommit" />			
-			
-			<Item Enabled="FALSE" FileName="v1.42.2017.628.zip" Name="CopyFromDEPAP" />
-			<Item Enabled="FALSE" FileName="v1.42.2017.628" Name="CopyFromWorkPath" />
-			<Item Enabled="FALSE" FileName="v1.42.2017.628" Name="GitCommit" />					
-						
-			
 
 			<Item Enabled="FALSE" Name="Pause" />
 
