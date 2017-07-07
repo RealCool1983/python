@@ -11,11 +11,12 @@
 		
 		<TestItemList>
 			
-			<Item Enabled="TRUE" FileName="47" Name="CopyMP" />
-			<Item Enabled="TRUE" Name="artemisCopyToPC" />
+			<Item Enabled="TRUE" Name="SSDFA" Parameter="9" />
+			<Item Enabled="TRUE" Name="CopyMP" Parameter="47" />
+			<Item Enabled="FALSE" Name="artemisCopyToPC" Parameter="0" />
 			
 
-			<Item Enabled="FALSE" Name="Pause" />
+			<Item Enabled="FALSE" Name="Pause" Parameter="47" />
 
 
 		</TestItemList>
@@ -25,6 +26,16 @@
 				<var1 Name="3S">D:\\3S_PC\sourceCode\SSD\VC6\SE_Tools\library</var1>
 				<var2 Name="3S">\\fileserver\Dep_AP\Project\SSD\library</var2>
             </ProcessObject>	
+			<ProcessObject Name="SSDFA">
+				<var1 Name="3S">D:\\3S_PC\sourceCode\SSD\VC6\SE_Tools\SSDFA\initial_V1</var1>
+				<var2 Name="3S">\\192.168.1.50\Dep_AP\Project\SSD\tools\SSDFA\Source_code</var2>
+				<var3 Name="3S">D:\\3S_PC\sourceCode\SSD\VC6\workingTmp\gitWork</var3> 
+            </ProcessObject>			
+			<ProcessObject Name="CopyMP">
+				<var1 Name="3S">D:\\3S_PC\sourceCode\SSD\VC6\SE_Tools\MP\MP_V1</var1>
+				<var2 Name="3S">\\192.168.1.50\Dep_AP\Project\SSD\MP\source_code</var2>
+				<var3 Name="3S">D:\\3S_PC\sourceCode\SSD\VC6\workingTmp\gitWork</var3> 
+            </ProcessObject>						
 		</ProcessObjectSet>
 		
 </Configuration>
