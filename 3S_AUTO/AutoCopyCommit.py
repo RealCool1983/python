@@ -421,7 +421,7 @@ def runSSDFA(sXmlPath, sTestName, sParameter):
         bFlag = True
         bRes = False
         while (bFlag):
-            if(sTestName == "SSDFA"):
+            if(sTestName == "SSDFA") or (sTestName == "KeyProGen"):
                 sVersion = "1." + sParameter
             elif(sTestName == "CopyMP"):
                 sVersion = "v1." + sParameter
@@ -547,11 +547,13 @@ def parseXML(sXmlPath):
             if (testState == 'TRUE'):    
                 if ( testName == 'SSDFA'):
                     runSSDFA(xmlPath, testName, parameter)                                                                                                        
-                if ( testName == 'CopyMP'):
+                elif ( testName == 'CopyMP'):
                     runSSDFA(xmlPath, testName, parameter)                                                                         
-                if ( testName == 'artemisCopyToPC'):
+                elif ( testName == 'KeyProGen'):
+                    runSSDFA(xmlPath, testName, parameter)                                                                                             
+                elif ( testName == 'artemisCopyToPC'):
                     runArtemisCopyTo3SPC(xmlPath, testName)                    
-                if ( testName == 'Pause'):
+                elif ( testName == 'Pause'):
                     runPause()                                                                                                       
 
 
@@ -567,6 +569,8 @@ def parseXML(sXmlPath):
                 print('finishList[{}]:{:>25}'.format(nfinishList, finishList))
             elif (finishList.find('CopyMP') != -1 ):
                 print('finishList[{}]:{:>25} '.format(nfinishList, finishList))            
+            elif (finishList.find('KeyProGen') != -1 ):
+                print('finishList[{}]:{:>25} '.format(nfinishList, finishList))                            
             elif (finishList.find('artemisCopyToPC') != -1 ):
                 print('finishList[{}]:{:>25}'.format(nfinishList, finishList))               
             elif (finishList.find('Pause') != -1 ):

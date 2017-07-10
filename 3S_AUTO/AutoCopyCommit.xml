@@ -10,10 +10,10 @@
 		</PATHObjects>
 		
 		<TestItemList>
-			
+			<Item Enabled="TRUE" Name="KeyProGen" Parameter="13" />
 			<Item Enabled="TRUE" Name="SSDFA" Parameter="9" />
-			<Item Enabled="TRUE" Name="CopyMP" Parameter="47" />
-			<Item Enabled="FALSE" Name="artemisCopyToPC" Parameter="0" />
+			<Item Enabled="TRUE" Name="CopyMP" Parameter="48" />
+			<Item Enabled="TRUE" Name="artemisCopyToPC" Parameter="0" />
 			
 
 			<Item Enabled="FALSE" Name="Pause" Parameter="47" />
@@ -35,7 +35,12 @@
 				<var1 Name="3S">D:\\3S_PC\sourceCode\SSD\VC6\SE_Tools\MP\MP_V1</var1>
 				<var2 Name="3S">\\192.168.1.50\Dep_AP\Project\SSD\MP\source_code</var2>
 				<var3 Name="3S">D:\\3S_PC\sourceCode\SSD\VC6\workingTmp\gitWork</var3> 
-            </ProcessObject>						
+            </ProcessObject>	
+			<ProcessObject Name="KeyProGen">
+				<var1 Name="3S">D:\\3S_PC\sourceCode\SSD\VC6\SE_Tools\KeyProGen\initial_V1</var1>
+				<var2 Name="3S">\\fileserver\Dep_AP\Project\USB20\Kingston_KeyGen\KeyProGen\DLL</var2>
+				<var3 Name="3S">D:\\3S_PC\sourceCode\SSD\VC6\workingTmp\gitWork</var3> 
+            </ProcessObject>				
 		</ProcessObjectSet>
 		
 </Configuration>
