@@ -12,7 +12,7 @@
 		<TestItemList>
 			<Item Enabled="TRUE" Name="KeyProGen" Parameter="13" />
 			<Item Enabled="TRUE" Name="SSDFA" Parameter="9" />
-			<Item Enabled="TRUE" Name="CopyMP" Parameter="51" />
+			<Item Enabled="TRUE" Name="CopyMP" Parameter="52" />
 			<Item Enabled="TRUE" Name="artemisCopyToPC" Parameter="0" />
 			
 

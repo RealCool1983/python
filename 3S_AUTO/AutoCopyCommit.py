@@ -131,7 +131,8 @@ def runCopyFromWorkPath_EX(sSrcFolder, sSrcFile, sDesFolder):
         sDesPath = os.path.join(sDesFolder, sSrcFile)
         if os.path.exists(sDesFolder):
             print('{}{}'.format(sDesFolder, ", prepare rmtree "))
-            shutil.rmtree(sDesFolder,  ignore_errors=True) 
+            shutil.rmtree(sDesFolder,  ignore_errors=True)                         
+            # shutil.rmtree(sFolderPath) 
             print('{}{}'.format(sDesFolder, ", rmtree done"))
         else:
             print('not exist, {}'.format(sDesFolder))
