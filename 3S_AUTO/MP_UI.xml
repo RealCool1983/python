@@ -1,7 +1,7 @@
 
 <Configuration>
 		<PATHObjects>
-			<ToolVersion>29</ToolVersion>
+			<ToolVersion>30</ToolVersion>
 			<PCSourceCodeGitPath>D:\\3S_PC\sourceCode\SSD\VC6\GIT_MP_UI\V1.0</PCSourceCodeGitPath>			
 			<PCSourceCodePath>D:\\3S_PC\ReleaseTool\MP_UI_V1.0\V1.6.2017.777</PCSourceCodePath>			
 			<S3800_SSD_MPPath>D:\\3S_PC\sourceCode\SSD\SSD_tools\MP\MP_V1</S3800_SSD_MPPath>	
@@ -73,7 +73,7 @@
 			<ProcessObject  Name="B16A">
 				<var1 Name="3S_Micron_B16A_BNR_" IniFile="B16A_TLC_test.ini" IniSection="Burner=.\Setting\">1.0.0.6</var1>
 				<var2 Name="3S_MCR_3DTLC_B0KBB16B17_FW_" IniFile="MTable.set" IniSection="FW_3=.\Setting\">2.0.0.0</var2>
-				<var3 Name="3S_IM_B16A_RDT_" IniFile="MTable.set" IniSection="FW_4=.\Setting\">1.0.0.0</var3>
+				<var3 Name="3S_IM_B16A_RDT_" IniFile="MTable.set" IniSection="FW_4=.\Setting\">1.0.0.1</var3>
 				<var4 Name="InsertNewSection" Type="Integer">TRUE</var4>
             </ProcessObject>				
 		</ProcessObjectSet>
