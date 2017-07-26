@@ -36,11 +36,11 @@ def rawInputTest():
         return -1
 
     
-def runGitCommit(sGitPath, testFile):
+def runGitCommit(sGitPath, testFile, sTestName):
     print('runGitCommit[{}] start ..'.format('-'))
 
     try:
-        sCmd = 'git commit -m {}{}{}'.format("\"", testFile, "\"")  
+        sCmd = 'git commit -m {}[{}]{}{}'.format("\"",sTestName, testFile, "\"")  
         # sMsg = 'a'
         print("sCmd:", sCmd)
         # print(sMsg)
@@ -422,10 +422,12 @@ def runSSDFA(sXmlPath, sTestName, sParameter):
         bFlag = True
         bRes = False
         while (bFlag):
-            if(sTestName == "SSDFA") or (sTestName == "KeyProGen"):
+            if(sTestName == "SSDFA"):
                 sVersion = "1." + sParameter
             elif(sTestName == "CopyMP"):
                 sVersion = "v1." + sParameter
+            elif(sTestName == "CheckValidUtility"):
+                sVersion = "2." + sParameter
 
             print ('sVersion, {}'.format(sVersion))
             sReturnFileName = findFile_Ex(sSrcPath ,sVersion, ".zip")
@@ -443,7 +445,7 @@ def runSSDFA(sXmlPath, sTestName, sParameter):
                 sReturnFileName = sReturnFileNameZip.replace(".zip", "")
                 if (runCopyFromWorkPath_EX(sGitWorkPath, sReturnFileName , sDesFolder) != 0):
                     return -1
-                if (runGitCommit(sDesFolder, sReturnFileName) != 0):
+                if (runGitCommit(sDesFolder, sReturnFileName, sTestName) != 0):
                     return -1
                 sParameter = str( int(sParameter) + 1)
                 bRes = True
@@ -459,16 +461,6 @@ def runSSDFA(sXmlPath, sTestName, sParameter):
                         child.set('Parameter', sParameter)
                         tree.write(sXmlPath)
                         print ('wirte xml  {}'.format(sXmlPath))                        
-                # elif(sTestName == "CopyMP")
-                #     if (testPara != sVersion):
-                #         child.set('Parameter', sParameter)
-                #         tree.write(sXmlPath)
-                #         print ('wirte xml  {}'.format(sXmlPath))                        
-
-                # if (testName == "SSDFA") and (testPara != sVersion):
-                #     child.set('Parameter', sParameter)
-                #     tree.write(sXmlPath)
-                #     print ('wirte xml  {}'.format(sXmlPath))
 
     except:
         print("!!! except in runSSDFA")
@@ -507,7 +499,7 @@ def runArtemisCopyTo3SPC(sXmlPath, sTestName):
 
         sStartTime = datetime.datetime.now()
         # sCmd = 'git commit -m {}{}{}'.format("\"", sStartTime, "\"")          
-        runGitCommit(sGitPath, sStartTime)      
+        runGitCommit(sGitPath, sStartTime, sTestName)      
     except OSError as why:
         print('!!!except runArtemisCopyTo3SPC, {}'.format( str(why)))    
     except Error as err:
@@ -550,7 +542,7 @@ def parseXML(sXmlPath):
                     runSSDFA(xmlPath, testName, parameter)                                                                                                        
                 elif ( testName == 'CopyMP'):
                     runSSDFA(xmlPath, testName, parameter)                                                                         
-                elif ( testName == 'KeyProGen'):
+                elif ( testName == 'CheckValidUtility'):
                     runSSDFA(xmlPath, testName, parameter)                                                                                             
                 elif ( testName == 'artemisCopyToPC'):
                     runArtemisCopyTo3SPC(xmlPath, testName)                    
@@ -570,7 +562,7 @@ def parseXML(sXmlPath):
                 print('finishList[{}]:{:>25}'.format(nfinishList, finishList))
             elif (finishList.find('CopyMP') != -1 ):
                 print('finishList[{}]:{:>25} '.format(nfinishList, finishList))            
-            elif (finishList.find('KeyProGen') != -1 ):
+            elif (finishList.find('CheckValidUtility') != -1 ):
                 print('finishList[{}]:{:>25} '.format(nfinishList, finishList))                            
             elif (finishList.find('artemisCopyToPC') != -1 ):
                 print('finishList[{}]:{:>25}'.format(nfinishList, finishList))               
