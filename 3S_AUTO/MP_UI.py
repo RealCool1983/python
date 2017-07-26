@@ -598,19 +598,23 @@ def runHUATOOP(sXmlPath, sH14H16):
 
         sPC_NewMPUI_Setting_Path = os.path.join(sPC_NewMPUI_Path, "bin\Setting")
 
+        sFlashType = "[Hynix]"
         if (sH14H16.find("14") != -1):
             sPCS3800_SSD_MP_SettingPath = os.path.join(sPCS3800_SSD_MPPath, "package\windows\H14_TLC\HUATOOP")
         elif (sH14H16.find("16") != -1) and (sH14H16.find("B16A") == -1):
             sPCS3800_SSD_MP_SettingPath = os.path.join(sPCS3800_SSD_MPPath, "package\windows\H16_TLC\HUATOOP")
         elif (sH14H16.find("B0KB") != -1):
             sPCS3800_SSD_MP_SettingPath = os.path.join(sPCS3800_SSD_MPPath, "package\windows\Micron_B0KB")        
+            sFlashType = "[Micron]"
         elif (sH14H16.find("B16A") != -1):
             sPCS3800_SSD_MP_SettingPath = os.path.join(sPCS3800_SSD_MPPath, "package\windows\Micron_B16A")     
-        
+            sFlashType = "[Micron]"
+        elif (sH14H16.find("BiCS3") != -1):
+            sPCS3800_SSD_MP_SettingPath = os.path.join(sPCS3800_SSD_MPPath, "package\windows\TSB_BICS")     
+            sFlashType = "[Toshiba]" 
         #copy new setting file
         copyIniFile(sPCS3800_SSD_MP_SettingPath, sPC_NewMPUI_Setting_Path)
         #rewrite setting file
-
 
         print('runHUATOOP sPC_NewMPUI_Setting_Path = {}'.format(sPC_NewMPUI_Setting_Path))
         print('runHUATOOP sPCS3800_SSD_MP_SettingPath = {}'.format(sPCS3800_SSD_MP_SettingPath))
@@ -633,7 +637,9 @@ def runHUATOOP(sXmlPath, sH14H16):
                         print ('get binName = ', sBinName )
 
                         if (neighborChild.get('IniFile') == "MTable.set"):
-                            updateMTable(sPC_NewMPUI_Setting_Path, neighborChild.get('IniFile') , neighborChild.get('IniSection'), sBinName, sH14H16 )
+                            # updateMTable(sPC_NewMPUI_Setting_Path, neighborChild.get('IniFile') , neighborChild.get('IniSection'), sBinName, sH14H16 )
+                            updateMTable_Ex(sPC_NewMPUI_Setting_Path, neighborChild.get('IniFile') , neighborChild.get('IniSection'), sH14H16, sBinName, sFlashType)
+                            
                         else:
                             updateIni(sPC_NewMPUI_Setting_Path, neighborChild.get('IniFile') , neighborChild.get('IniSection'), sBinName, sH14H16 )                    
 
@@ -678,6 +684,52 @@ def runHUATOOP(sXmlPath, sH14H16):
         print("!!!except runHUATOOP ")
     print('runHUATOOPEnd ..[{}]\n '.format(sH14H16))
 
+def updateMTable_Ex(sPath, sIniFile, sIniSection, sH14H16, sFileName, sFlashType):
+    #<var1 Name="3S_HNX_14TLC_BNR" IniFile="H14_TLC_test.ini" IniSection="Firmware_Bin_File_Path">3.2.0.51</var1>
+    #1.update MTable.set
+    print('updateMTable_Ex .. [{}] '.format("-"))
+    try:
+        for file in os.listdir(sPath):
+            #if file.startswith(sFileType):
+                #print('GetIt startswith= [{}]'.format(file))
+            if (file.find(sIniFile) != -1): 
+                print('updateMTable_Ex sIniFile: {}, sIniSection: {}, sFlashType:{}, file:{}, secction:{}'.format(sIniFile, sIniSection, sFlashType, file, sH14H16 ))
+                bModifySection = False
+                sReadPath1 = os.path.join(sPath, file)
+
+                rF = open(sReadPath1, 'r') 
+        
+                for line in rF.readlines():                          #依次读取每行  
+                    line = line.strip()                             #去掉每行头尾空白  
+                    if not len(line) or line.startswith('#'):       #判断是否是空行或注释行  
+                        continue 
+                    # if(line.find("sFlashType") != -1) and (bModifySection == False):              #get sFlashType section, or skip
+                    if(line.find(sFlashType) == -1) and (bModifySection == False):              #get sFlashType section, or skip
+                        print('skip, line:{}'.format(line))
+                        continue
+                    else:
+                        bModifySection = True #get the section
+                        print('updateMTable_Ex sFlashType:{}, read line:{}'.format(sFlashType, line))
+
+                    if(line.find(sFlashType) == -1):
+                        if(line.find("[") != -1) and ("]" != -1): # new section start
+                            bModifySection = False; # start new section
+                            print('updateMTable_Ex new line:{}'.format(line))
+                            break
+
+                            
+                    if  (line.find(sIniSection) != -1): #need to replace this line with new setting file 
+                        sNewLine = sIniSection + sFileName
+                        rF.close()
+                        if (line != sNewLine):
+                            replaceLine(sReadPath1, line, sNewLine)
+                            print('updateMTable_Ex replaceLine ok path:{}\n old:{}\n new:{}'.format(sReadPath1, line, sNewLine))
+
+                rF.close()
+    except:
+        print("!!!except updateMTable_Ex\n")
+
+    print('updateMTable_Ex End {}..\n '.format("-"))    
 
 def updateMTable(sPath, sIniFile, sIniSection, sFileName, sH14H16):
     #<var1 Name="3S_HNX_14TLC_BNR" IniFile="H14_TLC_test.ini" IniSection="Firmware_Bin_File_Path">3.2.0.51</var1>
@@ -1002,6 +1054,8 @@ def parseXML(sXmlPath):
                 runHUATOOP(xmlPath, 'B0KB')   
             if ( testName == 'B16A'):
                 runHUATOOP(xmlPath, 'B16A')   
+            if ( testName == 'BiCS3'):
+                runHUATOOP(xmlPath, 'BiCS3')                   
             if ( testName == 'VERIFY_INI'):
                 runVERIFY_INI(xmlPath)                                  
                 
