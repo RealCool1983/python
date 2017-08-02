@@ -544,12 +544,13 @@ def updateIniMPToMP_UI(sFile):
     print('updateIniMPToMP_UI End ..[{}]\n '.format("-"))
     return 0
 
-def copyIniFile(sSrcPath, sDesPath):
-    print('copyIniFile Start sSrcPath = {}\nsDesPath = {}'.format(sSrcPath, sDesPath))
+def copyIniFile(sSrcPath, sDesPath, sIniEndingName):
+    print('copyIniFile Start sSrcPath = {}\nsDesPath = {}\nsIniEndingName = {}'.format(sSrcPath, sDesPath, sIniEndingName))
     try:
         # sDesPath = os.path.join(sDesPath, 'bin\Setting')
         for file in os.listdir(sSrcPath):
-            if file.endswith('test.ini'):
+            # if file.endswith('TLC_test.ini') or file.endswith('BiCS3_test.ini'):
+            if file.endswith(sIniEndingName):
                 sFromPath = os.path.join(sSrcPath, file)
                 print('GetIt, {}, {} '.format(file, sFromPath))
                 
@@ -616,11 +617,11 @@ def runHUATOOP(sXmlPath, sH14H16):
         elif (sH14H16.find("BiCS3") != -1):
             sPCS3800_SSD_MP_SettingPath = os.path.join(sPCS3800_SSD_MPPath, "package\windows\TSB_BICS")     
             sFlashType = "[Toshiba]" 
-        elif (sH14H16.find("TSB") != -1):
+        elif (sH14H16.find("T15") != -1):
             sPCS3800_SSD_MP_SettingPath = os.path.join(sPCS3800_SSD_MPPath, "package\windows\T15_TLC")     
             sFlashType = "[Toshiba]"             
         #copy new setting file
-        copyIniFile(sPCS3800_SSD_MP_SettingPath, sPC_NewMPUI_Setting_Path)
+        # copyIniFile(sPCS3800_SSD_MP_SettingPath, sPC_NewMPUI_Setting_Path)
         #rewrite setting file
 
         print('runHUATOOP sPC_NewMPUI_Setting_Path = {}'.format(sPC_NewMPUI_Setting_Path))
@@ -638,6 +639,9 @@ def runHUATOOP(sXmlPath, sH14H16):
                     #var4 for another reserve
                     if (neighborChild.tag != "var4"):
                         if (neighborChild.tag == "var1"): #get ini file name 
+                            #copy new setting file
+                            copyIniFile(sPCS3800_SSD_MP_SettingPath, sPC_NewMPUI_Setting_Path, neighborChild.get('IniFile'))
+                            #rewrite setting file                        
                             sIniFileName =  "MP_" + neighborChild.get('IniFile')
                     #sBinName = neighborChild.get('Name') + "_" + neighborChild.text + ".bin"
                         sBinName = neighborChild.get('Name') + neighborChild.text + ".bin"
@@ -712,16 +716,16 @@ def updateMTable_Ex(sPath, sIniFile, sIniSection, sH14H16, sFileName, sFlashType
                         continue 
                     # if(line.find("sFlashType") != -1) and (bModifySection == False):              #get sFlashType section, or skip
                     if(line.find(sFlashType) == -1) and (bModifySection == False):              #get sFlashType section, or skip
-                        print('skip, line:{}'.format(line))
+                        # print('skip, line:{}'.format(line))
                         continue
                     else:
                         bModifySection = True #get the section
-                        print('updateMTable_Ex sFlashType:{}, read line:{}'.format(sFlashType, line))
+                        # print('updateMTable_Ex sFlashType:{}, read line:{}'.format(sFlashType, line))
 
                     if(line.find(sFlashType) == -1):
                         if(line.find("[") != -1) and ("]" != -1): # new section start
                             bModifySection = False; # start new section
-                            print('updateMTable_Ex new line:{}'.format(line))
+                            # print('updateMTable_Ex new line:{}'.format(line))
                             break
 
                             
@@ -944,12 +948,12 @@ def runVERIFY_INI(sXmlPath):
                 #need to check path start with, Burner=.\Setting\
                 if  (line.find("Burner=") != -1): 
                     if  (line.find("Burner=.\Setting") == -1): #need to check path start with, Burner=.\Setting\
-                        print('Err!!! Ini name:{}, Burner:{}'.format(file, line))
+                        print('!!! Err Ini name:{}, Burner:{}'.format(file, line))
 
                 #need to check Recv_Drv_Num_By_UI=1
                 if  (line.find("Recv_Drv_Num_By_UI=") != -1): 
                     if  (line.find("=1") == -1): #need to check path start with, Burner=.\Setting\
-                        print('Err!!! Ini name:{}, Recv_Drv_Num_By_UI:{}'.format(file, line))            
+                        print('!!! Err Ini name:{}, Recv_Drv_Num_By_UI:{}'.format(file, line))            
 
             rF.close()
     print('runVERIFY_INIEnd ..[{}]'.format('-'))

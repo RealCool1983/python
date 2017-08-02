@@ -1,7 +1,7 @@
 
 <Configuration>
 		<PATHObjects>
-			<ToolVersion>32</ToolVersion>
+			<ToolVersion>33</ToolVersion>
 			<PCSourceCodeGitPath>D:\\3S_PC\sourceCode\SSD\VC6\GIT_MP_UI\V1.0</PCSourceCodeGitPath>			
 			<PCSourceCodePath>D:\\3S_PC\ReleaseTool\MP_UI_V1.0\V1.6.2017.777</PCSourceCodePath>			
 			<S3800_SSD_MPPath>D:\\3S_PC\sourceCode\SSD\SSD_tools\MP\MP_V1</S3800_SSD_MPPath>	
@@ -34,7 +34,7 @@
 			<Item Name="B0KB" Enabled="TRUE"/>
 			<Item Name="B16A" Enabled="TRUE"/>
 			<Item Name="BiCS3" Enabled="TRUE"/>
-			<Item Name="TSB" Enabled="TRUE"/>
+			<Item Name="T15" Enabled="TRUE"/>
 			
 			<Item Name="VERIFY_INI" Enabled="TRUE"/>
 			<Item Name="CopyTo3800" Enabled="TRUE"/>
@@ -83,7 +83,7 @@
 				<var3 Name="3S_TSB_BiCS_RDT_" IniFile="MTable.set" IniSection="FW_2=.\Setting\">1.0.0.11</var3>
 				<var4 Name="InsertNewSection" Type="Integer">TRUE</var4>
             </ProcessObject>					
-			<ProcessObject  Name="TSB">
+			<ProcessObject  Name="T15">
 				<var1 Name="3S_TSB_15TLC_BNR_" IniFile="T15_TLC_test.ini" IniSection="Burner=.\Setting\">3.1.0.42</var1>
 				<var2 Name="image_package_kst_7op_" IniFile="MTable.set" IniSection="FW_3=.\Setting\">3.2.0.78</var2>
 				<var3 Name="3S_TSB_15TLC_RDT_" IniFile="MTable.set" IniSection="FW_4=.\Setting\">0.29.1.58</var3>
