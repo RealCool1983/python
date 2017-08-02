@@ -549,7 +549,7 @@ def copyIniFile(sSrcPath, sDesPath):
     try:
         # sDesPath = os.path.join(sDesPath, 'bin\Setting')
         for file in os.listdir(sSrcPath):
-            if file.endswith('TLC_test.ini'):
+            if file.endswith('test.ini'):
                 sFromPath = os.path.join(sSrcPath, file)
                 print('GetIt, {}, {} '.format(file, sFromPath))
                 
@@ -579,6 +579,7 @@ def addNewIniSection(sSrcPath, sDesPath, sIniFileType):
                     with open(sToPath, 'a') as outfile:
                         for line in open( sSrcPath, 'r' ):
                             outfile.write(line)
+                    outfile.close()
                     print('insert ini section done, {}'.format(sToPath))
     except:
         print('!!! except addNewIniSection')                        
