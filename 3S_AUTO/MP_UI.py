@@ -479,7 +479,10 @@ def runCompressFile(sXmlPath):
             print("Achive_Folder_To_ZIP skip .git", folders)         
         if ( 'workingTMP' in folders ):
             folders.remove('workingTMP')                 
-            print("Achive_Folder_To_ZIP skip workingTMP", folders)          
+            print("Achive_Folder_To_ZIP skip workingTMP", folders)     
+        if ( 'table' in folders ):
+            folders.remove('table')                 
+            print("Achive_Folder_To_ZIP skip table", folders)                           
 
         for sfile in files:
             stmp = os.path.join(root, sfile) 
@@ -612,6 +615,9 @@ def runHUATOOP(sXmlPath, sH14H16):
         elif (sH14H16.find("BiCS3") != -1):
             sPCS3800_SSD_MP_SettingPath = os.path.join(sPCS3800_SSD_MPPath, "package\windows\TSB_BICS")     
             sFlashType = "[Toshiba]" 
+        elif (sH14H16.find("TSB") != -1):
+            sPCS3800_SSD_MP_SettingPath = os.path.join(sPCS3800_SSD_MPPath, "package\windows\T15_TLC")     
+            sFlashType = "[Toshiba]"             
         #copy new setting file
         copyIniFile(sPCS3800_SSD_MP_SettingPath, sPC_NewMPUI_Setting_Path)
         #rewrite setting file
@@ -1055,7 +1061,9 @@ def parseXML(sXmlPath):
             if ( testName == 'B16A'):
                 runHUATOOP(xmlPath, 'B16A')   
             if ( testName == 'BiCS3'):
-                runHUATOOP(xmlPath, 'BiCS3')                   
+                runHUATOOP(xmlPath, 'BiCS3')     
+            if ( testName == 'TSB'):
+                runHUATOOP(xmlPath, 'TSB')                                
             if ( testName == 'VERIFY_INI'):
                 runVERIFY_INI(xmlPath)                                  
                 

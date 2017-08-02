@@ -12,7 +12,7 @@
 		<TestItemList>
 			<Item Enabled="TRUE" Name="CheckValidUtility" Parameter="2" />
 			<Item Enabled="TRUE" Name="SSDFA" Parameter="9" />
-			<Item Enabled="TRUE" Name="CopyMP" Parameter="54" />
+			<Item Enabled="TRUE" Name="CopyMP" Parameter="55" />
 			<Item Enabled="TRUE" Name="artemisCopyToPC" Parameter="0" />
 			
 
