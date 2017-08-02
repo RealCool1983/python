@@ -25,6 +25,14 @@ sPC_NewMPUI_Path = ''
 sPC_NewMPUI_Name = ''
 sRemote3800_NewMPUI_Path = ''
 sRemoteDepAp_NewMPUI_Path = ''
+g_ErrorCode = 0
+
+def showError(sMsg, iErrorCode):
+    print("t")
+    global g_ErrorCode
+    g_ErrorCode = iErrorCode
+    print('[{:<5}]showError, {} ..\n '.format(g_ErrorCode, sMsg))
+    return 0
 
 def rawInputTest():
     sYesNo = input(">>> Input, YES/NO: ")
@@ -959,6 +967,137 @@ def runVERIFY_INI(sXmlPath):
     print('runVERIFY_INIEnd ..[{}]'.format('-'))
 
 
+def buildFileDateInfo(sPath):
+
+    print('{:<10s}buildFileDateInfo  ..'.format('start'))
+
+    # build from file info 
+    file_paths = []  # List which will store all of the full filepaths.
+    listFileInfo =[]
+    # Walk the tree.
+    os.chdir(sPath)
+    for root, directories, files in os.walk(sPath):
+        for fileName in files:            
+            filePath = os.path.join(root, fileName)
+            relativefilePath = os.path.relpath(filePath)
+            
+            # print('fileName = {}\n path1 = {},\n path2 = {} '.format(fileName, filePath, relativefilePath))
+
+            # tupleFileInfo[0] = file name
+            # tupleFileInfo[1] = file path
+            fileTimeInfo = os.path.getmtime(filePath)
+            iSize = os.path.getsize(filePath)
+            tupleFileInfo = (relativefilePath, fileTimeInfo, iSize) #save file name , path into tuple
+            listFileInfo.append(tupleFileInfo)  # Add it to the list.            
+            # print('fileName = {}\n path1 = {},\n path2 = {} '.format(fileName, relativefilePath, fileTimeInfo))
+    print('{:<10s}buildFileDateInfo  ..'.format('End'))
+    return listFileInfo
+
+def extraZip(sSrcFolder, sSrcFile):
+    print('extraZip[{}] start ..'.format('-'))
+    try:
+
+        sSrcPath = os.path.join(sSrcFolder, sSrcFile) 
+        if os.path.exists(sSrcPath):
+            print('{}{}'.format(sSrcPath, ", exist ok"))
+
+            # check destination folder, if exist, rmtree
+            sDesFolder = os.path.splitext(sSrcFile)[0] #reduce Filename Extension
+            sDesPath = os.path.join(sSrcFolder, sDesFolder) 
+            print('sDesPath: {}'.format(sDesPath))
+            if os.path.exists(sDesPath):
+                print('{}{}'.format(sDesPath, ", exist prepare to rmtree"))                                    
+                shutil.rmtree(sDesPath) 
+                print('{}", rmtree ok"'.format(sDesPath))
+
+            zf = zipfile.ZipFile(sSrcPath)
+            print('{}{}'.format(sSrcPath, ", ready to Extract "))        
+            zf.extractall(path=sSrcFolder, members=None, pwd=None)
+            zf.close()
+            print('{}{}'.format(sSrcPath, ", Extract done"))        
+
+            # check extrat folder 
+            if os.path.exists(sDesPath):
+                print('check folder ok, {}'.format(sDesPath, ))                                    
+            else:
+                showError("!!!check folder fail, in extraZip", 2)
+            
+    except:
+        showError("!!!except in extraZip", 1)
+
+    print('extraZip[{}] end ..'.format('-'))
+
+    return 0
+
+def runCheckSourceCode(sXmlPath):   
+
+    print('runCheckSourceCode[{}] start ..'.format('-'))
+
+    try:
+        tree = ET.parse(sXmlPath)
+        root = tree.getroot()   
+
+        for neighbor in root.iter('PATHObjects'):
+            sPath1 = neighbor.find('pythonWorkingPath').text
+            # get D:\3S_PC\ReleaseTool\MP_UI_V1.0\SourceCode
+            sPath2 = os.path.abspath(os.path.join(sPath1, os.pardir))
+            sPath2 = os.path.join(sPath2, "SourceCode") 
+            sToolVersion = neighbor.find('ToolVersion').text
+            iCurrentVer = int(sToolVersion)
+            iPreVer = iCurrentVer -1
+
+            sCurrentZipName = 'V1.{}'.format(iCurrentVer) 
+            sPreZipName = 'V1.{}'.format(iPreVer) 
+
+
+        # find last version zip
+        for file in os.listdir(sPath2):
+            # if start with "V1.33"
+            if file.startswith(sCurrentZipName) and file.endswith('.zip'):            
+                print('get file: {}, path: {}'.format(file, sPath2))
+                if (extraZip(sPath2, file) == 0):
+                    sDesFolder = os.path.splitext(file)[0] #reduce Filename Extension
+                    sSrcPathCurrent = os.path.join(sPath2, sDesFolder) 
+                    listInfoCurrnetFile = buildFileDateInfo(sSrcPathCurrent)
+
+            if file.startswith(sPreZipName) and file.endswith('.zip'):            
+                print('get file: {}, path: {}'.format(file, sPath2))
+                if (extraZip(sPath2, file) == 0):
+                    sDesFolder = os.path.splitext(file)[0] #reduce Filename Extension
+                    sSrcPathPre = os.path.join(sPath2, sDesFolder) 
+                    listInfoPreFile = buildFileDateInfo(sSrcPathPre)
+
+                    # iPreFileInfoSize = len(listInfoPreFile)
+        iCurrnetFileInfoSize = len(listInfoCurrnetFile)
+        iPreFileInfoSize = len(listInfoPreFile)
+        print('iCurrnetFileInfoSize = {} iPreFileInfoSize = {} \n'.format(iCurrnetFileInfoSize, iPreFileInfoSize))    
+
+        # check new file(extra file)
+        iIndex = 0
+        for x, y, z in listInfoCurrnetFile:
+            bExistFile = 0
+            for x1, y1, z1 in listInfoPreFile:
+                if (x == x1 ):
+                    bExistFile = 1
+                    # check file date
+                    # if(y != y1):
+                    #     iIndex += 1
+                    #     print('[{}]NewFileDate = {}, date = {},{}'.format(iIndex, x, y, y1))         
+                    # check file size
+                    if(z != z1):
+                        iIndex += 1
+                        print('[{}]NewSize = {:<50}, size = {},{}'.format(iIndex, x, z, z1))                             
+            if (bExistFile == 0): # extra File, need remove
+                print('[{}]NewFile = {:<50}'.format(iIndex, x))    
+                iIndex += 1
+
+    except:
+        showError("!!!except in runCheckSourceCode", 3)
+
+    print('\nrunCheckSourceCode[{}] End ..\n '.format('-'))
+    return 0
+
+
 def replaceLine(file_path, pattern, subst):
     #Create temp file
     fh, abs_path = mkstemp()
@@ -1028,7 +1167,7 @@ def get_filepaths(directory):
 
 
 def parseXML(sXmlPath):
-
+    global g_ErrorCode
     xmlPath = r"D:\\3S_PC\\python\\3S_AUTO\\MP_UI.xml"
 
     ListCount = 0
@@ -1086,7 +1225,8 @@ def parseXML(sXmlPath):
                 runVCVersion(xmlPath)                                
             if ( testName == 'ReleaseNote'):
                 runReleaseNote(xmlPath)    
-        
+            if ( testName == 'CheckSourceCode'):        
+                runCheckSourceCode(xmlPath)
             if ( testName == 'Pause'):
                 runPause()                                                
                           
@@ -1108,7 +1248,7 @@ def parseXML(sXmlPath):
             print('finishList[{}]:{:>25}'.format(nfinishList, finishList))
         nfinishList += 1
         
-
+    print("ErrorCode:{}".format(g_ErrorCode))
     print('\n-------------------excellent you are---------------------------------\n')
 
     return 0

@@ -17,7 +17,8 @@
 
 		</PATHObjects>
 		
-		<TestItemList><!--FALSE, TRUE -->
+		<TestItemList><!--FALSE, TRUE -->		
+					
 			<Item Name="CopyFromGit" Enabled="TRUE"/>
 			<Item Name="CopySSD_MP_tool_EV" Enabled="TRUE"/>
 			<Item Name="CopySSD_MP_UI" Enabled="TRUE"/>
@@ -40,9 +41,10 @@
 			<Item Name="CopyTo3800" Enabled="TRUE"/>
 			<Item Name="CompressFile" Enabled="TRUE"/>
 			<Item Name="CopyToGitbin" Enabled="TRUE"/>
-
+			<Item Name="CheckSourceCode" Enabled="TRUE"/>
+		
 			<Item Name="Pause" Enabled="FALSE"/>
-			<Item Name="ReleaseNote" Enabled="FALSE"/>
+			<Item Name="ReleaseNote" Enabled="TRUE"/>
 
 		</TestItemList>
 		
@@ -73,7 +75,7 @@
             </ProcessObject>		
 			<ProcessObject  Name="B16A">
 				<var1 Name="3S_Micron_B16A_BNR_" IniFile="B16A_TLC_test.ini" IniSection="Burner=.\Setting\">1.0.0.7</var1>
-				<var2 Name="3S_MCR_3DTLC_B16B17_FW_" IniFile="MTable.set" IniSection="FW_3=.\Setting\">2.0.0.1</var2>
+				<var2 Name="3S_MCR_3DTLC_B16B17_FW_" IniFile="MTable.set" IniSection="FW_3=.\Setting\">2.0.0.2</var2>
 				<var3 Name="3S_IM_B16A_RDT_" IniFile="MTable.set" IniSection="FW_4=.\Setting\">1.0.0.1</var3>
 				<var4 Name="InsertNewSection" Type="Integer">TRUE</var4>
             </ProcessObject>				
