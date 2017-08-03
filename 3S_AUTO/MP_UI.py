@@ -355,7 +355,7 @@ def runCopySSD_MP_UI(sXmlPath):
         print('copy_tree from [{}] to [{}] ok'.format(sPath1, sPath2))
 
     except:
-        print("!!! runCopySSD_MP_UI except")
+        showError("!!! runCopySSD_MP_UI except", 3)
 
     print('runCopySSD_MP_UIEnd ..[{}]\n '.format('-'))
     return 0
@@ -570,7 +570,7 @@ def copyIniFile(sSrcPath, sDesPath, sIniEndingName):
                 copyOneFile(sFromPath, sDesPath)                       
                 updateIniMPToMP_UI(sToPath)
     except:
-        print('!!! except copyIniFile')                        
+        showError('!!! except copyIniFile', 4)                        
 
     print('copyIniFile End ..[{}]\n '.format("-"))
     return 0
@@ -591,7 +591,7 @@ def addNewIniSection(sSrcPath, sDesPath, sIniFileType):
                     outfile.close()
                     print('insert ini section done, {}'.format(sToPath))
     except:
-        print('!!! except addNewIniSection')                        
+        showError('!!! except addNewIniSection', 11)                        
 
     print('addNewIniSection End ..[{}]\n '.format("-"))
     return 0
@@ -700,7 +700,7 @@ def runHUATOOP(sXmlPath, sH14H16):
                 print('dict_Var', dict_Var)
         
     except:
-        print("!!!except runHUATOOP ")
+        showError("!!!except runHUATOOP ", 5)
     print('runHUATOOPEnd ..[{}]\n '.format(sH14H16))
 
 def updateMTable_Ex(sPath, sIniFile, sIniSection, sH14H16, sFileName, sFlashType):
@@ -746,7 +746,7 @@ def updateMTable_Ex(sPath, sIniFile, sIniSection, sH14H16, sFileName, sFlashType
 
                 rF.close()
     except:
-        print("!!!except updateMTable_Ex\n")
+        showError("!!!except updateMTable_Ex", 6)
 
     print('updateMTable_Ex End {}..\n '.format("-"))    
 
@@ -789,7 +789,7 @@ def updateMTable(sPath, sIniFile, sIniSection, sFileName, sH14H16):
 
                 rF.close()
     except:
-        print("!!!except updateMTable\n")
+        showError("!!!except updateMTable", 7)
 
     print('updateMTable End {}..\n '.format("-"))    
 
@@ -824,7 +824,7 @@ def updateIni(sPath, sIniFile, sIniSection, sFileName, sH14H16):
 
                 rF.close()
     except:
-        print('!!!except updateIni End ..\n ')        
+        showError("!!!except updateIni End ..", 8)        
 
     print('updateIni End ..[{}]\n '.format("-"))    
 
@@ -956,12 +956,15 @@ def runVERIFY_INI(sXmlPath):
                 #need to check path start with, Burner=.\Setting\
                 if  (line.find("Burner=") != -1): 
                     if  (line.find("Burner=.\Setting") == -1): #need to check path start with, Burner=.\Setting\
-                        print('!!! Err Ini name:{}, Burner:{}'.format(file, line))
-
+                        # print('!!! Err Ini name:{}, Burner:{}'.format(file, line))
+                        sMsg = '!!! Err Ini name:{}, Burner:{}'.format(file, line)
+                        showError(sMsg, 9)
                 #need to check Recv_Drv_Num_By_UI=1
                 if  (line.find("Recv_Drv_Num_By_UI=") != -1): 
                     if  (line.find("=1") == -1): #need to check path start with, Burner=.\Setting\
-                        print('!!! Err Ini name:{}, Recv_Drv_Num_By_UI:{}'.format(file, line))            
+                        # print('!!! Err Ini name:{}, Recv_Drv_Num_By_UI:{}'.format(file, line))            
+                        sMsg = '!!! Err Ini name:{}, Recv_Drv_Num_By_UI:{}'.format(file, line))            
+                        showError(sMsg, 10)
 
             rF.close()
     print('runVERIFY_INIEnd ..[{}]'.format('-'))
