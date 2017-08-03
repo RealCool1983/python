@@ -36,9 +36,14 @@ def runSortList():
 
     print("runSortList done")
 
+def runFormatTest():
+    sFormat = '{}.{}.{}'.format("a", 1, 55)
+    print(sFormat)
+
 if __name__ == "__main__":
 
-    runSortList()
+    # runSortList()
+    runFormatTest()
     
 
 
