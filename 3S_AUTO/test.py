@@ -40,11 +40,17 @@ def runFormatTest():
     sFormat = '{}.{}.{}'.format("a", 1, 55)
     print(sFormat)
 
+def runList():
+    listInfo = []    
+    listInfo = ("a", 1, 555, 77)
+    ilistInfo = len(listInfo)
+    print ('runList:{},{}'.format(listInfo, ilistInfo))
+
 if __name__ == "__main__":
 
     # runSortList()
-    runFormatTest()
-    
+    # runFormatTest()
+    runList()
 
 
 
