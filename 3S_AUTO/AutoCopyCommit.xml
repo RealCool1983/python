@@ -10,6 +10,8 @@
 		</PATHObjects>
 		
 		<TestItemList>
+		
+			<Item Enabled="TRUE" Name="UpdateFwByBurner" Parameter="1" />
 			<Item Enabled="TRUE" Name="CheckValidUtility" Parameter="2" />
 			<Item Enabled="TRUE" Name="SSDFA" Parameter="9" />
 			<Item Enabled="TRUE" Name="CopyMP" Parameter="56" />
@@ -40,7 +42,12 @@
 				<var1 Name="3S">D:\\3S_PC\sourceCode\SSD\SSD_tools\CheckValidUtility\initial_V1</var1>
 				<var2 Name="3S">\\fileserver\Dep_AP\Project\USB20\Kingston_KeyGen\CheckValidUtility</var2>
 				<var3 Name="3S">D:\\3S_PC\sourceCode\SSD\VC6\workingTmp\gitWork</var3> 
-            </ProcessObject>				
+            </ProcessObject>		
+			<ProcessObject Name="UpdateFwByBurner">
+				<var1 Name="3S">D:\\3S_PC\sourceCode\SSD\SSD_tools\UpdateFwByBurner\initial_V1</var1>
+				<var2 Name="3S">\\192.168.1.50\Dep_AP\Project\SSD\tools\UpdateFwByBurner\Release Code</var2>
+				<var3 Name="3S">D:\\3S_PC\sourceCode\SSD\VC6\workingTmp\gitWork</var3> 
+            </ProcessObject>					
 		</ProcessObjectSet>
 		
 </Configuration>
