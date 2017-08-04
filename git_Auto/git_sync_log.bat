@@ -15,6 +15,12 @@ git push ssd-mp-ui-log master
 git pull ssd-mp-ui-log master
 
 
+cd D:\3S_PC\sourceCode\SSD\Work_ING
+git pull ssd-working master
+git push ssd-working master
+git pull ssd-working master
+
+
 cd D:\3S_PC\python
 git pull origin master
 git push origin master
@@ -24,6 +30,7 @@ cd D:\3S_PC\report
 git pull origin master
 git push origin master
 git pull origin master
+
 
 
 pause
