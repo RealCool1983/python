@@ -963,7 +963,7 @@ def runVERIFY_INI(sXmlPath):
                 if  (line.find("Recv_Drv_Num_By_UI=") != -1): 
                     if  (line.find("=1") == -1): #need to check path start with, Burner=.\Setting\
                         # print('!!! Err Ini name:{}, Recv_Drv_Num_By_UI:{}'.format(file, line))            
-                        sMsg = '!!! Err Ini name:{}, Recv_Drv_Num_By_UI:{}'.format(file, line))            
+                        sMsg = '!!! Err Ini name:{}, Recv_Drv_Num_By_UI:{}'.format(file, line)            
                         showError(sMsg, 10)
 
             rF.close()
@@ -1053,9 +1053,10 @@ def runCheckSourceCode(sXmlPath):
             sPreZipName = 'V1.{}'.format(iPreVer) 
 
 
+
         # find last version zip
         for file in os.listdir(sPath2):
-            # if start with "V1.33"
+            # if start with "V1.33"(current )
             if file.startswith(sCurrentZipName) and file.endswith('.zip'):            
                 print('get file: {}, path: {}'.format(file, sPath2))
                 if (extraZip(sPath2, file) == 0):
@@ -1063,6 +1064,7 @@ def runCheckSourceCode(sXmlPath):
                     sSrcPathCurrent = os.path.join(sPath2, sDesFolder) 
                     listInfoCurrnetFile = buildFileDateInfo(sSrcPathCurrent)
 
+            # if start with "V1.33"(Pre)
             if file.startswith(sPreZipName) and file.endswith('.zip'):            
                 print('get file: {}, path: {}'.format(file, sPath2))
                 if (extraZip(sPath2, file) == 0):
@@ -1077,19 +1079,29 @@ def runCheckSourceCode(sXmlPath):
 
         # check new file(extra file)
         iIndex = 0
+        
         for x, y, z in listInfoCurrnetFile:
+            bNeedToShow = False
             bExistFile = 0
             for x1, y1, z1 in listInfoPreFile:
                 if (x == x1 ):
                     bExistFile = 1
                     # check file date
-                    # if(y != y1):
-                    #     iIndex += 1
-                    #     print('[{}]NewFileDate = {}, date = {},{}'.format(iIndex, x, y, y1))         
+                    sMsg1 = '-'
+                    sMsg2 = '-'
+                    if(y != y1):
+                        bNeedToShow = True
+                        sMsg1 = 'NewDate= {}({})'.format(y, y1)
+                        # print('[{}]NewFileDate = {}, date = {},{}'.format(iIndex, x, y, y1))         
                     # check file size
                     if(z != z1):
+                        bNeedToShow = True
+                        sMsg2 = 'NewSize= {}'.format(z)
+                        # print('[{}]NewSize = {:<50}, size = {},{}'.format(iIndex, x, z, z1))                             
+                    if(bNeedToShow):
                         iIndex += 1
-                        print('[{}]NewSize = {:<50}, size = {},{}'.format(iIndex, x, z, z1))                             
+                        print('[{}]File = {:<50}{:<20}{:<70}'.format(iIndex, x, sMsg2, sMsg1))                             
+
             if (bExistFile == 0): # extra File, need remove
                 print('[{}]NewFile = {:<50}'.format(iIndex, x))    
                 iIndex += 1
