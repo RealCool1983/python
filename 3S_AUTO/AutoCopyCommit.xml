@@ -11,10 +11,10 @@
 		
 		<TestItemList>
 		
-			<Item Enabled="TRUE" Name="UpdateFwByBurner" Parameter="3" />
+			<Item Enabled="TRUE" Name="UpdateFwByBurner" Parameter="4" />
 			<Item Enabled="TRUE" Name="CheckValidUtility" Parameter="2" />
 			<Item Enabled="TRUE" Name="SSDFA" Parameter="9" />
-			<Item Enabled="TRUE" Name="CopyMP" Parameter="60" />
+			<Item Enabled="TRUE" Name="CopyMP" Parameter="63" />
 			<Item Enabled="TRUE" Name="artemisCopyToPC" Parameter="0" />
 			
 
