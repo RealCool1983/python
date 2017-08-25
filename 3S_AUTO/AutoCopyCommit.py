@@ -347,6 +347,75 @@ def runSSDFA(sXmlPath, sTestName, sParameter):
         print("!!! except in runSSDFA")
     return 0
 
+def runSSDFW(sXmlPath, sTestName, sParameter):
+    tree = ET.parse(sXmlPath)
+    root = tree.getroot()   
+
+    print('runSSDFA start \nsPath = {}\nsTestName = {}\nsParameter = {}'.format(sXmlPath, sTestName, sParameter))
+    
+    try:
+        for neighbor1 in tree.iter('ProcessObject'):
+            if ( neighbor1.get('Name')  == sTestName):
+                for neighbor1Child in neighbor1:
+                    if(neighbor1Child.tag == 'var1'):
+                        sDesFolder = neighbor1Child.text
+                        print('neighbor1Child.tag(sGitPath) = {}'.format(sDesFolder))
+                    elif(neighbor1Child.tag == 'var2'):
+                        sSrcPath =  neighbor1Child.text
+                        print('neighbor2Child.tag(sSrcPath) = {}'.format(sSrcPath))
+                    elif(neighbor1Child.tag == 'var3'):
+                        sGitWorkPath =  neighbor1Child.text
+                        print('neighbor2Child.tag(sGitWorkPath) = {}'.format(sGitWorkPath))
+
+
+        #update all new version 
+        bFlag = True
+        bRes = False
+        while (bFlag):
+            if(sTestName == "SSDFA"):
+                sVersion = "1." + sParameter
+            elif(sTestName == "CopyMP") or (sTestName == "UpdateFwByBurner"):
+                sVersion = "v1." + sParameter
+            elif(sTestName == "CheckValidUtility"):
+                sVersion = "2." + sParameter
+
+            print ('sVersion, {}'.format(sVersion))
+            sReturnFileName = findFile_Ex(sSrcPath ,sVersion, ".zip")
+            
+            if ( sReturnFileName == -1):
+                print ('nothing in {}'.format(sReturnFileName))
+                bFlag = False
+            else:
+                sReturnFileNameZip = sReturnFileName 
+                # sDesPath = os.path.join(sPath1, sReturnFileNameZip)
+                print ('sDesPath {}'.format(sReturnFileNameZip))
+                if (runCopyFromDEPAP_EX(sSrcPath, sReturnFileNameZip , sGitWorkPath) != 0):
+                    return -1
+
+                sReturnFileName = sReturnFileNameZip.replace(".zip", "")
+                if (runCopyFromWorkPath_EX(sGitWorkPath, sReturnFileName , sDesFolder) != 0):
+                    return -1
+                if (runGitCommit(sDesFolder, sReturnFileName, sTestName) != 0):
+                    return -1
+                sParameter = str( int(sParameter) + 1)
+                bRes = True
+
+        if (bRes):
+            #update xml 
+            for child in root.iter('Item'):
+                testName = child.get('Name')
+                testPara = child.get('Parameter')
+
+                if(testName == sTestName):
+                    if (testPara != sVersion):
+                        child.set('Parameter', sParameter)
+                        tree.write(sXmlPath)
+                        print ('wirte xml  {}'.format(sXmlPath))                        
+
+    except:
+        print("!!! except in runSSDFA")
+    return 0
+
 def runArtemisCopyTo3SPC(sXmlPath, sTestName):
 
     tree = ET.parse(sXmlPath)
@@ -420,13 +489,11 @@ def parseXML(sXmlPath):
 
             if (testState == 'TRUE'):    
                 if ( testName == 'SSDFA') or ( testName == 'CopyMP') or ( testName == 'CheckValidUtility') or ( testName == 'UpdateFwByBurner'):
-                    runSSDFA(xmlPath, testName, parameter)                                                                                                        
-                # elif ( testName == 'CopyMP'):
-                #     runSSDFA(xmlPath, testName, parameter)                                                                         
-                # elif ( testName == 'CheckValidUtility'):
-                #     runSSDFA(xmlPath, testName, parameter)    
-                # elif ( testName == 'UpdateFwByBurner'):
-                #     runSSDFA(xmlPath, testName, parameter)                                                                                                                
+                    runSSDFA(xmlPath, testName, parameter)    
+                if ( testName == 'SSDFWCopyToPC'):
+                    runSSDFW(xmlPath, testName, parameter)                        
+                                                                                                                        
+                                                                                                             
                 elif ( testName == 'artemisCopyToPC'):
                     runArtemisCopyTo3SPC(xmlPath, testName)                    
                 elif ( testName == 'Pause'):
