@@ -14,7 +14,7 @@
 			<Item Enabled="TRUE" Name="UpdateFwByBurner" Parameter="4" />
 			<Item Enabled="TRUE" Name="CheckValidUtility" Parameter="2" />
 			<Item Enabled="TRUE" Name="SSDFA" Parameter="10" />
-			<Item Enabled="TRUE" Name="CopyMP" Parameter="68" />
+			<Item Enabled="TRUE" Name="CopyMP" Parameter="69" />
 			<Item Enabled="TRUE" Name="artemisCopyToPC" Parameter="0" />
 			<Item Enabled="FALSE" Name="SSDFWCopyToPC" Parameter="0" />
 			
