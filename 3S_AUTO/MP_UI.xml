@@ -1,7 +1,7 @@
 
 <Configuration>
 		<PATHObjects>
-			<ToolVersion>42</ToolVersion>
+			<ToolVersion>44</ToolVersion>
 			<PCSourceCodeGitPath>D:\\3S_PC\sourceCode\SSD\VC6\GIT_MP_UI\V1.0</PCSourceCodeGitPath>			
 			<PCSourceCodePath>D:\\3S_PC\ReleaseTool\MP_UI_V1.0\V1.6.2017.777</PCSourceCodePath>			
 			<S3800_SSD_MPPath>D:\\3S_PC\sourceCode\SSD\SSD_tools\MP\MP_V1</S3800_SSD_MPPath>	
@@ -44,7 +44,7 @@
 			<Item Name="CheckSourceCode" Enabled="TRUE"/>
 		
 			<Item Name="Pause" Enabled="FALSE"/>
-			<Item Name="ReleaseNote" Enabled="TRUE"/>
+			<Item Name="ReleaseNote" Enabled="FALSE"/>
 
 		</TestItemList>
 		
@@ -57,13 +57,13 @@
             </ProcessObject>	
 			<ProcessObject  Name="HUATOOP_H16">
 				<var1 Name="3S_HNX_16TLC_BNR_" IniFile="H16_TLC_test.ini" IniSection="Burner=.\Setting\">3.2.0.56</var1>
-				<var2 Name="3S_HNX_16TLC_FW_" IniFile="MTable.set" IniSection="FW_1=.\Setting\">1.1.0.22</var2>
+				<var2 Name="3S_HNX_16TLC_FW_" IniFile="MTable.set" IniSection="FW_1=.\Setting\">1.1.0.23</var2>
 				<var3 Name="3S_HNX_16TLC_RDT_" IniFile="MTable.set" IniSection="FW_2=.\Setting\">2.0.0.29</var3>
 				<var4 Name="InsertNewSection" Type="Integer">TRUE</var4>
 			</ProcessObject>					
 			<ProcessObject  Name="HUATOOP_H16_2LUN">
 				<var1 Name="3S_HNX_16TLC_BNR_" IniFile="H16_TLC_test.ini" IniSection="Burner=.\Setting\">3.2.0.56</var1>
-				<var2 Name="3S_HNX_16TLC_FW_" IniFile="MTable.set" IniSection="FW_5=.\Setting\">1.1.0.22</var2>
+				<var2 Name="3S_HNX_16TLC_FW_" IniFile="MTable.set" IniSection="FW_5=.\Setting\">1.1.0.23</var2>
 				<var3 Name="3S_HNX_16TLC_RDT_" IniFile="MTable.set" IniSection="FW_6=.\Setting\">2.0.0.29</var3>
 				<var4 Name="InsertNewSection" Type="Integer">TRUE</var4>
             </ProcessObject>	
@@ -76,7 +76,7 @@
 			<ProcessObject  Name="B16A">
 				<var1 Name="3S_Micron_B16A_BNR_" IniFile="B16A_TLC_test.ini" IniSection="Burner=.\Setting\">1.0.0.8</var1>
 				<var2 Name="3S_MCR_3DTLC_B16_FW_" IniFile="MTable.set" IniSection="FW_3=.\Setting\">2.0.0.5</var2>
-				<var3 Name="3S_IM_B16A_RDT_" IniFile="MTable.set" IniSection="FW_4=.\Setting\">1.0.0.2</var3>
+				<var3 Name="3S_IM_B16A_RDT_" IniFile="MTable.set" IniSection="FW_4=.\Setting\">1.0.0.3</var3>
 				<var4 Name="InsertNewSection" Type="Integer">TRUE</var4>
             </ProcessObject>				
 			<ProcessObject  Name="BiCS3">
