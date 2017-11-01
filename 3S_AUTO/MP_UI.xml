@@ -28,7 +28,7 @@
 			
 			<Item Name="VC6AutoBuild" Enabled="TRUE"/>
 			<Item Name="UacBat" Enabled="TRUE"/>
-
+			
 			<Item Name="HUATOOP_H14" Enabled="TRUE"/>
 			<Item Name="HUATOOP_H16" Enabled="TRUE"/>
 			<Item Name="HUATOOP_H16_2LUN" Enabled="TRUE"/>
@@ -40,7 +40,7 @@
 			<Item Name="VERIFY_INI" Enabled="TRUE"/>
 			<Item Name="CopyTo3800" Enabled="TRUE"/>
 			<Item Name="CompressFile" Enabled="TRUE"/>
-			<Item Name="CopyToGitbin" Enabled="TRUE"/>
+			<Item Name="CopyToGit" Enabled="TRUE"/>
 			<Item Name="CheckSourceCode" Enabled="TRUE"/>
 		
 			<Item Name="Pause" Enabled="FALSE"/>
