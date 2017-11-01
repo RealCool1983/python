@@ -360,44 +360,60 @@ def runCopySSD_MP_UI(sXmlPath):
     print('runCopySSD_MP_UIEnd ..[{}]\n '.format('-'))
     return 0
 
-def runCopyToGitbin(sXmlPath):
+def runCopyToGit(sXmlPath):
     tree = ET.parse(sXmlPath)
     root = tree.getroot()   
 
     global sPC_NewMPUI_Path
     global sPC_NewMPUI_Name
 
-    print('runCopyToGitbin[{}] start ..'.format('-'))
+    print('runCopyToGit[{}] start ..'.format('-'))
     
-    for neighbor in root.iter('PATHObjects'):
-        sPathGit = neighbor.find('PCSourceCodeGitPath').text
-        det_file = os.path.join(sPathGit, "bin")  
-
     removeFolder(sPC_NewMPUI_Path) # remove specific folder
     removeFile(sPC_NewMPUI_Path) # remove specific folder
 
-    # det_file = os.path.join(sPath1, sPC_NewMPUI_Name) 
+    
+    for neighbor in root.iter('PATHObjects'):
+        sPathGit = neighbor.find('PCSourceCodeGitPath').text
+        det_file_bin = os.path.join(sPathGit, "bin") 
+        det_file_mp = os.path.join(sPathGit, "src\\MP")   
+        det_file_rc = os.path.join(sPathGit, "src\\SSDMP.rc")   
+        det_file_ssdmp = os.path.join(sPathGit, "src\\UAC\\SSDMP.exe")           
+
+    # ************** copy bin folder **************
     src_file = os.path.join(sPC_NewMPUI_Path, 'bin')
-    #print(det_file)
+
     print('src = {}', src_file)
-    print('det = {}', det_file)
+    print('det = {}', det_file_bin)
 
-    if os.path.exists(det_file):
-        print('{}{}'.format(det_file, "   exist !! remove it ?"))
-        shutil.rmtree(det_file) 
-        print('{}{}'.format(det_file, ", remove ok"))        
-        # sYesNo = rawInputTest()
-        # if (sYesNo == 1):
-        #     shutil.rmtree(det_file) 
-        #     print('{}{}'.format(det_file, ", remove ok"))
-        # elif(sYesNo == 0):
-        #     print("skip")
-        #     sys.exit(0)
+    if os.path.exists(det_file_bin):
+        print('{}{}'.format(det_file_bin, "   exist !! remove it ?"))
+        shutil.rmtree(det_file_bin) 
+        print('{}{}'.format(det_file_bin, ", remove ok"))        
         
-    shutil.copytree(src_file, det_file)
-    print('runCopyToGitbin, {} end ..'.format(det_file))
+    shutil.copytree(src_file, det_file_bin)
+
+    #************** copy mp folder **************
+    src_file = os.path.join(sPC_NewMPUI_Path, 'src\\MP')
+    print('src = {}', src_file)
+    print('det = {}', det_file_mp)
+
+    if os.path.exists(det_file_mp):
+        print('{}{}'.format(det_file_mp, "   exist !! remove it ?"))
+        shutil.rmtree(det_file_mp) 
+        print('{}{}'.format(det_file_mp, ", remove ok"))        
+    shutil.copytree(src_file, det_file_mp)    
+
+    ##************** copy SSDMP.rc #**************
+    src_file = os.path.join(sPC_NewMPUI_Path, 'src\\SSDMP.rc')
+    copyOneFile(src_file, det_file_rc)
+    
+    ##************** copy UAC/SSDMP.EXE **************
+    src_file = os.path.join(sPC_NewMPUI_Path, 'src\\UAC\\SSDMP.exe')
+    copyOneFile(src_file, det_file_ssdmp)
 
 
+    print('runCopyToGit, {} end ..'.format(det_file_ssdmp))
 
 
 def runCopyTo3800(sXmlPath):
@@ -1232,8 +1248,8 @@ def parseXML(sXmlPath):
                 runCopySSD_MP_UI(xmlPath)                                                                     
             if ( testName == 'CopyTo3800'):
                 runCopyTo3800(xmlPath)
-            if ( testName == 'CopyToGitbin'):
-                runCopyToGitbin(xmlPath)                
+            if ( testName == 'CopyToGit'):
+                runCopyToGit(xmlPath)                
             if ( testName == 'CompressFile'):
                 runCompressFile(xmlPath)                
             if ( testName == 'VCVersion'):
