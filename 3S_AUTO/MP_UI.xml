@@ -1,7 +1,7 @@
 
 <Configuration>
 		<PATHObjects>
-			<ToolVersion>51</ToolVersion>
+			<ToolVersion>52</ToolVersion>
 			<PCSourceCodeGitPath>D:\\3S_PC\sourceCode\SSD\VC6\GIT_MP_UI\V1.0</PCSourceCodeGitPath>			
 			<PCSourceCodePath>D:\\3S_PC\ReleaseTool\MP_UI_V1.0\V1.6.2017.777</PCSourceCodePath>			
 			<S3800_SSD_MPPath>D:\\3S_PC\sourceCode\SSD\SSD_tools\MP\MP_V1</S3800_SSD_MPPath>	
@@ -28,6 +28,7 @@
 			
 			<Item Name="VC6AutoBuild" Enabled="TRUE"/>
 			<Item Name="UacBat" Enabled="TRUE"/>
+
 			
 			<Item Name="HUATOOP_H14" Enabled="TRUE"/>
 			<Item Name="HUATOOP_H16" Enabled="TRUE"/>
@@ -74,10 +75,11 @@
 				<var4 Name="InsertNewSection" Type="Integer">TRUE</var4>
             </ProcessObject>		
 			<ProcessObject  Name="B16A">
-				<var1 Name="3S_Micron_B16A_BNR_" IniFile="B16A_TLC_test.ini" IniSection="Burner=.\Setting\">1.0.0.10</var1>
+				<var1 Name="3S_Micron_B16A_BNR_" IniFile="B16A_TLC_test.ini" IniSection="Burner=.\Setting\">1.0.0.11</var1>
 				<var2 Name="3S_MCR_3DTLC_B16_FW_" IniFile="MTable.set" IniSection="FW_3=.\Setting\">3.9.0.1</var2>
-				<var3 Name="3S_IM_B16A_RDT_" IniFile="MTable.set" IniSection="FW_4=.\Setting\">1.0.0.3</var3>
+				<var3 Name="3S_IM_B16A_RDT_" IniFile="MTable.set" IniSection="FW_4=.\Setting\">1.0.0.4</var3>
 				<var4 Name="InsertNewSection" Type="Integer">TRUE</var4>
+				<var5 Name="spi_bootrom_" IniFile="B16A_TLC_test.ini" IniSection="SPI_Firmware_Path=">4.0.0.5</var5>
             </ProcessObject>				
 			<ProcessObject  Name="BiCS3">
 				<var1 Name="3S_TSB_BiCS_BNR_" IniFile="TSB_BiCS3_test.ini" IniSection="Burner=.\Setting\">1.0.0.6</var1>

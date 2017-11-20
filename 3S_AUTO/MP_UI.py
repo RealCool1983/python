@@ -678,6 +678,44 @@ def runHUATOOP(sXmlPath, sH14H16):
                         else:
                             updateIni(sPC_NewMPUI_Setting_Path, neighborChild.get('IniFile') , neighborChild.get('IniSection'), sBinName, sH14H16 )                    
 
+                        # ********************************************************************                                
+                        # for micron b16
+                        # SPI_Firmware_Path=.\Setting\spi_bootrom_4.0.0.5.bin                            
+                        if(neighborChild.tag == "var5") and ( sH14H16.find("B16A") != -1) :
+                            if (len(neighborChild.text) > 0 ):
+                                # update ini
+                                print('[spi_bootrom only] Function = {}, dict_Var[neighborChild.tag] = {}'.format(sH14H16, dict_Var[neighborChild.tag]))
+                                if (neighborChild.text == '0'):
+                                    sSpiPath = " "
+                                else:           
+
+                                    sSpiPath = ".\\Setting\\" + neighborChild.get('Name') + neighborChild.text + ".bin"
+                                    #update bin file
+                                    print ("[spi_bootrom only] update bin file start")
+                                    spiBinName = neighborChild.get('Name') + neighborChild.text + ".bin"
+                                    if (findFile(sPCS3800_SSD_MP_SettingPath, spiBinName) == 0):
+                                        print('[spi_bootrom only] Get it in [{}] '.format(sPCS3800_SSD_MP_SettingPath))                                     
+
+                                    if (findFile(sPC_NewMPUI_Setting_Path, spiBinName) == -1):
+                                        print ("[spi_bootrom only] nothing in {}, copy to".format(sPC_NewMPUI_Setting_Path))
+                                        
+                                        sFromPath = os.path.join(sPCS3800_SSD_MP_SettingPath, spiBinName)
+                                        copyOneFile(sFromPath, sPC_NewMPUI_Setting_Path)
+                                    
+                                    else:
+                                        print ("[spi_bootrom only] already in sPC_NewMPUI_Setting_Path")
+
+                                    print ("[spi_bootrom only] update bin file End")                                                                                
+                                    #remove old file in MP_UI
+                                    removeDiffFile(sPC_NewMPUI_Setting_Path, neighborChild.get('Name') ,spiBinName)
+
+                                print ('[spi_bootrom only] get spi path name = ', sSpiPath )
+                                updateIni(sPC_NewMPUI_Setting_Path, neighborChild.get('IniFile') , neighborChild.get('IniSection'), sSpiPath, sH14H16 )    
+
+                                print ("[spi_bootrom only] update ini  End")                                                                                
+                                continue
+                        # ********************************************************************
+
                         if (findFile(sPCS3800_SSD_MP_SettingPath, sBinName) == 0):
                             print('Get it in [{}] '.format(sPCS3800_SSD_MP_SettingPath))
 
@@ -702,7 +740,7 @@ def runHUATOOP(sXmlPath, sH14H16):
                             print('prepare Insert,{},{},{}\n '.format(sInitFullPath, sPC_NewMPUI_Setting_Path, sIniFileName))
                             addNewIniSection("D:\\3S_PC\\python\\3S_AUTO\\newSecton.txt" ,sPC_NewMPUI_Setting_Path, sIniFileName)
                             print('Insert, {}\n '.format(sInitFullPath))
-
+                
 
                     #------------Compare MP_UI with MP, delete ------------------------------------#
 
