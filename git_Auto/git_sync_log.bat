@@ -32,6 +32,11 @@ git push origin master
 git pull origin master
 
 
+cd D:\3S_PC\sourceCode\network\book-code
+git pull origin master
+git push origin master
+git pull origin master
+
 
 pause
 
