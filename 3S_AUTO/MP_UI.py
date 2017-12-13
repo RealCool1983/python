@@ -1275,8 +1275,8 @@ def parseXML(sXmlPath):
                 runHUATOOP(xmlPath, 'B16A')   
             if ( testName == 'BiCS3'):
                 runHUATOOP(xmlPath, 'BiCS3')     
-            if ( testName == 'TSB'):
-                runHUATOOP(xmlPath, 'TSB')                                
+            if ( testName == 'T15'):
+                runHUATOOP(xmlPath, 'T15')                                
             if ( testName == 'VERIFY_INI'):
                 runVERIFY_INI(xmlPath)                                  
                 

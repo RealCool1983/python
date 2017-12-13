@@ -1,7 +1,7 @@
 
 <Configuration>
 		<PATHObjects>
-			<ToolVersion>54</ToolVersion>
+			<ToolVersion>55</ToolVersion>
 			<PCSourceCodeGitPath>D:\\3S_PC\sourceCode\SSD\VC6\GIT_MP_UI\V1.0</PCSourceCodeGitPath>			
 			<PCSourceCodePath>D:\\3S_PC\ReleaseTool\MP_UI_V1.0\V1.6.2017.777</PCSourceCodePath>			
 			<S3800_SSD_MPPath>D:\\3S_PC\sourceCode\SSD\SSD_tools\MP\MP_V1</S3800_SSD_MPPath>	
@@ -51,7 +51,7 @@
 		
 		<ProcessObjectSet>
 			<ProcessObject  Name="HUATOOP_H14">
-				<var1 Name="3S_HNX_14TLC_BNR_" IniFile="H14_TLC_test.ini" IniSection="Burner=.\Setting\">3.2.0.54</var1>
+				<var1 Name="3S_HNX_14TLC_BNR_" IniFile="H14_TLC_test.ini" IniSection="Burner=.\Setting\">3.2.0.55</var1>
 				<var2 Name="3S_HNX_14TLC_FW_" IniFile="MTable.set" IniSection="FW_3=.\Setting\">1.1.0.13</var2>
 				<var3 Name="3S_HNX_14TLC_RDT_" IniFile="MTable.set" IniSection="FW_4=.\Setting\">2.0.0.5</var3>
 				<var4 Name="InsertNewSection" Type="Integer">TRUE</var4>
@@ -77,20 +77,20 @@
 			<ProcessObject  Name="B16A">
 				<var1 Name="3S_Micron_B16A_BNR_" IniFile="B16A_TLC_test.ini" IniSection="Burner=.\Setting\">1.0.0.11</var1>
 				<var2 Name="3S_MCR_3DTLC_B16_FW_" IniFile="MTable.set" IniSection="FW_3=.\Setting\">3.9.0.1</var2>
-				<var3 Name="3S_IM_B16A_RDT_" IniFile="MTable.set" IniSection="FW_4=.\Setting\">1.0.0.4</var3>
+				<var3 Name="3S_IM_B16A_RDT_" IniFile="MTable.set" IniSection="FW_4=.\Setting\">1.0.0.6</var3>
 				<var4 Name="InsertNewSection" Type="Integer">TRUE</var4>
 				<var5 Name="spi_bootrom_" IniFile="B16A_TLC_test.ini" IniSection="SPI_Firmware_Path=">4.0.0.5</var5>
             </ProcessObject>				
 			<ProcessObject  Name="BiCS3">
 				<var1 Name="3S_TSB_BiCS_BNR_" IniFile="TSB_BiCS3_test.ini" IniSection="Burner=.\Setting\">1.0.0.6</var1>
 				<var2 Name="3S_TSB_BiCS_FW_" IniFile="MTable.set" IniSection="FW_1=.\Setting\">3.8.0.1</var2>
-				<var3 Name="3S_TSB_BiCS_RDT_" IniFile="MTable.set" IniSection="FW_2=.\Setting\">1.0.0.11</var3>
+				<var3 Name="3S_TSB_BiCS_RDT_" IniFile="MTable.set" IniSection="FW_2=.\Setting\">1.0.0.15</var3>
 				<var4 Name="InsertNewSection" Type="Integer">TRUE</var4>
             </ProcessObject>					
 			<ProcessObject  Name="T15">
 				<var1 Name="3S_TSB_15TLC_BNR_" IniFile="T15_TLC_test.ini" IniSection="Burner=.\Setting\">3.1.0.42</var1>
 				<var2 Name="image_package_kst_7op_" IniFile="MTable.set" IniSection="FW_3=.\Setting\">3.2.0.78</var2>
-				<var3 Name="3S_TSB_15TLC_RDT_" IniFile="MTable.set" IniSection="FW_4=.\Setting\">0.29.1.58</var3>
+				<var3 Name="3S_TSB_15TLC_RDT_" IniFile="MTable.set" IniSection="FW_4=.\Setting\">0.29.1.66</var3>
 				<var4 Name="InsertNewSection" Type="Integer">TRUE</var4>
             </ProcessObject>			
 		</ProcessObjectSet>
