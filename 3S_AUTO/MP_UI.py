@@ -101,7 +101,12 @@ def removeFile(sPath):
 
 def copyOneFile(src_file, det_file):        
     print('{}-\n{:120}-from \n{:120}-to'.format("prepare to copyOneFile ",src_file, det_file))
-    shutil.copy2(src_file, det_file)
+
+    # 1. The copy() only sets permission bits  
+    # copy2() also updates the file metadata with timestamps.
+    # shutil.copy2(src_file, det_file)
+
+    shutil.copy(src_file, det_file)
     
 
 
