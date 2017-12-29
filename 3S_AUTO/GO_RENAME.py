@@ -14,6 +14,17 @@ from shutil import move
 from os import remove, close
 from pathlib import Path
 
+
+
+'''
+def reFileNameOnly(sPath, sPrefixName):
+'''
+
+
+#globle varible
+lastMP_UIPath = r"D:\\MP_UI_RENAME\\MP_UI_unzipFile\\MP_UI_V1.55.2017.1213\\"
+
+
 #sample function
 # def replaceBinFile():
 # 	print('replaceBinFile start ..'.format('-'))
@@ -24,6 +35,25 @@ from pathlib import Path
 
 # 	print('replaceBinFile End ..'.format('-'))
 # 	return 0
+
+def reFileNameOnly(sPath, sPrefixName):
+    print('{:<10s}reFileNameOnly  ..'.format('start'))
+    os.chdir(sPath)
+    listFolderInfo = []
+    for allfiles in os.listdir(sPath):
+        if (allfiles.startswith("V1.") or
+        	allfiles.startswith("v1.") or
+        	allfiles.startswith("1.")
+        	):
+
+	            newName = sPrefixName + allfiles
+	            os.rename(allfiles, newName)
+	            print('old name = {}, new name = {} ok'.format(allfiles, newName))
+
+    print('{:<10s}reFileNameOnly  ..'.format('End'))
+    return 0
+
+
 
 def reFolderNameOnly(sPath):
     print('{:<10s}reFolderNameOnly  ..'.format('start'))
@@ -41,15 +71,64 @@ def reFolderNameOnly(sPath):
     return 0
 
 
+def copyTimeStamp(sSrc, sDes): 
+    try:
+        if os.path.exists(sSrc) and os.path.exists(sDes) :
+           shutil.copystat(sSrc, sDes)
 
-def copyTimeStamp(sSrc, sDes):
-
-	# sPath1 =r"D:\\MP_UI_RENAME\\MP_UI_zipFile\\V1.55.2017.1213\\bin\\SSDMP.exe"
-	# sPath2 =r"D:\\MP_UI_RENAME\\MP_UI_unzipFile\\MP_UI_V1.55.2017.1213\\bin\\SSDMP.exe"
-	shutil.copystat(sSrc, sDes)
-
-	print('{:<10s}copyTimeStamp  end'.format('start'))
+	# print('{:<10s}copyTimeStamp  end'.format('start'))
     # print("copyTimeStamp end")
+    except:
+        print("!!! except in copyTimeStamp")
+
+
+def syncTimeStamp(sDes):
+    print('start syncTimeStamp {}'.format("="))
+
+    global lastMP_UIPath
+    srcbinfilepath = ""
+    desbinfilepath = ""
+    sSrcBin =  os.path.join(lastMP_UIPath, "bin")
+    sDesBin =  os.path.join(sDes, "bin")
+    for root, dirs, files in os.walk(sSrcBin):
+        for srcbinfile in files:
+            if (srcbinfile.endswith(".bin")):
+                srcbinfilepath = os.path.join(root, srcbinfile)
+                for desRoot, desDirs, desFiles in os.walk(sDesBin):
+                    for desbinfile in desFiles:
+                    	if (srcbinfile == desbinfile):
+                        # if (desbinfile.endswith(".bin")):
+                            desbinfilepath = os.path.join(desRoot, desbinfile)
+                            print('got it\nsrcbinfilepath = {}\ndesbinfilepath = {}'.format(srcbinfilepath, desbinfilepath))
+                            copyTimeStamp(srcbinfilepath, desbinfilepath)
+                            # print('copy file, timestamp ok = \nMP:{}\nUI:{}'.format(srcbinfilepath, binPath))
+
+
+
+def syncTimeStampII(sSrc, sDes):
+    print('start syncTimeStampII \nsSrc = {}, sDes = {}'.format(sSrc, sDes))
+
+    global lastMP_UIPath
+    srcbinfilepath = ""
+    desbinfilepath = ""
+    # sSrcBin =  os.path.join(lastMP_UIPath, "bin")
+    sDesBin =  os.path.join(sDes, "bin")
+    for root, dirs, files in os.walk(sSrc):
+        for srcbinfile in files:
+            # print('srcbinfile = {}, path = {}'.format(srcbinfile, root))
+        	#check src bin file in windwos folder, not adata folder
+            if (srcbinfile.endswith(".bin")) and (root.find("windows") > 0)  and (root.find("ADATA") == -1) :
+                srcbinfilepath = os.path.join(root, srcbinfile)
+                # print('syncTimeStampII: binFile = {},  srcbinfilepath = {}'.format(srcbinfile, srcbinfilepath))
+                for desRoot, desDirs, desFiles in os.walk(sDesBin):
+                    for desbinfile in desFiles:
+                    	if (srcbinfile == desbinfile):
+                        # if (desbinfile.endswith(".bin")):
+                            desbinfilepath = os.path.join(desRoot, desbinfile)
+                            # print('get:\nsrcbinfilepath = {}\ndesbinfilepath = {}'.format(srcbinfilepath, desbinfilepath))
+                            copyTimeStamp(srcbinfilepath, desbinfilepath)
+                            print('sync ok:\nsrcbinfilepath = {}\ndesbinfilepath = {}'.format(srcbinfilepath, desbinfilepath))
+                            # print('copy file, timestamp ok = \nMP:{}\nUI:{}'.format(srcbinfilepath, binPath))
 
 
 def buildFileDateInfo(sPath):
@@ -127,16 +206,6 @@ def buildFolderInfo(sPath, sFolderType):
     return listBinFileInfo
 
 
-def replaceBinFile(sMP_UIPath, sMP_Path):
-	print('replaceBinFile start {},{}..'.format(sMP_UIPath, sMP_Path))
-	try:
-		print('replaceBinFile start ..'.format('-'))
-	except:	       
-		print('replaceBinFile except')
-
-	print('replaceBinFile End ..'.format('-'))
-	return 0
-
 
 def runCompressFile(sWorkFolder, sNewZipFolder, sName):
 
@@ -176,12 +245,13 @@ def runCompressFile(sWorkFolder, sNewZipFolder, sName):
 
 
 def parseTXT():
+	global lastMP_UIPath
 
 	print('parseTXT start ..'.format('-'))
-
+	
 	stxtPath = r"D:\\MP_UI_RENAME\\MP_UI_zipFile\\zipList.txt"
 	sZipFolder = r"D:\\MP_UI_RENAME\\MP_UI_zipFile\\"
-	sDesFolder = r"D:\\MP_UI_RENAME\\MP_UI_unzipFile\\"
+	sDesFolder = r"D:\\MP_UI_RENAME\MP_UI_unzipFile\\"
 	sMPFolder =  r"D:\\MP_UI_RENAME\\MP_Folder\\"
 	listSourceCodeBinInfo = []
 	listMPBinInfo = [] 
@@ -213,7 +283,7 @@ def parseTXT():
 			NewFolderName = "MP_UI_" + oldFolderName
 
 			
-			print('{}, {}, oldFolderName = {}, NewFolderName = {} '.format(iCount, sPath3, oldFolderName, NewFolderName))
+			print('\nRound[{}], {}, oldFolderName = {}, NewFolderName = {} '.format(iCount, sPath3, oldFolderName, NewFolderName))
 			iCount = iCount + 1
 
 			if os.path.exists(sPath3):
@@ -235,8 +305,14 @@ def parseTXT():
 					os.rename(extractFolderPath, newExtractFolderPath)
 					print('rename ok, old = {} new = {}'.format( extractFolderPath, newExtractFolderPath))
 					
+					#sync timestamps
+					# if (newExtractFolderPath != lastMP_UIPath):
+					# 	print('newExtractFolderPath = {} lastMP_UIPath = {}'.format( newExtractFolderPath, lastMP_UIPath))
+					# syncTimeStamp(newExtractFolderPath)
+					# lastMP_UIPath = newExtractFolderPath
+						
 				else:
-					print('!!! not exit extractFolderPath = {} '.format(extractFolderPath))
+					print('!!! exception extractFolderPath = {} '.format(extractFolderPath))
 
 			except:
 				print("Unexpected error:", sys.exc_info()[0])
@@ -248,13 +324,16 @@ def parseTXT():
 			#proc MP_UI 
 			listSourceCodeBinInfo = buildFolderInfo(newExtractFolderPath, "bin")
 
+			sPathMPFolder = os.path.join(sMPFolder, y1) 
+			sPathMPFolder = os.path.join(sPathMPFolder, "windows")
+
+			# syncTimeStamp
+			syncTimeStampII(sPathMPFolder, newExtractFolderPath)
 
 			#for bin in proc MP_Folder
 			for binName, binPath, z in listSourceCodeBinInfo:
 				# print('listFileInfo, name = {} path = {} date = {}'.format(binName, binPath, z))
 
-				sPathMPFolder = os.path.join(sMPFolder, y1) 
-				sPathMPFolder = os.path.join(sPathMPFolder, "windows\HUATOOP") 
 				#find bin file in mp
 				bGetBin = False
 				if os.path.exists(sPathMPFolder):
@@ -262,10 +341,10 @@ def parseTXT():
 					# print('sPathMPFolder = {} '.format(sPathMPFolder))		
 					for root, dirs, files in os.walk(sPathMPFolder):
 					    for bfile in files:
-					        if bfile == binName:
+					        if (bfile == binName) and (root.find("ADATA") == -1):
 					        	mpFilePath = os.path.join(root, bfile)
 					        	# print("get it")
-					        	# print('got it, mpFilePath = {}'.format(mpFilePath))
+					        	print('got it, mpFilePath = {}, root = {}'.format(mpFilePath, root))
 					        	bGetBin = True
 					        	# print("ready to remove ")
 					        	# os.remove(binPath)
@@ -293,15 +372,17 @@ if __name__ == "__main__":
     sStartTime = datetime.datetime.now()
     print('StartTime:{} ..\n '.format(sStartTime))
 
-    sPath = "D:\\MP_UI_RENAME\\MP_UI_zipFile"
+    sPath = r"D:\\MP_UI_RENAME\newtest"
     try:
      	
      	#re folder name only , ok 20171228
      	# reFolderNameOnly(sPath)
 
+     	reFileNameOnly(sPath, "BIN_GRADE_")
+
      	#copyTime stamp
      	#copyTimeStamp()
-    	parseTXT()
+    	# parseTXT()
         #tree.write(data,"UTF-8")
     except:
         print('!!! exception happen in')
