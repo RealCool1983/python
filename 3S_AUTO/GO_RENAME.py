@@ -17,7 +17,38 @@ from pathlib import Path
 
 
 '''
+20171229 Rex
+
+將路徑下的檔名加上sPrefixName
 def reFileNameOnly(sPath, sPrefixName):
+
+將路徑下的檔名重新命名
+def reFolderNameOnly(sPath):
+
+複製檔案時間等資訊
+def copyTimeStamp(sSrc, sDes): 
+
+同步MP_UI 的bin檔時間資訊(跟上一版)
+def syncTimeStamp(sDes):
+
+同步MP_UI bin檔時間資訊(跟MP裡的bin檔)
+def syncTimeStampII(sSrc, sDes):
+
+建立檔案時間等資訊
+def buildFileDateInfo(sPath):
+
+建立資料夾時間等資訊
+def buildFolderInfo(sPath, sFolderType):
+
+取代bin file
+def replaceBinFile(sMP_UIPath, sMP_Path):
+
+自動壓縮檔案
+def runCompressFile(sWorkFolder, sNewZipFolder, sName):
+
+
+自動解壓縮zip檔，parse zipList 檔中的MP_UI與MP 的mapping，並使用mp中的bin檔取代MP_ui中
+def parseTXT():
 '''
 
 
