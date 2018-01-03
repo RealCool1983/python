@@ -40,7 +40,8 @@
 			
 			<Item Name="VERIFY_INI" Enabled="TRUE"/>
 			<Item Name="CopyTo3800" Enabled="TRUE"/>
-			<Item Name="CompressFile" Enabled="TRUE"/>
+			<Item Name="ZipFile" Enabled="TRUE"/>
+			<Item Name="CompressFile" Enabled="FALSE"/>
 			<Item Name="CopyToGit" Enabled="TRUE"/>
 			<Item Name="CheckSourceCode" Enabled="TRUE"/>
 		

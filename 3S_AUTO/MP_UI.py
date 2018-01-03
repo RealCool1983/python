@@ -83,6 +83,21 @@ def removeFolder(sPath):
         print("remove folder = ", sDestinationPath)
         shutil.rmtree(sDestinationPath)    
 
+    sDestinationPath = os.path.join(sPath,".git")
+    if (os.path.isdir(sDestinationPath)):
+        print("remove folder = ", sDestinationPath)
+        shutil.rmtree(sDestinationPath)    
+
+    sDestinationPath = os.path.join(sPath,"workingTMP")
+    if (os.path.isdir(sDestinationPath)):
+        print("remove folder = ", sDestinationPath)
+        shutil.rmtree(sDestinationPath)
+
+    sDestinationPath = os.path.join(sPath,"table")
+    if (os.path.isdir(sDestinationPath)):
+        print("remove folder = ", sDestinationPath)
+        shutil.rmtree(sDestinationPath)          
+
     print("removeFolder done!")
 
 def removeFile(sPath):
@@ -95,7 +110,10 @@ def removeFile(sPath):
         ncb = "ncb";
         opt = "opt";
         plg = "plg";
-        if currentFile.endswith(ncb) or currentFile.endswith(opt) or currentFile.endswith(plg):
+        gitignore = ".gitignore";
+        referencetxt = "reference.txt";
+        if currentFile.endswith(ncb) or currentFile.endswith(opt) or
+         currentFile.endswith(plg) or currentFile.endswith(gitignore) or currentFile.endswith(referencetxt):
             print ("remove file: ", currentFile)
             os.remove(currentFile)
 
@@ -455,6 +473,71 @@ def runCopyTo3800(sXmlPath):
     sRemote3800_NewMPUI_Path = det_file
 
     print('copyTo3800, {} end ..'.format(det_file))
+
+
+
+def runZipFile(sXmlPath):
+    tree = ET.parse(sXmlPath)
+    root = tree.getroot()   
+
+    global sPC_NewMPUI_Path
+    global sPC_NewMPUI_Name
+    global sRemoteDepAp_NewMPUI_Path
+
+    print('runZipFile[{}] start ..'.format('-'))
+    
+    for neighbor in root.iter('PATHObjects'):
+        sPath1 = neighbor.find('SDEPAP_SSD_MPUIPath').text
+
+    removeFolder(sPC_NewMPUI_Path)
+    removeFile(sPC_NewMPUI_Path)
+
+    sRemoteFileName = sPC_NewMPUI_Name + '.zip'
+    sRemoteFolderName = sPC_NewMPUI_Name
+
+    dest = os.path.join(sPath1, sRemoteFileName) 
+    if (os.path.isfile(dest)):
+        print('{}{}'.format(dest, "   exist !! remove it ?"))
+        sYesNo = rawInputTest()
+        if (sYesNo == 1):
+            os.remove(dest)
+            print('{}{}'.format(dest, ", remove ok"))
+        elif(sYesNo == 0):
+            print("skip")
+            sys.exit(0)
+    else:        
+        print('{}{}'.format(dest, "  do not exist"))
+
+    # 
+    sPathZipFile = os.path.abspath(os.path.join(sPC_NewMPUI_Path, os.pardir))
+    sPathZipFile = os.path.join(sPathZipBat, sRemoteFileName) 
+
+    sZipCmd = "c:\Program Files\7-Zip\7z.exe a" + sPC_NewMPUI_Name + sPC_NewMPUI_Path + "\*"
+
+
+    print('sPathZipBat = {}\nsZipCmd = {} ..'.format(sPathZipBat, sZipCmd))        
+
+    p=subprocess.Popen(sZipCmd, shell=True)  
+    p.wait() 
+
+    # check zip exist
+    if (os.path.isfile(sPathZipFile)):    
+        print('{}{}'.format(sPathZipFile, "   exist "))
+
+        print('backup to 3800, {}'.format(dest))
+        copyOneFile(sPathZipFile, sPathPC)
+
+        print('backup to pc, {}'.format(sPathPC))
+        copyOneFile(sPathZipFile, sPathPC)
+
+    else:        
+        print('{}{}'.format(sPathZipFile, "  do not exist, something err"))    
+
+    # wF = open(sPathZipBat, 'w')  
+    # wF.writelines(sCmd)
+    print('runZipFile[{}] end ..'.format('-'))    
+
+
 
 
 #def Achive_Folder_To_ZIP(sFilePath, dest = "", sSequenceNumber = "0"):
@@ -1293,6 +1376,8 @@ def parseXML(sXmlPath):
                 runCopyTo3800(xmlPath)
             if ( testName == 'CopyToGit'):
                 runCopyToGit(xmlPath)                
+            if ( testName == 'ZipFile'):
+                runZipFile(xmlPath)                
             if ( testName == 'CompressFile'):
                 runCompressFile(xmlPath)                
             if ( testName == 'VCVersion'):
