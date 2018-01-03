@@ -1,0 +1,1 @@
+"c:\Program Files\7-Zip\7z.exe" a V1.57.2018.103.zip D:\\3S_PC\ReleaseTool\MP_UI_V1.0\V1.57.2018.103\*
