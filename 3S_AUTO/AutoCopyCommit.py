@@ -65,7 +65,7 @@ def runCopyFolder(sSrc, sDet):
         print('[Err] runCopyFolder exit {}'.format(sDet))
         return -1
 
-    shutil.copytree(sSrc, sDet, ignore=ignore_dirs)
+    shutil.copytree(sSrc, sDet, symlinks=True, ignore=ignore_dirs)
 
     return 0
 
@@ -172,52 +172,6 @@ def runCopyFromWorkPath_EX(sSrcFolder, sSrcFile, sDesFolder):
     return 0
 
 
-
-# def runCopyFromDEPAP(sXmlPath, sTestFile):
-#     tree = ET.parse(sXmlPath)
-#     root = tree.getroot()   
-
-#     global sPC_NewMPUI_Path
-#     global sPC_NewMPUI_Name
-
-#     print('CopyFromDEPAP[{}] start ..'.format('-'))
-
-#     try:
-#         for neighbor in root.iter('PATHObjects'):
-#             sPath1 = neighbor.find('DEPAP_SSD_Path').text
-#             sPath2 = neighbor.find('PCWorkPath').text
-
-#         det_file = os.path.join(sPath1, sTestFile) 
-#         if os.path.exists(det_file):
-#             print('{}{}'.format(det_file, ", exist"))
-
-#         sPath3 = os.path.join(sPath2, sTestFile) 
-#         if os.path.exists(sPath3):
-#             print('{}{}'.format(sPath3, ",exist , remove now"))        
-#             os.remove(sPath3)
-
-        
-#         print('copy from [{}] to [{}] ok'.format(det_file, sPath2))
-
-#         # shutil.copytree(sPath1, sPath2, ignore=ignore_dirs)
-
-#         shutil.copy(det_file, sPath2)
-
-#         if os.path.exists(sPath3):
-#             zf = zipfile.ZipFile(sPath3)
-
-#             print('{}{}'.format(sPath3, ", ready to Extract "))        
-#             zf.extractall(path=sPath2, members=None, pwd=None)
-#             zf.close()
-#         else:
-#             print('{}{}'.format(sPath3, "not exist , do nothing"))        
-#     except:
-#         print('!!!except in runCopyFromDEPAP\n')        
-
-#     print('CopyFromDEPAP[{}] End ..\n '.format('-'))
-#     return 0
-
-
 def runCopyFromDEPAP_EX(sSrcFolder, sSrcFile, sDesFolder):   
 
     print('runCopyFromDEPAP_EX[{}] start ..'.format('-'))
@@ -306,7 +260,7 @@ def runSSDFA(sXmlPath, sTestName, sParameter):
             if(sTestName == "SSDFA"):
                 sVersion = "1." + sParameter
             elif(sTestName == "CopyMP") or (sTestName == "UpdateFwByBurner"):
-                sVersion = "SSDMP_v1." + sParameter
+                sVersion = "SSDMP_V1." + sParameter
             elif(sTestName == "CheckValidUtility"):
                 sVersion = "2." + sParameter
 
@@ -377,7 +331,7 @@ def runArtemisCopyTo3SPC(sXmlPath, sTestName):
             shutil.rmtree(sGitPath) 
             
         # ignore_dirs = shutil.ignore_patterns('.txt')
-        shutil.copytree(sSrcPath, sGitPath)
+        shutil.copytree(sSrcPath, sGitPath, symlinks=True)
 
         sStartTime = datetime.datetime.now()
         # sCmd = 'git commit -m {}{}{}'.format("\"", sStartTime, "\"")          
