@@ -101,21 +101,23 @@ def removeFolder(sPath):
     print("removeFolder done!")
 
 def removeFile(sPath):
-    for currentFile in glob.glob( os.path.join(sPath, '*') ):
-        if os.path.isdir(currentFile):
-            #print ("got a directory: ", currentFile)
-            removeFile(currentFile)
-        #print ("processing file: ", currentFile)
+    try:
+        for currentFile in glob.glob( os.path.join(sPath, '*') ):
+            if os.path.isdir(currentFile):
+                #print ("got a directory: ", currentFile)
+                removeFile(currentFile)
+            #print ("processing file: ", currentFile)
 
-        ncb = "ncb";
-        opt = "opt";
-        plg = "plg";
-        gitignore = ".gitignore";
-        referencetxt = "reference.txt";
-        if currentFile.endswith(ncb) or currentFile.endswith(opt) or
-         currentFile.endswith(plg) or currentFile.endswith(gitignore) or currentFile.endswith(referencetxt):
-            print ("remove file: ", currentFile)
-            os.remove(currentFile)
+            ncb = "ncb"
+            opt = "opt"
+            plg = "plg"
+            gitignore = "gitignore"
+            if currentFile.endswith(ncb) or currentFile.endswith(opt) or currentFile.endswith(plg) or currentFile.endswith(gitignore):
+                print ("remove file: ", currentFile)
+                os.remove(currentFile)
+
+    except:
+        showError("!!! removeFile except", 3)            
 
 def copyOneFile(src_file, det_file):        
     print('{}-\n{:120}-from \n{:120}-to'.format("prepare to copyOneFile ",src_file, det_file))
@@ -127,7 +129,42 @@ def copyOneFile(src_file, det_file):
     shutil.copy(src_file, det_file)
     
 
+def copyTimeStamp(sSrc, sDes): 
+    try:
+        if os.path.exists(sSrc) and os.path.exists(sDes) :
+           shutil.copystat(sSrc, sDes)
 
+    # print('{:<10s}copyTimeStamp  end'.format('start'))
+    # print("copyTimeStamp end")
+    except:
+        print("!!! except in copyTimeStamp")
+
+
+def syncTimeStampII(sSrc, sDes):
+    print('start syncTimeStampII \nsSrc = {}, sDes = {}'.format(sSrc, sDes))
+
+    global lastMP_UIPath
+    srcbinfilepath = ""
+    desbinfilepath = ""
+    # sSrcBin =  os.path.join(lastMP_UIPath, "bin")
+    sDesBin =  sDes
+    for root, dirs, files in os.walk(sSrc):
+        for srcbinfile in files:
+            # print('srcbinfile = {}, path = {}'.format(srcbinfile, root))
+            #check src bin file in windwos folder, not adata folder
+            if srcbinfile.endswith(".bin") :
+                srcbinfilepath = os.path.join(root, srcbinfile)
+                # print('syncTimeStampII: binFile = {},  srcbinfilepath = {}'.format(srcbinfile, srcbinfilepath))
+                for desRoot, desDirs, desFiles in os.walk(sDesBin):
+                    for desbinfile in desFiles:
+                        if (srcbinfile == desbinfile):
+                        # if (desbinfile.endswith(".bin")):
+                            desbinfilepath = os.path.join(desRoot, desbinfile)
+                            # print('get:\nsrcbinfilepath = {}\ndesbinfilepath = {}'.format(srcbinfilepath, desbinfilepath))
+                            copyTimeStamp(srcbinfilepath, desbinfilepath)
+                            # print('sync ok:\nsrcbinfilepath = {}\ndesbinfilepath = {}'.format(srcbinfilepath, desbinfilepath))
+                            # print('copy file, timestamp ok = \nMP:{}\nUI:{}'.format(srcbinfilepath, binPath))
+    print('End syncTimeStampII \nsSrc = {}, sDes = {}'.format(sSrc, sDes))                            
 
 def B2HEX_MP(sXmlPath):
     tree = ET.parse(sXmlPath)
@@ -294,6 +331,7 @@ def runCopySSD_MP_tool_EV(sXmlPath):
         shutil.rmtree(sPath1) 
         print('{}{}'.format(sPath1, ", rmtree ok"))    
     copy_tree(sPath2, sPath1)
+    # syncTimeStampII(sPath2, sPath1)
 
     global sPCS3800_SSD_MPPath
     sPCS3800_SSD_MPPath = sPath1
@@ -340,9 +378,9 @@ def runCopyFromGit(sXmlPath):
 
     ignore_dirs = shutil.ignore_patterns( '.gitignore', '.git', 'workHistory', 'MP_UI_DOC', 'src.7z')
     print('copy_tree from [{}] to [{}] ok'.format(sPath1, sPath2))
-    shutil.copytree(sPath1, sPath2, ignore=ignore_dirs)
+    shutil.copytree(sPath1, sPath2, symlinks=True, ignore=ignore_dirs)
 
-
+    # syncTimeStampII(sPath1, sPath2)
 
     print('runCopyFromGitEnd ..[{}]\n '.format('-'))
 
@@ -371,6 +409,7 @@ def runCopySSD_MP_UI(sXmlPath):
             print('{}{}'.format(sPath2, ", rmtree ok"))
             
         copy_tree(sPath1, sPath2)
+        # syncTimeStampII(sPath1, sPath2)
         sPC_NewMPUI_Name = sNewName
         sPC_NewMPUI_Path = sPath2
 
@@ -414,7 +453,8 @@ def runCopyToGit(sXmlPath):
         shutil.rmtree(det_file_bin) 
         print('{}{}'.format(det_file_bin, ", remove ok"))        
         
-    shutil.copytree(src_file, det_file_bin)
+    shutil.copytree(src_file, det_file_bin, symlinks=True)
+    # syncTimeStampII(src_file, det_file_bin)
 
     #************** copy mp folder **************
     src_file = os.path.join(sPC_NewMPUI_Path, 'src\\MP')
@@ -425,11 +465,13 @@ def runCopyToGit(sXmlPath):
         print('{}{}'.format(det_file_mp, "   exist !! remove it ?"))
         shutil.rmtree(det_file_mp) 
         print('{}{}'.format(det_file_mp, ", remove ok"))        
-    shutil.copytree(src_file, det_file_mp)    
+    shutil.copytree(src_file, det_file_mp, symlinks=True)    
+    # syncTimeStampII(src_file, det_file_mp)
 
     ##************** copy SSDMP.rc #**************
     src_file = os.path.join(sPC_NewMPUI_Path, 'src\\SSDMP.rc')
     copyOneFile(src_file, det_file_rc)
+    # syncTimeStampII(src_file, det_file_bin)
     
     ##************** copy UAC/SSDMP.EXE **************
     src_file = os.path.join(sPC_NewMPUI_Path, 'src\\UAC\\SSDMP.exe')
@@ -440,6 +482,7 @@ def runCopyToGit(sXmlPath):
 
 
 def runCopyTo3800(sXmlPath):
+    
     tree = ET.parse(sXmlPath)
     root = tree.getroot()   
 
@@ -469,7 +512,8 @@ def runCopyTo3800(sXmlPath):
             print("skip")
             sys.exit(0)
         
-    shutil.copytree(src_file, det_file)
+    shutil.copytree(src_file, det_file, symlinks=True)
+    # syncTimeStampII(src_file, det_file)
     sRemote3800_NewMPUI_Path = det_file
 
     print('copyTo3800, {} end ..'.format(det_file))
@@ -491,11 +535,12 @@ def runZipFile(sXmlPath):
 
     removeFolder(sPC_NewMPUI_Path)
     removeFile(sPC_NewMPUI_Path)
+    print("removeFile done!")
 
-    sRemoteFileName = sPC_NewMPUI_Name + '.zip'
-    sRemoteFolderName = sPC_NewMPUI_Name
+    sZipFileName = sPC_NewMPUI_Name + '.zip'
+    
 
-    dest = os.path.join(sPath1, sRemoteFileName) 
+    dest = os.path.join(sPath1, sZipFileName) 
     if (os.path.isfile(dest)):
         print('{}{}'.format(dest, "   exist !! remove it ?"))
         sYesNo = rawInputTest()
@@ -508,30 +553,48 @@ def runZipFile(sXmlPath):
     else:        
         print('{}{}'.format(dest, "  do not exist"))
 
+
     # 
     sPathZipFile = os.path.abspath(os.path.join(sPC_NewMPUI_Path, os.pardir))
-    sPathZipFile = os.path.join(sPathZipBat, sRemoteFileName) 
+    sPathWorking = sPathZipFile
+    sPathBat = os.path.join(sPathZipFile, "zipFileBat.bat") 
+    sPathZipFile = os.path.join(sPathZipFile, sZipFileName) 
 
-    sZipCmd = "c:\Program Files\7-Zip\7z.exe a" + sPC_NewMPUI_Name + sPC_NewMPUI_Path + "\*"
+    # "c:\Program Files\7-Zip\7z.exe" a V1.57.2018.103.zip D:\\3S_PC\ReleaseTool\MP_UI_V1.0\V1.57.2018.103\
+    sZipCmd = "\"c:\\Program Files\\7-Zip\\7z.exe\" a "  + sZipFileName + " " + sPC_NewMPUI_Path + "\\"
 
 
-    print('sPathZipBat = {}\nsZipCmd = {} ..'.format(sPathZipBat, sZipCmd))        
+    print('sPathZipFile = {}\nsZipCmd = {} \nsPathBat = {}'.format(sPathZipFile, sZipCmd, sPathBat))        
 
-    p=subprocess.Popen(sZipCmd, shell=True)  
-    p.wait() 
+
+    wF = open(sPathBat, 'w')  
+    wF.writelines(sZipCmd)
+    wF.close()
+
+    os.chdir(sPathWorking)
+    p1=subprocess.Popen(sPathBat, shell=True)  
+    p1.wait() 
+
+    print('End sPathZipFile = {}\nsZipCmd = {} '.format(sPathZipFile, sZipCmd))        
+    # p1=subprocess.Popen(sZipCmd, shell=True)  
+    # p1.wait() 
+
 
     # check zip exist
     if (os.path.isfile(sPathZipFile)):    
         print('{}{}'.format(sPathZipFile, "   exist "))
 
-        print('backup to 3800, {}'.format(dest))
-        copyOneFile(sPathZipFile, sPathPC)
+        print('backup to fileServer, {}'.format(sPath1))
+        copyOneFile(sPathZipFile, sPath1)
 
+        sPathPC = os.path.abspath(os.path.join(sPC_NewMPUI_Path, os.pardir))
+        sPathPC = os.path.join(sPathPC, "SourceCode")
         print('backup to pc, {}'.format(sPathPC))
         copyOneFile(sPathZipFile, sPathPC)
 
     else:        
-        print('{}{}'.format(sPathZipFile, "  do not exist, something err"))    
+        sMsg = '{}{}'.format(sPathZipFile, "  do not exist, something err")   
+        showError(sMsg, 777)
 
     # wF = open(sPathZipBat, 'w')  
     # wF.writelines(sCmd)
@@ -807,7 +870,8 @@ def runHUATOOP(sXmlPath, sH14H16):
                         if (findFile(sPCS3800_SSD_MP_SettingPath, sBinName) == 0):
                             print('Get it in [{}] '.format(sPCS3800_SSD_MP_SettingPath))
 
-                            if (findFile(sPC_NewMPUI_Setting_Path ,neighborChild.text) == -1):
+                            sBinNameMP_UI = neighborChild.get('Name') + neighborChild.text + ".bin"
+                            if (findFile(sPC_NewMPUI_Setting_Path, sBinNameMP_UI) == -1):
                                 print ("nothing in sPC_NewMPUI_Setting_Path, copy to")
                                 
                                 sFromPath = os.path.join(sPCS3800_SSD_MP_SettingPath, sBinName)
