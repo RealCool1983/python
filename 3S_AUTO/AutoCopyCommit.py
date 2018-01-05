@@ -69,57 +69,6 @@ def runCopyFolder(sSrc, sDet):
 
     return 0
 
-# # 1.remove exist folder
-# # 2.copy folder
-# def runCopyFromWorkPath(sXmlPath, sTestFile):
-#     tree = ET.parse(sXmlPath)
-#     root = tree.getroot()   
-#     try:
-#         print('runCopyFromWorkPath[{}] start ..'.format('-'))
-#         for neighbor in root.iter('PATHObjects'):
-#             sPath1 = neighbor.find('PCWorkPath').text
-#             sPath2 = neighbor.find('PCSEToolPath').text
-
-#         print('sPath1 = {}, sPath2 = {}'.format(sPath1, sPath2))
-
-#         if os.path.exists(sPath2):
-#             shutil.rmtree(sPath2) 
-#             print('{}{}'.format(sPath2, ", rmtree ok"))
-            
-
-#         det_file = os.path.join(sPath1, sTestFile) 
-#         # print('det_file = {}'.format(det_file))
-#         if not (os.path.exists(det_file)):
-#             print('[Err] not exist, det_file = {}'.format(det_file))
-#             retur -1
-#         else:
-#             print(os.listdir(det_file))
-
-#         for root, directories, files in os.walk(det_file):
-#             for subfolder in directories:
-#                 if (subfolder.find("bin") != -1 ):
-#                     sFolderPathSrc = os.path.join(root, subfolder)
-#                     sFolderPathDet = os.path.join(sPath2, subfolder)
-#                     print('subfolder = {}, path = {}'.format(subfolder, sFolderPathSrc))
-#                     runCopyFolder(sFolderPathSrc, sFolderPathDet)
-
-#                 elif (subfolder.find("src") != -1 ):
-#                     sFolderPathSrc = os.path.join(root, subfolder)
-#                     sFolderPathDet = os.path.join(sPath2, subfolder)
-#                     print('subfolder = {}, path = {}'.format(subfolder, sFolderPathSrc))
-#                     runCopyFolder(sFolderPathSrc, sFolderPathDet)
-
-#                 elif (subfolder.find("package") != -1 ):
-#                     sFolderPathSrc = os.path.join(root, subfolder)
-#                     sFolderPathDet = os.path.join(sPath2, subfolder)
-#                     print('subfolder = {}, path = {}'.format(subfolder, sFolderPathSrc))
-#                     runCopyFolder(sFolderPathSrc, sFolderPathDet)
-#     except:
-#         print('!!!excpet in runCopyFromWorkPath\n')            
-#         return -1
-
-#     print('runCopyFromWorkPath[{}] End ..\n '.format('-'))
-#     return 0
 
 # def runCopyFromWorkPath(sXmlPath, sTestFile):
 def runCopyFromWorkPath_EX(sSrcFolder, sSrcFile, sDesFolder):
@@ -260,7 +209,7 @@ def runSSDFA(sXmlPath, sTestName, sParameter):
             if(sTestName == "SSDFA"):
                 sVersion = "1." + sParameter
             elif(sTestName == "CopyMP") or (sTestName == "UpdateFwByBurner"):
-                sVersion = "SSDMP_V1." + sParameter
+                sVersion = "SSDMP_V2." + sParameter
             elif(sTestName == "CheckValidUtility"):
                 sVersion = "2." + sParameter
 
