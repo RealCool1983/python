@@ -1,0 +1,19 @@
+<Configuration>
+		<PATHObjects>
+
+		</PATHObjects>
+		
+		<TestItemList>
+			<Item Enabled="TRUE" Name="CopyUSB2" Parameter="2305" />
+		</TestItemList>
+		
+		<ProcessObjectSet>
+			<ProcessObject Name="CopyUSB2">
+				<var1 Name="3S">D:\\3S_PC\sourceCode\USB_20\MP</var1>
+				<var2 Name="3S">D:\\usb20</var2>
+				<var3 Name="3S">D:\\3S_PC\sourceCode\SSD\VC6\workingTmp\gitWork</var3> 
+            </ProcessObject>			
+			
+		</ProcessObjectSet>
+		
+</Configuration>
