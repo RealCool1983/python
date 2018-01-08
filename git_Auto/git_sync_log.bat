@@ -15,6 +15,12 @@ git push ssd-mp-ui-log master
 git pull ssd-mp-ui-log master
 
 
+cd D:\3S_PC\sourceCode\USB_20
+git pull usb_20_tools master
+git push usb_20_tools master
+git pull usb_20_tools master
+
+
 cd D:\3S_PC\sourceCode\SSD\Work_ING
 git pull ssd-working master
 git push ssd-working master
