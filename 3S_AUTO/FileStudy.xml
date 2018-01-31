@@ -1,7 +1,7 @@
 
 <Configuration>
 		<PATHObjects>
-			<Folder_Path>D:\\3S_PC\python</Folder_Path>	
+			<Folder_Path>D:\\3S_PC\sourceCode\USB_20\MP\bin\DiffPackage\</Folder_Path>	
 			<SyncFolderFrom>D:\\3S_PC\sourceCode\SSD\VC6\workingTmp\gitWork\Extract\v1.4.2017.210</SyncFolderFrom><!--destination-->		
 			<SyncFolderTo>D:\\3S_PC\sourceCode\SSD\VC6\workingTmp\test</SyncFolderTo><!--source-->
 			
@@ -10,7 +10,7 @@
 		<TestItemList><!--FALSE, TRUE -->
 		
 			<!--Parameter = 1, need to check sequence of find Index -->
-			<Item Name="ReadTxtParticular"  Parameter="1" FileType=".xml" Enabled="TRUE"/>
+			<Item Name="ReadTxtParticular2"  Parameter="1" FileType=".INI" Enabled="TRUE"/>
 		
 		
 			<!--Parameter(0~99xx, show top 1 file -->
@@ -31,14 +31,18 @@
 		</TestItemList>
 		
 		<ProcessObjectSet>
-			<ProcessObject  Name="ReadTxtParticular">
-				<var1 Name="CheckStr">Item</var1>
-				<var2 Name="CheckStr">TRUE</var2>
-				<var3 Name="CheckStr">FALSE</var3><!--FALSE, don't check -->
-				<var4 Name="CheckStr">FALSE</var4><!--FALSE, don't check -->
-				<var5 Name="CheckStr">FALSE</var5><!--FALSE, don't check -->
+			<ProcessObject  Name="ReadTxtParticular2">
+				<var1 Name="CheckStr">PN</var1>
+				<var2 Name="CheckStr">Note</var2>
+				<var3 Name="CheckStr">ID18</var3><!--FALSE, don't check -->
+				<var4 Name="CheckStr">BOUNDARY_CHECK</var4><!--FALSE, don't check -->
+				<var5 Name="CheckStr">BOUNDARY_CHECK_LOW</var5><!--FALSE, don't check -->
+				<var6 Name="CheckStr">Code</var6><!--FALSE, don't check -->
+				<var7 Name="CheckStr">T19SortingSymbol</var7><!--FALSE, don't check -->
+				
             </ProcessObject>	
 						
+					
 		</ProcessObjectSet>
 		
 </Configuration>		

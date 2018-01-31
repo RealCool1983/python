@@ -461,49 +461,56 @@ def runSameFile(sXmlPath, inParameter):
 
 
 
-def runCheckProcessObjectSet(sXmlPath, sProcessObject, sStrLine, inParameter):
+
+def runCheckProcessObjectSet2(sXmlPath, sProcessObject, sStrLine, inParameter):
     tree = ET.parse(sXmlPath)
     root = tree.getroot() 
-    
-    # print('runCheckProcessObjectSet start ,{}, {}..'.format(inParameter, sProcessObject))        
 
-    dict_Var = {'var1': '0', 'var2': '0', 'var3': '0', 'var4': '0', 'var5': '0'}
-    dict_VarFindIndex = {'var1': '0', 'var2': '0', 'var3': '0', 'var4': '0', 'var5': '0'}
+    # default == -1 is fail,0 is pass
+    nReturn = -1
+    # print('runCheckProcessObjectSet2 start ,{}, {}..'.format(inParameter, sProcessObject))        
+
+    dict_Var = {'var1': '0', 'var2': '0', 'var3': '0', 'var4': '0', 'var5': '0', 'var6': '0', 'var7': '0'}
+    dict_VarFindIndex = {'var1': '0', 'var2': '0', 'var3': '0', 'var4': '0', 'var5': '0', 'var6': '0', 'var7': '0'}
     for neighbor in tree.iter('ProcessObject'):
+
         if ( neighbor.get('Name')  == sProcessObject):
             for neighborChild in neighbor:
+                # print('neighborChild.text = {} '.format(neighborChild.text))
                 if (neighborChild.text): #check if value is blank
                     dict_Var[neighborChild.tag] = neighborChild.text
 
                     if(dict_Var[neighborChild.tag] != "FALSE"):
+                        # print('dict_Var[neighborChild.tag] = {} '.format(dict_Var[neighborChild.tag]))
+                        
                         iFindIndex = sStrLine.find(dict_Var[neighborChild.tag])
                         if(iFindIndex == -1 ): # can't find spec string
-                            return -1
+                            sTest = "sTest"
+                            
+                            # return -1
                         else:
-                            dict_VarFindIndex[neighborChild.tag] = iFindIndex
+                            # need Code, don't need SN_CustomerCode
+                            if(sStrLine.find("SN_CustomerCode") == -1):
+                                dict_VarFindIndex[neighborChild.tag] = iFindIndex
+                                nReturn = 0
+
+                            # print('dict_Var tag = {}, got it = {} '.format(dict_Var[neighborChild.tag], sStrLine))
+                            break
                 else:
                     print('warring!! {} is blank'.format(neighborChild.tag))
 
+  
+    return nReturn                  
 
-    if( int(inParameter) == 1 ):    
-        iMaxIndex = 0
-        for dict_VarFindIndexElement in dict_VarFindIndex:
-            iCurrentIndex = int(dict_VarFindIndex[dict_VarFindIndexElement])
-            if (iCurrentIndex != 0):
-                if (iCurrentIndex > iMaxIndex):
-                    iMaxIndex = iCurrentIndex
-                else:
-                    return -1 #find str, but the sequence of str is wrong 
 
-                
-    # print('runCheckProcessObjectSet End ..'.format('-'))        
-    return 0                  
-
-def runReadTxtParticular(sXmlPath, inParameter, sFileType):
+# read particular folder with extension name
+# find particular string by read each line
+# 20180131 Rex
+def runReadTxtParticular2(sXmlPath, inParameter, sFileType):
     tree = ET.parse(sXmlPath)
     root = tree.getroot()   
 
-    print('runReadTxtParticular[{}] start ..'.format('-'))
+    print('runReadTxtParticular2[{}] start ..'.format('-'))
     
     for neighbor in root.iter('PATHObjects'):
         sPath1 = neighbor.find('Folder_Path').text
@@ -530,23 +537,34 @@ def runReadTxtParticular(sXmlPath, inParameter, sFileType):
     print("build listFileInfo done")
 
     for x, y in listFileInfo:
-        if(x.find(sFileType) > -1): #read txt file 
+        if(x.find(sFileType) > -1) and (x.find("U3S_QC.INI") == -1 ): #read txt file 
+
             # print('t0 = {}\n t1 = {} \n '.format(x, y))
             file = open(y, 'r', encoding='ISO-8859-1')
-            print('check file, {}'.format(y))
+            # print('check file, {}'.format(os.path.basename(y)))
 
+            sSingleFileStr = os.path.basename(y)
             while True:
                 line = file.readline()
                 if not line: 
                     break
-                if( runCheckProcessObjectSet(sXmlPath, "ReadTxtParticular", line, inParameter) == 0):# got it
-                    print('got it,{}'.format(line.strip()))     # remove line blank, strip()
+                if( runCheckProcessObjectSet2(sXmlPath, "ReadTxtParticular2", line, inParameter) == 0):
+                    # got it, split string
+                    listReslut = line.split('=', 1 )
+
+                    sSingleFileStr = sSingleFileStr + "," + listReslut[1].strip()
+                    # sSingleFileStr = sSingleFileStr + "," + line.strip()
+                    # print('{}'.format(line.strip()))    # remove line blank, strip()
+
+            print('{}'.format(sSingleFileStr))
 
             file.close()                        
 
 
-    print('\nrunReadTxtParticular End ..\n ')
+    print('\runReadTxtParticular2 End ..\n ')
     return 0
+
+
 
 
 def runPause():
@@ -583,8 +601,10 @@ def parseXML(sXmlPath):
 
         if (testState == 'TRUE'):
             try:
+                if ( testName == 'ReadTxtParticular2'):
+                    runReadTxtParticular2(xmlPath, inParameter, testFileType)     
                 if ( testName == 'ReadTxtParticular'):
-                    runReadTxtParticular(xmlPath, inParameter, testFileType)                                                   
+                    runReadTxtParticular(xmlPath, inParameter, testFileType)                                                                       
                 if ( testName == 'FileSize'):
                     runSameFile(xmlPath, inParameter)                                                                 
                 if ( testName == 'SyncFolder'):
@@ -617,7 +637,10 @@ def parseXML(sXmlPath):
 
 if __name__ == "__main__":
 
-    xmlPath = "D:\\3S_PC\\python\\3S_AUTO\\FileStudy.xml"
+    dir_path = os.path.dirname(os.path.realpath(__file__))
+    xmlPath = os.path.join(dir_path, "FileStudy.xml")
+
+    # xmlPath = "D:\\3S_PC\\python\\3S_AUTO\\FileStudy.xml"
 
     sStartTime = datetime.datetime.now()
     print('StartTime:{} ..\n '.format(sStartTime))
