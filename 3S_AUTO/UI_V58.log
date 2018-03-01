@@ -1,0 +1,1128 @@
+
+D:\3S_PC\python\3S_AUTO>cd D:\\3S_PC\ReleaseTool\MP_UI_V1.0\V1.58.2018.105\src 
+
+D:\3S_PC\ReleaseTool\MP_UI_V1.0\V1.58.2018.105\src>msdev SSDMP.dsp /make "SSDMP - Win32 Debug" /rebuild 
+Deleting intermediate files and output files for project 'SSDMP - Win32 Debug'.
+--------------------Configuration: SSDMP - Win32 Debug--------------------
+Compiling resources...
+Compiling...
+StdAfx.cpp
+Compiling...
+DefectManager.cpp
+dlgErrorcode.cpp
+dlgMPPage.cpp
+Automatically linking with XListCtrlSSDA.lib
+dlgNandInfo.cpp
+Automatically linking with XListCtrlSSDA.lib
+dlgRDTResultPage.cpp
+dlgSettingPage1.cpp
+dlgSettingPage2.cpp
+dlgShowCEPage.cpp
+dlgSortingSettingPage.cpp
+dlgSSDMP.cpp
+LogManager.cpp
+Automatically linking with XListCtrlSSDA.lib
+MPIniManager.cpp
+MTableManager.cpp
+NandInfoManager.cpp
+RDTResultManager.cpp
+SNManager.cpp
+SSDMP.cpp
+UserDefineHubMapManager.cpp
+Automatically linking with XListCtrlSSDA.lib
+FileManager.cpp
+HubManager.cpp
+Generating Code...
+Compiling...
+storage.cpp
+usbinfo.cpp
+Volume.cpp
+SSD_Command.cpp
+SSD_Utility.cpp
+AES.cpp
+ColorEdit.cpp
+FontSize.cpp
+Label.cpp
+XColorStatic.cpp
+Generating Code...
+Linking...
+
+SSDMP.exe - 0 error(s), 0 warning(s)
+
+D:\3S_PC\ReleaseTool\MP_UI_V1.0\V1.58.2018.105\src>msdev SSDMP.dsp /make "SSDMP - Win32 Release" /rebuild 
+Deleting intermediate files and output files for project 'SSDMP - Win32 Release'.
+--------------------Configuration: SSDMP - Win32 Release--------------------
+Compiling resources...
+Compiling...
+StdAfx.cpp
+Compiling...
+DefectManager.cpp
+dlgErrorcode.cpp
+dlgMPPage.cpp
+Automatically linking with XListCtrlSSRA.lib
+dlgNandInfo.cpp
+Automatically linking with XListCtrlSSRA.lib
+dlgRDTResultPage.cpp
+dlgSettingPage1.cpp
+dlgSettingPage2.cpp
+dlgShowCEPage.cpp
+dlgSortingSettingPage.cpp
+dlgSSDMP.cpp
+LogManager.cpp
+Automatically linking with XListCtrlSSRA.lib
+MPIniManager.cpp
+MTableManager.cpp
+NandInfoManager.cpp
+RDTResultManager.cpp
+SNManager.cpp
+SSDMP.cpp
+UserDefineHubMapManager.cpp
+Automatically linking with XListCtrlSSRA.lib
+FileManager.cpp
+HubManager.cpp
+Generating Code...
+Compiling...
+storage.cpp
+usbinfo.cpp
+Volume.cpp
+SSD_Command.cpp
+SSD_Utility.cpp
+AES.cpp
+ColorEdit.cpp
+FontSize.cpp
+Label.cpp
+XColorStatic.cpp
+Generating Code...
+Linking...
+LINK : warning LNK4089: all references to "SHLWAPI.dll" discarded by /OPT:REF
+
+SSDMP.exe - 0 error(s), 1 warning(s)
+
+D:\3S_PC\ReleaseTool\MP_UI_V1.0\V1.58.2018.105\src\UAC>mt.exe -manifest SSDMP.exe.manifest -outputresource:SSDMP.exe;#1 
+Microsoft (R) Manifest Tool version 5.2.3790.2014
+Copyright (c) Microsoft Corporation 2005. 
+All rights reserved.
+StartTime:2018-01-05 11:30:52.687910 ..
+ 
+testName:              CopyFromGit, testState:    TRUE
+runCopyFromGit[-] start ..
+D:\\3S_PC\ReleaseTool\MP_UI_V1.0\V1.6.2017.777, rmtree ok
+copy_tree from [D:\\3S_PC\sourceCode\SSD\VC6\GIT_MP_UI\V1.0] to [D:\\3S_PC\ReleaseTool\MP_UI_V1.0\V1.6.2017.777] ok
+runCopyFromGitEnd ..[-]
+ 
+testName:       CopySSD_MP_tool_EV, testState:    TRUE
+runCopySSD_MP_tool_EV[-] start ..
+D:\\3S_PC\ReleaseTool\MP_UI_V1.0\pythonWorking\MP_V1, rmtree ok
+copy_tree from [D:\\3S_PC\sourceCode\SSD\SSD_tools\MP\MP_V1] to [D:\\3S_PC\ReleaseTool\MP_UI_V1.0\pythonWorking\MP_V1] ok
+runCopySSD_MP_tool_EVEnd ..[-]
+ 
+testName:            CopySSD_MP_UI, testState:    TRUE
+runCopySSD_MP_UI[-] start ..
+NewMPUIName: V1.58.2018.105
+D:\\3S_PC\ReleaseTool\MP_UI_V1.0\V1.58.2018.105, rmtree ok
+sPC_NewMPUI_Name = [V1.58.2018.105] , sPC_NewMPUI_Path =  [D:\\3S_PC\ReleaseTool\MP_UI_V1.0\V1.58.2018.105]
+copy_tree from [D:\\3S_PC\ReleaseTool\MP_UI_V1.0\V1.6.2017.777] to [D:\\3S_PC\ReleaseTool\MP_UI_V1.0\V1.58.2018.105] ok
+runCopySSD_MP_UIEnd ..[-]
+ 
+testName:                VCVersion, testState:    TRUE
+runVCVersion[-] start ..
+D:\\3S_PC\ReleaseTool\MP_UI_V1.0\V1.58.2018.105\src\SSDMP.rc
+runVCVersion End ..[-]
+ 
+testName:             Bin2HexMPExe, testState:    TRUE
+B2HEX_MP start ..
+sPath1  = D:\\3S_PC\ReleaseTool\MP_UI_V1.0\pythonWorking\BIN2HEX\BIN2HEX.exe
+sPath2  = D:\\3S_PC\ReleaseTool\MP_UI_V1.0\pythonWorking\MP_V1\bin\3S_SSD_MP.exe
+sPath1Hex  = D:\\3S_PC\ReleaseTool\MP_UI_V1.0\pythonWorking\BIN2HEX\3S_SSD_MP.hex
+sCmd  = D:\\3S_PC\ReleaseTool\MP_UI_V1.0\pythonWorking\BIN2HEX\BIN2HEX.exe D:\\3S_PC\ReleaseTool\MP_UI_V1.0\pythonWorking\MP_V1\bin\3S_SSD_MP.exe D:\\3S_PC\ReleaseTool\MP_UI_V1.0\pythonWorking\BIN2HEX\3S_SSD_MP.hex
+sCmd  = D:\\3S_PC\ReleaseTool\MP_UI_V1.0\pythonWorking\BIN2HEX\BIN2HEX.exe D:\\3S_PC\ReleaseTool\MP_UI_V1.0\pythonWorking\MP_V1\bin\3S_SSD_MP.exe D:\\3S_PC\ReleaseTool\MP_UI_V1.0\pythonWorking\BIN2HEX\3S_SSD_MP.hex
+copy to src\MP
+prepare to copyOneFile -
+D:\\3S_PC\ReleaseTool\MP_UI_V1.0\pythonWorking\BIN2HEX\3S_SSD_MP.hex                                                    -from 
+D:\\3S_PC\ReleaseTool\MP_UI_V1.0\V1.58.2018.105\src\MP                                                                  -to
+B2HEX_MP End ..
+
+testName:            Bin2HexKEYDLL, testState:   FALSE
+testName:             VC6AutoBuild, testState:    TRUE
+runVC6AutoBuild start ..
+writeBat[-] start ..
+D:\\3S_PC\python\3S_AUTO\BUILD_MP_UI.bat
+D:\\3S_PC\ReleaseTool\MP_UI_V1.0\pythonWorking\autobuild.bat
+cd D:\\3S_PC\ReleaseTool\MP_UI_V1.0\V1.58.2018.105\src
+
+writeBat End ..
+
+copy to uac folder
+prepare to copyOneFile -
+D:\\3S_PC\ReleaseTool\MP_UI_V1.0\V1.58.2018.105\src\Release\SSDMP.exe                                                   -from 
+D:\\3S_PC\ReleaseTool\MP_UI_V1.0\V1.58.2018.105\src\UAC                                                                 -to
+runVC6AutoBuild End ..
+
+testName:                   UacBat, testState:    TRUE
+runUacBat start ..
+copy to bin
+prepare to copyOneFile -
+D:\\3S_PC\ReleaseTool\MP_UI_V1.0\V1.58.2018.105\src\UAC\SSDMP.exe                                                       -from 
+D:\\3S_PC\ReleaseTool\MP_UI_V1.0\V1.58.2018.105\bin                                                                     -to
+runUacBat End ..,D:\\3S_PC\ReleaseTool\MP_UI_V1.0\V1.58.2018.105\src\UAC\SSDMP.exe
+
+testName:              HUATOOP_H14, testState:    TRUE
+runHUATOOP[HUATOOP_H14] start ..
+runHUATOOP sPC_NewMPUI_Setting_Path = D:\\3S_PC\ReleaseTool\MP_UI_V1.0\V1.58.2018.105\bin\Setting
+runHUATOOP sPCS3800_SSD_MP_SettingPath = D:\\3S_PC\ReleaseTool\MP_UI_V1.0\pythonWorking\MP_V1\package\windows\H14_TLC\HUATOOP
+compareStart .. [3.2.0.56] 
+copyIniFile Start sSrcPath = D:\\3S_PC\ReleaseTool\MP_UI_V1.0\pythonWorking\MP_V1\package\windows\H14_TLC\HUATOOP
+sDesPath = D:\\3S_PC\ReleaseTool\MP_UI_V1.0\V1.58.2018.105\bin\Setting
+sIniEndingName = H14_TLC_test.ini
+GetIt, FTA_H14_TLC_test.ini, D:\\3S_PC\ReleaseTool\MP_UI_V1.0\pythonWorking\MP_V1\package\windows\H14_TLC\HUATOOP\FTA_H14_TLC_test.ini 
+remove file, D:\\3S_PC\ReleaseTool\MP_UI_V1.0\V1.58.2018.105\bin\Setting\FTA_H14_TLC_test.ini
+prepare to copyOneFile -
+D:\\3S_PC\ReleaseTool\MP_UI_V1.0\pythonWorking\MP_V1\package\windows\H14_TLC\HUATOOP\FTA_H14_TLC_test.ini               -from 
+D:\\3S_PC\ReleaseTool\MP_UI_V1.0\V1.58.2018.105\bin\Setting                                                             -to
+updateIniMPToMP_UI Start sPath = D:\\3S_PC\ReleaseTool\MP_UI_V1.0\V1.58.2018.105\bin\Setting\FTA_H14_TLC_test.ini
+replaceLine ok path:D:\\3S_PC\ReleaseTool\MP_UI_V1.0\V1.58.2018.105\bin\Setting\FTA_H14_TLC_test.ini
+ old:Burner=./3S_HNX_14TLC_BNR_3.2.0.56.bin
+ new:Burner=.\Setting\3S_HNX_14TLC_BNR_3.2.0.56.bin
+replaceLine ok path:D:\\3S_PC\ReleaseTool\MP_UI_V1.0\V1.58.2018.105\bin\Setting\FTA_H14_TLC_test.ini
+ old:Recv_Drv_Num_By_UI=0
+ new:Recv_Drv_Num_By_UI=1
+updateIniMPToMP_UI End ..[-]
+ 
+GetIt, MP_H14_TLC_test.ini, D:\\3S_PC\ReleaseTool\MP_UI_V1.0\pythonWorking\MP_V1\package\windows\H14_TLC\HUATOOP\MP_H14_TLC_test.ini 
+remove file, D:\\3S_PC\ReleaseTool\MP_UI_V1.0\V1.58.2018.105\bin\Setting\MP_H14_TLC_test.ini
+prepare to copyOneFile -
+D:\\3S_PC\ReleaseTool\MP_UI_V1.0\pythonWorking\MP_V1\package\windows\H14_TLC\HUATOOP\MP_H14_TLC_test.ini                -from 
+D:\\3S_PC\ReleaseTool\MP_UI_V1.0\V1.58.2018.105\bin\Setting                                                             -to
+updateIniMPToMP_UI Start sPath = D:\\3S_PC\ReleaseTool\MP_UI_V1.0\V1.58.2018.105\bin\Setting\MP_H14_TLC_test.ini
+replaceLine ok path:D:\\3S_PC\ReleaseTool\MP_UI_V1.0\V1.58.2018.105\bin\Setting\MP_H14_TLC_test.ini
+ old:Burner=./3S_HNX_14TLC_BNR_3.2.0.56.bin
+ new:Burner=.\Setting\3S_HNX_14TLC_BNR_3.2.0.56.bin
+replaceLine ok path:D:\\3S_PC\ReleaseTool\MP_UI_V1.0\V1.58.2018.105\bin\Setting\MP_H14_TLC_test.ini
+ old:Recv_Drv_Num_By_UI=0
+ new:Recv_Drv_Num_By_UI=1
+updateIniMPToMP_UI End ..[-]
+ 
+copyIniFile End ..[-]
+ 
+get binName =  3S_HNX_14TLC_BNR_3.2.0.56.bin
+updateIniStart .. [-] 
+updateIni sIniFile: H14_TLC_test.ini, sIniSection: Burner=.\Setting\, file:FTA_H14_TLC_test.ini, secction:HUATOOP_H14
+updateIni sIniFile: H14_TLC_test.ini, sIniSection: Burner=.\Setting\, file:MP_H14_TLC_test.ini, secction:HUATOOP_H14
+updateIni End ..[-]
+ 
+findFile Start sPath = D:\\3S_PC\ReleaseTool\MP_UI_V1.0\pythonWorking\MP_V1\package\windows\H14_TLC\HUATOOP, name = 3S_HNX_14TLC_BNR_3.2.0.56.bin
+GetIt = [3S_HNX_14TLC_BNR_3.2.0.56.bin] 
+Get it in [D:\\3S_PC\ReleaseTool\MP_UI_V1.0\pythonWorking\MP_V1\package\windows\H14_TLC\HUATOOP] 
+findFile Start sPath = D:\\3S_PC\ReleaseTool\MP_UI_V1.0\V1.58.2018.105\bin\Setting, name = 3S_HNX_14TLC_BNR_3.2.0.56.bin
+GetIt = [3S_HNX_14TLC_BNR_3.2.0.56.bin] 
+already in sPC_NewMPUI_Setting_Path
+compareStart .. [1.1.0.13] 
+get binName =  3S_HNX_14TLC_FW_1.1.0.13.bin
+updateMTable_Ex .. [-] 
+updateMTable_Ex sIniFile: MTable.set, sIniSection: FW_3=.\Setting\, sFlashType:[Hynix], file:MTable.set, secction:HUATOOP_H14
+updateMTable_Ex End -..
+ 
+findFile Start sPath = D:\\3S_PC\ReleaseTool\MP_UI_V1.0\pythonWorking\MP_V1\package\windows\H14_TLC\HUATOOP, name = 3S_HNX_14TLC_FW_1.1.0.13.bin
+findFile End ..[-]
+ 
+compareStart .. [2.0.0.7] 
+get binName =  3S_HNX_14TLC_RDT_2.0.0.7.bin
+updateMTable_Ex .. [-] 
+updateMTable_Ex sIniFile: MTable.set, sIniSection: FW_4=.\Setting\, sFlashType:[Hynix], file:MTable.set, secction:HUATOOP_H14
+updateMTable_Ex End -..
+ 
+findFile Start sPath = D:\\3S_PC\ReleaseTool\MP_UI_V1.0\pythonWorking\MP_V1\package\windows\H14_TLC\HUATOOP, name = 3S_HNX_14TLC_RDT_2.0.0.7.bin
+GetIt = [3S_HNX_14TLC_RDT_2.0.0.7.bin] 
+Get it in [D:\\3S_PC\ReleaseTool\MP_UI_V1.0\pythonWorking\MP_V1\package\windows\H14_TLC\HUATOOP] 
+findFile Start sPath = D:\\3S_PC\ReleaseTool\MP_UI_V1.0\V1.58.2018.105\bin\Setting, name = 3S_HNX_14TLC_RDT_2.0.0.7.bin
+GetIt = [3S_HNX_14TLC_RDT_2.0.0.7.bin] 
+already in sPC_NewMPUI_Setting_Path
+compareStart .. [TRUE] 
+dict_Var[neighborChild.tag] = TRUE ..
+ 
+Function = HUATOOP_H14, dict_Var4 value =  TRUE
+ 
+prepare Insert,D:\\3S_PC\ReleaseTool\MP_UI_V1.0\V1.58.2018.105\bin\Setting\MP_H14_TLC_test.ini,D:\\3S_PC\ReleaseTool\MP_UI_V1.0\V1.58.2018.105\bin\Setting,MP_H14_TLC_test.ini
+ 
+addNewIniSection Start sSrcPath = D:\3S_PC\python\3S_AUTO\newSecton.txt
+sDesPath = D:\\3S_PC\ReleaseTool\MP_UI_V1.0\V1.58.2018.105\bin\Setting
+GetIt, MP_H14_TLC_test.ini, D:\\3S_PC\ReleaseTool\MP_UI_V1.0\V1.58.2018.105\bin\Setting\MP_H14_TLC_test.ini 
+insert ini section done, D:\\3S_PC\ReleaseTool\MP_UI_V1.0\V1.58.2018.105\bin\Setting\MP_H14_TLC_test.ini
+addNewIniSection End ..[-]
+ 
+Insert, D:\\3S_PC\ReleaseTool\MP_UI_V1.0\V1.58.2018.105\bin\Setting\MP_H14_TLC_test.ini
+ 
+dict_Var {'var1': '3.2.0.56', 'var2': '1.1.0.13', 'var3': '2.0.0.7', 'var4': 'TRUE', 'var5': '0'}
+runHUATOOPEnd ..[HUATOOP_H14]
+ 
+testName:              HUATOOP_H16, testState:    TRUE
+runHUATOOP[HUATOOP_H16] start ..
+runHUATOOP sPC_NewMPUI_Setting_Path = D:\\3S_PC\ReleaseTool\MP_UI_V1.0\V1.58.2018.105\bin\Setting
+runHUATOOP sPCS3800_SSD_MP_SettingPath = D:\\3S_PC\ReleaseTool\MP_UI_V1.0\pythonWorking\MP_V1\package\windows\H16_TLC\HUATOOP
+compareStart .. [3.2.0.57] 
+copyIniFile Start sSrcPath = D:\\3S_PC\ReleaseTool\MP_UI_V1.0\pythonWorking\MP_V1\package\windows\H16_TLC\HUATOOP
+sDesPath = D:\\3S_PC\ReleaseTool\MP_UI_V1.0\V1.58.2018.105\bin\Setting
+sIniEndingName = H16_TLC_test.ini
+GetIt, FTA_H16_TLC_test.ini, D:\\3S_PC\ReleaseTool\MP_UI_V1.0\pythonWorking\MP_V1\package\windows\H16_TLC\HUATOOP\FTA_H16_TLC_test.ini 
+remove file, D:\\3S_PC\ReleaseTool\MP_UI_V1.0\V1.58.2018.105\bin\Setting\FTA_H16_TLC_test.ini
+prepare to copyOneFile -
+D:\\3S_PC\ReleaseTool\MP_UI_V1.0\pythonWorking\MP_V1\package\windows\H16_TLC\HUATOOP\FTA_H16_TLC_test.ini               -from 
+D:\\3S_PC\ReleaseTool\MP_UI_V1.0\V1.58.2018.105\bin\Setting                                                             -to
+updateIniMPToMP_UI Start sPath = D:\\3S_PC\ReleaseTool\MP_UI_V1.0\V1.58.2018.105\bin\Setting\FTA_H16_TLC_test.ini
+replaceLine ok path:D:\\3S_PC\ReleaseTool\MP_UI_V1.0\V1.58.2018.105\bin\Setting\FTA_H16_TLC_test.ini
+ old:Burner=./3S_HNX_16TLC_BNR_3.2.0.57.bin
+ new:Burner=.\Setting\3S_HNX_16TLC_BNR_3.2.0.57.bin
+replaceLine ok path:D:\\3S_PC\ReleaseTool\MP_UI_V1.0\V1.58.2018.105\bin\Setting\FTA_H16_TLC_test.ini
+ old:Recv_Drv_Num_By_UI=0
+ new:Recv_Drv_Num_By_UI=1
+updateIniMPToMP_UI End ..[-]
+ 
+GetIt, MP_H16_TLC_test.ini, D:\\3S_PC\ReleaseTool\MP_UI_V1.0\pythonWorking\MP_V1\package\windows\H16_TLC\HUATOOP\MP_H16_TLC_test.ini 
+remove file, D:\\3S_PC\ReleaseTool\MP_UI_V1.0\V1.58.2018.105\bin\Setting\MP_H16_TLC_test.ini
+prepare to copyOneFile -
+D:\\3S_PC\ReleaseTool\MP_UI_V1.0\pythonWorking\MP_V1\package\windows\H16_TLC\HUATOOP\MP_H16_TLC_test.ini                -from 
+D:\\3S_PC\ReleaseTool\MP_UI_V1.0\V1.58.2018.105\bin\Setting                                                             -to
+updateIniMPToMP_UI Start sPath = D:\\3S_PC\ReleaseTool\MP_UI_V1.0\V1.58.2018.105\bin\Setting\MP_H16_TLC_test.ini
+replaceLine ok path:D:\\3S_PC\ReleaseTool\MP_UI_V1.0\V1.58.2018.105\bin\Setting\MP_H16_TLC_test.ini
+ old:Burner=./3S_HNX_16TLC_BNR_3.2.0.57.bin
+ new:Burner=.\Setting\3S_HNX_16TLC_BNR_3.2.0.57.bin
+replaceLine ok path:D:\\3S_PC\ReleaseTool\MP_UI_V1.0\V1.58.2018.105\bin\Setting\MP_H16_TLC_test.ini
+ old:Recv_Drv_Num_By_UI=0
+ new:Recv_Drv_Num_By_UI=1
+updateIniMPToMP_UI End ..[-]
+ 
+copyIniFile End ..[-]
+ 
+get binName =  3S_HNX_16TLC_BNR_3.2.0.57.bin
+updateIniStart .. [-] 
+updateIni sIniFile: H16_TLC_test.ini, sIniSection: Burner=.\Setting\, file:FTA_H16_TLC_test.ini, secction:HUATOOP_H16
+updateIni sIniFile: H16_TLC_test.ini, sIniSection: Burner=.\Setting\, file:MP_H16_TLC_test.ini, secction:HUATOOP_H16
+updateIni End ..[-]
+ 
+findFile Start sPath = D:\\3S_PC\ReleaseTool\MP_UI_V1.0\pythonWorking\MP_V1\package\windows\H16_TLC\HUATOOP, name = 3S_HNX_16TLC_BNR_3.2.0.57.bin
+GetIt = [3S_HNX_16TLC_BNR_3.2.0.57.bin] 
+Get it in [D:\\3S_PC\ReleaseTool\MP_UI_V1.0\pythonWorking\MP_V1\package\windows\H16_TLC\HUATOOP] 
+findFile Start sPath = D:\\3S_PC\ReleaseTool\MP_UI_V1.0\V1.58.2018.105\bin\Setting, name = 3S_HNX_16TLC_BNR_3.2.0.57.bin
+GetIt = [3S_HNX_16TLC_BNR_3.2.0.57.bin] 
+already in sPC_NewMPUI_Setting_Path
+compareStart .. [1.1.0.24] 
+get binName =  3S_HNX_16TLC_FW_1.1.0.24.bin
+updateMTable_Ex .. [-] 
+updateMTable_Ex sIniFile: MTable.set, sIniSection: FW_1=.\Setting\, sFlashType:[Hynix], file:MTable.set, secction:HUATOOP_H16
+updateMTable_Ex End -..
+ 
+findFile Start sPath = D:\\3S_PC\ReleaseTool\MP_UI_V1.0\pythonWorking\MP_V1\package\windows\H16_TLC\HUATOOP, name = 3S_HNX_16TLC_FW_1.1.0.24.bin
+GetIt = [3S_HNX_16TLC_FW_1.1.0.24.bin] 
+Get it in [D:\\3S_PC\ReleaseTool\MP_UI_V1.0\pythonWorking\MP_V1\package\windows\H16_TLC\HUATOOP] 
+findFile Start sPath = D:\\3S_PC\ReleaseTool\MP_UI_V1.0\V1.58.2018.105\bin\Setting, name = 3S_HNX_16TLC_FW_1.1.0.24.bin
+GetIt = [3S_HNX_16TLC_FW_1.1.0.24.bin] 
+already in sPC_NewMPUI_Setting_Path
+compareStart .. [2.0.0.29] 
+get binName =  3S_HNX_16TLC_RDT_2.0.0.29.bin
+updateMTable_Ex .. [-] 
+updateMTable_Ex sIniFile: MTable.set, sIniSection: FW_2=.\Setting\, sFlashType:[Hynix], file:MTable.set, secction:HUATOOP_H16
+updateMTable_Ex End -..
+ 
+findFile Start sPath = D:\\3S_PC\ReleaseTool\MP_UI_V1.0\pythonWorking\MP_V1\package\windows\H16_TLC\HUATOOP, name = 3S_HNX_16TLC_RDT_2.0.0.29.bin
+GetIt = [3S_HNX_16TLC_RDT_2.0.0.29.bin] 
+Get it in [D:\\3S_PC\ReleaseTool\MP_UI_V1.0\pythonWorking\MP_V1\package\windows\H16_TLC\HUATOOP] 
+findFile Start sPath = D:\\3S_PC\ReleaseTool\MP_UI_V1.0\V1.58.2018.105\bin\Setting, name = 3S_HNX_16TLC_RDT_2.0.0.29.bin
+GetIt = [3S_HNX_16TLC_RDT_2.0.0.29.bin] 
+already in sPC_NewMPUI_Setting_Path
+compareStart .. [TRUE] 
+dict_Var[neighborChild.tag] = TRUE ..
+ 
+Function = HUATOOP_H16, dict_Var4 value =  TRUE
+ 
+prepare Insert,D:\\3S_PC\ReleaseTool\MP_UI_V1.0\V1.58.2018.105\bin\Setting\MP_H16_TLC_test.ini,D:\\3S_PC\ReleaseTool\MP_UI_V1.0\V1.58.2018.105\bin\Setting,MP_H16_TLC_test.ini
+ 
+addNewIniSection Start sSrcPath = D:\3S_PC\python\3S_AUTO\newSecton.txt
+sDesPath = D:\\3S_PC\ReleaseTool\MP_UI_V1.0\V1.58.2018.105\bin\Setting
+GetIt, MP_H16_TLC_test.ini, D:\\3S_PC\ReleaseTool\MP_UI_V1.0\V1.58.2018.105\bin\Setting\MP_H16_TLC_test.ini 
+insert ini section done, D:\\3S_PC\ReleaseTool\MP_UI_V1.0\V1.58.2018.105\bin\Setting\MP_H16_TLC_test.ini
+addNewIniSection End ..[-]
+ 
+Insert, D:\\3S_PC\ReleaseTool\MP_UI_V1.0\V1.58.2018.105\bin\Setting\MP_H16_TLC_test.ini
+ 
+dict_Var {'var1': '3.2.0.57', 'var2': '1.1.0.24', 'var3': '2.0.0.29', 'var4': 'TRUE', 'var5': '0'}
+runHUATOOPEnd ..[HUATOOP_H16]
+ 
+testName:         HUATOOP_H16_2LUN, testState:    TRUE
+runHUATOOP[HUATOOP_H16_2LUN] start ..
+runHUATOOP sPC_NewMPUI_Setting_Path = D:\\3S_PC\ReleaseTool\MP_UI_V1.0\V1.58.2018.105\bin\Setting
+runHUATOOP sPCS3800_SSD_MP_SettingPath = D:\\3S_PC\ReleaseTool\MP_UI_V1.0\pythonWorking\MP_V1\package\windows\H16_TLC\HUATOOP
+compareStart .. [3.2.0.57] 
+copyIniFile Start sSrcPath = D:\\3S_PC\ReleaseTool\MP_UI_V1.0\pythonWorking\MP_V1\package\windows\H16_TLC\HUATOOP
+sDesPath = D:\\3S_PC\ReleaseTool\MP_UI_V1.0\V1.58.2018.105\bin\Setting
+sIniEndingName = H16_TLC_test.ini
+GetIt, FTA_H16_TLC_test.ini, D:\\3S_PC\ReleaseTool\MP_UI_V1.0\pythonWorking\MP_V1\package\windows\H16_TLC\HUATOOP\FTA_H16_TLC_test.ini 
+remove file, D:\\3S_PC\ReleaseTool\MP_UI_V1.0\V1.58.2018.105\bin\Setting\FTA_H16_TLC_test.ini
+prepare to copyOneFile -
+D:\\3S_PC\ReleaseTool\MP_UI_V1.0\pythonWorking\MP_V1\package\windows\H16_TLC\HUATOOP\FTA_H16_TLC_test.ini               -from 
+D:\\3S_PC\ReleaseTool\MP_UI_V1.0\V1.58.2018.105\bin\Setting                                                             -to
+updateIniMPToMP_UI Start sPath = D:\\3S_PC\ReleaseTool\MP_UI_V1.0\V1.58.2018.105\bin\Setting\FTA_H16_TLC_test.ini
+replaceLine ok path:D:\\3S_PC\ReleaseTool\MP_UI_V1.0\V1.58.2018.105\bin\Setting\FTA_H16_TLC_test.ini
+ old:Burner=./3S_HNX_16TLC_BNR_3.2.0.57.bin
+ new:Burner=.\Setting\3S_HNX_16TLC_BNR_3.2.0.57.bin
+replaceLine ok path:D:\\3S_PC\ReleaseTool\MP_UI_V1.0\V1.58.2018.105\bin\Setting\FTA_H16_TLC_test.ini
+ old:Recv_Drv_Num_By_UI=0
+ new:Recv_Drv_Num_By_UI=1
+updateIniMPToMP_UI End ..[-]
+ 
+GetIt, MP_H16_TLC_test.ini, D:\\3S_PC\ReleaseTool\MP_UI_V1.0\pythonWorking\MP_V1\package\windows\H16_TLC\HUATOOP\MP_H16_TLC_test.ini 
+remove file, D:\\3S_PC\ReleaseTool\MP_UI_V1.0\V1.58.2018.105\bin\Setting\MP_H16_TLC_test.ini
+prepare to copyOneFile -
+D:\\3S_PC\ReleaseTool\MP_UI_V1.0\pythonWorking\MP_V1\package\windows\H16_TLC\HUATOOP\MP_H16_TLC_test.ini                -from 
+D:\\3S_PC\ReleaseTool\MP_UI_V1.0\V1.58.2018.105\bin\Setting                                                             -to
+updateIniMPToMP_UI Start sPath = D:\\3S_PC\ReleaseTool\MP_UI_V1.0\V1.58.2018.105\bin\Setting\MP_H16_TLC_test.ini
+replaceLine ok path:D:\\3S_PC\ReleaseTool\MP_UI_V1.0\V1.58.2018.105\bin\Setting\MP_H16_TLC_test.ini
+ old:Burner=./3S_HNX_16TLC_BNR_3.2.0.57.bin
+ new:Burner=.\Setting\3S_HNX_16TLC_BNR_3.2.0.57.bin
+replaceLine ok path:D:\\3S_PC\ReleaseTool\MP_UI_V1.0\V1.58.2018.105\bin\Setting\MP_H16_TLC_test.ini
+ old:Recv_Drv_Num_By_UI=0
+ new:Recv_Drv_Num_By_UI=1
+updateIniMPToMP_UI End ..[-]
+ 
+copyIniFile End ..[-]
+ 
+get binName =  3S_HNX_16TLC_BNR_3.2.0.57.bin
+updateIniStart .. [-] 
+updateIni sIniFile: H16_TLC_test.ini, sIniSection: Burner=.\Setting\, file:FTA_H16_TLC_test.ini, secction:HUATOOP_H16_2LUN
+updateIni sIniFile: H16_TLC_test.ini, sIniSection: Burner=.\Setting\, file:MP_H16_TLC_test.ini, secction:HUATOOP_H16_2LUN
+updateIni End ..[-]
+ 
+findFile Start sPath = D:\\3S_PC\ReleaseTool\MP_UI_V1.0\pythonWorking\MP_V1\package\windows\H16_TLC\HUATOOP, name = 3S_HNX_16TLC_BNR_3.2.0.57.bin
+GetIt = [3S_HNX_16TLC_BNR_3.2.0.57.bin] 
+Get it in [D:\\3S_PC\ReleaseTool\MP_UI_V1.0\pythonWorking\MP_V1\package\windows\H16_TLC\HUATOOP] 
+findFile Start sPath = D:\\3S_PC\ReleaseTool\MP_UI_V1.0\V1.58.2018.105\bin\Setting, name = 3S_HNX_16TLC_BNR_3.2.0.57.bin
+GetIt = [3S_HNX_16TLC_BNR_3.2.0.57.bin] 
+already in sPC_NewMPUI_Setting_Path
+compareStart .. [1.1.0.24] 
+get binName =  3S_HNX_16TLC_FW_1.1.0.24.bin
+updateMTable_Ex .. [-] 
+updateMTable_Ex sIniFile: MTable.set, sIniSection: FW_5=.\Setting\, sFlashType:[Hynix], file:MTable.set, secction:HUATOOP_H16_2LUN
+updateMTable_Ex replaceLine ok path:D:\\3S_PC\ReleaseTool\MP_UI_V1.0\V1.58.2018.105\bin\Setting\MTable.set
+ old:FW_5=.\Setting\3S_HNX_16TLC_FW_1.1.0.23.bin
+ new:FW_5=.\Setting\3S_HNX_16TLC_FW_1.1.0.24.bin
+updateMTable_Ex End -..
+ 
+findFile Start sPath = D:\\3S_PC\ReleaseTool\MP_UI_V1.0\pythonWorking\MP_V1\package\windows\H16_TLC\HUATOOP, name = 3S_HNX_16TLC_FW_1.1.0.24.bin
+GetIt = [3S_HNX_16TLC_FW_1.1.0.24.bin] 
+Get it in [D:\\3S_PC\ReleaseTool\MP_UI_V1.0\pythonWorking\MP_V1\package\windows\H16_TLC\HUATOOP] 
+findFile Start sPath = D:\\3S_PC\ReleaseTool\MP_UI_V1.0\V1.58.2018.105\bin\Setting, name = 3S_HNX_16TLC_FW_1.1.0.24.bin
+GetIt = [3S_HNX_16TLC_FW_1.1.0.24.bin] 
+already in sPC_NewMPUI_Setting_Path
+compareStart .. [2.0.0.29] 
+get binName =  3S_HNX_16TLC_RDT_2.0.0.29.bin
+updateMTable_Ex .. [-] 
+updateMTable_Ex sIniFile: MTable.set, sIniSection: FW_6=.\Setting\, sFlashType:[Hynix], file:MTable.set, secction:HUATOOP_H16_2LUN
+updateMTable_Ex End -..
+ 
+findFile Start sPath = D:\\3S_PC\ReleaseTool\MP_UI_V1.0\pythonWorking\MP_V1\package\windows\H16_TLC\HUATOOP, name = 3S_HNX_16TLC_RDT_2.0.0.29.bin
+GetIt = [3S_HNX_16TLC_RDT_2.0.0.29.bin] 
+Get it in [D:\\3S_PC\ReleaseTool\MP_UI_V1.0\pythonWorking\MP_V1\package\windows\H16_TLC\HUATOOP] 
+findFile Start sPath = D:\\3S_PC\ReleaseTool\MP_UI_V1.0\V1.58.2018.105\bin\Setting, name = 3S_HNX_16TLC_RDT_2.0.0.29.bin
+GetIt = [3S_HNX_16TLC_RDT_2.0.0.29.bin] 
+already in sPC_NewMPUI_Setting_Path
+compareStart .. [TRUE] 
+dict_Var[neighborChild.tag] = TRUE ..
+ 
+Function = HUATOOP_H16_2LUN, dict_Var4 value =  TRUE
+ 
+prepare Insert,D:\\3S_PC\ReleaseTool\MP_UI_V1.0\V1.58.2018.105\bin\Setting\MP_H16_TLC_test.ini,D:\\3S_PC\ReleaseTool\MP_UI_V1.0\V1.58.2018.105\bin\Setting,MP_H16_TLC_test.ini
+ 
+addNewIniSection Start sSrcPath = D:\3S_PC\python\3S_AUTO\newSecton.txt
+sDesPath = D:\\3S_PC\ReleaseTool\MP_UI_V1.0\V1.58.2018.105\bin\Setting
+GetIt, MP_H16_TLC_test.ini, D:\\3S_PC\ReleaseTool\MP_UI_V1.0\V1.58.2018.105\bin\Setting\MP_H16_TLC_test.ini 
+insert ini section done, D:\\3S_PC\ReleaseTool\MP_UI_V1.0\V1.58.2018.105\bin\Setting\MP_H16_TLC_test.ini
+addNewIniSection End ..[-]
+ 
+Insert, D:\\3S_PC\ReleaseTool\MP_UI_V1.0\V1.58.2018.105\bin\Setting\MP_H16_TLC_test.ini
+ 
+dict_Var {'var1': '3.2.0.57', 'var2': '1.1.0.24', 'var3': '2.0.0.29', 'var4': 'TRUE', 'var5': '0'}
+runHUATOOPEnd ..[HUATOOP_H16_2LUN]
+ 
+testName:                     B0KB, testState:    TRUE
+runHUATOOP[B0KB] start ..
+runHUATOOP sPC_NewMPUI_Setting_Path = D:\\3S_PC\ReleaseTool\MP_UI_V1.0\V1.58.2018.105\bin\Setting
+runHUATOOP sPCS3800_SSD_MP_SettingPath = D:\\3S_PC\ReleaseTool\MP_UI_V1.0\pythonWorking\MP_V1\package\windows\Micron_B0KB
+compareStart .. [1.0.0.4] 
+copyIniFile Start sSrcPath = D:\\3S_PC\ReleaseTool\MP_UI_V1.0\pythonWorking\MP_V1\package\windows\Micron_B0KB
+sDesPath = D:\\3S_PC\ReleaseTool\MP_UI_V1.0\V1.58.2018.105\bin\Setting
+sIniEndingName = B0KB_TLC_test.ini
+GetIt, FTA_B0KB_TLC_test.ini, D:\\3S_PC\ReleaseTool\MP_UI_V1.0\pythonWorking\MP_V1\package\windows\Micron_B0KB\FTA_B0KB_TLC_test.ini 
+remove file, D:\\3S_PC\ReleaseTool\MP_UI_V1.0\V1.58.2018.105\bin\Setting\FTA_B0KB_TLC_test.ini
+prepare to copyOneFile -
+D:\\3S_PC\ReleaseTool\MP_UI_V1.0\pythonWorking\MP_V1\package\windows\Micron_B0KB\FTA_B0KB_TLC_test.ini                  -from 
+D:\\3S_PC\ReleaseTool\MP_UI_V1.0\V1.58.2018.105\bin\Setting                                                             -to
+updateIniMPToMP_UI Start sPath = D:\\3S_PC\ReleaseTool\MP_UI_V1.0\V1.58.2018.105\bin\Setting\FTA_B0KB_TLC_test.ini
+replaceLine ok path:D:\\3S_PC\ReleaseTool\MP_UI_V1.0\V1.58.2018.105\bin\Setting\FTA_B0KB_TLC_test.ini
+ old:Burner=./3s_Mircon_B0KB_BNR_1.0.0.4.bin
+ new:Burner=.\Setting\3s_Mircon_B0KB_BNR_1.0.0.4.bin
+replaceLine ok path:D:\\3S_PC\ReleaseTool\MP_UI_V1.0\V1.58.2018.105\bin\Setting\FTA_B0KB_TLC_test.ini
+ old:Recv_Drv_Num_By_UI=0
+ new:Recv_Drv_Num_By_UI=1
+updateIniMPToMP_UI End ..[-]
+ 
+GetIt, MP_B0KB_TLC_test.ini, D:\\3S_PC\ReleaseTool\MP_UI_V1.0\pythonWorking\MP_V1\package\windows\Micron_B0KB\MP_B0KB_TLC_test.ini 
+remove file, D:\\3S_PC\ReleaseTool\MP_UI_V1.0\V1.58.2018.105\bin\Setting\MP_B0KB_TLC_test.ini
+prepare to copyOneFile -
+D:\\3S_PC\ReleaseTool\MP_UI_V1.0\pythonWorking\MP_V1\package\windows\Micron_B0KB\MP_B0KB_TLC_test.ini                   -from 
+D:\\3S_PC\ReleaseTool\MP_UI_V1.0\V1.58.2018.105\bin\Setting                                                             -to
+updateIniMPToMP_UI Start sPath = D:\\3S_PC\ReleaseTool\MP_UI_V1.0\V1.58.2018.105\bin\Setting\MP_B0KB_TLC_test.ini
+replaceLine ok path:D:\\3S_PC\ReleaseTool\MP_UI_V1.0\V1.58.2018.105\bin\Setting\MP_B0KB_TLC_test.ini
+ old:Burner=./3s_Mircon_B0KB_BNR_1.0.0.4.bin
+ new:Burner=.\Setting\3s_Mircon_B0KB_BNR_1.0.0.4.bin
+replaceLine ok path:D:\\3S_PC\ReleaseTool\MP_UI_V1.0\V1.58.2018.105\bin\Setting\MP_B0KB_TLC_test.ini
+ old:Recv_Drv_Num_By_UI=0
+ new:Recv_Drv_Num_By_UI=1
+updateIniMPToMP_UI End ..[-]
+ 
+copyIniFile End ..[-]
+ 
+get binName =  3s_Mircon_B0KB_BNR_1.0.0.4.bin
+updateIniStart .. [-] 
+updateIni sIniFile: B0KB_TLC_test.ini, sIniSection: Burner=.\Setting\, file:FTA_B0KB_TLC_test.ini, secction:B0KB
+updateIni sIniFile: B0KB_TLC_test.ini, sIniSection: Burner=.\Setting\, file:MP_B0KB_TLC_test.ini, secction:B0KB
+updateIni End ..[-]
+ 
+findFile Start sPath = D:\\3S_PC\ReleaseTool\MP_UI_V1.0\pythonWorking\MP_V1\package\windows\Micron_B0KB, name = 3s_Mircon_B0KB_BNR_1.0.0.4.bin
+GetIt = [3s_Mircon_B0KB_BNR_1.0.0.4.bin] 
+Get it in [D:\\3S_PC\ReleaseTool\MP_UI_V1.0\pythonWorking\MP_V1\package\windows\Micron_B0KB] 
+findFile Start sPath = D:\\3S_PC\ReleaseTool\MP_UI_V1.0\V1.58.2018.105\bin\Setting, name = 3s_Mircon_B0KB_BNR_1.0.0.4.bin
+GetIt = [3s_Mircon_B0KB_BNR_1.0.0.4.bin] 
+already in sPC_NewMPUI_Setting_Path
+compareStart .. [1.1.0.13] 
+get binName =  3S_MCR_3DTLC_B0KB_FW_1.1.0.13.bin
+updateMTable_Ex .. [-] 
+updateMTable_Ex sIniFile: MTable.set, sIniSection: FW_1=.\Setting\, sFlashType:[Micron], file:MTable.set, secction:B0KB
+updateMTable_Ex End -..
+ 
+findFile Start sPath = D:\\3S_PC\ReleaseTool\MP_UI_V1.0\pythonWorking\MP_V1\package\windows\Micron_B0KB, name = 3S_MCR_3DTLC_B0KB_FW_1.1.0.13.bin
+GetIt = [3S_MCR_3DTLC_B0KB_FW_1.1.0.13.bin] 
+Get it in [D:\\3S_PC\ReleaseTool\MP_UI_V1.0\pythonWorking\MP_V1\package\windows\Micron_B0KB] 
+findFile Start sPath = D:\\3S_PC\ReleaseTool\MP_UI_V1.0\V1.58.2018.105\bin\Setting, name = 3S_MCR_3DTLC_B0KB_FW_1.1.0.13.bin
+GetIt = [3S_MCR_3DTLC_B0KB_FW_1.1.0.13.bin] 
+already in sPC_NewMPUI_Setting_Path
+compareStart .. [1.0.0.3] 
+get binName =  3S_IM_B0KB_RDT_1.0.0.3.bin
+updateMTable_Ex .. [-] 
+updateMTable_Ex sIniFile: MTable.set, sIniSection: FW_2=.\Setting\, sFlashType:[Micron], file:MTable.set, secction:B0KB
+updateMTable_Ex End -..
+ 
+findFile Start sPath = D:\\3S_PC\ReleaseTool\MP_UI_V1.0\pythonWorking\MP_V1\package\windows\Micron_B0KB, name = 3S_IM_B0KB_RDT_1.0.0.3.bin
+GetIt = [3S_IM_B0KB_RDT_1.0.0.3.bin] 
+Get it in [D:\\3S_PC\ReleaseTool\MP_UI_V1.0\pythonWorking\MP_V1\package\windows\Micron_B0KB] 
+findFile Start sPath = D:\\3S_PC\ReleaseTool\MP_UI_V1.0\V1.58.2018.105\bin\Setting, name = 3S_IM_B0KB_RDT_1.0.0.3.bin
+GetIt = [3S_IM_B0KB_RDT_1.0.0.3.bin] 
+already in sPC_NewMPUI_Setting_Path
+compareStart .. [TRUE] 
+dict_Var[neighborChild.tag] = TRUE ..
+ 
+Function = B0KB, dict_Var4 value =  TRUE
+ 
+prepare Insert,D:\\3S_PC\ReleaseTool\MP_UI_V1.0\V1.58.2018.105\bin\Setting\MP_B0KB_TLC_test.ini,D:\\3S_PC\ReleaseTool\MP_UI_V1.0\V1.58.2018.105\bin\Setting,MP_B0KB_TLC_test.ini
+ 
+addNewIniSection Start sSrcPath = D:\3S_PC\python\3S_AUTO\newSecton.txt
+sDesPath = D:\\3S_PC\ReleaseTool\MP_UI_V1.0\V1.58.2018.105\bin\Setting
+GetIt, MP_B0KB_TLC_test.ini, D:\\3S_PC\ReleaseTool\MP_UI_V1.0\V1.58.2018.105\bin\Setting\MP_B0KB_TLC_test.ini 
+insert ini section done, D:\\3S_PC\ReleaseTool\MP_UI_V1.0\V1.58.2018.105\bin\Setting\MP_B0KB_TLC_test.ini
+addNewIniSection End ..[-]
+ 
+Insert, D:\\3S_PC\ReleaseTool\MP_UI_V1.0\V1.58.2018.105\bin\Setting\MP_B0KB_TLC_test.ini
+ 
+dict_Var {'var1': '1.0.0.4', 'var2': '1.1.0.13', 'var3': '1.0.0.3', 'var4': 'TRUE', 'var5': '0'}
+runHUATOOPEnd ..[B0KB]
+ 
+testName:                     B16A, testState:    TRUE
+runHUATOOP[B16A] start ..
+runHUATOOP sPC_NewMPUI_Setting_Path = D:\\3S_PC\ReleaseTool\MP_UI_V1.0\V1.58.2018.105\bin\Setting
+runHUATOOP sPCS3800_SSD_MP_SettingPath = D:\\3S_PC\ReleaseTool\MP_UI_V1.0\pythonWorking\MP_V1\package\windows\Micron_B16A
+compareStart .. [1.0.0.13] 
+copyIniFile Start sSrcPath = D:\\3S_PC\ReleaseTool\MP_UI_V1.0\pythonWorking\MP_V1\package\windows\Micron_B16A
+sDesPath = D:\\3S_PC\ReleaseTool\MP_UI_V1.0\V1.58.2018.105\bin\Setting
+sIniEndingName = B16A_TLC_test.ini
+GetIt, FTA_B16A_TLC_test.ini, D:\\3S_PC\ReleaseTool\MP_UI_V1.0\pythonWorking\MP_V1\package\windows\Micron_B16A\FTA_B16A_TLC_test.ini 
+remove file, D:\\3S_PC\ReleaseTool\MP_UI_V1.0\V1.58.2018.105\bin\Setting\FTA_B16A_TLC_test.ini
+prepare to copyOneFile -
+D:\\3S_PC\ReleaseTool\MP_UI_V1.0\pythonWorking\MP_V1\package\windows\Micron_B16A\FTA_B16A_TLC_test.ini                  -from 
+D:\\3S_PC\ReleaseTool\MP_UI_V1.0\V1.58.2018.105\bin\Setting                                                             -to
+updateIniMPToMP_UI Start sPath = D:\\3S_PC\ReleaseTool\MP_UI_V1.0\V1.58.2018.105\bin\Setting\FTA_B16A_TLC_test.ini
+replaceLine ok path:D:\\3S_PC\ReleaseTool\MP_UI_V1.0\V1.58.2018.105\bin\Setting\FTA_B16A_TLC_test.ini
+ old:Burner=./3S_Micron_B16A_BNR_1.0.0.13.bin
+ new:Burner=.\Setting\3S_Micron_B16A_BNR_1.0.0.13.bin
+replaceLine ok path:D:\\3S_PC\ReleaseTool\MP_UI_V1.0\V1.58.2018.105\bin\Setting\FTA_B16A_TLC_test.ini
+ old:Recv_Drv_Num_By_UI=0
+ new:Recv_Drv_Num_By_UI=1
+updateIniMPToMP_UI End ..[-]
+ 
+GetIt, MP_B16A_TLC_test.ini, D:\\3S_PC\ReleaseTool\MP_UI_V1.0\pythonWorking\MP_V1\package\windows\Micron_B16A\MP_B16A_TLC_test.ini 
+remove file, D:\\3S_PC\ReleaseTool\MP_UI_V1.0\V1.58.2018.105\bin\Setting\MP_B16A_TLC_test.ini
+prepare to copyOneFile -
+D:\\3S_PC\ReleaseTool\MP_UI_V1.0\pythonWorking\MP_V1\package\windows\Micron_B16A\MP_B16A_TLC_test.ini                   -from 
+D:\\3S_PC\ReleaseTool\MP_UI_V1.0\V1.58.2018.105\bin\Setting                                                             -to
+updateIniMPToMP_UI Start sPath = D:\\3S_PC\ReleaseTool\MP_UI_V1.0\V1.58.2018.105\bin\Setting\MP_B16A_TLC_test.ini
+replaceLine ok path:D:\\3S_PC\ReleaseTool\MP_UI_V1.0\V1.58.2018.105\bin\Setting\MP_B16A_TLC_test.ini
+ old:Burner=./3S_Micron_B16A_BNR_1.0.0.13.bin
+ new:Burner=.\Setting\3S_Micron_B16A_BNR_1.0.0.13.bin
+replaceLine ok path:D:\\3S_PC\ReleaseTool\MP_UI_V1.0\V1.58.2018.105\bin\Setting\MP_B16A_TLC_test.ini
+ old:Recv_Drv_Num_By_UI=0
+ new:Recv_Drv_Num_By_UI=1
+updateIniMPToMP_UI End ..[-]
+ 
+copyIniFile End ..[-]
+ 
+get binName =  3S_Micron_B16A_BNR_1.0.0.13.bin
+updateIniStart .. [-] 
+updateIni sIniFile: B16A_TLC_test.ini, sIniSection: Burner=.\Setting\, file:FTA_B16A_TLC_test.ini, secction:B16A
+updateIni sIniFile: B16A_TLC_test.ini, sIniSection: Burner=.\Setting\, file:MP_B16A_TLC_test.ini, secction:B16A
+updateIni End ..[-]
+ 
+findFile Start sPath = D:\\3S_PC\ReleaseTool\MP_UI_V1.0\pythonWorking\MP_V1\package\windows\Micron_B16A, name = 3S_Micron_B16A_BNR_1.0.0.13.bin
+GetIt = [3S_Micron_B16A_BNR_1.0.0.13.bin] 
+Get it in [D:\\3S_PC\ReleaseTool\MP_UI_V1.0\pythonWorking\MP_V1\package\windows\Micron_B16A] 
+findFile Start sPath = D:\\3S_PC\ReleaseTool\MP_UI_V1.0\V1.58.2018.105\bin\Setting, name = 3S_Micron_B16A_BNR_1.0.0.13.bin
+GetIt = [3S_Micron_B16A_BNR_1.0.0.13.bin] 
+already in sPC_NewMPUI_Setting_Path
+compareStart .. [3.9.0.1] 
+get binName =  3S_MCR_3DTLC_B16_FW_3.9.0.1.bin
+updateMTable_Ex .. [-] 
+updateMTable_Ex sIniFile: MTable.set, sIniSection: FW_3=.\Setting\, sFlashType:[Micron], file:MTable.set, secction:B16A
+updateMTable_Ex End -..
+ 
+findFile Start sPath = D:\\3S_PC\ReleaseTool\MP_UI_V1.0\pythonWorking\MP_V1\package\windows\Micron_B16A, name = 3S_MCR_3DTLC_B16_FW_3.9.0.1.bin
+GetIt = [3S_MCR_3DTLC_B16_FW_3.9.0.1.bin] 
+Get it in [D:\\3S_PC\ReleaseTool\MP_UI_V1.0\pythonWorking\MP_V1\package\windows\Micron_B16A] 
+findFile Start sPath = D:\\3S_PC\ReleaseTool\MP_UI_V1.0\V1.58.2018.105\bin\Setting, name = 3S_MCR_3DTLC_B16_FW_3.9.0.1.bin
+GetIt = [3S_MCR_3DTLC_B16_FW_3.9.0.1.bin] 
+already in sPC_NewMPUI_Setting_Path
+compareStart .. [1.0.0.8] 
+get binName =  3S_IM_B16A_RDT_1.0.0.8.bin
+updateMTable_Ex .. [-] 
+updateMTable_Ex sIniFile: MTable.set, sIniSection: FW_4=.\Setting\, sFlashType:[Micron], file:MTable.set, secction:B16A
+updateMTable_Ex End -..
+ 
+findFile Start sPath = D:\\3S_PC\ReleaseTool\MP_UI_V1.0\pythonWorking\MP_V1\package\windows\Micron_B16A, name = 3S_IM_B16A_RDT_1.0.0.8.bin
+GetIt = [3S_IM_B16A_RDT_1.0.0.8.bin] 
+Get it in [D:\\3S_PC\ReleaseTool\MP_UI_V1.0\pythonWorking\MP_V1\package\windows\Micron_B16A] 
+findFile Start sPath = D:\\3S_PC\ReleaseTool\MP_UI_V1.0\V1.58.2018.105\bin\Setting, name = 3S_IM_B16A_RDT_1.0.0.8.bin
+GetIt = [3S_IM_B16A_RDT_1.0.0.8.bin] 
+already in sPC_NewMPUI_Setting_Path
+compareStart .. [TRUE] 
+dict_Var[neighborChild.tag] = TRUE ..
+ 
+Function = B16A, dict_Var4 value =  TRUE
+ 
+prepare Insert,D:\\3S_PC\ReleaseTool\MP_UI_V1.0\V1.58.2018.105\bin\Setting\MP_B16A_TLC_test.ini,D:\\3S_PC\ReleaseTool\MP_UI_V1.0\V1.58.2018.105\bin\Setting,MP_B16A_TLC_test.ini
+ 
+addNewIniSection Start sSrcPath = D:\3S_PC\python\3S_AUTO\newSecton.txt
+sDesPath = D:\\3S_PC\ReleaseTool\MP_UI_V1.0\V1.58.2018.105\bin\Setting
+GetIt, MP_B16A_TLC_test.ini, D:\\3S_PC\ReleaseTool\MP_UI_V1.0\V1.58.2018.105\bin\Setting\MP_B16A_TLC_test.ini 
+insert ini section done, D:\\3S_PC\ReleaseTool\MP_UI_V1.0\V1.58.2018.105\bin\Setting\MP_B16A_TLC_test.ini
+addNewIniSection End ..[-]
+ 
+Insert, D:\\3S_PC\ReleaseTool\MP_UI_V1.0\V1.58.2018.105\bin\Setting\MP_B16A_TLC_test.ini
+ 
+compareStart .. [4.0.0.5] 
+get binName =  spi_bootrom_4.0.0.5.bin
+updateIniStart .. [-] 
+updateIni sIniFile: B16A_TLC_test.ini, sIniSection: SPI_Firmware_Path=, file:FTA_B16A_TLC_test.ini, secction:B16A
+updateIni replaceLine ok path:D:\\3S_PC\ReleaseTool\MP_UI_V1.0\V1.58.2018.105\bin\Setting\FTA_B16A_TLC_test.ini
+ old:SPI_Firmware_Path=./spi_bootrom_4.0.0.5.bin
+ new:SPI_Firmware_Path=spi_bootrom_4.0.0.5.bin
+updateIni sIniFile: B16A_TLC_test.ini, sIniSection: SPI_Firmware_Path=, file:MP_B16A_TLC_test.ini, secction:B16A
+updateIni replaceLine ok path:D:\\3S_PC\ReleaseTool\MP_UI_V1.0\V1.58.2018.105\bin\Setting\MP_B16A_TLC_test.ini
+ old:SPI_Firmware_Path=./spi_bootrom_4.0.0.5.bin
+ new:SPI_Firmware_Path=spi_bootrom_4.0.0.5.bin
+updateIni End ..[-]
+ 
+[spi_bootrom only] Function = B16A, dict_Var[neighborChild.tag] = 4.0.0.5
+[spi_bootrom only] update bin file start
+findFile Start sPath = D:\\3S_PC\ReleaseTool\MP_UI_V1.0\pythonWorking\MP_V1\package\windows\Micron_B16A, name = spi_bootrom_4.0.0.5.bin
+GetIt = [spi_bootrom_4.0.0.5.bin] 
+[spi_bootrom only] Get it in [D:\\3S_PC\ReleaseTool\MP_UI_V1.0\pythonWorking\MP_V1\package\windows\Micron_B16A] 
+findFile Start sPath = D:\\3S_PC\ReleaseTool\MP_UI_V1.0\V1.58.2018.105\bin\Setting, name = spi_bootrom_4.0.0.5.bin
+GetIt = [spi_bootrom_4.0.0.5.bin] 
+[spi_bootrom only] already in sPC_NewMPUI_Setting_Path
+[spi_bootrom only] update bin file End
+[spi_bootrom only] get spi path name =  .\Setting\spi_bootrom_4.0.0.5.bin
+updateIniStart .. [-] 
+updateIni sIniFile: B16A_TLC_test.ini, sIniSection: SPI_Firmware_Path=, file:FTA_B16A_TLC_test.ini, secction:B16A
+updateIni replaceLine ok path:D:\\3S_PC\ReleaseTool\MP_UI_V1.0\V1.58.2018.105\bin\Setting\FTA_B16A_TLC_test.ini
+ old:SPI_Firmware_Path=spi_bootrom_4.0.0.5.bin
+ new:SPI_Firmware_Path=.\Setting\spi_bootrom_4.0.0.5.bin
+updateIni sIniFile: B16A_TLC_test.ini, sIniSection: SPI_Firmware_Path=, file:MP_B16A_TLC_test.ini, secction:B16A
+updateIni replaceLine ok path:D:\\3S_PC\ReleaseTool\MP_UI_V1.0\V1.58.2018.105\bin\Setting\MP_B16A_TLC_test.ini
+ old:SPI_Firmware_Path=spi_bootrom_4.0.0.5.bin
+ new:SPI_Firmware_Path=.\Setting\spi_bootrom_4.0.0.5.bin
+updateIni End ..[-]
+ 
+[spi_bootrom only] update ini  End
+dict_Var {'var1': '1.0.0.13', 'var2': '3.9.0.1', 'var3': '1.0.0.8', 'var4': 'TRUE', 'var5': '4.0.0.5'}
+runHUATOOPEnd ..[B16A]
+ 
+testName:                    BiCS3, testState:    TRUE
+runHUATOOP[BiCS3] start ..
+runHUATOOP sPC_NewMPUI_Setting_Path = D:\\3S_PC\ReleaseTool\MP_UI_V1.0\V1.58.2018.105\bin\Setting
+runHUATOOP sPCS3800_SSD_MP_SettingPath = D:\\3S_PC\ReleaseTool\MP_UI_V1.0\pythonWorking\MP_V1\package\windows\TSB_BICS
+compareStart .. [1.0.0.8] 
+copyIniFile Start sSrcPath = D:\\3S_PC\ReleaseTool\MP_UI_V1.0\pythonWorking\MP_V1\package\windows\TSB_BICS
+sDesPath = D:\\3S_PC\ReleaseTool\MP_UI_V1.0\V1.58.2018.105\bin\Setting
+sIniEndingName = TSB_BiCS3_L_NAND_test.ini
+GetIt, FTA_TSB_BiCS3_L_NAND_test.ini, D:\\3S_PC\ReleaseTool\MP_UI_V1.0\pythonWorking\MP_V1\package\windows\TSB_BICS\FTA_TSB_BiCS3_L_NAND_test.ini 
+remove file, D:\\3S_PC\ReleaseTool\MP_UI_V1.0\V1.58.2018.105\bin\Setting\FTA_TSB_BiCS3_L_NAND_test.ini
+prepare to copyOneFile -
+D:\\3S_PC\ReleaseTool\MP_UI_V1.0\pythonWorking\MP_V1\package\windows\TSB_BICS\FTA_TSB_BiCS3_L_NAND_test.ini             -from 
+D:\\3S_PC\ReleaseTool\MP_UI_V1.0\V1.58.2018.105\bin\Setting                                                             -to
+updateIniMPToMP_UI Start sPath = D:\\3S_PC\ReleaseTool\MP_UI_V1.0\V1.58.2018.105\bin\Setting\FTA_TSB_BiCS3_L_NAND_test.ini
+replaceLine ok path:D:\\3S_PC\ReleaseTool\MP_UI_V1.0\V1.58.2018.105\bin\Setting\FTA_TSB_BiCS3_L_NAND_test.ini
+ old:Burner=./3S_TSB_BiCS_BNR_1.0.0.8.bin
+ new:Burner=.\Setting\3S_TSB_BiCS_BNR_1.0.0.8.bin
+replaceLine ok path:D:\\3S_PC\ReleaseTool\MP_UI_V1.0\V1.58.2018.105\bin\Setting\FTA_TSB_BiCS3_L_NAND_test.ini
+ old:Recv_Drv_Num_By_UI=0
+ new:Recv_Drv_Num_By_UI=1
+updateIniMPToMP_UI End ..[-]
+ 
+GetIt, MP_TSB_BiCS3_L_NAND_test.ini, D:\\3S_PC\ReleaseTool\MP_UI_V1.0\pythonWorking\MP_V1\package\windows\TSB_BICS\MP_TSB_BiCS3_L_NAND_test.ini 
+remove file, D:\\3S_PC\ReleaseTool\MP_UI_V1.0\V1.58.2018.105\bin\Setting\MP_TSB_BiCS3_L_NAND_test.ini
+prepare to copyOneFile -
+D:\\3S_PC\ReleaseTool\MP_UI_V1.0\pythonWorking\MP_V1\package\windows\TSB_BICS\MP_TSB_BiCS3_L_NAND_test.ini              -from 
+D:\\3S_PC\ReleaseTool\MP_UI_V1.0\V1.58.2018.105\bin\Setting                                                             -to
+updateIniMPToMP_UI Start sPath = D:\\3S_PC\ReleaseTool\MP_UI_V1.0\V1.58.2018.105\bin\Setting\MP_TSB_BiCS3_L_NAND_test.ini
+replaceLine ok path:D:\\3S_PC\ReleaseTool\MP_UI_V1.0\V1.58.2018.105\bin\Setting\MP_TSB_BiCS3_L_NAND_test.ini
+ old:Burner=./3S_TSB_BiCS_BNR_1.0.0.8.bin
+ new:Burner=.\Setting\3S_TSB_BiCS_BNR_1.0.0.8.bin
+replaceLine ok path:D:\\3S_PC\ReleaseTool\MP_UI_V1.0\V1.58.2018.105\bin\Setting\MP_TSB_BiCS3_L_NAND_test.ini
+ old:Recv_Drv_Num_By_UI=0
+ new:Recv_Drv_Num_By_UI=1
+updateIniMPToMP_UI End ..[-]
+ 
+copyIniFile End ..[-]
+ 
+get binName =  3S_TSB_BiCS_BNR_1.0.0.8.bin
+updateIniStart .. [-] 
+updateIni sIniFile: TSB_BiCS3_L_NAND_test.ini, sIniSection: Burner=.\Setting\, file:FTA_TSB_BiCS3_L_NAND_test.ini, secction:BiCS3
+updateIni sIniFile: TSB_BiCS3_L_NAND_test.ini, sIniSection: Burner=.\Setting\, file:MP_TSB_BiCS3_L_NAND_test.ini, secction:BiCS3
+updateIni End ..[-]
+ 
+findFile Start sPath = D:\\3S_PC\ReleaseTool\MP_UI_V1.0\pythonWorking\MP_V1\package\windows\TSB_BICS, name = 3S_TSB_BiCS_BNR_1.0.0.8.bin
+GetIt = [3S_TSB_BiCS_BNR_1.0.0.8.bin] 
+Get it in [D:\\3S_PC\ReleaseTool\MP_UI_V1.0\pythonWorking\MP_V1\package\windows\TSB_BICS] 
+findFile Start sPath = D:\\3S_PC\ReleaseTool\MP_UI_V1.0\V1.58.2018.105\bin\Setting, name = 3S_TSB_BiCS_BNR_1.0.0.8.bin
+GetIt = [3S_TSB_BiCS_BNR_1.0.0.8.bin] 
+already in sPC_NewMPUI_Setting_Path
+compareStart .. [3.10.0.0_A1] 
+get binName =  3S_TSB_BiCS_FW_3.10.0.0_A1.bin
+updateMTable_Ex .. [-] 
+updateMTable_Ex sIniFile: MTable.set, sIniSection: FW_1=.\Setting\, sFlashType:[Toshiba], file:MTable.set, secction:BiCS3
+updateMTable_Ex End -..
+ 
+findFile Start sPath = D:\\3S_PC\ReleaseTool\MP_UI_V1.0\pythonWorking\MP_V1\package\windows\TSB_BICS, name = 3S_TSB_BiCS_FW_3.10.0.0_A1.bin
+GetIt = [3S_TSB_BiCS_FW_3.10.0.0_A1.bin] 
+Get it in [D:\\3S_PC\ReleaseTool\MP_UI_V1.0\pythonWorking\MP_V1\package\windows\TSB_BICS] 
+findFile Start sPath = D:\\3S_PC\ReleaseTool\MP_UI_V1.0\V1.58.2018.105\bin\Setting, name = 3S_TSB_BiCS_FW_3.10.0.0_A1.bin
+GetIt = [3S_TSB_BiCS_FW_3.10.0.0_A1.bin] 
+already in sPC_NewMPUI_Setting_Path
+compareStart .. [1.0.0.16] 
+get binName =  3S_TSB_BiCS_RDT_1.0.0.16.bin
+updateMTable_Ex .. [-] 
+updateMTable_Ex sIniFile: MTable.set, sIniSection: FW_2=.\Setting\, sFlashType:[Toshiba], file:MTable.set, secction:BiCS3
+updateMTable_Ex End -..
+ 
+findFile Start sPath = D:\\3S_PC\ReleaseTool\MP_UI_V1.0\pythonWorking\MP_V1\package\windows\TSB_BICS, name = 3S_TSB_BiCS_RDT_1.0.0.16.bin
+GetIt = [3S_TSB_BiCS_RDT_1.0.0.16.bin] 
+Get it in [D:\\3S_PC\ReleaseTool\MP_UI_V1.0\pythonWorking\MP_V1\package\windows\TSB_BICS] 
+findFile Start sPath = D:\\3S_PC\ReleaseTool\MP_UI_V1.0\V1.58.2018.105\bin\Setting, name = 3S_TSB_BiCS_RDT_1.0.0.16.bin
+GetIt = [3S_TSB_BiCS_RDT_1.0.0.16.bin] 
+already in sPC_NewMPUI_Setting_Path
+compareStart .. [TRUE] 
+dict_Var[neighborChild.tag] = TRUE ..
+ 
+Function = BiCS3, dict_Var4 value =  TRUE
+ 
+prepare Insert,D:\\3S_PC\ReleaseTool\MP_UI_V1.0\V1.58.2018.105\bin\Setting\MP_TSB_BiCS3_L_NAND_test.ini,D:\\3S_PC\ReleaseTool\MP_UI_V1.0\V1.58.2018.105\bin\Setting,MP_TSB_BiCS3_L_NAND_test.ini
+ 
+addNewIniSection Start sSrcPath = D:\3S_PC\python\3S_AUTO\newSecton.txt
+sDesPath = D:\\3S_PC\ReleaseTool\MP_UI_V1.0\V1.58.2018.105\bin\Setting
+GetIt, MP_TSB_BiCS3_L_NAND_test.ini, D:\\3S_PC\ReleaseTool\MP_UI_V1.0\V1.58.2018.105\bin\Setting\MP_TSB_BiCS3_L_NAND_test.ini 
+insert ini section done, D:\\3S_PC\ReleaseTool\MP_UI_V1.0\V1.58.2018.105\bin\Setting\MP_TSB_BiCS3_L_NAND_test.ini
+addNewIniSection End ..[-]
+ 
+Insert, D:\\3S_PC\ReleaseTool\MP_UI_V1.0\V1.58.2018.105\bin\Setting\MP_TSB_BiCS3_L_NAND_test.ini
+ 
+dict_Var {'var1': '1.0.0.8', 'var2': '3.10.0.0_A1', 'var3': '1.0.0.16', 'var4': 'TRUE', 'var5': '0'}
+runHUATOOPEnd ..[BiCS3]
+ 
+testName:                      T15, testState:    TRUE
+runHUATOOP[T15] start ..
+runHUATOOP sPC_NewMPUI_Setting_Path = D:\\3S_PC\ReleaseTool\MP_UI_V1.0\V1.58.2018.105\bin\Setting
+runHUATOOP sPCS3800_SSD_MP_SettingPath = D:\\3S_PC\ReleaseTool\MP_UI_V1.0\pythonWorking\MP_V1\package\windows\T15_TLC
+compareStart .. [3.1.0.42] 
+copyIniFile Start sSrcPath = D:\\3S_PC\ReleaseTool\MP_UI_V1.0\pythonWorking\MP_V1\package\windows\T15_TLC
+sDesPath = D:\\3S_PC\ReleaseTool\MP_UI_V1.0\V1.58.2018.105\bin\Setting
+sIniEndingName = T15_TLC_L_NAND_test.ini
+copyIniFile End ..[-]
+ 
+get binName =  3S_TSB_15TLC_BNR_3.1.0.42.bin
+updateIniStart .. [-] 
+D:\3S_PC\ReleaseTool\MP_UI_V1.0>"c:\Program Files\7-Zip\7z.exe" a V1.58.2018.105.zip D:\\3S_PC\ReleaseTool\MP_UI_V1.0\V1.58.2018.105\ 
+
+7-Zip [64] 16.04 : Copyright (c) 1999-2016 Igor Pavlov : 2016-10-04
+
+Open archive: V1.58.2018.105.zip
+--
+Path = V1.58.2018.105.zip
+Type = zip
+Physical Size = 15048999
+
+Scanning the drive:
+18 folders, 165 files, 41482150 bytes (40 MiB)
+
+Updating archive: V1.58.2018.105.zip
+
+Items to compress: 183
+
+
+Files read from disk: 165
+Archive size: 15048997 bytes (15 MiB)
+Everything is Ok
+
+updateIni End ..[-]
+ 
+findFile Start sPath = D:\\3S_PC\ReleaseTool\MP_UI_V1.0\pythonWorking\MP_V1\package\windows\T15_TLC, name = 3S_TSB_15TLC_BNR_3.1.0.42.bin
+GetIt = [3S_TSB_15TLC_BNR_3.1.0.42.bin] 
+Get it in [D:\\3S_PC\ReleaseTool\MP_UI_V1.0\pythonWorking\MP_V1\package\windows\T15_TLC] 
+findFile Start sPath = D:\\3S_PC\ReleaseTool\MP_UI_V1.0\V1.58.2018.105\bin\Setting, name = 3S_TSB_15TLC_BNR_3.1.0.42.bin
+GetIt = [3S_TSB_15TLC_BNR_3.1.0.42.bin] 
+already in sPC_NewMPUI_Setting_Path
+compareStart .. [3.2.0.78] 
+get binName =  image_package_kst_7op_3.2.0.78.bin
+updateMTable_Ex .. [-] 
+updateMTable_Ex sIniFile: MTable.set, sIniSection: FW_3=.\Setting\, sFlashType:[Toshiba], file:MTable.set, secction:T15
+updateMTable_Ex End -..
+ 
+findFile Start sPath = D:\\3S_PC\ReleaseTool\MP_UI_V1.0\pythonWorking\MP_V1\package\windows\T15_TLC, name = image_package_kst_7op_3.2.0.78.bin
+GetIt = [image_package_kst_7op_3.2.0.78.bin] 
+Get it in [D:\\3S_PC\ReleaseTool\MP_UI_V1.0\pythonWorking\MP_V1\package\windows\T15_TLC] 
+findFile Start sPath = D:\\3S_PC\ReleaseTool\MP_UI_V1.0\V1.58.2018.105\bin\Setting, name = image_package_kst_7op_3.2.0.78.bin
+GetIt = [image_package_kst_7op_3.2.0.78.bin] 
+already in sPC_NewMPUI_Setting_Path
+compareStart .. [0.29.1.66] 
+get binName =  3S_TSB_15TLC_RDT_0.29.1.66.bin
+updateMTable_Ex .. [-] 
+updateMTable_Ex sIniFile: MTable.set, sIniSection: FW_4=.\Setting\, sFlashType:[Toshiba], file:MTable.set, secction:T15
+updateMTable_Ex End -..
+ 
+findFile Start sPath = D:\\3S_PC\ReleaseTool\MP_UI_V1.0\pythonWorking\MP_V1\package\windows\T15_TLC, name = 3S_TSB_15TLC_RDT_0.29.1.66.bin
+GetIt = [3S_TSB_15TLC_RDT_0.29.1.66.bin] 
+Get it in [D:\\3S_PC\ReleaseTool\MP_UI_V1.0\pythonWorking\MP_V1\package\windows\T15_TLC] 
+findFile Start sPath = D:\\3S_PC\ReleaseTool\MP_UI_V1.0\V1.58.2018.105\bin\Setting, name = 3S_TSB_15TLC_RDT_0.29.1.66.bin
+GetIt = [3S_TSB_15TLC_RDT_0.29.1.66.bin] 
+already in sPC_NewMPUI_Setting_Path
+compareStart .. [TRUE] 
+dict_Var[neighborChild.tag] = TRUE ..
+ 
+Function = T15, dict_Var4 value =  TRUE
+ 
+prepare Insert,D:\\3S_PC\ReleaseTool\MP_UI_V1.0\V1.58.2018.105\bin\Setting\MP_T15_TLC_L_NAND_test.ini,D:\\3S_PC\ReleaseTool\MP_UI_V1.0\V1.58.2018.105\bin\Setting,MP_T15_TLC_L_NAND_test.ini
+ 
+addNewIniSection Start sSrcPath = D:\3S_PC\python\3S_AUTO\newSecton.txt
+sDesPath = D:\\3S_PC\ReleaseTool\MP_UI_V1.0\V1.58.2018.105\bin\Setting
+addNewIniSection End ..[-]
+ 
+Insert, D:\\3S_PC\ReleaseTool\MP_UI_V1.0\V1.58.2018.105\bin\Setting\MP_T15_TLC_L_NAND_test.ini
+ 
+dict_Var {'var1': '3.1.0.42', 'var2': '3.2.0.78', 'var3': '0.29.1.66', 'var4': 'TRUE', 'var5': '0'}
+runHUATOOPEnd ..[T15]
+ 
+testName:               VERIFY_INI, testState:    TRUE
+runVERIFY_INI[-] start ..
+sPath = D:\\3S_PC\ReleaseTool\MP_UI_V1.0\V1.58.2018.105\bin\Setting ..
+Start Check Ini file:D:\\3S_PC\ReleaseTool\MP_UI_V1.0\V1.58.2018.105\bin\Setting\FTA_B0KB_TLC_test.ini
+Start Check Ini file:D:\\3S_PC\ReleaseTool\MP_UI_V1.0\V1.58.2018.105\bin\Setting\FTA_B16A_TLC_test.ini
+Start Check Ini file:D:\\3S_PC\ReleaseTool\MP_UI_V1.0\V1.58.2018.105\bin\Setting\FTA_H14_TLC_test.ini
+Start Check Ini file:D:\\3S_PC\ReleaseTool\MP_UI_V1.0\V1.58.2018.105\bin\Setting\FTA_H16_TLC_test.ini
+Start Check Ini file:D:\\3S_PC\ReleaseTool\MP_UI_V1.0\V1.58.2018.105\bin\Setting\FTA_T15_TLC_test.ini
+Start Check Ini file:D:\\3S_PC\ReleaseTool\MP_UI_V1.0\V1.58.2018.105\bin\Setting\FTA_TSB_BiCS3_L_NAND_test.ini
+Start Check Ini file:D:\\3S_PC\ReleaseTool\MP_UI_V1.0\V1.58.2018.105\bin\Setting\MP_B0KB_TLC_test.ini
+Start Check Ini file:D:\\3S_PC\ReleaseTool\MP_UI_V1.0\V1.58.2018.105\bin\Setting\MP_B16A_TLC_test.ini
+Start Check Ini file:D:\\3S_PC\ReleaseTool\MP_UI_V1.0\V1.58.2018.105\bin\Setting\MP_H14_TLC_test.ini
+Start Check Ini file:D:\\3S_PC\ReleaseTool\MP_UI_V1.0\V1.58.2018.105\bin\Setting\MP_H16_TLC_test.ini
+Start Check Ini file:D:\\3S_PC\ReleaseTool\MP_UI_V1.0\V1.58.2018.105\bin\Setting\MP_T15_TLC_test.ini
+Start Check Ini file:D:\\3S_PC\ReleaseTool\MP_UI_V1.0\V1.58.2018.105\bin\Setting\MP_TSB_BiCS3_L_NAND_test.ini
+runVERIFY_INIEnd ..[-]
+testName:               CopyTo3800, testState:    TRUE
+copyTo3800[-] start ..
+remove folder =  D:\\3S_PC\ReleaseTool\MP_UI_V1.0\V1.58.2018.105\src\debug
+remove folder =  D:\\3S_PC\ReleaseTool\MP_UI_V1.0\V1.58.2018.105\src\Release
+remove folder =  D:\\3S_PC\ReleaseTool\MP_UI_V1.0\V1.58.2018.105\src\Setting
+removeFolder done!
+remove file:  D:\\3S_PC\ReleaseTool\MP_UI_V1.0\V1.58.2018.105\src\SSDMP.ncb
+remove file:  D:\\3S_PC\ReleaseTool\MP_UI_V1.0\V1.58.2018.105\src\SSDMP.opt
+remove file:  D:\\3S_PC\ReleaseTool\MP_UI_V1.0\V1.58.2018.105\src\SSDMP.plg
+copyTo3800, \\fileserver\3800\SW\SSD_MP_UI_EV\V1.58.2018.105 end ..
+testName:                  ZipFile, testState:    TRUE
+runZipFile[-] start ..
+removeFolder done!
+removeFile done!
+\\fileserver\Dep_AP\Project\SSD\MP_UI\source_code\V1.58.2018.105.zip  do not exist
+sPathZipFile = D:\3S_PC\ReleaseTool\MP_UI_V1.0\V1.58.2018.105.zip
+sZipCmd = "c:\Program Files\7-Zip\7z.exe" a V1.58.2018.105.zip D:\\3S_PC\ReleaseTool\MP_UI_V1.0\V1.58.2018.105\ 
+sPathBat = D:\3S_PC\ReleaseTool\MP_UI_V1.0\zipFileBat.bat
+End sPathZipFile = D:\3S_PC\ReleaseTool\MP_UI_V1.0\V1.58.2018.105.zip
+sZipCmd = "c:\Program Files\7-Zip\7z.exe" a V1.58.2018.105.zip D:\\3S_PC\ReleaseTool\MP_UI_V1.0\V1.58.2018.105\ 
+D:\3S_PC\ReleaseTool\MP_UI_V1.0\V1.58.2018.105.zip   exist 
+backup to fileServer, \\fileserver\Dep_AP\Project\SSD\MP_UI\source_code
+prepare to copyOneFile -
+D:\3S_PC\ReleaseTool\MP_UI_V1.0\V1.58.2018.105.zip                                                                      -from 
+\\fileserver\Dep_AP\Project\SSD\MP_UI\source_code                                                                       -to
+backup to pc, D:\3S_PC\ReleaseTool\MP_UI_V1.0\SourceCode
+prepare to copyOneFile -
+D:\3S_PC\ReleaseTool\MP_UI_V1.0\V1.58.2018.105.zip                                                                      -from 
+D:\3S_PC\ReleaseTool\MP_UI_V1.0\SourceCode                                                                              -to
+runZipFile[-] end ..
+testName:             CompressFile, testState:   FALSE
+testName:                CopyToGit, testState:    TRUE
+runCopyToGit[-] start ..
+removeFolder done!
+src = {} D:\\3S_PC\ReleaseTool\MP_UI_V1.0\V1.58.2018.105\bin
+det = {} D:\\3S_PC\sourceCode\SSD\VC6\GIT_MP_UI\V1.0\bin
+D:\\3S_PC\sourceCode\SSD\VC6\GIT_MP_UI\V1.0\bin   exist !! remove it ?
+D:\\3S_PC\sourceCode\SSD\VC6\GIT_MP_UI\V1.0\bin, remove ok
+src = {} D:\\3S_PC\ReleaseTool\MP_UI_V1.0\V1.58.2018.105\src\MP
+det = {} D:\\3S_PC\sourceCode\SSD\VC6\GIT_MP_UI\V1.0\src\MP
+D:\\3S_PC\sourceCode\SSD\VC6\GIT_MP_UI\V1.0\src\MP   exist !! remove it ?
+D:\\3S_PC\sourceCode\SSD\VC6\GIT_MP_UI\V1.0\src\MP, remove ok
+prepare to copyOneFile -
+D:\\3S_PC\ReleaseTool\MP_UI_V1.0\V1.58.2018.105\src\SSDMP.rc                                                            -from 
+D:\\3S_PC\sourceCode\SSD\VC6\GIT_MP_UI\V1.0\src\SSDMP.rc                                                                -to
+prepare to copyOneFile -
+D:\\3S_PC\ReleaseTool\MP_UI_V1.0\V1.58.2018.105\src\UAC\SSDMP.exe                                                       -from 
+D:\\3S_PC\sourceCode\SSD\VC6\GIT_MP_UI\V1.0\src\UAC\SSDMP.exe                                                           -to
+runCopyToGit, D:\\3S_PC\sourceCode\SSD\VC6\GIT_MP_UI\V1.0\src\UAC\SSDMP.exe end ..
+testName:          CheckSourceCode, testState:    TRUE
+runCheckSourceCode[-] start ..
+get file: V1.57.2018.103.zip, path: D:\3S_PC\ReleaseTool\MP_UI_V1.0\SourceCode
+extraZip[-] start ..
+D:\3S_PC\ReleaseTool\MP_UI_V1.0\SourceCode\V1.57.2018.103.zip, exist ok
+sDesPath: D:\3S_PC\ReleaseTool\MP_UI_V1.0\SourceCode\V1.57.2018.103
+D:\3S_PC\ReleaseTool\MP_UI_V1.0\SourceCode\V1.57.2018.103, exist prepare to rmtree
+D:\3S_PC\ReleaseTool\MP_UI_V1.0\SourceCode\V1.57.2018.103", rmtree ok"
+D:\3S_PC\ReleaseTool\MP_UI_V1.0\SourceCode\V1.57.2018.103.zip, ready to Extract 
+D:\3S_PC\ReleaseTool\MP_UI_V1.0\SourceCode\V1.57.2018.103.zip, Extract done
+check folder ok, D:\3S_PC\ReleaseTool\MP_UI_V1.0\SourceCode\V1.57.2018.103
+extraZip[-] end ..
+start     buildFileDateInfo  ..
+End       buildFileDateInfo  ..
+get file: V1.58.2018.105.zip, path: D:\3S_PC\ReleaseTool\MP_UI_V1.0\SourceCode
+extraZip[-] start ..
+D:\3S_PC\ReleaseTool\MP_UI_V1.0\SourceCode\V1.58.2018.105.zip, exist ok
+sDesPath: D:\3S_PC\ReleaseTool\MP_UI_V1.0\SourceCode\V1.58.2018.105
+D:\3S_PC\ReleaseTool\MP_UI_V1.0\SourceCode\V1.58.2018.105, exist prepare to rmtree
+D:\3S_PC\ReleaseTool\MP_UI_V1.0\SourceCode\V1.58.2018.105", rmtree ok"
+D:\3S_PC\ReleaseTool\MP_UI_V1.0\SourceCode\V1.58.2018.105.zip, ready to Extract 
+D:\3S_PC\ReleaseTool\MP_UI_V1.0\SourceCode\V1.58.2018.105.zip, Extract done
+check folder ok, D:\3S_PC\ReleaseTool\MP_UI_V1.0\SourceCode\V1.58.2018.105
+extraZip[-] end ..
+start     buildFileDateInfo  ..
+End       buildFileDateInfo  ..
+iCurrnetFileInfoSize = 165 iPreFileInfoSize = 165 
+
+[1]File = bin\SSDMP.exe                                     -                   NewDate= 1515123084.4029107(1515123082.4209106)                       
+[2]File = bin\SSDMP.INI                                     -                   NewDate= 1515123084.4029107(1515123082.4219105)                       
+[3]File = bin\Function\sg_raw_32b.exe                       -                   NewDate= 1515123084.3139105(1515123082.4419105)                       
+[4]File = bin\Setting\3S_HNX_14TLC_BNR_3.2.0.56.bin         -                   NewDate= 1515123084.3179107(1515123082.4739106)                       
+[5]File = bin\Setting\3S_HNX_14TLC_FW_1.1.0.13.bin          -                   NewDate= 1515123084.3219106(1515123082.5179107)                       
+[6]File = bin\Setting\3S_HNX_14TLC_RDT_2.0.0.7.bin          -                   NewDate= 1515123084.3249106(1515123082.5409105)                       
+[7]File = bin\Setting\3S_HNX_16TLC_BNR_3.2.0.57.bin         -                   NewDate= 1515123084.3279107(1515123082.5839107)                       
+[8]File = bin\Setting\3S_HNX_16TLC_FW_1.1.0.24.bin          -                   NewDate= 1515123084.3309107(1515123082.6219106)                       
+[9]File = bin\Setting\3S_HNX_16TLC_RDT_2.0.0.29.bin         -                   NewDate= 1515123084.3339107(1515123082.6509106)                       
+[10]File = bin\Setting\3S_IM_B0KB_RDT_1.0.0.3.bin            -                   NewDate= 1515123084.3369105(1515123082.6829107)                       
+[11]File = bin\Setting\3S_IM_B16A_RDT_1.0.0.8.bin            -                   NewDate= 1515123084.3409107(1515123082.7099106)                       
+[12]File = bin\Setting\3S_MCR_3DTLC_B0KB_FW_1.1.0.13.bin     -                   NewDate= 1515123084.3449106(1515123082.7459106)                       
+[13]File = bin\Setting\3S_MCR_3DTLC_B16_FW_3.9.0.1.bin       -                   NewDate= 1515123084.3489106(1515123082.7799106)                       
+[14]File = bin\Setting\3S_MCR_3DTLC_FW_1.1.0.3.bin           -                   NewDate= 1515123084.3519106(1515123082.8189106)                       
+[15]File = bin\Setting\3S_Micron_B16A_BNR_1.0.0.13.bin       -                   NewDate= 1515123084.3549106(1515123082.8479106)                       
+[16]File = bin\Setting\3s_Mircon_B0KB_BNR_1.0.0.4.bin        -                   NewDate= 1515123084.3579106(1515123082.8759105)                       
+[17]File = bin\Setting\3S_TSB_15TLC_BNR_3.1.0.42.bin         -                   NewDate= 1515123084.3599105(1515123082.8929107)                       
+[18]File = bin\Setting\3S_TSB_15TLC_RDT_0.29.1.66.bin        -                   NewDate= 1515123084.3619106(1515123082.9129107)                       
+[19]File = bin\Setting\3S_TSB_BiCS_BNR_1.0.0.8.bin           -                   NewDate= 1515123084.3649106(1515123082.9379106)                       
+[20]File = bin\Setting\3S_TSB_BiCS_FW_3.10.0.0_A1.bin        -                   NewDate= 1515123084.3679106(1515123082.9759107)                       
+[21]File = bin\Setting\3S_TSB_BiCS_RDT_1.0.0.16.bin          -                   NewDate= 1515123084.3709106(1515123083.0079105)                       
+[22]File = bin\Setting\CommonBurner.bin                      -                   NewDate= 1515123084.3739107(1515123083.0389106)                       
+[23]File = bin\Setting\FTA_B0KB_TLC_test.ini                 -                   NewDate= 1515123084.3739107(1515123083.0399106)                       
+[24]File = bin\Setting\FTA_B16A_TLC_test.ini                 -                   NewDate= 1515123084.3749106(1515123083.0399106)                       
+[25]File = bin\Setting\FTA_H14_TLC_test.ini                  -                   NewDate= 1515123084.3749106(1515123083.0409105)                       
+[26]File = bin\Setting\FTA_H16_TLC_test.ini                  -                   NewDate= 1515123084.3749106(1515123083.0409105)                       
+[27]File = bin\Setting\FTA_T15_TLC_test.ini                  -                   NewDate= 1515123084.3759105(1515123083.0419106)                       
+[27]NewFile = bin\Setting\FTA_TSB_BiCS3_L_NAND_test.ini         
+[29]File = bin\Setting\image_package_kst_7op_3.2.0.78.bin    -                   NewDate= 1515123084.3789105(1515123083.0779107)                       
+[30]File = bin\Setting\MP_B0KB_TLC_test.ini                  -                   NewDate= 1515123084.3799107(1515123083.0789106)                       
+[31]File = bin\Setting\MP_B16A_TLC_test.ini                  -                   NewDate= 1515123084.3799107(1515123083.0799105)                       
+[32]File = bin\Setting\MP_H14_TLC_test.ini                   -                   NewDate= 1515123084.3809106(1515123083.0799105)                       
+[33]File = bin\Setting\MP_H16_TLC_test.ini                   -                   NewDate= 1515123084.3809106(1515123083.0809107)                       
+[34]File = bin\Setting\MP_T15_TLC_test.ini                   -                   NewDate= 1515123084.3819106(1515123083.0809107)                       
+[34]NewFile = bin\Setting\MP_TSB_BiCS3_L_NAND_test.ini          
+[36]File = bin\Setting\MTable.set                            NewSize= 2071       NewDate= 1515123084.3819106(1515123083.0819106)                       
+[37]File = bin\Setting\spi_bootrom_4.0.0.5.bin               -                   NewDate= 1515123084.3829105(1515123083.0859106)                       
+[38]File = bin\SortSetting\3S_H16_RDT_SPI_Sort_V1.0.2.bin    -                   NewDate= 1515123084.3859105(1515123083.1099105)                       
+[39]File = bin\SortSetting\CommonBurner.bin                  -                   NewDate= 1515123084.3879106(1515123083.1289105)                       
+[40]File = bin\SortSetting\FTA_SORTING_BOARD.ini             -                   NewDate= 1515123084.3889105(1515123083.1309106)                       
+[41]File = bin\SortSetting\MTable.set                        -                   NewDate= 1515123084.3889105(1515123083.1309106)                       
+[42]File = releaseNote\ChangeList.txt                        -                   NewDate= 1515123084.4039106(1515123083.1319106)                       
+[43]File = releaseNote\testCase.txt                          -                   NewDate= 1515123084.4039106(1515123083.1319106)                       
+[44]File = src\DefectManager.cpp                             -                   NewDate= 1515123084.4309106(1515123083.1329105)                       
+[45]File = src\DefectManager.h                               -                   NewDate= 1515123084.4309106(1515123083.1339107)                       
+[46]File = src\dlgErrorcode.cpp                              -                   NewDate= 1515123084.4319105(1515123083.1349106)                       
+[47]File = src\dlgErrorcode.h                                -                   NewDate= 1515123084.4319105(1515123083.1349106)                       
+[48]File = src\dlgMPPage.cpp                                 -                   NewDate= 1515123084.4329107(1515123083.1359105)                       
+[49]File = src\dlgMPPage.h                                   -                   NewDate= 1515123084.4329107(1515123083.1369107)                       
+[50]File = src\dlgnandinfo.cpp                               -                   NewDate= 1515123084.4329107(1515123083.1369107)                       
+[51]File = src\dlgnandinfo.h                                 -                   NewDate= 1515123084.4339106(1515123083.1379106)                       
+[52]File = src\dlgRDTResultPage.cpp                          -                   NewDate= 1515123084.4339106(1515123083.1389105)                       
+[53]File = src\dlgRDTResultPage.h                            -                   NewDate= 1515123084.4349105(1515123083.1399107)                       
+[54]File = src\dlgSettingPage1.cpp                           -                   NewDate= 1515123084.4349105(1515123083.1409106)                       
+[55]File = src\dlgSettingPage1.h                             -                   NewDate= 1515123084.4349105(1515123083.1409106)                       
+[56]File = src\dlgSettingPage2.cpp                           -                   NewDate= 1515123084.4359107(1515123083.1449106)                       
+[57]File = src\dlgSettingPage2.h                             -                   NewDate= 1515123084.4369106(1515123083.1459105)                       
+[58]File = src\dlgShowCEPage.cpp                             -                   NewDate= 1515123084.4369106(1515123083.1459105)                       
+[59]File = src\dlgShowCEPage.h                               -                   NewDate= 1515123084.4379106(1515123083.1469107)                       
+[60]File = src\dlgSortingSettingPage.cpp                     -                   NewDate= 1515123084.4379106(1515123083.1489105)                       
+[61]File = src\dlgSortingSettingPage.h                       -                   NewDate= 1515123084.4389105(1515123083.1499107)                       
+[62]File = src\dlgSSDMP.cpp                                  -                   NewDate= 1515123084.4399107(1515123083.1539106)                       
+[63]File = src\dlgSSDMP.h                                    -                   NewDate= 1515123084.4409106(1515123083.1549106)                       
+[64]File = src\ErrorCode.h                                   -                   NewDate= 1515123084.4409106(1515123083.1549106)                       
+[65]File = src\LogManager.cpp                                -                   NewDate= 1515123084.4929106(1515123083.1559105)                       
+[66]File = src\LogManager.h                                  -                   NewDate= 1515123084.4929106(1515123083.1559105)                       
+[67]File = src\MPDefine.h                                    -                   NewDate= 1515123084.4939106(1515123083.1569107)                       
+[68]File = src\MPIniManager.cpp                              -                   NewDate= 1515123084.4949107(1515123083.1569107)                       
+[69]File = src\MPIniManager.h                                -                   NewDate= 1515123084.4949107(1515123083.1579106)                       
+[70]File = src\MTableManager.cpp                             -                   NewDate= 1515123084.5229106(1515123083.1579106)                       
+[71]File = src\MTableManager.h                               -                   NewDate= 1515123084.5239105(1515123083.1589105)                       
+[72]File = src\NandInfoManager.cpp                           -                   NewDate= 1515123084.5239105(1515123083.1589105)                       
+[73]File = src\NandInfoManager.h                             -                   NewDate= 1515123084.5249107(1515123083.1609106)                       
+[74]File = src\RDTResultManager.cpp                          -                   NewDate= 1515123084.5249107(1515123083.1619105)                       
+[75]File = src\RDTResultManager.h                            -                   NewDate= 1515123084.5259106(1515123083.1629107)                       
+[76]File = src\ReadMe.txt                                    -                   NewDate= 1515123084.5259106(1515123083.1629107)                       
+[77]File = src\resource.h                                    -                   NewDate= 1515123084.5269105(1515123083.1639106)                       
+[78]File = src\SNManager.cpp                                 -                   NewDate= 1515123084.5289106(1515123083.1649106)                       
+[79]File = src\SNManager.h                                   -                   NewDate= 1515123084.5289106(1515123083.1649106)                       
+[80]File = src\SSDMP.APS                                     -                   NewDate= 1515123084.5399106(1515123083.1679106)                       
+[81]File = src\SSDMP.clw                                     -                   NewDate= 1515123084.5409105(1515123083.1689105)                       
+[82]File = src\SSDMP.cpp                                     -                   NewDate= 1515123084.5409105(1515123083.1689105)                       
+[83]File = src\SSDMP.dsp                                     -                   NewDate= 1515123084.5419106(1515123083.1699107)                       
+[84]File = src\SSDMP.dsw                                     -                   NewDate= 1515123084.5419106(1515123083.1699107)                       
+[85]File = src\SSDMP.h                                       -                   NewDate= 1515123084.5419106(1515123083.1709106)                       
+[86]File = src\SSDMP.INI                                     -                   NewDate= 1515123084.5429106(1515123083.1709106)                       
+[87]File = src\SSDMP.rc                                      -                   NewDate= 1515123084.5429106(1515123083.1719105)                       
+[88]File = src\StdAfx.cpp                                    -                   NewDate= 1515123084.5469105(1515123083.1729107)                       
+[89]File = src\StdAfx.h                                      -                   NewDate= 1515123084.5469105(1515123083.1729107)                       
+[90]File = src\UserDefineHubMapManager.cpp                   -                   NewDate= 1515123084.5709107(1515123083.1739106)                       
+[91]File = src\UserDefineHubMapManager.h                     -                   NewDate= 1515123084.5719106(1515123083.1749105)                       
+[92]File = src\Common\AES.cpp                                -                   NewDate= 1515123084.4049106(1515123083.1749105)                       
+[93]File = src\Common\AES.h                                  -                   NewDate= 1515123084.4049106(1515123083.1759107)                       
+[94]File = src\Common\ColorEdit.cpp                          -                   NewDate= 1515123084.4059105(1515123083.1769106)                       
+[95]File = src\Common\ColorEdit.h                            -                   NewDate= 1515123084.4059105(1515123083.1769106)                       
+[96]File = src\Common\FontSize.cpp                           -                   NewDate= 1515123084.4069107(1515123083.1779106)                       
+[97]File = src\Common\FontSize.h                             -                   NewDate= 1515123084.4069107(1515123083.1779106)                       
+[98]File = src\Common\Label.cpp                              -                   NewDate= 1515123084.4079106(1515123083.1789105)                       
+[99]File = src\Common\Label.h                                -                   NewDate= 1515123084.4079106(1515123083.1789105)                       
+[100]File = src\Common\XColorStatic.cpp                       -                   NewDate= 1515123084.4089105(1515123083.1799107)                       
+[101]File = src\Common\XColorStatic.h                         -                   NewDate= 1515123084.4089105(1515123083.1799107)                       
+[102]File = src\Common\XListCtrl\AdvComboBox.cpp              -                   NewDate= 1515123084.4099107(1515123083.1819105)                       
+[103]File = src\Common\XListCtrl\AdvComboBox.h                -                   NewDate= 1515123084.4109106(1515123083.1819105)                       
+[104]File = src\Common\XListCtrl\AdvComboEdit.cpp             -                   NewDate= 1515123084.4119105(1515123083.1829107)                       
+[105]File = src\Common\XListCtrl\AdvComboEdit.h               -                   NewDate= 1515123084.4119105(1515123083.1839106)                       
+[106]File = src\Common\XListCtrl\checkboxes.bmp               -                   NewDate= 1515123084.4119105(1515123083.1839106)                       
+[107]File = src\Common\XListCtrl\DropListBox.cpp              -                   NewDate= 1515123084.4129107(1515123083.1849105)                       
+[108]File = src\Common\XListCtrl\DropListBox.h                -                   NewDate= 1515123084.4129107(1515123083.1859107)                       
+[109]File = src\Common\XListCtrl\DropScrollBar.cpp            -                   NewDate= 1515123084.4129107(1515123083.1859107)                       
+[110]File = src\Common\XListCtrl\DropScrollBar.h              -                   NewDate= 1515123084.4139106(1515123083.1869106)                       
+[111]File = src\Common\XListCtrl\DropWnd.cpp                  -                   NewDate= 1515123084.4139106(1515123083.1879106)                       
+[112]File = src\Common\XListCtrl\DropWnd.h                    -                   NewDate= 1515123084.4149106(1515123083.1879106)                       
+[113]File = src\Common\XListCtrl\MemDC.h                      -                   NewDate= 1515123084.4149106(1515123083.1889105)                       
+[114]File = src\Common\XListCtrl\SortCStringArray.h           -                   NewDate= 1515123084.4149106(1515123083.1889105)                       
+[115]File = src\Common\XListCtrl\VisualStylesXP.cpp           -                   NewDate= 1515123084.4159105(1515123083.1899107)                       
+[116]File = src\Common\XListCtrl\VisualStylesXP.h             -                   NewDate= 1515123084.4159105(1515123083.1909106)                       
+[117]File = src\Common\XListCtrl\XCombo.cpp                   -                   NewDate= 1515123084.4169106(1515123083.1909106)                       
+[118]File = src\Common\XListCtrl\XCombo.h                     -                   NewDate= 1515123084.4169106(1515123083.1909106)                       
+[119]File = src\Common\XListCtrl\XComboList.cpp               -                   NewDate= 1515123084.4169106(1515123083.1919105)                       
+[120]File = src\Common\XListCtrl\XComboList.h                 -                   NewDate= 1515123084.4179106(1515123083.1929107)                       
+[121]File = src\Common\XListCtrl\XEdit.cpp                    -                   NewDate= 1515123084.4179106(1515123083.1929107)                       
+[122]File = src\Common\XListCtrl\XEdit.h                      -                   NewDate= 1515123084.4189105(1515123083.1929107)                       
+[123]File = src\Common\XListCtrl\XHeaderCtrl.cpp              -                   NewDate= 1515123084.4189105(1515123083.1949105)                       
+[124]File = src\Common\XListCtrl\XHeaderCtrl.h                -                   NewDate= 1515123084.4199107(1515123083.1959107)                       
+[125]File = src\Common\XListCtrl\XListCtrl.cpp                -                   NewDate= 1515123084.4199107(1515123083.1989107)                       
+[126]File = src\Common\XListCtrl\XListCtrl.h                  -                   NewDate= 1515123084.4209106(1515123083.1999106)                       
+[127]File = src\Common\XListCtrl\XListCtrlSSDA.lib            -                   NewDate= 1515123084.4269106(1515123083.2399106)                       
+[128]File = src\Common\XListCtrl\XListCtrlSSRA.lib            -                   NewDate= 1515123084.4299107(1515123083.2529106)                       
+[129]File = src\Common\XListCtrl\XTrace.h                     -                   NewDate= 1515123084.4299107(1515123083.2539105)                       
+[130]File = src\Function\FileManager.cpp                      -                   NewDate= 1515123084.4419105(1515123083.2539105)                       
+[131]File = src\Function\FileManager.h                        -                   NewDate= 1515123084.4429107(1515123083.2549107)                       
+[132]File = src\Function\HubManager.cpp                       -                   NewDate= 1515123084.4429107(1515123083.2549107)                       
+[133]File = src\Function\HubManager.h                         -                   NewDate= 1515123084.4429107(1515123083.2559106)                       
+[134]File = src\Function\storage.cpp                          -                   NewDate= 1515123084.4439106(1515123083.2569106)                       
+[135]File = src\Function\storage.h                            -                   NewDate= 1515123084.4439106(1515123083.2579105)                       
+[136]File = src\Function\usbinfo.cpp                          -                   NewDate= 1515123084.4449105(1515123083.2589107)                       
+[137]File = src\Function\usbinfo.h                            -                   NewDate= 1515123084.4459107(1515123083.2599106)                       
+[138]File = src\Function\Volume.cpp                           -                   NewDate= 1515123084.4459107(1515123083.2609105)                       
+[139]File = src\Function\Volume.h                             -                   NewDate= 1515123084.4459107(1515123083.2619107)                       
+[140]File = src\KeyProDLL\3S_SSD_MP.exe                       -                   NewDate= 1515123084.4539106(1515123083.3139105)                       
+[141]File = src\KeyProDLL\3S_SSD_MP.hex                       -                   NewDate= 1515123084.4789107(1515123083.6039107)                       
+[142]File = src\KeyProDLL\KeyProGen.dll                       -                   NewDate= 1515123084.4819107(1515123083.6209106)                       
+[143]File = src\KeyProDLL\KeyProGen.h                         -                   NewDate= 1515123084.4829106(1515123083.6219106)                       
+[144]File = src\KeyProDLL\KeyProGen.HEX                       -                   NewDate= 1515123084.4909105(1515123083.7009106)                       
+[145]File = src\KeyProDLL\MyKey1_Golden_public.HEX            -                   NewDate= 1515123084.4909105(1515123083.7019105)                       
+[146]File = src\Lib\shell32.lib                               -                   NewDate= 1515123084.4929106(1515123083.7079105)                       
+[147]File = src\MP\3S_SSD_MP.HEX                              -                   NewDate= 1515123084.5229106(1515123084.0279107)                       
+[148]File = src\res\SSDMP.ico                                 -                   NewDate= 1515123084.5279107(1515123084.0299106)                       
+[149]File = src\res\SSDMP.rc2                                 -                   NewDate= 1515123084.5279107(1515123084.0299106)                       
+[150]File = src\SortSetting\3S_H16_RDT_SPI_Sort_V1.0.2.bin    -                   NewDate= 1515123084.5339105(1515123084.0519106)                       
+[151]File = src\SortSetting\CommonBurner.bin                  -                   NewDate= 1515123084.5369105(1515123084.0699105)                       
+[152]File = src\SortSetting\FTA_SORTING_BOARD.ini             -                   NewDate= 1515123084.5379107(1515123084.0709107)                       
+[153]File = src\SortSetting\MTable.set                        -                   NewDate= 1515123084.5389106(1515123084.0719106)                       
+[154]File = src\SSD_SRC_LIB\Data_Type.h                       -                   NewDate= 1515123084.5439105(1515123084.0729105)                       
+[155]File = src\SSD_SRC_LIB\SSD_Command.cpp                   -                   NewDate= 1515123084.5439105(1515123084.0739107)                       
+[156]File = src\SSD_SRC_LIB\SSD_Command.h                     -                   NewDate= 1515123084.5449107(1515123084.0749106)                       
+[157]File = src\SSD_SRC_LIB\SSD_Definition.h                  -                   NewDate= 1515123084.5449107(1515123084.0759106)                       
+[158]File = src\SSD_SRC_LIB\SSD_Utility.cpp                   -                   NewDate= 1515123084.5459106(1515123084.0779107)                       
+[159]File = src\SSD_SRC_LIB\SSD_Utility.h                     -                   NewDate= 1515123084.5459106(1515123084.0789106)                       
+[160]File = src\UAC\mt.exe                                    -                   NewDate= 1515123084.5529106(1515123084.1219106)                       
+[161]File = src\UAC\SSDMP.exe                                 -                   NewDate= 1515123084.5689106(1515123084.2459106)                       
+[162]File = src\UAC\SSDMP.exe.manifest                        -                   NewDate= 1515123084.5689106(1515123084.2469106)                       
+[163]File = src\UAC\uac.bat                                   -                   NewDate= 1515123084.5699105(1515123084.2469106)                       
+[164]File = src\UAC\uac_path.bat                              -                   NewDate= 1515123084.5699105(1515123084.2469106)                       
+[165]File = src\UI_Style\manifest.xml                         -                   NewDate= 1515123084.5709107(1515123084.2479105)                       
+
+runCheckSourceCode[-] End ..
+ 
+testName:                    Pause, testState:   FALSE
+testName:              ReleaseNote, testState:   FALSE
+
+----------------------------------------------------
+
+finishList[0]:              CopyFromGit
+finishList[1]:       CopySSD_MP_tool_EV : D:\\3S_PC\ReleaseTool\MP_UI_V1.0\pythonWorking\MP_V1
+finishList[2]:            CopySSD_MP_UI : D:\\3S_PC\ReleaseTool\MP_UI_V1.0\V1.58.2018.105
+finishList[3]:                VCVersion
+finishList[4]:             Bin2HexMPExe
+finishList[5]:             VC6AutoBuild
+finishList[6]:                   UacBat
+finishList[7]:              HUATOOP_H14
+finishList[8]:              HUATOOP_H16
+finishList[9]:         HUATOOP_H16_2LUN
+finishList[10]:                     B0KB
+finishList[11]:                     B16A
+finishList[12]:                    BiCS3
+finishList[13]:                      T15
+finishList[14]:               VERIFY_INI
+finishList[15]:               CopyTo3800 : \\fileserver\3800\SW\SSD_MP_UI_EV\V1.58.2018.105
+finishList[16]:                  ZipFile
+finishList[17]:                CopyToGit
+finishList[18]:          CheckSourceCode
+finishList[19]:                         
+ErrorCode:0
+
+-------------------excellent you are---------------------------------
+
+EndTime:2018-01-05 11:31:24.589910, Total:0:00:31.902000 ..
