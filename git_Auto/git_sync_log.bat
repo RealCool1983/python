@@ -3,11 +3,6 @@ git pull ssd-se-tools master
 git push ssd-se-tools master
 git pull ssd-se-tools master
 
-cd D:\3S_PC\sourceCode\SSD\VS2008
-git pull project-vs2008 master
-git push project-vs2008 master
-git pull project-vs2008 master
-
 
 cd D:\3S_PC\sourceCode\SSD\VC6\GIT_MP_UI\V1.0
 git pull ssd-mp-ui-log master
