@@ -319,6 +319,8 @@ def runSyncFolder(sXmlPath, inParameter):
 
 #     return outlistFile
 
+
+# show same file size or same file name, 20180301 rex
 def runSameFile(sXmlPath, inParameter):
     tree = ET.parse(sXmlPath)
     root = tree.getroot()   
@@ -340,10 +342,15 @@ def runSameFile(sXmlPath, inParameter):
             filepath = os.path.join(root, filename)
             file_paths.append(filepath)  # Add it to the list.            
 
+            iFileSizeByte = os.path.getsize(filepath)
+        
+            # iFileSizeMB = '{:0.1f}'.format(iFileSizeByte / 1024 )
+            # print('iFileSizeMB = {}..'.format(iFileSizeMB))
+
             # tupleFileInfo[0] = file name
             # tupleFileInfo[1] = file path
             # tupleFileInfo[2] = file size 
-            tupleFileInfo = (filename, filepath, os.path.getsize(filepath))
+            tupleFileInfo = (filename, filepath, iFileSizeByte)
             listFileInfo.append(tupleFileInfo)
             
             # print('tupleFileInfo = {} \n '.format(tupleFileInfo))
@@ -397,8 +404,8 @@ def runSameFile(sXmlPath, inParameter):
 
 
     sortlistFileInfo2 = sorted(listFileInfo2,  key=itemgetter(2)) # order by file name
-    sortlistFileInfo3 = sorted(listFileInfo3,  key=itemgetter(1)) # order by file  size 
-    print("sort new list2,3  done ")
+    sortlistFileInfo3 = sorted(listFileInfo3,  key=itemgetter(1),  reverse=True) # order by file  size 
+    print("sort new list2 (by file name ),3(by file size)  done ")
 
     del listFileInfo
     del listFileInfo2
@@ -409,15 +416,18 @@ def runSameFile(sXmlPath, inParameter):
     # print("\n Show listFile2 result (same file name) :")
     # print("Index, Title, FileName, FileSize, Filecount, FilePath")
     print("\n\nShow listFile2 result (same file name) :")
-    print('{:10s},{:10s},{:10s},{:45s},{:20s} '.format("Index", "Filecount", "FileSize", 'FileName', "FilePath"))
+    print('{:10s},{:10s},{:10s},{:45s},{:20s} '.format("Index", "Filecount", "FileSize(MB)", 'FileName', "FilePath"))
     nIndex = 0
     try:
         for item in sortlistFileInfo2:        
             if (len(item) == 4):
                 # print('{:<10d},{}'.format(nIndex, item))
-                print('{:<10d},{:<10d},{:<10d},{:45s},{}'.format(nIndex, 
+                # print('item[2] = {}'.format(item[1]))
+                iMBSize = int(item[1]) / 1024 / 1024
+                print('{:<10d},{:<10d},{:<10.4f},{:45s},{}'.format(
+                    nIndex, 
                     item[0], 
-                    item[1], 
+                    iMBSize, 
                     item[2].encode("utf8").decode("cp950", "ignore"), 
                     item[3].encode("utf8").decode("cp950", "ignore")))
             else:
@@ -435,9 +445,11 @@ def runSameFile(sXmlPath, inParameter):
     try:
         for item in sortlistFileInfo3:        
             if (len(item) == 4):
-                print('{:<10d},{:<10d},{:<10d},{:45s},{}'.format(nIndex,
+                iMBSize = int(item[1]) / 1024 / 1024
+                print('{:<10d},{:<10d},{:<10.4f},{:45s},{}'.format(
+                    nIndex,
                     item[0], 
-                    item[1], 
+                    iMBSize, 
                     item[2].encode("utf8").decode("cp950", "ignore"), 
                     item[3].encode("utf8").decode("cp950", "ignore")))
             else:
@@ -457,8 +469,6 @@ def runSameFile(sXmlPath, inParameter):
 
     # print('count[0] = {}\n \n '.format(Counter(elem[0] for elem in listFileInfo)))
     # print('count[2]= {}\n \n '.format(Counter(elem[2] for elem in listFileInfo)))
-    
-
 
 
 
@@ -565,6 +575,52 @@ def runReadTxtParticular2(sXmlPath, inParameter, sFileType):
     return 0
 
 
+def runPlusPrefixName(sXmlPath, sPrefixName):
+    tree = ET.parse(sXmlPath)
+    root = tree.getroot()   
+
+    print('{:<10s}runPlusPrefixName  ..'.format('start'))
+
+    for neighbor in root.iter('PATHObjects'):
+        sPath = neighbor.find('Folder_Path').text
+    
+    os.chdir(sPath)
+    for allfiles in os.listdir(sPath):
+        # if (allfiles.startswith("V1.") or
+        #     allfiles.startswith("v1.") or
+        #     allfiles.startswith("1.")
+        #     ):
+
+        newName = sPrefixName + allfiles
+        os.rename(allfiles, newName)
+        print('old name = {}, new name = {} ok'.format(allfiles, newName))
+
+    print('{:<10s}runPlusPrefixName  ..'.format('End'))
+    return 0
+
+
+def runPlusPrefixName_AddSN(sXmlPath, sPrefixName):
+    tree = ET.parse(sXmlPath)
+    root = tree.getroot()   
+
+    print('{:<10s}runPlusPrefixName_AddSN  ..'.format('start'))
+
+    for neighbor in root.iter('PATHObjects'):
+        sPath = neighbor.find('Folder_Path').text
+        
+    
+    os.chdir(sPath)
+    iSN = 0 
+    for allfiles in os.listdir(sPath):
+        sFileExtension = os.path.splitext(allfiles)[-1]
+        newName = sPrefixName + str(iSN) + sFileExtension
+        os.rename(allfiles, newName)
+        print('old name = {}, new name = {} ok'.format(allfiles, newName))
+        iSN += 1
+
+    print('{:<10s}runPlusPrefixName_AddSN  ..'.format('End'))
+    return 0
+
 
 
 def runPause():
@@ -598,15 +654,20 @@ def parseXML(sXmlPath):
         
         
             
-
         if (testState == 'TRUE'):
             try:
                 if ( testName == 'ReadTxtParticular2'):
                     runReadTxtParticular2(xmlPath, inParameter, testFileType)     
                 if ( testName == 'ReadTxtParticular'):
                     runReadTxtParticular(xmlPath, inParameter, testFileType)                                                                       
-                if ( testName == 'FileSize'):
-                    runSameFile(xmlPath, inParameter)                                                                 
+                if ( testName == 'SameFile'):
+                    runSameFile(xmlPath, inParameter)    
+
+                if ( testName == 'PlusPrefixName'):
+                    runPlusPrefixName(xmlPath, inParameter)   
+                if ( testName == 'PlusPrefixName_AddSN'):
+                    runPlusPrefixName_AddSN(xmlPath, inParameter)   
+
                 if ( testName == 'SyncFolder'):
                     runSyncFolder(xmlPath, inParameter)                                                                                 
                 if ( testName == 'SyncFileByFileName'):
