@@ -1,16 +1,18 @@
 
 <Configuration>
 		<PATHObjects>
-			<Folder_Path>D:\\Chrome_DL\test</Folder_Path>	
+			<Folder_Path>H:\\05.MovieSEt</Folder_Path>	
 			<SyncFolderFrom>D:\\3S_PC\sourceCode\SSD\VC6\workingTmp\gitWork\Extract\v1.4.2017.210</SyncFolderFrom><!--destination-->		
 			<SyncFolderTo>D:\\3S_PC\sourceCode\SSD\VC6\workingTmp\test</SyncFolderTo><!--source-->
 			
 		</PATHObjects>
 		
 		<TestItemList><!--FALSE, TRUE -->
-	
+			<!--remove spcific file-->
+			<Item Name="RemoveFile_Extension"  Parameter="REXWW_" Enabled="FALSE"/>			
+			
 			<!--PlusPrefixName and reorder sequcnce number -->
-			<Item Name="PlusPrefixName_AddSN"  Parameter="REXWW_" Enabled="TRUE"/>			
+			<Item Name="PlusPrefixName_AddSN"  Parameter="REXWW_" Enabled="FALSE"/>			
 			
 			<!--PlusPrefixName in [Parameter]   -->
 			<Item Name="PlusPrefixName"  Parameter="TEST_REX_" Enabled="FALSE"/>	
@@ -19,7 +21,7 @@
 			<Item Name="ReadTxtParticular2"  Parameter="1" FileType=".INI" Enabled="FALSE"/>
 		
 			<!--Parameter(0~99xx, show top 1 file, show same file size or same file name -->
-			<Item Name="SameFile"  Parameter="100" Enabled="FALSE"/>		
+			<Item Name="SameFile"  Parameter="100000" Enabled="TRUE"/>		
 			
 
 			<!--Parameter(0/1),0 = keep old folder, 1 = kill old folder -->

@@ -1,3 +1,4 @@
+#coding=utf-8
 
 import os
 import shutil
@@ -430,6 +431,9 @@ def runSameFile(sXmlPath, inParameter):
                     iMBSize, 
                     item[2].encode("utf8").decode("cp950", "ignore"), 
                     item[3].encode("utf8").decode("cp950", "ignore")))
+                    # item[2].decode("Big5"), 
+                    # item[3].decode("utf8").encode("Big5")))
+                print("hahahah")
             else:
                 print('!!!{:<10d},{}'.format(nIndex, item))
             nIndex += 1
@@ -599,6 +603,31 @@ def runPlusPrefixName(sXmlPath, sPrefixName):
     return 0
 
 
+# remove all  Thumbs.db in folder
+def runRemoveFile_Extension(sXmlPath, sPrefixName):
+    tree = ET.parse(sXmlPath)
+    root = tree.getroot()   
+
+    print('{:<10s}runRemoveFile_Extension  ..'.format('start'))
+
+    for neighbor in root.iter('PATHObjects'):
+        sPath = neighbor.find('Folder_Path').text
+
+    for root, directories, files in os.walk(sPath):
+        for filename in files:
+            sFileExtension = os.path.splitext(filename)[-1]
+            if sFileExtension == '.db':
+                # print('get db = {}  ..'.format(filename))
+                # Join the two strings in order to form the full filepath.
+                filepath = os.path.join(root, filename)
+                removeFile(filepath)
+ 
+    print('{:<10s}runRemoveFile_Extension  ..'.format('End'))
+    return 0
+        
+    
+
+
 def runPlusPrefixName_AddSN(sXmlPath, sPrefixName):
     tree = ET.parse(sXmlPath)
     root = tree.getroot()   
@@ -667,6 +696,9 @@ def parseXML(sXmlPath):
                     runPlusPrefixName(xmlPath, inParameter)   
                 if ( testName == 'PlusPrefixName_AddSN'):
                     runPlusPrefixName_AddSN(xmlPath, inParameter)   
+
+                if ( testName == 'RemoveFile_Extension'):
+                    runRemoveFile_Extension(xmlPath, inParameter)  
 
                 if ( testName == 'SyncFolder'):
                     runSyncFolder(xmlPath, inParameter)                                                                                 
